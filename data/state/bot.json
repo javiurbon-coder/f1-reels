@@ -1,1 +1,153 @@
-{"offset":0,"more":0,"items":{}}
+{
+  "offset": 0,
+  "more": 0,
+  "items": {
+    "n-MjN2RENhRFhPWg": {
+      "id": "n-MjN2RENhRFhPWg",
+      "composition": "NoticiaVerificada",
+      "props": {
+        "headline": "How Verstappen outperformed Red Bull’s simulations in Brazil",
+        "level": "MEDIA",
+        "date": "09 NOV",
+        "sources": [
+          {
+            "name": "Motorsport.com",
+            "domain": "motorsport.com",
+            "official": false,
+            "tier": "medio"
+          },
+          {
+            "name": "Formula1.com",
+            "domain": "formula1.com",
+            "official": true,
+            "tier": "oficial"
+          }
+        ],
+        "alsoSay": [],
+        "narration": {
+          "file": "audio/n-MjN2RENhRFhPWg.wav",
+          "seconds": 10.6,
+          "words": [
+            {
+              "t": "How",
+              "start": 0.15,
+              "end": 0.342
+            },
+            {
+              "t": "Verstappen",
+              "start": 0.342,
+              "end": 0.983
+            },
+            {
+              "t": "outperformed",
+              "start": 0.983,
+              "end": 1.752
+            },
+            {
+              "t": "Red",
+              "start": 1.752,
+              "end": 1.944
+            },
+            {
+              "t": "Bull’s",
+              "start": 1.944,
+              "end": 2.329
+            },
+            {
+              "t": "simulations",
+              "start": 2.329,
+              "end": 3.034
+            },
+            {
+              "t": "in",
+              "start": 3.034,
+              "end": 3.162
+            },
+            {
+              "t": "Brazil.",
+              "start": 3.162,
+              "end": 3.867
+            },
+            {
+              "t": "Lo",
+              "start": 3.867,
+              "end": 3.995
+            },
+            {
+              "t": "cuentan",
+              "start": 3.995,
+              "end": 4.444
+            },
+            {
+              "t": "2",
+              "start": 4.444,
+              "end": 4.508
+            },
+            {
+              "t": "medios",
+              "start": 4.508,
+              "end": 4.892
+            },
+            {
+              "t": "distintos:",
+              "start": 4.892,
+              "end": 5.79
+            },
+            {
+              "t": "Motorsport.com,",
+              "start": 5.79,
+              "end": 7.007
+            },
+            {
+              "t": "Formula1.com.",
+              "start": 7.007,
+              "end": 8.097
+            },
+            {
+              "t": "Te",
+              "start": 8.097,
+              "end": 8.225
+            },
+            {
+              "t": "dejamos",
+              "start": 8.225,
+              "end": 8.674
+            },
+            {
+              "t": "las",
+              "start": 8.674,
+              "end": 8.866
+            },
+            {
+              "t": "fuentes",
+              "start": 8.866,
+              "end": 9.314
+            },
+            {
+              "t": "en",
+              "start": 9.314,
+              "end": 9.443
+            },
+            {
+              "t": "la",
+              "start": 9.443,
+              "end": 9.571
+            },
+            {
+              "t": "descripción.",
+              "start": 9.571,
+              "end": 10.596
+            }
+          ]
+        }
+      },
+      "caption": "How Verstappen outperformed Red Bull’s simulations in Brazil\n\nContrastado por 2 fuentes:\n• Motorsport.com: https://www.motorsport.com/f1/news/red-bull-boss-hails-max-verstappens-brazil-podium-hes-beating-the-sim-on-a-regular-basis/10873193/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www\n• Formula1.com: https://www.formula1.com/en/latest/article/mekies-explains-how-verstappen-outperformed-red-bulls-own-simulations-in-brazil.1ps87tyvjdEf23vDCaDXOZ\n\n#F1 #Formula1 #FormulaUno #GranPremio #Verstappen #RedBull",
+      "script": "How Verstappen outperformed Red Bull’s simulations in Brazil. Lo cuentan 2 medios distintos: Motorsport.com, Formula1.com. Te dejamos las fuentes en la descripción.",
+      "series": "noticias",
+      "msgId": 8,
+      "fileId": "BAACAgQAAxkDAAMIavHtWGupvjU66oMg3CO6RLnw6TwAAhQhAAIl2pBTCpMjFcNIykY9BA",
+      "status": "sent",
+      "sentAt": "2026-11-09T15:57:12.886Z"
+    }
+  }
+}
