@@ -148,6 +148,336 @@
       "fileId": "BAACAgQAAxkDAAMIavHtWGupvjU66oMg3CO6RLnw6TwAAhQhAAIl2pBTCpMjFcNIykY9BA",
       "status": "sent",
       "sentAt": "2026-11-09T15:57:12.886Z"
+    },
+    "n-NjUHFod3Nzb3Vt": {
+      "id": "n-NjUHFod3Nzb3Vt",
+      "composition": "NoticiaVerificada",
+      "props": {
+        "headline": "Stella revela cómo McLaren logró el triunfo en Interlagos",
+        "level": "OFICIAL",
+        "date": "09 NOV",
+        "sources": [
+          {
+            "name": "Formula1.com",
+            "domain": "formula1.com",
+            "official": true,
+            "tier": "oficial"
+          }
+        ],
+        "alsoSay": [],
+        "points": [
+          "Stella revela cómo McLaren logró el triunfo en Interlagos.",
+          "El principal del equipo McLaren, Andrea Stella, ha explicado cómo McLaren hizo las llamadas correctas para asegurar la…"
+        ],
+        "narration": {
+          "file": "audio/n-NjUHFod3Nzb3Vt.wav",
+          "seconds": 22.32,
+          "words": [
+            {
+              "t": "Stella",
+              "start": 0.15,
+              "end": 0.529
+            },
+            {
+              "t": "revela",
+              "start": 0.529,
+              "end": 0.908
+            },
+            {
+              "t": "cómo",
+              "start": 0.908,
+              "end": 1.16
+            },
+            {
+              "t": "McLaren",
+              "start": 1.16,
+              "end": 1.602
+            },
+            {
+              "t": "logró",
+              "start": 1.602,
+              "end": 1.918
+            },
+            {
+              "t": "el",
+              "start": 1.918,
+              "end": 2.045
+            },
+            {
+              "t": "triunfo",
+              "start": 2.045,
+              "end": 2.487
+            },
+            {
+              "t": "en",
+              "start": 2.487,
+              "end": 2.613
+            },
+            {
+              "t": "Interlagos.",
+              "start": 2.613,
+              "end": 3.56
+            },
+            {
+              "t": "Stella",
+              "start": 3.56,
+              "end": 3.939
+            },
+            {
+              "t": "revela",
+              "start": 3.939,
+              "end": 4.318
+            },
+            {
+              "t": "cómo",
+              "start": 4.318,
+              "end": 4.571
+            },
+            {
+              "t": "McLaren",
+              "start": 4.571,
+              "end": 5.013
+            },
+            {
+              "t": "logró",
+              "start": 5.013,
+              "end": 5.328
+            },
+            {
+              "t": "el",
+              "start": 5.328,
+              "end": 5.455
+            },
+            {
+              "t": "triunfo",
+              "start": 5.455,
+              "end": 5.897
+            },
+            {
+              "t": "en",
+              "start": 5.897,
+              "end": 6.023
+            },
+            {
+              "t": "Interlagos.",
+              "start": 6.023,
+              "end": 6.97
+            },
+            {
+              "t": "El",
+              "start": 6.97,
+              "end": 7.097
+            },
+            {
+              "t": "principal",
+              "start": 7.097,
+              "end": 7.665
+            },
+            {
+              "t": "del",
+              "start": 7.665,
+              "end": 7.854
+            },
+            {
+              "t": "equipo",
+              "start": 7.854,
+              "end": 8.233
+            },
+            {
+              "t": "McLaren,",
+              "start": 8.233,
+              "end": 8.991
+            },
+            {
+              "t": "Andrea",
+              "start": 8.991,
+              "end": 9.37
+            },
+            {
+              "t": "Stella,",
+              "start": 9.37,
+              "end": 10.065
+            },
+            {
+              "t": "ha",
+              "start": 10.065,
+              "end": 10.191
+            },
+            {
+              "t": "explicado",
+              "start": 10.191,
+              "end": 10.759
+            },
+            {
+              "t": "cómo",
+              "start": 10.759,
+              "end": 11.012
+            },
+            {
+              "t": "McLaren",
+              "start": 11.012,
+              "end": 11.454
+            },
+            {
+              "t": "hizo",
+              "start": 11.454,
+              "end": 11.707
+            },
+            {
+              "t": "las",
+              "start": 11.707,
+              "end": 11.896
+            },
+            {
+              "t": "llamadas",
+              "start": 11.896,
+              "end": 12.401
+            },
+            {
+              "t": "correctas",
+              "start": 12.401,
+              "end": 12.97
+            },
+            {
+              "t": "para",
+              "start": 12.97,
+              "end": 13.222
+            },
+            {
+              "t": "asegurar",
+              "start": 13.222,
+              "end": 13.727
+            },
+            {
+              "t": "la",
+              "start": 13.727,
+              "end": 13.854
+            },
+            {
+              "t": "victoria",
+              "start": 13.854,
+              "end": 14.359
+            },
+            {
+              "t": "de",
+              "start": 14.359,
+              "end": 14.485
+            },
+            {
+              "t": "Lando",
+              "start": 14.485,
+              "end": 14.801
+            },
+            {
+              "t": "Norris",
+              "start": 14.801,
+              "end": 15.18
+            },
+            {
+              "t": "en",
+              "start": 15.18,
+              "end": 15.306
+            },
+            {
+              "t": "el",
+              "start": 15.306,
+              "end": 15.432
+            },
+            {
+              "t": "Gran",
+              "start": 15.432,
+              "end": 15.685
+            },
+            {
+              "t": "Premio",
+              "start": 15.685,
+              "end": 16.064
+            },
+            {
+              "t": "de",
+              "start": 16.064,
+              "end": 16.19
+            },
+            {
+              "t": "Sao",
+              "start": 16.19,
+              "end": 16.38
+            },
+            {
+              "t": "Paulo.",
+              "start": 16.38,
+              "end": 17.011
+            },
+            {
+              "t": "Lo",
+              "start": 17.011,
+              "end": 17.138
+            },
+            {
+              "t": "confirma",
+              "start": 17.138,
+              "end": 17.643
+            },
+            {
+              "t": "Formula1.com,",
+              "start": 17.643,
+              "end": 18.716
+            },
+            {
+              "t": "fuente",
+              "start": 18.716,
+              "end": 19.095
+            },
+            {
+              "t": "oficial.",
+              "start": 19.095,
+              "end": 19.853
+            },
+            {
+              "t": "Te",
+              "start": 19.853,
+              "end": 19.979
+            },
+            {
+              "t": "dejamos",
+              "start": 19.979,
+              "end": 20.421
+            },
+            {
+              "t": "las",
+              "start": 20.421,
+              "end": 20.611
+            },
+            {
+              "t": "fuentes",
+              "start": 20.611,
+              "end": 21.053
+            },
+            {
+              "t": "en",
+              "start": 21.053,
+              "end": 21.179
+            },
+            {
+              "t": "la",
+              "start": 21.179,
+              "end": 21.306
+            },
+            {
+              "t": "descripción.",
+              "start": 21.306,
+              "end": 22.316
+            }
+          ]
+        }
+      },
+      "caption": "Stella revela cómo McLaren logró el triunfo en Interlagos\n\nContrastado por 1 fuente:\n• Formula1.com: https://www.formula1.com/en/latest/article/technically-a-very-interesting-race-stella-reveals-how-norris-and-mclaren-triumphed-at-interlagos.SRa4ORrmm9CcPqhwssoum\n\n#F1 #Formula1 #FormulaUno #GranPremio #McLaren",
+      "script": "Stella revela cómo McLaren logró el triunfo en Interlagos. Stella revela cómo McLaren logró el triunfo en Interlagos. El principal del equipo McLaren, Andrea Stella, ha explicado cómo McLaren hizo las llamadas correctas para asegurar la victoria de Lando Norris en el Gran Premio de Sao Paulo. Lo confirma Formula1.com, fuente oficial. Te dejamos las fuentes en la descripción.",
+      "series": "noticias",
+      "msgId": 11,
+      "fileId": "BAACAgQAAxkDAAMLavHw8-X00Nnj-Pt8llD8BGeH9wEAAh0hAAIl2pBTvJPsjUt79-Q9BA",
+      "status": "sent",
+      "sentAt": "2026-11-09T16:12:35.880Z"
     }
   }
 }
