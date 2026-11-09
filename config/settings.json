@@ -1,0 +1,51 @@
+{
+  "windowHours": 36,
+  "minSources": 2,
+  "allowSingleOfficial": true,
+  "maxPerRun": 3,
+  "f1Keywords": [
+    "f1",
+    "formula 1",
+    "fórmula 1",
+    "formula one",
+    "gp",
+    "grand prix",
+    "gran premio",
+    "fia",
+    "verstappen",
+    "hamilton",
+    "norris",
+    "leclerc",
+    "alonso",
+    "sainz",
+    "piastri",
+    "russell",
+    "ferrari",
+    "mclaren",
+    "red bull",
+    "mercedes",
+    "aston martin",
+    "alpine",
+    "williams",
+    "haas",
+    "audi",
+    "cadillac"
+  ],
+  "hashtags": "#F1 #Formula1 #FormulaUno #GranPremio",
+  "similarity": {
+    "minShared": 3,
+    "minOverlap": 0.45
+  },
+  "retention": {
+    "rejectedDays": 1,
+    "pendingMaxDays": 7,
+    "errorDays": 2,
+    "publishedKeepVideoDays": 2
+  },
+  "posterFrame": 45,
+  "rumors": {
+    "enabled": true,
+    "maxPerRun": 1
+  },
+  "priorityTopics": []
+}

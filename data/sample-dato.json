@@ -1,0 +1,10 @@
+{
+  "tag": "Dato rápido",
+  "question": "¿Cuánta carga genera un F1?",
+  "hl": ["carga"],
+  "value": 3.5,
+  "decimals": 1,
+  "unit": "veces su peso",
+  "caption": "A alta velocidad, la carga aerodinámica puede superar varias veces el peso del coche.",
+  "compare": {"label": "Dato de ejemplo", "value": "sustituir"}
+}

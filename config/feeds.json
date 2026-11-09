@@ -1,0 +1,59 @@
+[
+ {
+  "name": "Formula1.com",
+  "url": "https://www.formula1.com/content/fom-website/en/latest/all.xml",
+  "lang": "en",
+  "official": true,
+  "tier": "oficial"
+ },
+ {
+  "name": "Motorsport.com",
+  "group": "motorsport.com",
+  "url": "https://www.motorsport.com/rss/f1/news/",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "Autosport",
+  "url": "https://www.autosport.com/rss/f1/news/",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "RaceFans",
+  "url": "https://www.racefans.net/feed/",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "PlanetF1",
+  "url": "https://www.planetf1.com/rss",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "Motorsport.com ES",
+  "group": "motorsport.com",
+  "url": "https://es.motorsport.com/rss/f1/news/",
+  "lang": "es",
+  "tier": "medio"
+ },
+ {
+  "name": "SoyMotor",
+  "url": "https://soymotor.com/rss",
+  "lang": "es",
+  "tier": "medio"
+ },
+ {
+  "name": "Diario AS",
+  "url": "https://as.com/rss/tags/formula_1.xml",
+  "lang": "es",
+  "tier": "medio"
+ },
+ {
+  "name": "The Race",
+  "url": "https://the-race.com/category/formula-1/feed/",
+  "lang": "en",
+  "tier": "medio"
+ }
+]

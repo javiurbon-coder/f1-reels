@@ -1,0 +1,27 @@
+// Verificador DETERMINISTA (sin IA): el guion solo puede contener cifras y nombres propios
+// que aparezcan en los titulares de las fuentes. Si el modelo se inventa algo, se descarta.
+const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const STOP = new Set('el la los las un una de del al y o en que se por con para su sus es son fue ha han lo le les mas pero como este esta esto ya si no tras sobre entre hasta desde segun'.split(' '));
+
+export function checkScript(script, sourceTitles, {minWords = 15, maxWords = 75} = {}) {
+  const corpus = norm(sourceTitles.join(' \n '));
+  const problems = [];
+  for (const n of script.match(/\d+(?:[.,]\d+)?/g) ?? []) {
+    if (!corpus.includes(n.replace(',', '.')) && !corpus.includes(n)) problems.push(`cifra "${n}" no aparece en las fuentes`);
+  }
+  // palabras con mayúscula que no abren frase = nombres propios
+  const sentences = script.split(/(?<=[.!?¡¿])\s+/);
+  for (const s of sentences) {
+    const words = s.replace(/[¡¿]/g, '').split(/\s+/).filter(Boolean);
+    words.forEach((w, i) => {
+      const bare = w.replace(/[^\p{L}\d-]/gu, '');
+      if (i === 0 || bare.length < 3 || !/^\p{Lu}/u.test(bare) || /^[\p{Lu}\d]+$/u.test(bare) && bare.length < 3) return;
+      if (STOP.has(norm(bare))) return;
+      if (!corpus.includes(norm(bare))) problems.push(`nombre "${bare}" no aparece en las fuentes`);
+    });
+  }
+  const wc = script.split(/\s+/).filter(Boolean).length;
+  if (wc < minWords) problems.push('demasiado corto');
+  if (wc > maxWords) problems.push(`demasiado largo (>${maxWords} palabras)`);
+  return {ok: problems.length === 0, problems, words: wc};
+}

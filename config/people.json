@@ -1,0 +1,6 @@
+[
+ {"name": "Jorge Peiró", "platform": "x", "handle": "@JPEIR0", "tier": "periodista", "outlet": "Relevo", "group": "relevo", "feed": "", "nota": "Cuenta como fuente, pero junto a su medio cuenta como UNA (mismo grupo)."},
+ {"name": "Ekaitz Gil", "platform": "x", "handle": "@ekaitzgilf1", "tier": "creador", "group": "ekaitz", "feed": "", "nota": "X no tiene lectura gratis: se añade con npm run add-lead cuando veas un tuit relevante."},
+ {"name": "Nachez", "platform": "x", "handle": "@Nachez98", "tier": "creador", "group": "nachez", "feed": "", "nota": "Igual: pista manual desde X."},
+ {"name": "Noble F1", "platform": "x", "handle": "@NobleF1", "tier": "creador", "group": "noblef1", "feed": "", "nota": "Igual: pista manual desde X."}
+]

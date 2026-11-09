@@ -1,0 +1,20 @@
+{
+  "alonso":    {"name": "Fernando Alonso", "keywords": ["alonso"], "hashtags": "#Alonso #FernandoAlonso"},
+  "sainz":     {"name": "Carlos Sainz", "keywords": ["sainz"], "hashtags": "#Sainz #CarlosSainz"},
+  "hamilton":  {"name": "Lewis Hamilton", "keywords": ["hamilton"], "hashtags": "#Hamilton"},
+  "verstappen":{"name": "Max Verstappen", "keywords": ["verstappen"], "hashtags": "#Verstappen"},
+  "norris":    {"name": "Lando Norris", "keywords": ["norris"], "hashtags": "#Norris"},
+  "leclerc":   {"name": "Charles Leclerc", "keywords": ["leclerc"], "hashtags": "#Leclerc"},
+  "piastri":   {"name": "Oscar Piastri", "keywords": ["piastri"], "hashtags": "#Piastri"},
+  "russell":   {"name": "George Russell", "keywords": ["russell"], "hashtags": "#Russell"},
+  "ferrari":   {"name": "Ferrari", "keywords": ["ferrari", "scuderia"], "hashtags": "#Ferrari"},
+  "mclaren":   {"name": "McLaren", "keywords": ["mclaren"], "hashtags": "#McLaren"},
+  "redbull":   {"name": "Red Bull", "keywords": ["red bull", "redbull"], "hashtags": "#RedBull"},
+  "mercedes":  {"name": "Mercedes", "keywords": ["mercedes"], "hashtags": "#Mercedes"},
+  "aston":     {"name": "Aston Martin", "keywords": ["aston martin"], "hashtags": "#AstonMartin"},
+  "alpine":    {"name": "Alpine", "keywords": ["alpine"], "hashtags": "#Alpine"},
+  "williams":  {"name": "Williams", "keywords": ["williams"], "hashtags": "#Williams"},
+  "haas":      {"name": "Haas", "keywords": ["haas"], "hashtags": "#Haas"},
+  "audi":      {"name": "Audi", "keywords": ["audi"], "hashtags": "#Audi"},
+  "cadillac":  {"name": "Cadillac", "keywords": ["cadillac"], "hashtags": "#Cadillac"}
+}

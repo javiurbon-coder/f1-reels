@@ -1,0 +1,8 @@
+[
+  {"id": "noticias",   "name": "Última hora",      "composition": "NoticiaVerificada", "color": "#111111", "cadence": "máx. 1 al día, solo con 2+ fuentes", "hashtags": "#NoticiasF1"},
+  {"id": "resultados", "name": "Resultados",       "composition": "ResultsReel",       "color": "#ffd21f", "cadence": "tras clasificación y carrera",      "hashtags": "#ResultadosF1"},
+  {"id": "mercado",    "name": "Mercado",          "composition": "Mercado",           "color": "#ff3b1d", "cadence": "cuando haya fichaje o contrato confirmado", "hashtags": "#MercadoF1 #FichajesF1"},
+  {"id": "semana",     "name": "Esta semana",      "composition": "EstaSemana",        "color": "#2b6cff", "cadence": "1 por GP (lunes)",                  "hashtags": "#F1 #GranPremio"},
+  {"id": "rumor",      "name": "Rumor o realidad", "composition": "Rumor",             "color": "#ffd21f", "cadence": "máx. 1 por semana, siempre NO CONFIRMADO", "hashtags": "#RumoresF1"},
+  {"id": "datos",      "name": "Dato rápido",      "composition": "DatoRapido",        "color": "#111111", "cadence": "2 por semana",                      "hashtags": "#DatoF1"}
+]

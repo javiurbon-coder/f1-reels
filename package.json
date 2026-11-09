@@ -1,0 +1,41 @@
+{
+  "name": "f1-reels",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "studio": "remotion studio src/index.ts",
+    "fetch": "node scripts/news/fetch.mjs",
+    "cluster": "node scripts/news/cluster.mjs",
+    "enqueue-news": "node scripts/news/enqueue-news.mjs",
+    "news": "node scripts/news/fetch.mjs && node scripts/news/cluster.mjs && node scripts/agents/make-reels.mjs --template --no-voice",
+    "review": "node scripts/review-server.mjs",
+    "clean": "node scripts/lib/clean.mjs",
+    "test:news": "node scripts/news/test-fixtures.mjs",
+    "add-lead": "node scripts/news/add-lead.mjs",
+    "agents": "node scripts/news/fetch.mjs && node scripts/news/cluster.mjs && node scripts/agents/make-reels.mjs",
+    "test:agents": "node scripts/agents/test-agents.mjs",
+    "semana": "node scripts/fetch-calendar.mjs",
+    "notify": "node scripts/notify-telegram.mjs",
+    "notify:setup": "node scripts/notify-telegram.mjs setup",
+    "test:bot": "node scripts/bot/test-handle.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource/archivo-black": "^5.3.0",
+    "@fontsource/space-mono": "^5.3.0",
+    "@remotion/bundler": "^4.0.541",
+    "@remotion/cli": "^4.0.541",
+    "@remotion/renderer": "^4.0.541",
+    "@types/react": "^18.3.31",
+    "fast-xml-parser": "^5.12.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.541",
+    "typescript": "^7.0.2"
+  }
+}

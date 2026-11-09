@@ -1,0 +1,10 @@
+node_modules
+out
+queue
+public/audio
+logs
+.telegram.json
+tools
+voices
+data/news/raw.json
+data/news/clusters.json

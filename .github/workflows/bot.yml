@@ -1,0 +1,56 @@
+name: Bot del móvil (botones y correcciones)
+on:
+  schedule:
+    - cron: '*/5 * * * *'     # mira cada ~5 min si has pulsado algo en Telegram
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: f1bot
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      work: ${{ steps.p.outputs.work }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - id: p
+        run: node scripts/bot/poll.mjs
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+      - name: Guardar estado
+        run: |
+          git config user.name "f1-reels-bot"; git config user.email "bot@users.noreply.github.com"
+          git add data/state/bot.json
+          git diff --cached --quiet || (git commit -m "estado bot" && git pull --rebase -q && git push)
+  heavy:
+    needs: poll
+    if: needs.poll.outputs.work == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PIPER_BIN: ${{ github.workspace }}/tools/piper/piper
+      PIPER_VOICE: voices/es_ES-davefx-medium.onnx
+      OLLAMA_MODEL: qwen2.5:3b
+      MAX_PER_RUN: '1'
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - uses: ./.github/actions/setup-tools
+      - name: Rehacer vídeos corregidos
+        run: node scripts/bot/apply-edits.mjs
+      - name: Otra noticia (si la pediste)
+        run: |
+          N=$(node -e "const s=require('./data/state/bot.json');console.log(s.more||0)")
+          for i in $(seq 1 $N); do npm run agents && npm run notify; done
+          node -e "const f='data/state/bot.json',s=JSON.parse(require('fs').readFileSync(f));s.more=0;require('fs').writeFileSync(f,JSON.stringify(s,null,2))"
+      - name: Guardar estado
+        run: |
+          git config user.name "f1-reels-bot"; git config user.email "bot@users.noreply.github.com"
+          git add data/news/seen.json data/state/bot.json
+          git diff --cached --quiet || (git commit -m "estado" && git pull --rebase -q && git push)
