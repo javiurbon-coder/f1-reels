@@ -41,7 +41,7 @@ const out = clusters
     const pool = sources.length ? sources : [...also.values()];
     // titular propuesto: prioriza español, luego el más corto (más "limpio")
     const pick = [...pool].sort((a, b) => (b.lang === 'es') - (a.lang === 'es') || a.title.length - b.title.length)[0];
-    const view = (s) => ({name: s.source, domain: s.domain, url: s.link, title: s.title, lang: s.lang, published: s.published, tier: s.tier ?? 'medio', official: s.tier === 'oficial'});
+    const view = (s) => ({summary: s.summary ?? '', name: s.source, domain: s.domain, url: s.link, title: s.title, lang: s.lang, published: s.published, tier: s.tier ?? 'medio', official: s.tier === 'oficial'});
     return {
       id: 'n-' + Buffer.from(pool.map((s) => s.link).sort()[0]).toString('base64url').slice(-14),
       level,

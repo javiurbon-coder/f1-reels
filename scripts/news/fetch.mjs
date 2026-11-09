@@ -14,6 +14,8 @@ const settings = JSON.parse(fs.readFileSync('config/settings.json', 'utf8'));
 const parser = new XMLParser({ignoreAttributes: false, attributeNamePrefix: '@_'});
 const arr = (x) => (x == null ? [] : Array.isArray(x) ? x : [x]);
 
+const txt = (v) => (v && typeof v === 'object' ? (v['#text'] ?? '') : String(v ?? ''));
+
 export function parseFeed(xml, feed) {
   const j = parser.parse(xml);
   const items = arr(j?.rss?.channel?.item).length ? arr(j.rss.channel.item) : arr(j?.feed?.entry);
@@ -29,6 +31,7 @@ export function parseFeed(xml, feed) {
         lang: feed.lang,
         domain: hostOf(link),
         title: clean(typeof it.title === 'object' ? it.title['#text'] : it.title),
+        summary: clean(txt(it.description ?? it.summary ?? it['content:encoded'] ?? '')).slice(0, 600),
         link,
         published: isNaN(date) ? new Date().toISOString() : date.toISOString(),
       };

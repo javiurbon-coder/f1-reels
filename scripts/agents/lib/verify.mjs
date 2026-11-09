@@ -25,3 +25,14 @@ export function checkScript(script, sourceTitles, {minWords = 15, maxWords = 75}
   if (wc > maxWords) problems.push(`demasiado largo (>${maxWords} palabras)`);
   return {ok: problems.length === 0, problems, words: wc};
 }
+
+const ES = new Set('el la los las de del y en que un una por con para es se su sus al lo como mas pero ya fue han ha este esta tras sobre entre hasta desde segun'.split(' '));
+const EN = new Set('the of and to in is was were for on at with by from as it its that this after before over has have had will are'.split(' '));
+/** ¿Está en español? (palabras vacías: muchas en español y pocas en inglés) */
+export function isSpanish(text) {
+  const w = norm(text).split(/[^a-z]+/).filter(Boolean);
+  if (w.length < 4) return false;
+  const es = w.filter((x) => ES.has(x)).length / w.length;
+  const en = w.filter((x) => EN.has(x)).length / w.length;
+  return es >= 0.15 && en < 0.08;
+}

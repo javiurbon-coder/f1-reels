@@ -16,5 +16,5 @@ runs:
         curl -fsSL https://ollama.com/install.sh | sh
         (ollama serve > /dev/null 2>&1 &)
         sleep 5
-        ollama pull qwen2.5:3b
+        ollama pull qwen2.5:7b
       shell: bash

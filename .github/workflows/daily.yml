@@ -13,7 +13,7 @@ jobs:
     env:
       PIPER_BIN: ${{ github.workspace }}/tools/piper/piper
       PIPER_VOICE: voices/es_ES-davefx-medium.onnx
-      OLLAMA_MODEL: qwen2.5:3b
+      OLLAMA_MODEL: qwen2.5:7b
       MAX_PER_RUN: '1'               # 1 vídeo al día
       TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
       TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}

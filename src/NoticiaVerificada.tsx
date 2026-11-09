@@ -10,6 +10,8 @@ export type NoticiaProps = {
   date: string;
   sources: {name: string; domain: string; official?: boolean; tier?: string}[];
   alsoSay?: string[];
+  /** Puntos clave (frases del guion) que salen en pantalla mientras suena la voz. */
+  points?: string[];
   /** Voz en off (opcional): audio en public/ + palabras con tiempos para subtitular. */
   narration?: {file: string; seconds: number; words: {t: string; start: number; end: number}[]};
 };
@@ -105,6 +107,27 @@ export const Sources: React.FC<Pick<NoticiaProps, 'sources' | 'alsoSay'> & {leve
   );
 };
 
+export const Points: React.FC<{points: string[]; frames: number}> = ({points, frames}) => {
+  const step = Math.max(24, Math.floor((frames - 30) / points.length));
+  return (
+    <AbsoluteFill>
+      <Backdrop variant="cream" />
+      <Header tag="Lo que sabemos" />
+      <AbsoluteFill style={{padding: `${T.safeTop + 160}px ${T.safeX}px 0`}}>
+        <div style={{marginBottom: 40}}>
+          <Headline text="Lo que sabemos" size={96} delay={0} hl={['sabemos']} />
+        </div>
+        {points.map((t, i) => (
+          <Card key={i} delay={10 + i * step} rotate={i % 2 ? 0.8 : -0.8} style={{padding: '26px 34px', marginBottom: 28, borderRadius: 22}}>
+            <div style={{fontFamily: T.display, fontSize: t.length > 90 ? 40 : 46, lineHeight: 1.12, textTransform: 'uppercase'}}>{t}</div>
+          </Card>
+        ))}
+      </AbsoluteFill>
+      <Footer delay={60} />
+    </AbsoluteFill>
+  );
+};
+
 export const Captions: React.FC<{words: {t: string; start: number; end: number}[]}> = ({words}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -142,18 +165,34 @@ export const withVoice = (total: number, narration?: NoticiaProps['narration'], 
 
 export const NoticiaVerificada: React.FC<NoticiaProps> = (props) => {
   const {hook} = NOTICIA_SCENES;
+  const total = useVideoConfig().durationInFrames;
+  const pts = props.points ?? [];
+  const tail = NOTICIA_SCENES.sources + 60; // las fuentes se quedan unos 7 s al final
+  const midFrames = total - hook - tail;
+  const withPoints = pts.length > 0 && midFrames > 90;
+  const srcFrom = withPoints ? total - tail : hook;
   return (
     <AbsoluteFill>
       {props.narration && <Audio src={staticFile(props.narration.file)} />}
       <Sequence from={0} durationInFrames={hook + 6}>
         <Hook {...props} />
       </Sequence>
-      <Sequence from={hook}>
+      {withPoints && (
+        <Sequence from={hook} durationInFrames={midFrames + 6}>
+          <Points points={pts} frames={midFrames} />
+        </Sequence>
+      )}
+      <Sequence from={srcFrom}>
         <Sources {...props} />
       </Sequence>
       <Sequence from={hook - 8} durationInFrames={22}>
         <Wipe />
       </Sequence>
+      {withPoints && (
+        <Sequence from={srcFrom - 8} durationInFrames={22}>
+          <Wipe />
+        </Sequence>
+      )}
       {props.narration && <Captions words={props.narration.words} />}
     </AbsoluteFill>
   );

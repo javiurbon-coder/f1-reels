@@ -29,3 +29,7 @@ import {topicsOf} from '../lib/classify.mjs';
 const tc = topicsOf({headline: 'Alonso renueva con Aston Martin hasta 2028', sources: [{title: 'Alonso signs extension'}], alsoSay: []});
 assert.ok(tc.includes('alonso') && tc.includes('aston') && !tc.includes('ferrari'));
 console.log('✓ temas (pilotos/equipos) detectados');
+import {isSpanish} from './lib/verify.mjs';
+assert.ok(isSpanish('Norris gana en Brasil y Mercedes se acerca al título de pilotos tras una carrera loca'));
+assert.ok(!isSpanish('How Verstappen outperformed Red Bull simulations in the race at Brazil'));
+console.log('✓ detector de idioma (español / inglés)');
