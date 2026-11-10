@@ -18,6 +18,7 @@
     "agents": "node scripts/news/fetch.mjs && node scripts/news/cluster.mjs && node scripts/menu.mjs",
     "agents:full": "node scripts/news/fetch.mjs && node scripts/news/cluster.mjs && node scripts/agents/make-reels.mjs",
     "menu": "node scripts/menu.mjs",
+    "alertas": "node scripts/news/fetch.mjs && node scripts/news/cluster.mjs && node scripts/alertas.mjs",
     "test:agents": "node scripts/agents/test-agents.mjs",
     "semana": "node scripts/fetch-calendar.mjs",
     "notify": "node scripts/notify-telegram.mjs",

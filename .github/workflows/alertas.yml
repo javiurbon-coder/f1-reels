@@ -1,0 +1,26 @@
+name: Alertas de última hora
+on:
+  schedule:
+    - cron: '*/20 * * * *'    # mira los medios cada ~20 min y te avisa por Telegram si hay una noticia nueva contrastada
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: f1bot
+jobs:
+  alertas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: npm install --no-save --no-package-lock --ignore-scripts fast-xml-parser@5
+      - run: npm run alertas
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+      - name: Guardar estado
+        run: |
+          git config user.name "f1-reels-bot"; git config user.email "bot@users.noreply.github.com"
+          git add data/state/bot.json
+          git diff --cached --quiet || (git commit -m "estado alertas" && git pull --rebase -q && git push)

@@ -33,7 +33,7 @@ export function handleUpdate(state, u, chat) {
       if (!known) { out.answer = 'Esa opción ya caducó'; out.reply.push('⏳ Esa noticia ya no está disponible. Pide otro menú con 🔁.'); }
       else if (state.picks.includes(id) || state.made?.includes(id)) { out.answer = 'Ya la tienes en marcha'; }
       else { state.picks.push(id); out.answer = 'Elegida'; out.reply.push(`🎬 Preparando: ${known.headline}\n(unos minutos)`); }
-    } else if (act === 'skip') { out.answer = 'Vale'; out.clear = cb.message.message_id; out.reply.push('😴 Hoy nada. Mañana habrá menú nuevo.'); }
+    } else if (act === 'skip') { out.answer = 'Vale'; out.clear = cb.message.message_id; out.reply.push('🙈 Vale, la dejo.'); }
     else if (act === 'more') { state.more++; out.answer = 'Preparando otro menú…'; out.reply.push('🔁 Preparando otro menú (unos minutos).'); }
     else if (it && act === 'ok') { it.status = 'approved'; out.answer = 'Aprobado'; out.clear = cb.message.message_id;
       out.reply.push('✅ Aprobado. Guarda el vídeo y pega el texto de arriba en Instagram.'); }

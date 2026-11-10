@@ -47,5 +47,12 @@
     "enabled": true,
     "maxPerRun": 1
   },
-  "priorityTopics": []
+  "priorityTopics": [],
+  "alerts": {
+    "fromHour": 8,
+    "toHour": 23,
+    "maxPerDay": 6,
+    "maxPerRun": 2,
+    "freshHours": 4
+  }
 }
