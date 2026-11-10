@@ -1512,6 +1512,727 @@
       "fileId": "BAACAgQAAxkDAAM2avNiNTFjuU_lf8sBfLv8vIi5UMcAAjUfAAKE1JlT9YQRcUnio4w9BA",
       "status": "sent",
       "sentAt": "2026-11-10T18:28:05.943Z"
+    },
+    "resumen-day-2026-11-10": {
+      "id": "resumen-day-2026-11-10",
+      "composition": "Reel",
+      "props": {
+        "kind": "noticia",
+        "headline": "Resumen del día en la F1",
+        "hl": "Resumen",
+        "section": "Resumen del día",
+        "chip": "4 noticias",
+        "date": "10 NOV",
+        "sources": [
+          {
+            "name": "Crash.net",
+            "domain": "crash.net",
+            "official": false
+          },
+          {
+            "name": "Motorsport.com",
+            "domain": "motorsport.com",
+            "official": false
+          },
+          {
+            "name": "RacingNews365",
+            "domain": "racingnews365.com",
+            "official": false
+          },
+          {
+            "name": "Autosport",
+            "domain": "autosport.com",
+            "official": false
+          }
+        ],
+        "scenes": [
+          {
+            "type": "hook",
+            "from": 0,
+            "to": 3.25
+          },
+          {
+            "type": "list",
+            "from": 3.25,
+            "to": 61.19,
+            "title": "Lo de hoy",
+            "rows": [
+              {
+                "icon": "flag",
+                "title": "Piastri se separa",
+                "sub": "9 fuentes",
+                "at": 0.3
+              },
+              {
+                "icon": "flag",
+                "title": "Charles Leclerc es más 'amado'",
+                "sub": "6 fuentes",
+                "at": 15.77
+              },
+              {
+                "icon": "wrench",
+                "title": "Red Bull han estado 'rompiendo' el",
+                "sub": "5 fuentes",
+                "at": 32.74
+              },
+              {
+                "icon": "flag",
+                "title": "FIA revela los hallazgos",
+                "sub": "5 fuentes",
+                "at": 47.35
+              }
+            ]
+          },
+          {
+            "type": "sources",
+            "from": 61.19,
+            "to": 65.6
+          }
+        ],
+        "words": [
+          {
+            "t": "Resumen",
+            "start": 0,
+            "end": 0.557
+          },
+          {
+            "t": "de",
+            "start": 0.615,
+            "end": 0.673
+          },
+          {
+            "t": "la",
+            "start": 0.72,
+            "end": 0.778
+          },
+          {
+            "t": "F1:",
+            "start": 0.824,
+            "end": 1.393
+          },
+          {
+            "t": "esto",
+            "start": 1.579,
+            "end": 1.858
+          },
+          {
+            "t": "es",
+            "start": 1.916,
+            "end": 1.974
+          },
+          {
+            "t": "lo",
+            "start": 2.043,
+            "end": 2.125
+          },
+          {
+            "t": "que",
+            "start": 2.171,
+            "end": 2.252
+          },
+          {
+            "t": "ha",
+            "start": 2.299,
+            "end": 2.345
+          },
+          {
+            "t": "pasado",
+            "start": 2.392,
+            "end": 2.74
+          },
+          {
+            "t": "hoy.",
+            "start": 2.775,
+            "end": 3.135
+          },
+          {
+            "t": "Primera",
+            "start": 3.402,
+            "end": 3.75
+          },
+          {
+            "t": "noticia:",
+            "start": 3.785,
+            "end": 4.389
+          },
+          {
+            "t": "Piastri",
+            "start": 4.551,
+            "end": 5.05
+          },
+          {
+            "t": "se",
+            "start": 5.085,
+            "end": 5.155
+          },
+          {
+            "t": "separa",
+            "start": 5.201,
+            "end": 5.526
+          },
+          {
+            "t": "de",
+            "start": 5.561,
+            "end": 5.631
+          },
+          {
+            "t": "su",
+            "start": 5.654,
+            "end": 5.759
+          },
+          {
+            "t": "gerente",
+            "start": 5.805,
+            "end": 6.165
+          },
+          {
+            "t": "Webber.",
+            "start": 6.211,
+            "end": 6.676
+          },
+          {
+            "t": "La",
+            "start": 6.85,
+            "end": 6.966
+          },
+          {
+            "t": "cuentan",
+            "start": 7.012,
+            "end": 7.372
+          },
+          {
+            "t": "Crash.net,",
+            "start": 7.442,
+            "end": 8.313
+          },
+          {
+            "t": "Motorsport.com,",
+            "start": 8.429,
+            "end": 9.915
+          },
+          {
+            "t": "RacingNews365,",
+            "start": 10.17,
+            "end": 12.237
+          },
+          {
+            "t": "Autosport,",
+            "start": 12.365,
+            "end": 13.177
+          },
+          {
+            "t": "The",
+            "start": 13.293,
+            "end": 13.433
+          },
+          {
+            "t": "Race,",
+            "start": 13.526,
+            "end": 13.955
+          },
+          {
+            "t": "RaceFans,",
+            "start": 14.141,
+            "end": 14.896
+          },
+          {
+            "t": "Sky",
+            "start": 15.023,
+            "end": 15.325
+          },
+          {
+            "t": "Sports",
+            "start": 15.383,
+            "end": 15.836
+          },
+          {
+            "t": "F1,",
+            "start": 15.929,
+            "end": 16.579
+          },
+          {
+            "t": "F1i",
+            "start": 16.672,
+            "end": 17.299
+          },
+          {
+            "t": "y",
+            "start": 17.427,
+            "end": 17.543
+          },
+          {
+            "t": "PlanetF1.",
+            "start": 17.636,
+            "end": 18.669
+          },
+          {
+            "t": "Segunda",
+            "start": 19.075,
+            "end": 19.435
+          },
+          {
+            "t": "noticia:",
+            "start": 19.482,
+            "end": 20.016
+          },
+          {
+            "t": "Charles",
+            "start": 20.143,
+            "end": 20.538
+          },
+          {
+            "t": "Leclerc",
+            "start": 20.631,
+            "end": 21.084
+          },
+          {
+            "t": "es",
+            "start": 21.212,
+            "end": 21.397
+          },
+          {
+            "t": "más",
+            "start": 21.467,
+            "end": 21.653
+          },
+          {
+            "t": "'amado'",
+            "start": 21.688,
+            "end": 22.071
+          },
+          {
+            "t": "dentro",
+            "start": 22.106,
+            "end": 22.431
+          },
+          {
+            "t": "de",
+            "start": 22.477,
+            "end": 22.535
+          },
+          {
+            "t": "Ferrari",
+            "start": 22.582,
+            "end": 23.046
+          },
+          {
+            "t": "mientras",
+            "start": 23.174,
+            "end": 23.568
+          },
+          {
+            "t": "que",
+            "start": 23.615,
+            "end": 23.684
+          },
+          {
+            "t": "Lewis",
+            "start": 23.754,
+            "end": 24.01
+          },
+          {
+            "t": "Hamilton",
+            "start": 24.068,
+            "end": 24.555
+          },
+          {
+            "t": "ha",
+            "start": 24.613,
+            "end": 24.695
+          },
+          {
+            "t": "creado",
+            "start": 24.753,
+            "end": 25.066
+          },
+          {
+            "t": "una",
+            "start": 25.112,
+            "end": 25.252
+          },
+          {
+            "t": "'profunda",
+            "start": 25.275,
+            "end": 25.786
+          },
+          {
+            "t": "brecha'.",
+            "start": 25.832,
+            "end": 26.366
+          },
+          {
+            "t": "La",
+            "start": 26.587,
+            "end": 26.715
+          },
+          {
+            "t": "cuentan",
+            "start": 26.761,
+            "end": 27.133
+          },
+          {
+            "t": "Crash.net,",
+            "start": 27.202,
+            "end": 28.178
+          },
+          {
+            "t": "Motorsport.com,",
+            "start": 28.282,
+            "end": 29.606
+          },
+          {
+            "t": "RacingNews365,",
+            "start": 29.826,
+            "end": 31.742
+          },
+          {
+            "t": "F1",
+            "start": 31.835,
+            "end": 32.16
+          },
+          {
+            "t": "Oversteer,",
+            "start": 32.253,
+            "end": 32.868
+          },
+          {
+            "t": "GPFans",
+            "start": 33.031,
+            "end": 33.808
+          },
+          {
+            "t": "y",
+            "start": 33.971,
+            "end": 34.064
+          },
+          {
+            "t": "PlanetF1.",
+            "start": 34.168,
+            "end": 35.387
+          },
+          {
+            "t": "Tercera",
+            "start": 36.037,
+            "end": 36.49
+          },
+          {
+            "t": "noticia:",
+            "start": 36.537,
+            "end": 37.152
+          },
+          {
+            "t": "Red",
+            "start": 37.338,
+            "end": 37.535
+          },
+          {
+            "t": "Bull",
+            "start": 37.57,
+            "end": 37.813
+          },
+          {
+            "t": "han",
+            "start": 37.918,
+            "end": 38.022
+          },
+          {
+            "t": "estado",
+            "start": 38.08,
+            "end": 38.371
+          },
+          {
+            "t": "'rompiendo'",
+            "start": 38.394,
+            "end": 38.928
+          },
+          {
+            "t": "el",
+            "start": 38.951,
+            "end": 39.021
+          },
+          {
+            "t": "coche",
+            "start": 39.091,
+            "end": 39.369
+          },
+          {
+            "t": "de",
+            "start": 39.427,
+            "end": 39.509
+          },
+          {
+            "t": "F1",
+            "start": 39.543,
+            "end": 39.892
+          },
+          {
+            "t": "de",
+            "start": 40.077,
+            "end": 40.159
+          },
+          {
+            "t": "Max",
+            "start": 40.252,
+            "end": 40.507
+          },
+          {
+            "t": "Verstappen",
+            "start": 40.542,
+            "end": 41.041
+          },
+          {
+            "t": "con",
+            "start": 41.134,
+            "end": 41.285
+          },
+          {
+            "t": "un",
+            "start": 41.378,
+            "end": 41.424
+          },
+          {
+            "t": "problema",
+            "start": 41.459,
+            "end": 41.831
+          },
+          {
+            "t": "de",
+            "start": 41.865,
+            "end": 41.923
+          },
+          {
+            "t": "parada",
+            "start": 41.97,
+            "end": 42.26
+          },
+          {
+            "t": "en",
+            "start": 42.295,
+            "end": 42.353
+          },
+          {
+            "t": "boxes",
+            "start": 42.399,
+            "end": 42.806
+          },
+          {
+            "t": "extraño.",
+            "start": 42.864,
+            "end": 43.502
+          },
+          {
+            "t": "La",
+            "start": 43.804,
+            "end": 43.932
+          },
+          {
+            "t": "cuentan",
+            "start": 43.978,
+            "end": 44.338
+          },
+          {
+            "t": "RacingNews365,",
+            "start": 44.466,
+            "end": 46.382
+          },
+          {
+            "t": "The",
+            "start": 46.44,
+            "end": 46.544
+          },
+          {
+            "t": "Race,",
+            "start": 46.614,
+            "end": 46.974
+          },
+          {
+            "t": "PlanetF1,",
+            "start": 47.067,
+            "end": 48.112
+          },
+          {
+            "t": "F1",
+            "start": 48.181,
+            "end": 48.564
+          },
+          {
+            "t": "Oversteer",
+            "start": 48.692,
+            "end": 49.168
+          },
+          {
+            "t": "y",
+            "start": 49.273,
+            "end": 49.365
+          },
+          {
+            "t": "Crash.net.",
+            "start": 49.458,
+            "end": 50.492
+          },
+          {
+            "t": "Cuarta",
+            "start": 50.654,
+            "end": 50.991
+          },
+          {
+            "t": "noticia:",
+            "start": 51.026,
+            "end": 51.629
+          },
+          {
+            "t": "FIA",
+            "start": 51.757,
+            "end": 52.071
+          },
+          {
+            "t": "revela",
+            "start": 52.163,
+            "end": 52.454
+          },
+          {
+            "t": "los",
+            "start": 52.5,
+            "end": 52.616
+          },
+          {
+            "t": "hallazgos",
+            "start": 52.674,
+            "end": 53.104
+          },
+          {
+            "t": "de",
+            "start": 53.15,
+            "end": 53.197
+          },
+          {
+            "t": "la",
+            "start": 53.243,
+            "end": 53.301
+          },
+          {
+            "t": "ventana",
+            "start": 53.336,
+            "end": 53.672
+          },
+          {
+            "t": "final",
+            "start": 53.707,
+            "end": 54.009
+          },
+          {
+            "t": "ADUO",
+            "start": 54.102,
+            "end": 54.485
+          },
+          {
+            "t": "de",
+            "start": 54.531,
+            "end": 54.624
+          },
+          {
+            "t": "F1.",
+            "start": 54.682,
+            "end": 55.298
+          },
+          {
+            "t": "La",
+            "start": 55.518,
+            "end": 55.646
+          },
+          {
+            "t": "cuentan",
+            "start": 55.692,
+            "end": 56.11
+          },
+          {
+            "t": "Motorsport.com,",
+            "start": 56.203,
+            "end": 57.55
+          },
+          {
+            "t": "Autosport,",
+            "start": 57.643,
+            "end": 58.293
+          },
+          {
+            "t": "Crash.net,",
+            "start": 58.34,
+            "end": 59.28
+          },
+          {
+            "t": "GPFans",
+            "start": 59.338,
+            "end": 60.011
+          },
+          {
+            "t": "y",
+            "start": 60.139,
+            "end": 60.197
+          },
+          {
+            "t": "Motorsport",
+            "start": 60.267,
+            "end": 60.847
+          },
+          {
+            "t": "Week.",
+            "start": 60.905,
+            "end": 61.184
+          },
+          {
+            "t": "Todas",
+            "start": 61.242,
+            "end": 61.556
+          },
+          {
+            "t": "están",
+            "start": 61.614,
+            "end": 61.834
+          },
+          {
+            "t": "contrastadas",
+            "start": 61.881,
+            "end": 62.484
+          },
+          {
+            "t": "con",
+            "start": 62.542,
+            "end": 62.658
+          },
+          {
+            "t": "fuentes.",
+            "start": 62.717,
+            "end": 63.204
+          },
+          {
+            "t": "Síguenos",
+            "start": 63.343,
+            "end": 63.785
+          },
+          {
+            "t": "para",
+            "start": 63.831,
+            "end": 63.982
+          },
+          {
+            "t": "más.",
+            "start": 64.028,
+            "end": 64.504
+          }
+        ],
+        "narration": {
+          "file": "audio/resumen-day-2026-11-10.mp3",
+          "seconds": 64.8
+        }
+      },
+      "caption": "Resumen del día en la F1\n\n1. Piastri se separa de su gerente Webber (Crash.net, Motorsport.com, RacingNews365)\n2. Charles Leclerc es más 'amado' dentro de Ferrari mientras que Lewis Hamilton ha creado una 'profunda brecha' (Crash.net, Motorsport.com, RacingNews365)\n3. Red Bull han estado 'rompiendo' el coche de F1 de Max Verstappen con un problema de parada en boxes extraño (RacingNews365, The Race, PlanetF1)\n4. FIA revela los hallazgos de la ventana final ADUO de F1 (Motorsport.com, Autosport, Crash.net)\n\nFuentes: Crash.net, Motorsport.com, RacingNews365, Autosport, The Race y RaceFans.\n\nLa voz de este vídeo está generada con IA.\n\nSíguenos para no perderte nada.\n\n#F1 #Formula1 #FormulaUno #GranPremio #ResumenF1",
+      "script": "Resumen de la F1: esto es lo que ha pasado hoy. Primera noticia: Piastri se separa de su gerente Webber. La cuentan Crash.net, Motorsport.com, RacingNews365, Autosport, The Race, RaceFans, Sky Sports F1, F1i y PlanetF1. Segunda noticia: Charles Leclerc es más 'amado' dentro de Ferrari mientras que Lewis Hamilton ha creado una 'profunda brecha'. La cuentan Crash.net, Motorsport.com, RacingNews365, F1 Oversteer, GPFans y PlanetF1. Tercera noticia: Red Bull han estado 'rompiendo' el coche de F1 de Max Verstappen con un problema de parada en boxes extraño. La cuentan RacingNews365, The Race, PlanetF1, F1 Oversteer y Crash.net. Cuarta noticia: FIA revela los hallazgos de la ventana final ADUO de F1. La cuentan Motorsport.com, Autosport, Crash.net, GPFans y Motorsport Week. Todas están contrastadas con fuentes. Síguenos para más.",
+      "series": "resumen",
+      "msgId": 61,
+      "fileId": "BAACAgQAAxkDAAM9avNpbMYUYFdWZoDu_RQhy95vQRUAAjsfAAKE1JlTe_uvZuBcPnA9BA",
+      "status": "sent",
+      "sentAt": "2026-11-10T18:58:52.956Z"
     }
   },
   "offered": {
@@ -2851,11 +3572,15 @@
   "leads": [],
   "picks": [],
   "topicPicks": [],
-  "sumPicks": [
-    "day"
-  ],
+  "sumPicks": [],
   "hoyDate": "2026-11-10",
   "topicsMade": [
     "efecto-suelo"
+  ],
+  "summarized": [
+    "n-Vyc2hpcC5odG1s",
+    "n-c2UtZmFpbHVyZQ",
+    "n-VsbC12aWN0b3J5",
+    "n-9jb250ZW50PXVr"
   ]
 }
