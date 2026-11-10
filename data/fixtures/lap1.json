@@ -1,0 +1,50 @@
+{
+ "_fixture": "ficticio",
+ "MRData": {
+  "RaceTable": {
+   "Races": [
+    {
+     "Laps": [
+      {
+       "number": "1",
+       "Timings": [
+        {
+         "driverId": "norris",
+         "position": "1"
+        },
+        {
+         "driverId": "russell",
+         "position": "2"
+        },
+        {
+         "driverId": "max_verstappen",
+         "position": "3"
+        },
+        {
+         "driverId": "piastri",
+         "position": "4"
+        },
+        {
+         "driverId": "leclerc",
+         "position": "5"
+        },
+        {
+         "driverId": "hamilton",
+         "position": "6"
+        },
+        {
+         "driverId": "alonso",
+         "position": "7"
+        },
+        {
+         "driverId": "sainz",
+         "position": "8"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

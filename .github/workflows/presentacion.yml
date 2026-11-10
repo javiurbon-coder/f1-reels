@@ -1,0 +1,20 @@
+name: Reel de presentación
+on:
+  workflow_dispatch:
+concurrency: f1bot
+jobs:
+  presentacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PIPER_BIN: ${{ github.workspace }}/tools/piper/piper
+      PIPER_VOICE: voices/es_ES-davefx-medium.onnx
+      ANTHROPIC_API_KEY: 'no-hace-falta-ia'     # así no se instala Ollama: este reel no usa IA
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-tools
+      - run: npm run presentacion

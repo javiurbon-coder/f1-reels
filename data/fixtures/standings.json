@@ -1,0 +1,98 @@
+{
+ "_fixture": "ficticio",
+ "MRData": {
+  "StandingsTable": {
+   "StandingsLists": [
+    {
+     "DriverStandings": [
+      {
+       "position": "1",
+       "points": "380",
+       "wins": "6",
+       "Driver": {
+        "driverId": "norris",
+        "familyName": "Norris",
+        "givenName": "",
+        "code": "NOR"
+       },
+       "Constructors": [
+        {
+         "constructorId": "mclaren",
+         "name": "McLaren"
+        }
+       ]
+      },
+      {
+       "position": "2",
+       "points": "371",
+       "wins": "8",
+       "Driver": {
+        "driverId": "max_verstappen",
+        "familyName": "Verstappen",
+        "givenName": "",
+        "code": "VER"
+       },
+       "Constructors": [
+        {
+         "constructorId": "red_bull",
+         "name": "Red Bull"
+        }
+       ]
+      },
+      {
+       "position": "3",
+       "points": "340",
+       "wins": "4",
+       "Driver": {
+        "driverId": "piastri",
+        "familyName": "Piastri",
+        "givenName": "",
+        "code": "PIA"
+       },
+       "Constructors": [
+        {
+         "constructorId": "mclaren",
+         "name": "McLaren"
+        }
+       ]
+      },
+      {
+       "position": "4",
+       "points": "290",
+       "wins": "2",
+       "Driver": {
+        "driverId": "russell",
+        "familyName": "Russell",
+        "givenName": "",
+        "code": "RUS"
+       },
+       "Constructors": [
+        {
+         "constructorId": "mercedes",
+         "name": "Mercedes"
+        }
+       ]
+      },
+      {
+       "position": "5",
+       "points": "250",
+       "wins": "1",
+       "Driver": {
+        "driverId": "leclerc",
+        "familyName": "Leclerc",
+        "givenName": "",
+        "code": "LEC"
+       },
+       "Constructors": [
+        {
+         "constructorId": "ferrari",
+         "name": "Ferrari"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

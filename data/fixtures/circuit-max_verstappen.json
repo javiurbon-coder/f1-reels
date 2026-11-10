@@ -1,0 +1,69 @@
+{
+ "_fixture": "ficticio",
+ "MRData": {
+  "RaceTable": {
+   "Races": [
+    {
+     "season": "2096",
+     "round": "21",
+     "raceName": "Fixture Grand Prix",
+     "Results": [
+      {
+       "position": "1",
+       "grid": "2",
+       "status": "Finished",
+       "Constructor": {
+        "constructorId": "red_bull"
+       }
+      }
+     ]
+    },
+    {
+     "season": "2097",
+     "round": "21",
+     "raceName": "Fixture Grand Prix",
+     "Results": [
+      {
+       "position": "1",
+       "grid": "17",
+       "status": "Finished",
+       "Constructor": {
+        "constructorId": "red_bull"
+       }
+      }
+     ]
+    },
+    {
+     "season": "2098",
+     "round": "21",
+     "raceName": "Fixture Grand Prix",
+     "Results": [
+      {
+       "position": "4",
+       "grid": "6",
+       "status": "Finished",
+       "Constructor": {
+        "constructorId": "red_bull"
+       }
+      }
+     ]
+    },
+    {
+     "season": "2099",
+     "round": "21",
+     "raceName": "Fixture Grand Prix",
+     "Results": [
+      {
+       "position": "1",
+       "grid": "7",
+       "status": "Finished",
+       "Constructor": {
+        "constructorId": "red_bull"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

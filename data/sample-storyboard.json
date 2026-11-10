@@ -1,0 +1,523 @@
+{
+ "headline": "Verstappen vuelve a ganar tras salir séptimo",
+ "level": "ALTA",
+ "date": "08 NOV",
+ "sources": [
+  {
+   "name": "Formula1.com",
+   "domain": "formula1.com",
+   "official": true
+  },
+  {
+   "name": "Motorsport.com ES",
+   "domain": "es.motorsport.com"
+  },
+  {
+   "name": "Diario AS",
+   "domain": "as.com"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "hook",
+   "from": 0,
+   "to": 3.778
+  },
+  {
+   "type": "bars",
+   "title": "Verstappen: de 7º a 1º",
+   "hl": "Verstappen",
+   "rows": [
+    {
+     "name": "Verstappen",
+     "grid": 7,
+     "finish": 1,
+     "color": "#3671c6",
+     "me": true
+    },
+    {
+     "name": "Piastri",
+     "grid": 3,
+     "finish": 3,
+     "color": "#ff8000",
+     "me": false
+    },
+    {
+     "name": "Leclerc",
+     "grid": 5,
+     "finish": 5,
+     "color": "#e8002d",
+     "me": false
+    },
+    {
+     "name": "Alonso",
+     "grid": 11,
+     "finish": 7,
+     "color": "#229971",
+     "me": false
+    },
+    {
+     "name": "Sainz",
+     "grid": 8,
+     "finish": 8,
+     "color": "#64c4ff",
+     "me": false
+    }
+   ],
+   "from": 3.778,
+   "to": 9.6
+  },
+  {
+   "type": "stat",
+   "value": 4,
+   "label": "posiciones ganadas en la vuelta 1",
+   "title": "Vuelta 1: del 7º al 3º",
+   "from": 9.6,
+   "to": 15.34
+  },
+  {
+   "type": "streak",
+   "title": "Sus últimas 6 carreras",
+   "items": [
+    {
+     "label": "PRU",
+     "pos": 1,
+     "dnf": false
+    },
+    {
+     "label": "PRU",
+     "pos": 3,
+     "dnf": false
+    },
+    {
+     "label": "PRU",
+     "pos": 4,
+     "dnf": false
+    },
+    {
+     "label": "PRU",
+     "pos": 2,
+     "dnf": false
+    },
+    {
+     "label": "PRU",
+     "pos": 1,
+     "dnf": false
+    },
+    {
+     "label": "PRU",
+     "pos": 2,
+     "dnf": false
+    }
+   ],
+   "from": 15.34,
+   "to": 22.22
+  },
+  {
+   "type": "sources",
+   "from": 22.22,
+   "to": 31.18
+  }
+ ],
+ "narration": {
+  "file": "none.wav",
+  "seconds": 30.384615384615383,
+  "words": [
+   {
+    "t": "Verstappen",
+    "start": 0.15,
+    "end": 0.906
+   },
+   {
+    "t": "vuelve",
+    "start": 0.906,
+    "end": 1.359
+   },
+   {
+    "t": "a",
+    "start": 1.359,
+    "end": 1.435
+   },
+   {
+    "t": "mandar",
+    "start": 1.435,
+    "end": 1.888
+   },
+   {
+    "t": "en",
+    "start": 1.888,
+    "end": 2.04
+   },
+   {
+    "t": "el",
+    "start": 2.04,
+    "end": 2.191
+   },
+   {
+    "t": "último",
+    "start": 2.191,
+    "end": 2.644
+   },
+   {
+    "t": "gran",
+    "start": 2.644,
+    "end": 2.947
+   },
+   {
+    "t": "premio.",
+    "start": 2.947,
+    "end": 3.778
+   },
+   {
+    "t": "Salió",
+    "start": 3.778,
+    "end": 4.156
+   },
+   {
+    "t": "7º",
+    "start": 4.156,
+    "end": 4.307
+   },
+   {
+    "t": "y",
+    "start": 4.307,
+    "end": 4.383
+   },
+   {
+    "t": "terminó",
+    "start": 4.383,
+    "end": 4.912
+   },
+   {
+    "t": "1º,",
+    "start": 4.912,
+    "end": 5.441
+   },
+   {
+    "t": "una",
+    "start": 5.441,
+    "end": 5.668
+   },
+   {
+    "t": "remontada",
+    "start": 5.668,
+    "end": 6.348
+   },
+   {
+    "t": "de",
+    "start": 6.348,
+    "end": 6.499
+   },
+   {
+    "t": "seis",
+    "start": 6.499,
+    "end": 6.802
+   },
+   {
+    "t": "posiciones",
+    "start": 6.802,
+    "end": 7.557
+   },
+   {
+    "t": "que",
+    "start": 7.557,
+    "end": 7.784
+   },
+   {
+    "t": "cambió",
+    "start": 7.784,
+    "end": 8.238
+   },
+   {
+    "t": "su",
+    "start": 8.238,
+    "end": 8.389
+   },
+   {
+    "t": "fin",
+    "start": 8.389,
+    "end": 8.616
+   },
+   {
+    "t": "de",
+    "start": 8.616,
+    "end": 8.767
+   },
+   {
+    "t": "semana.",
+    "start": 8.767,
+    "end": 9.598
+   },
+   {
+    "t": "En",
+    "start": 9.598,
+    "end": 9.749
+   },
+   {
+    "t": "la",
+    "start": 9.749,
+    "end": 9.901
+   },
+   {
+    "t": "primera",
+    "start": 9.901,
+    "end": 10.43
+   },
+   {
+    "t": "vuelta",
+    "start": 10.43,
+    "end": 10.883
+   },
+   {
+    "t": "pasó",
+    "start": 10.883,
+    "end": 11.186
+   },
+   {
+    "t": "del",
+    "start": 11.186,
+    "end": 11.412
+   },
+   {
+    "t": "7º",
+    "start": 11.412,
+    "end": 11.564
+   },
+   {
+    "t": "al",
+    "start": 11.564,
+    "end": 11.715
+   },
+   {
+    "t": "3º,",
+    "start": 11.715,
+    "end": 12.244
+   },
+   {
+    "t": "adelantando",
+    "start": 12.244,
+    "end": 13.075
+   },
+   {
+    "t": "a",
+    "start": 13.075,
+    "end": 13.151
+   },
+   {
+    "t": "cuatro",
+    "start": 13.151,
+    "end": 13.604
+   },
+   {
+    "t": "coches",
+    "start": 13.604,
+    "end": 14.058
+   },
+   {
+    "t": "nada",
+    "start": 14.058,
+    "end": 14.36
+   },
+   {
+    "t": "más",
+    "start": 14.36,
+    "end": 14.587
+   },
+   {
+    "t": "salir.",
+    "start": 14.587,
+    "end": 15.343
+   },
+   {
+    "t": "Lleva",
+    "start": 15.343,
+    "end": 15.721
+   },
+   {
+    "t": "3",
+    "start": 15.721,
+    "end": 15.796
+   },
+   {
+    "t": "podios",
+    "start": 15.796,
+    "end": 16.25
+   },
+   {
+    "t": "seguidos",
+    "start": 16.25,
+    "end": 16.855
+   },
+   {
+    "t": "y",
+    "start": 16.855,
+    "end": 16.93
+   },
+   {
+    "t": "acumula",
+    "start": 16.93,
+    "end": 17.459
+   },
+   {
+    "t": "8",
+    "start": 17.459,
+    "end": 17.535
+   },
+   {
+    "t": "victorias",
+    "start": 17.535,
+    "end": 18.215
+   },
+   {
+    "t": "esta",
+    "start": 18.215,
+    "end": 18.518
+   },
+   {
+    "t": "temporada,",
+    "start": 18.518,
+    "end": 19.576
+   },
+   {
+    "t": "y",
+    "start": 19.576,
+    "end": 19.651
+   },
+   {
+    "t": "es",
+    "start": 19.651,
+    "end": 19.803
+   },
+   {
+    "t": "2º",
+    "start": 19.803,
+    "end": 19.954
+   },
+   {
+    "t": "del",
+    "start": 19.954,
+    "end": 20.18
+   },
+   {
+    "t": "campeonato",
+    "start": 20.18,
+    "end": 20.936
+   },
+   {
+    "t": "con",
+    "start": 20.936,
+    "end": 21.163
+   },
+   {
+    "t": "371",
+    "start": 21.163,
+    "end": 21.39
+   },
+   {
+    "t": "puntos.",
+    "start": 21.39,
+    "end": 22.221
+   },
+   {
+    "t": "Lo",
+    "start": 22.221,
+    "end": 22.372
+   },
+   {
+    "t": "cuentan",
+    "start": 22.372,
+    "end": 22.902
+   },
+   {
+    "t": "Formula1.com,",
+    "start": 22.902,
+    "end": 24.187
+   },
+   {
+    "t": "Motorsport",
+    "start": 24.187,
+    "end": 24.942
+   },
+   {
+    "t": "y",
+    "start": 24.942,
+    "end": 25.018
+   },
+   {
+    "t": "AS",
+    "start": 25.018,
+    "end": 25.169
+   },
+   {
+    "t": "en",
+    "start": 25.169,
+    "end": 25.32
+   },
+   {
+    "t": "su",
+    "start": 25.32,
+    "end": 25.471
+   },
+   {
+    "t": "web",
+    "start": 25.471,
+    "end": 25.698
+   },
+   {
+    "t": "oficial.",
+    "start": 25.698,
+    "end": 26.605
+   },
+   {
+    "t": "Te",
+    "start": 26.605,
+    "end": 26.756
+   },
+   {
+    "t": "dejamos",
+    "start": 26.756,
+    "end": 27.286
+   },
+   {
+    "t": "las",
+    "start": 27.286,
+    "end": 27.512
+   },
+   {
+    "t": "fuentes",
+    "start": 27.512,
+    "end": 28.041
+   },
+   {
+    "t": "en",
+    "start": 28.041,
+    "end": 28.193
+   },
+   {
+    "t": "la",
+    "start": 28.193,
+    "end": 28.344
+   },
+   {
+    "t": "descripción",
+    "start": 28.344,
+    "end": 29.175
+   },
+   {
+    "t": "de",
+    "start": 29.175,
+    "end": 29.326
+   },
+   {
+    "t": "este",
+    "start": 29.326,
+    "end": 29.629
+   },
+   {
+    "t": "vídeo.",
+    "start": 29.629,
+    "end": 30.385
+   }
+  ]
+ }
+}

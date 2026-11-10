@@ -20,7 +20,7 @@ export async function sendVideo(file, caption, id) {
   const f = new FormData();
   f.append('chat_id', CHAT);
   f.append('caption', caption.slice(0, 1000));
-  f.append('reply_markup', JSON.stringify(KEYBOARD(id)));
+  if (id) f.append('reply_markup', JSON.stringify(KEYBOARD(id))); // sin id (p. ej. presentación) no lleva botones
   f.append('video', new Blob([fs.readFileSync(file)], {type: 'video/mp4'}), 'reel.mp4');
   const m = await call('sendVideo', null, f);
   return {msgId: m.message_id, fileId: m.video?.file_id};

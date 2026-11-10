@@ -1,4 +1,4 @@
-name: Herramientas gratis (Node, Chrome, voz Piper, IA Ollama)
+name: Herramientas (Node, Chrome, voces Edge/Piper, IA Ollama o Claude)
 runs:
   using: composite
   steps:
@@ -13,6 +13,11 @@ runs:
         curl -sSL https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_linux_x86_64.tar.gz | tar xz -C tools
         curl -sSL -o voices/es_ES-davefx-medium.onnx https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_ES/davefx/medium/es_ES-davefx-medium.onnx
         curl -sSL -o voices/es_ES-davefx-medium.onnx.json https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_ES/davefx/medium/es_ES-davefx-medium.onnx.json
+        python3 -m pip install --user edge-tts || sudo python3 -m pip install --break-system-packages edge-tts || true
+      shell: bash
+    # Ollama solo si NO hay clave de Claude (ANTHROPIC_API_KEY): así el modo "con Claude" arranca mucho más rápido
+    - if: env.ANTHROPIC_API_KEY == ''
+      run: |
         curl -fsSL https://ollama.com/install.sh | sh
         (ollama serve > /dev/null 2>&1 &)
         sleep 5

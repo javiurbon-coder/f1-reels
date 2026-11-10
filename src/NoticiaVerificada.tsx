@@ -3,6 +3,8 @@ import {AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame,
 import './fonts';
 import {Backdrop, Card, Footer, Headline, Header, Mascot, Sticker, Wipe, useBob, useIn} from './kit';
 import {theme as T} from './theme';
+import {renderScene} from './scenes';
+import type {Scene} from './sceneTypes';
 
 export type NoticiaProps = {
   headline: string;
@@ -12,6 +14,8 @@ export type NoticiaProps = {
   alsoSay?: string[];
   /** Puntos clave (frases del guion) que salen en pantalla mientras suena la voz. */
   points?: string[];
+  /** Storyboard (escenas con tiempos en segundos). Si existe, sustituye al diseño antiguo. */
+  scenes?: Scene[];
   /** Voz en off (opcional): audio en public/ + palabras con tiempos para subtitular. */
   narration?: {file: string; seconds: number; words: {t: string; start: number; end: number}[]};
 };
@@ -20,7 +24,7 @@ export const NOTICIA_SCENES = {hook: 120, sources: 150};
 export const NOTICIA_TOTAL = NOTICIA_SCENES.hook + NOTICIA_SCENES.sources;
 /** Con voz en off, el vídeo dura lo que dura el audio (+0,5 s) y la 2ª escena absorbe la diferencia. */
 export const noticiaDuration = (p: Partial<NoticiaProps>, fps = 30) =>
-  p.narration ? Math.max(NOTICIA_TOTAL, Math.ceil((p.narration.seconds + 0.5) * fps)) : NOTICIA_TOTAL;
+  p.scenes?.length ? Math.ceil(p.scenes[p.scenes.length - 1].to * fps) : p.narration ? Math.max(NOTICIA_TOTAL, Math.ceil((p.narration.seconds + 0.5) * fps)) : NOTICIA_TOTAL;
 
 const LEVEL_TEXT: Record<NoticiaProps['level'], string> = {
   ALTA: 'Confirmado por varias fuentes',
@@ -128,17 +132,17 @@ export const Points: React.FC<{points: string[]; frames: number}> = ({points, fr
   );
 };
 
-export const Captions: React.FC<{words: {t: string; start: number; end: number}[]}> = ({words}) => {
+export const Captions: React.FC<{words: {t: string; start: number; end: number}[]; top?: number; size?: number; group?: number; offset?: number}> = ({words, top = 1010, size = 64, group = 4, offset = 0}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const now = frame / fps;
+  const now = frame / fps + offset;
   // grupos de 4 palabras; se muestra el grupo activo y la palabra que suena se resalta
   const groups: typeof words[] = [];
-  for (let i = 0; i < words.length; i += 4) groups.push(words.slice(i, i + 4));
+  for (let i = 0; i < words.length; i += group) groups.push(words.slice(i, i + group));
   const g = groups.find((w) => now >= w[0].start - 0.05 && now <= w[w.length - 1].end + 0.25);
   if (!g) return null;
   return (
-    <div style={{position: 'absolute', left: T.safeX, right: T.safeX, top: 1010, textAlign: 'center', fontFamily: T.display, fontSize: 64, lineHeight: 1.1, textTransform: 'uppercase'}}>
+    <div style={{position: 'absolute', left: T.safeX, right: T.safeX, top, textAlign: 'center', fontFamily: T.display, fontSize: size, lineHeight: 1.1, textTransform: 'uppercase'}}>
       {g.map((w, i) => {
         const on = now >= w.start && now < w.end + 0.05;
         return (
@@ -163,7 +167,40 @@ export const Voice: React.FC<{narration?: NoticiaProps['narration']}> = ({narrat
 export const withVoice = (total: number, narration?: NoticiaProps['narration'], fps = 30) =>
   narration ? Math.max(total, Math.ceil((narration.seconds + 0.5) * fps)) : total;
 
+const Storyboard: React.FC<NoticiaProps & {scenes: Scene[]}> = (props) => {
+  const {fps} = useVideoConfig();
+  const sc = props.scenes;
+  const mid = sc.filter((s) => s.type !== 'hook' && s.type !== 'sources');
+  return (
+    <AbsoluteFill>
+      {props.narration && <Audio src={staticFile(props.narration.file)} />}
+      {sc.map((s, i) => {
+        const from = Math.round(s.from * fps);
+        const dur = Math.round((s.to - s.from) * fps) + (i < sc.length - 1 ? 6 : 0);
+        return (
+          <React.Fragment key={i}>
+            <Sequence from={from} durationInFrames={dur}>
+              {s.type === 'hook' ? <Hook {...props} /> : s.type === 'sources' ? <Sources {...props} /> : renderScene(s, i)}
+            </Sequence>
+            {i > 0 && (
+              <Sequence from={from - 8} durationInFrames={22}>
+                <Wipe />
+              </Sequence>
+            )}
+          </React.Fragment>
+        );
+      })}
+      {props.narration && mid.length > 0 && (
+        <Sequence from={Math.round(mid[0].from * fps)} durationInFrames={Math.round((mid[mid.length - 1].to - mid[0].from) * fps)}>
+          <Captions words={props.narration.words} top={1300} size={58} group={3} offset={mid[0].from} />
+        </Sequence>
+      )}
+    </AbsoluteFill>
+  );
+};
+
 export const NoticiaVerificada: React.FC<NoticiaProps> = (props) => {
+  if (props.scenes?.length) return <Storyboard {...props} scenes={props.scenes} />;
   const {hook} = NOTICIA_SCENES;
   const total = useVideoConfig().durationInFrames;
   const pts = props.points ?? [];

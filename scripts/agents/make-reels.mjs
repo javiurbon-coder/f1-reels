@@ -2,10 +2,12 @@
 // Nunca publica. Uso: node scripts/agents/make-reels.mjs [--no-voice] [--template]
 import fs from 'node:fs';
 import {enqueue} from '../lib/queue.mjs';
-import {askLocal, ollamaAvailable, SYSTEM, TRANSLATE, templateScript} from './lib/llm.mjs';
+import {askLocal, ollamaAvailable, llmName, SYSTEM, TRANSLATE, templateScript} from './lib/llm.mjs';
 import {checkScript, isSpanish} from './lib/verify.mjs';
 import {routeCluster, propsFor, topicsOf, loadTopics} from '../lib/classify.mjs';
-import {piperAvailable, speak, wordTimings} from './lib/voice.mjs';
+import {voiceEngines} from './lib/voice.mjs';
+import {produce} from './lib/produce.mjs';
+import {analyze} from './lib/insights.mjs';
 
 const args = new Set(process.argv.slice(2));
 // --tema=alonso,ferrari  → solo noticias de esos pilotos/equipos (por defecto: general)
@@ -19,8 +21,8 @@ const fmtDate = (d) => new Date(d).toLocaleDateString('es-ES', {day: '2-digit', 
 
 const NO_CONF = /no (est[aá] |ha sido |est[aá]n )?confirmad|sin confirmar|sin confirmaci[oó]n|rumor/i;
 const useLLM = !args.has('--template') && (await ollamaAvailable());
-const useVoice = !args.has('--no-voice') && piperAvailable();
-console.log(`Guionista: ${useLLM ? 'Ollama local' : 'plantilla (sin IA)'} · Locutor: ${useVoice ? 'Piper local' : 'sin voz'}`);
+const noVoice = args.has('--no-voice') || voiceEngines().length === 0;
+console.log(`Guionista: ${useLLM ? llmName() : 'plantilla (sin IA)'} · Locutor: ${noVoice ? 'sin voz' : voiceEngines().join(' > ')} · Datos: Jolpica`);
 fs.mkdirSync('public/audio', {recursive: true});
 
 const priority = settings.priorityTopics ?? [];
@@ -29,12 +31,7 @@ if (only) console.log(`Tema(s): ${only.join(', ')}`);
 // los temas prioritarios (settings.priorityTopics) van primero; el resto conserva su orden
 clusters.sort((a, b) => priority.some((t) => b.topics.includes(t)) - priority.some((t) => a.topics.includes(t)));
 
-// Puntos clave en pantalla: frases del guion (ya verificado), sin la primera (gancho) ni la última (cierre).
-const pointsFrom = (script) => {
-  const ss = (script.match(/[^.!?]+[.!?]+/g) ?? []).map((x) => x.trim());
-  return ss.slice(1, -1).filter((x) => x.length > 25).slice(0, 3).map((x) => (x.length > 130 ? x.slice(0, 127).replace(/\s+\S*$/, '') + '…' : x));
-};
-
+const TEAM_COLOR = {ferrari: '#e8002d', mclaren: '#ff8000', redbull: '#3671c6', mercedes: '#27f4d2', aston: '#2fb38a', alpine: '#ff87bc', williams: '#64c4ff', haas: '#b6babd', audi: '#c8c8c8', cadillac: '#9aa0a6'};
 const jobs = [];
 let made = 0, rumors = 0;
 for (const c of clusters) {
@@ -68,30 +65,51 @@ for (const c of clusters) {
   if (!isSpanish(c.headline)) { console.log(`⏭ saltada (titular en inglés y sin traducción): ${c.headline}`); continue; }
   if (!material.length) material.push(c.headline + '.');
 
+  // --- agente analista: datos REALES (Jolpica) sobre el piloto de la noticia, con cifras calculadas ---
+  let facts = [];
+  // Un reel = un tema: los datos de carrera solo entran si la noticia trata del rendimiento en pista.
+  const ON_TRACK = /\b(gana|ganó|victoria|vence|podio|remonta|carrera|gran premio|gp|clasificaci[oó]n|pole|parrilla|adelant|campeonato|puntos|l[ií]der)\b/i;
+  if (route.series === 'noticias' && ON_TRACK.test(c.headline)) {
+    const dt = c.topics.map((t) => ({t, ...loadTopics()[t]})).find((x) => x.driverId);
+    if (dt) {
+      try { facts = (await analyze({driverId: dt.driverId, driverName: dt.name.split(' ').pop()})).slice(0, 5); } catch (e) { notes.push('Datos no disponibles: ' + e.message); }
+      if (facts.length) console.log(`  · datos de ${dt.name}: ${facts.map((f) => f.id).join(', ')}`);
+    }
+  }
+
   // --- agente guionista + verificador (hasta 3 intentos, luego plantilla) ---
-  const corpus = [c.headline, ...material, ...pool.flatMap((s) => [s.title, s.summary ?? ''])];
-  const rich = material.join(' ').length > 400;
+  const corpus = [c.headline, ...material, ...pool.flatMap((s) => [s.title, s.summary ?? '']), ...facts.map((f) => f.line)];
+  const rich = material.join(' ').length > 400 || facts.length > 0;
+  const dataBlock = facts.length ? `\nDATOS CALCULADOS (reales, de la API oficial; puedes usarlos tal cual):\n- ${facts.map((f) => f.line).join('\n- ')}` : '';
   let script = null;
   if (useLLM) {
     for (let i = 0; i < 3 && !script; i++) {
       try {
-        const txt = await askLocal(SYSTEM, `Nivel: ${c.level}${c.level === 'RADAR' ? ' (RUMOR: NO está confirmado, dilo claramente)' : ''}. Medios: ${c.sources.map((s) => s.name).join(', ')}.\nTitular: ${c.headline}\nMaterial:\n- ${material.join('\n- ')}`);
-        const v = checkScript(txt, corpus, {minWords: rich ? 70 : 25, maxWords: 140});
+        const txt = await askLocal(SYSTEM, `Nivel: ${c.level}${c.level === 'RADAR' ? ' (RUMOR: NO está confirmado, dilo claramente)' : ''}. Medios: ${c.sources.map((s) => s.name).join(', ')}.\nTitular: ${c.headline}\nMaterial:\n- ${material.join('\n- ')}${dataBlock}`);
+        const v = checkScript(txt, corpus, {minWords: 85, maxWords: 165});
         if (!isSpanish(txt)) v.problems.push('no está en español');
         if (c.level === 'RADAR' && !NO_CONF.test(txt)) v.problems.push('un rumor debe decir que NO está confirmado');
         if (v.problems.length === 0) script = txt; else notes.push(`Intento ${i + 1} descartado: ${v.problems.join('; ')}`);
       } catch (e) { notes.push('LLM: ' + e.message); break; }
     }
   }
-  if (!script) { script = templateScript(c, material.slice(0, 3).map((m) => m.replace(/^[^:]+:\s*/, ''))); notes.push('Guion de plantilla (sin IA).'); }
+  if (!script) { script = templateScript(c, [...material.slice(0, 3).map((m) => m.replace(/^[^:]+:\s*/, '')), ...facts.slice(0, 2).map((f) => f.line)]); notes.push('Guion de plantilla (sin IA).'); }
 
-  // --- agente locutor ---
-  const props = propsFor(route, c, fmtDate);
-  if (route.composition === 'NoticiaVerificada') props.points = pointsFrom(script);
-  if (useVoice) {
-    const sec = speak(script, `public/audio/${c.id}.wav`);
-    props.narration = {file: `audio/${c.id}.wav`, seconds: +sec.toFixed(2), words: wordTimings(script, sec)};
-  }
+  // --- agentes locutor + director + control de calidad (diseño v2: una sola composición "Reel") ---
+  const base = propsFor(route, c, fmtDate);
+  const T = loadTopics();
+  const drv = c.topics.map((t) => T[t]).find((x) => x.driverId), team = c.topics.map((t) => ({id: t, ...T[t]})).find((x) => TEAM_COLOR[x.id]);
+  const year = c.headline.match(/\b20\d\d\b/)?.[0];
+  const ctx = route.series === 'mercado' && drv && team && year ? {market: {kindLabel: base.kind ?? 'FICHAJE', driver: drv.name.split(' ').pop(), team: team.name, teamColor: TEAM_COLOR[team.id], until: year}}
+    : route.series === 'rumor' ? {rumor: {who: base.sources.map((x) => x.name).slice(0, 3).join(' · '), n: base.sources.length}} : {};
+  const prod = await produce({id: c.id, script, facts, noVoice, ctx});
+  const hlWord = (c.headline.split(' ').find((w, i) => /^\p{Lu}/u.test(w) && w.length > 3 && (i > 0 || c.topics.length)) ?? '').replace(/[^\p{L}\d]/gu, '');
+  const props = {kind: route.series === 'noticias' ? 'noticia' : route.series, headline: c.headline, hl: hlWord, date: base.date,
+    chip: route.series === 'rumor' ? 'Rumor' : c.level === 'OFICIAL' ? 'Oficial' : `${base.sources.length} fuentes`,
+    sources: base.sources.slice(0, 4), scenes: prod.scenes, words: prod.words, ...(prod.narration ? {narration: prod.narration} : {})};
+  route.composition = 'Reel';
+  if (prod.problems.length) notes.push('Control de calidad: ' + prod.problems.join('; '));
+  notes.push(`Voz: ${prod.engine} · ${prod.total.toFixed(0)} s · ${prod.scenes.length} escenas (${prod.dataScenes} con datos)`);
 
   const tags = c.topics.map((t) => loadTopics()[t].hashtags).join(' ');
   const caption = (route.series === 'rumor' ? `⚠️ RUMOR NO CONFIRMADO: ${c.headline}\n\nLo cuentan:\n` : `${c.headline}\n\nContrastado por ${c.count} ${c.count === 1 ? 'fuente' : 'fuentes'}:\n`) +
@@ -105,7 +123,7 @@ for (const c of clusters) {
 made = 0;
 for (const {c, route, props, caption, script, notes} of jobs) {
   try {
-    await enqueue({id: c.id, composition: route.composition, props, caption, sources: c.sources,
+    await enqueue({id: c.id, composition: route.composition, series: route.series, props, caption, sources: c.sources,
       note: ['GUION: ' + script, c.topics.length ? 'Temas: ' + c.topics.map((t) => loadTopics()[t].name).join(', ') : '', ...notes, c.originalHeadline ? `Titular traducido por IA local (original: ${c.originalHeadline}). Revísalo.` : '', c.headlineLang === 'en' ? 'Titular en inglés: reescríbelo antes de aprobar.' : ''].filter(Boolean).join('\n')});
     seen.add(c.id); made++;
     console.log(`✓ en cola [${route.series}]: [${c.level}] ${c.headline}`);

@@ -1,0 +1,429 @@
+{
+ "headline": "Alonso renovará con Aston Martin hasta 2028",
+ "level": "ALTA",
+ "date": "08 NOV",
+ "sources": [
+  {
+   "name": "Formula1.com",
+   "domain": "formula1.com",
+   "official": true
+  },
+  {
+   "name": "Motorsport.com ES",
+   "domain": "es.motorsport.com"
+  },
+  {
+   "name": "Diario AS",
+   "domain": "as.com"
+  }
+ ],
+ "scenes": [
+  {
+   "type": "hook",
+   "from": 0,
+   "to": 4.886
+  },
+  {
+   "type": "point",
+   "text": "El acuerdo incluiría un nuevo contrato de dos años para el piloto asturiano.",
+   "hl": [],
+   "icon": "doc",
+   "from": 4.886,
+   "to": 9.62
+  },
+  {
+   "type": "point",
+   "text": "Además, el equipo prepara una gran mejora técnica del coche para la próxima temporada con el nuevo motor.",
+   "hl": [],
+   "icon": "wrench",
+   "from": 9.62,
+   "to": 16.31
+  },
+  {
+   "type": "point",
+   "text": "Los medios coinciden en que el reglamento de 2026 cambia todo el reparto de fuerzas en la parrilla.",
+   "hl": [
+    "2026"
+   ],
+   "icon": "wrench",
+   "from": 16.31,
+   "to": 22.3
+  },
+  {
+   "type": "sources",
+   "from": 22.3,
+   "to": 28.88
+  }
+ ],
+ "narration": {
+  "file": "none.wav",
+  "seconds": 28.076923076923077,
+  "words": [
+   {
+    "t": "Alonso",
+    "start": 0.15,
+    "end": 0.568
+   },
+   {
+    "t": "renovará",
+    "start": 0.568,
+    "end": 1.125
+   },
+   {
+    "t": "con",
+    "start": 1.125,
+    "end": 1.334
+   },
+   {
+    "t": "Aston",
+    "start": 1.334,
+    "end": 1.682
+   },
+   {
+    "t": "Martin",
+    "start": 1.682,
+    "end": 2.1
+   },
+   {
+    "t": "hasta",
+    "start": 2.1,
+    "end": 2.448
+   },
+   {
+    "t": "2028,",
+    "start": 2.448,
+    "end": 3.075
+   },
+   {
+    "t": "según",
+    "start": 3.075,
+    "end": 3.423
+   },
+   {
+    "t": "adelanta",
+    "start": 3.423,
+    "end": 3.98
+   },
+   {
+    "t": "la",
+    "start": 3.98,
+    "end": 4.12
+   },
+   {
+    "t": "prensa.",
+    "start": 4.12,
+    "end": 4.886
+   },
+   {
+    "t": "El",
+    "start": 4.886,
+    "end": 5.025
+   },
+   {
+    "t": "acuerdo",
+    "start": 5.025,
+    "end": 5.513
+   },
+   {
+    "t": "incluiría",
+    "start": 5.513,
+    "end": 6.139
+   },
+   {
+    "t": "un",
+    "start": 6.139,
+    "end": 6.279
+   },
+   {
+    "t": "nuevo",
+    "start": 6.279,
+    "end": 6.627
+   },
+   {
+    "t": "contrato",
+    "start": 6.627,
+    "end": 7.184
+   },
+   {
+    "t": "de",
+    "start": 7.184,
+    "end": 7.323
+   },
+   {
+    "t": "dos",
+    "start": 7.323,
+    "end": 7.532
+   },
+   {
+    "t": "años",
+    "start": 7.532,
+    "end": 7.811
+   },
+   {
+    "t": "para",
+    "start": 7.811,
+    "end": 8.089
+   },
+   {
+    "t": "el",
+    "start": 8.089,
+    "end": 8.229
+   },
+   {
+    "t": "piloto",
+    "start": 8.229,
+    "end": 8.646
+   },
+   {
+    "t": "asturiano.",
+    "start": 8.646,
+    "end": 9.621
+   },
+   {
+    "t": "Además,",
+    "start": 9.621,
+    "end": 10.388
+   },
+   {
+    "t": "el",
+    "start": 10.388,
+    "end": 10.527
+   },
+   {
+    "t": "equipo",
+    "start": 10.527,
+    "end": 10.945
+   },
+   {
+    "t": "prepara",
+    "start": 10.945,
+    "end": 11.432
+   },
+   {
+    "t": "una",
+    "start": 11.432,
+    "end": 11.641
+   },
+   {
+    "t": "gran",
+    "start": 11.641,
+    "end": 11.92
+   },
+   {
+    "t": "mejora",
+    "start": 11.92,
+    "end": 12.338
+   },
+   {
+    "t": "técnica",
+    "start": 12.338,
+    "end": 12.825
+   },
+   {
+    "t": "del",
+    "start": 12.825,
+    "end": 13.034
+   },
+   {
+    "t": "coche",
+    "start": 13.034,
+    "end": 13.382
+   },
+   {
+    "t": "para",
+    "start": 13.382,
+    "end": 13.661
+   },
+   {
+    "t": "la",
+    "start": 13.661,
+    "end": 13.8
+   },
+   {
+    "t": "próxima",
+    "start": 13.8,
+    "end": 14.288
+   },
+   {
+    "t": "temporada",
+    "start": 14.288,
+    "end": 14.914
+   },
+   {
+    "t": "con",
+    "start": 14.914,
+    "end": 15.123
+   },
+   {
+    "t": "el",
+    "start": 15.123,
+    "end": 15.263
+   },
+   {
+    "t": "nuevo",
+    "start": 15.263,
+    "end": 15.611
+   },
+   {
+    "t": "motor.",
+    "start": 15.611,
+    "end": 16.307
+   },
+   {
+    "t": "Los",
+    "start": 16.307,
+    "end": 16.516
+   },
+   {
+    "t": "medios",
+    "start": 16.516,
+    "end": 16.934
+   },
+   {
+    "t": "coinciden",
+    "start": 16.934,
+    "end": 17.561
+   },
+   {
+    "t": "en",
+    "start": 17.561,
+    "end": 17.7
+   },
+   {
+    "t": "que",
+    "start": 17.7,
+    "end": 17.909
+   },
+   {
+    "t": "el",
+    "start": 17.909,
+    "end": 18.048
+   },
+   {
+    "t": "reglamento",
+    "start": 18.048,
+    "end": 18.745
+   },
+   {
+    "t": "de",
+    "start": 18.745,
+    "end": 18.884
+   },
+   {
+    "t": "2026",
+    "start": 18.884,
+    "end": 19.163
+   },
+   {
+    "t": "cambia",
+    "start": 19.163,
+    "end": 19.58
+   },
+   {
+    "t": "todo",
+    "start": 19.58,
+    "end": 19.859
+   },
+   {
+    "t": "el",
+    "start": 19.859,
+    "end": 19.998
+   },
+   {
+    "t": "reparto",
+    "start": 19.998,
+    "end": 20.486
+   },
+   {
+    "t": "de",
+    "start": 20.486,
+    "end": 20.625
+   },
+   {
+    "t": "fuerzas",
+    "start": 20.625,
+    "end": 21.113
+   },
+   {
+    "t": "en",
+    "start": 21.113,
+    "end": 21.252
+   },
+   {
+    "t": "la",
+    "start": 21.252,
+    "end": 21.391
+   },
+   {
+    "t": "parrilla.",
+    "start": 21.391,
+    "end": 22.297
+   },
+   {
+    "t": "Lo",
+    "start": 22.297,
+    "end": 22.436
+   },
+   {
+    "t": "cuentan",
+    "start": 22.436,
+    "end": 22.923
+   },
+   {
+    "t": "Formula1.com,",
+    "start": 22.923,
+    "end": 24.107
+   },
+   {
+    "t": "Motorsport",
+    "start": 24.107,
+    "end": 24.804
+   },
+   {
+    "t": "y",
+    "start": 24.804,
+    "end": 24.873
+   },
+   {
+    "t": "AS.",
+    "start": 24.873,
+    "end": 25.361
+   },
+   {
+    "t": "Te",
+    "start": 25.361,
+    "end": 25.5
+   },
+   {
+    "t": "dejamos",
+    "start": 25.5,
+    "end": 25.988
+   },
+   {
+    "t": "las",
+    "start": 25.988,
+    "end": 26.197
+   },
+   {
+    "t": "fuentes",
+    "start": 26.197,
+    "end": 26.684
+   },
+   {
+    "t": "en",
+    "start": 26.684,
+    "end": 26.823
+   },
+   {
+    "t": "la",
+    "start": 26.823,
+    "end": 26.963
+   },
+   {
+    "t": "descripción.",
+    "start": 26.963,
+    "end": 28.077
+   }
+  ]
+ }
+}

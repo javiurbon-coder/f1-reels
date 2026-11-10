@@ -15,9 +15,19 @@ export const theme = {
   white: '#ffffff',
   blue: '#2b6cff',
   muted: '#6b6252',
+  mint: '#7fe3b8',
+  mint2: '#a9f0d0',
+  sky: '#8ec9ff',
+  sky2: '#bfe0ff',
+  pink: '#ff5fa2',
+  green: '#1fa95b',
+  gold: '#ffd21f',
+  silver: '#d9dde3',
+  bronze: '#e8a46a',
 
   // tipografía
   display: '"Archivo Black", Impact, sans-serif',
+  body: '"Archivo", Arial, sans-serif',
   mono: '"Space Mono", "DejaVu Sans Mono", monospace',
 
   // formas

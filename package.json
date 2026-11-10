@@ -20,12 +20,14 @@
     "semana": "node scripts/fetch-calendar.mjs",
     "notify": "node scripts/notify-telegram.mjs",
     "notify:setup": "node scripts/notify-telegram.mjs setup",
-    "test:bot": "node scripts/bot/test-handle.mjs"
+    "test:bot": "node scripts/bot/test-handle.mjs",
+    "presentacion": "node scripts/presentacion.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/archivo": "^5.3.0",
     "@fontsource/archivo-black": "^5.3.0",
     "@fontsource/space-mono": "^5.3.0",
     "@remotion/bundler": "^4.0.541",

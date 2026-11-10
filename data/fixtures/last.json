@@ -1,0 +1,209 @@
+{
+ "_fixture": "DATOS DE PRUEBA FICTICIOS, no son reales",
+ "MRData": {
+  "RaceTable": {
+   "season": "2099",
+   "round": "21",
+   "Races": [
+    {
+     "season": "2099",
+     "round": "21",
+     "raceName": "Fixture Grand Prix",
+     "Circuit": {
+      "circuitName": "Circuito de Prueba",
+      "circuitId": "prueba"
+     },
+     "date": "2099-11-08",
+     "Results": [
+      {
+       "position": "1",
+       "grid": "7",
+       "Driver": {
+        "driverId": "max_verstappen",
+        "familyName": "Verstappen",
+        "givenName": "Max",
+        "code": "VER"
+       },
+       "Constructor": {
+        "constructorId": "red_bull",
+        "name": "Red Bull"
+       },
+       "status": "Finished",
+       "points": "25",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       },
+       "FastestLap": {
+        "rank": "1",
+        "Time": {
+         "time": "1:12.345"
+        }
+       }
+      },
+      {
+       "position": "2",
+       "grid": "1",
+       "Driver": {
+        "driverId": "norris",
+        "familyName": "Norris",
+        "givenName": "Lando",
+        "code": "NOR"
+       },
+       "Constructor": {
+        "constructorId": "mclaren",
+        "name": "McLaren"
+       },
+       "status": "Finished",
+       "points": "18",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      },
+      {
+       "position": "3",
+       "grid": "3",
+       "Driver": {
+        "driverId": "piastri",
+        "familyName": "Piastri",
+        "givenName": "Oscar",
+        "code": "PIA"
+       },
+       "Constructor": {
+        "constructorId": "mclaren",
+        "name": "McLaren"
+       },
+       "status": "Finished",
+       "points": "15",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      },
+      {
+       "position": "4",
+       "grid": "2",
+       "Driver": {
+        "driverId": "russell",
+        "familyName": "Russell",
+        "givenName": "George",
+        "code": "RUS"
+       },
+       "Constructor": {
+        "constructorId": "mercedes",
+        "name": "Mercedes"
+       },
+       "status": "Finished",
+       "points": "12",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      },
+      {
+       "position": "5",
+       "grid": "5",
+       "Driver": {
+        "driverId": "leclerc",
+        "familyName": "Leclerc",
+        "givenName": "Charles",
+        "code": "LEC"
+       },
+       "Constructor": {
+        "constructorId": "ferrari",
+        "name": "Ferrari"
+       },
+       "status": "Finished",
+       "points": "10",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      },
+      {
+       "position": "6",
+       "grid": "4",
+       "Driver": {
+        "driverId": "hamilton",
+        "familyName": "Hamilton",
+        "givenName": "Lewis",
+        "code": "HAM"
+       },
+       "Constructor": {
+        "constructorId": "ferrari",
+        "name": "Ferrari"
+       },
+       "status": "Finished",
+       "points": "8",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      },
+      {
+       "position": "7",
+       "grid": "11",
+       "Driver": {
+        "driverId": "alonso",
+        "familyName": "Alonso",
+        "givenName": "Fernando",
+        "code": "ALO"
+       },
+       "Constructor": {
+        "constructorId": "aston_martin",
+        "name": "Aston Martin"
+       },
+       "status": "Finished",
+       "points": "6",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      },
+      {
+       "position": "8",
+       "grid": "8",
+       "Driver": {
+        "driverId": "sainz",
+        "familyName": "Sainz",
+        "givenName": "Carlos",
+        "code": "SAI"
+       },
+       "Constructor": {
+        "constructorId": "williams",
+        "name": "Williams"
+       },
+       "status": "Finished",
+       "points": "4",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      },
+      {
+       "position": "20",
+       "grid": "6",
+       "Driver": {
+        "driverId": "bearman",
+        "familyName": "Bearman",
+        "givenName": "Oliver",
+        "code": "BEA"
+       },
+       "Constructor": {
+        "constructorId": "haas",
+        "name": "Haas"
+       },
+       "status": "Engine",
+       "points": "0",
+       "laps": "60",
+       "Time": {
+        "time": "1:30:00.000"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

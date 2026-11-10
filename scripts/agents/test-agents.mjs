@@ -33,3 +33,53 @@ import {isSpanish} from './lib/verify.mjs';
 assert.ok(isSpanish('Norris gana en Brasil y Mercedes se acerca al título de pilotos tras una carrera loca'));
 assert.ok(!isSpanish('How Verstappen outperformed Red Bull simulations in the race at Brazil'));
 console.log('✓ detector de idioma (español / inglés)');
+
+// ---- agente analista (datos de PRUEBA ficticios en data/fixtures; nada real) ----
+process.env.JOLPICA_FIXTURES = 'data/fixtures';
+const {analyze} = await import('./lib/insights.mjs');
+const facts = await analyze({driverId: 'max_verstappen', driverName: 'Verstappen'});
+const by = Object.fromEntries(facts.map((f) => [f.id, f]));
+assert.ok(by['grid-finish'].line.includes('salió 7º y terminó 1º') && by['grid-finish'].line.includes('ganó 6 posiciones'));
+assert.equal(by['grid-finish'].scene.rows.find((r) => r.me).finish, 1);
+assert.ok(by.lap1.line.includes('del 7º al 3º') && by.lap1.scene.value === 4);
+assert.ok(by.streak.line.includes('3 podios seguidos'));
+assert.ok(by.standings.line.includes('2º del campeonato') && by.standings.line.includes('a 9 del líder'));
+assert.equal(by.wins.scene.value, 8);
+assert.ok(by.precedent.line.includes('en 2097, Verstappen salió 17º y terminó 1º'), by.precedent?.line);
+assert.ok(by['circuit-wins'].line.includes('2 veces') && !by['circuit-wins'].line.includes('2099'), 'no cuenta la carrera actual como precedente');
+assert.deepEqual(await analyze({driverId: null}), []);
+console.log('✓ analista: cifras calculadas correctamente');
+
+// ---- director + control de calidad ----
+const {direct, splitSentences} = await import('./lib/director.mjs');
+const {qa} = await import('./lib/qa.mjs');
+assert.equal(splitSentences('Lo cuenta Formula1.com hoy. Fin.').length, 2, 'no corta en "Formula1.com"');
+const script = 'Verstappen vuelve a mandar en el último gran premio. Salió 7º y terminó 1º, una remontada de seis posiciones que cambió su fin de semana. En la primera vuelta pasó del 7º al 3º, adelantando a cuatro coches nada más salir. Lleva 3 podios seguidos y acumula 8 victorias esta temporada, y es 2º del campeonato con 371 puntos. Lo cuentan Formula1.com, Motorsport y AS en su web oficial. Te dejamos las fuentes en la descripción de este vídeo.';
+const sec = script.split(/\s+/).length / 2.6;
+const d = direct({script, words: wordTimings(script, sec), seconds: sec, facts});
+assert.equal(d.scenes[0].type, 'hook'); assert.equal(d.scenes.at(-1).type, 'sources');
+assert.ok(d.scenes.some((s) => s.type === 'bars') && d.scenes.some((s) => s.type === 'stat'));
+for (let i = 1; i < d.scenes.length; i++) assert.ok(Math.abs(d.scenes[i].from - d.scenes[i - 1].to) < 0.01, 'escenas contiguas');
+assert.ok(Math.abs(d.scenes.at(-1).to - d.total) < 0.01);
+const q = qa(d, {minTotal: 20});
+assert.deepEqual(q.problems, [], q.problems.join(';'));
+assert.ok(qa({scenes: [{type: 'point', text: 'x'.repeat(200), from: 0, to: 1}], total: 10}).problems.length >= 3, 'QA detecta vídeo corto, texto largo y escena corta');
+const {toV2, rowFrom} = await import('./lib/director.mjs');
+const v2 = toV2(d.scenes, {});
+assert.equal(v2[0].type, 'hook'); assert.equal(v2.at(-1).type, 'sources');
+const dato = v2.find((x) => x.type === 'dato' && x.rows.length);
+assert.equal(dato.value, '+6'); assert.ok(dato.label.includes('de 7º a 1º'));
+assert.deepEqual(qa({scenes: v2, total: d.total}, {minTotal: 20}).problems, []);
+const rf = rowFrom('Además, el equipo prepara una gran mejora técnica del coche para la próxima temporada.');
+assert.ok(rf.title.length <= 34 && rf.title.startsWith('El equipo') && rf.sub.length <= 50, JSON.stringify(rf));
+const mk = toV2([{type: 'hook', from: 0, to: 4}, {type: 'point', text: 'Uno dos tres cuatro cinco.', from: 4, to: 8}, {type: 'point', text: 'Seis siete ocho nueve diez.', from: 8, to: 12}, {type: 'sources', from: 12, to: 18}], {market: {kindLabel: 'RENOVACIÓN', driver: 'Alonso', team: 'Aston Martin', teamColor: '#2fb38a', until: '2028'}});
+assert.deepEqual(mk.map((x) => x.type), ['hook', 'mercado', 'list', 'sources']); assert.equal(mk[2].from, mk[1].to);
+console.log('✓ director y control de calidad OK');
+
+// ---- voz: alineación por carácter de ElevenLabs ----
+const {wordsFromAlignment} = await import('./lib/voice.mjs');
+const txt = 'Hola mundo';
+const al = {characters: [...txt], character_start_times_seconds: [...txt].map((_, i) => i * 0.1), character_end_times_seconds: [...txt].map((_, i) => i * 0.1 + 0.1)};
+const ww = wordsFromAlignment(txt, al);
+assert.equal(ww.length, 2); assert.equal(ww[1].t, 'mundo'); assert.ok(ww[1].start > ww[0].end - 0.001);
+console.log('✓ tiempos por palabra (ElevenLabs) OK');

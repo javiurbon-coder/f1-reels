@@ -22,7 +22,7 @@ export const saveItem = (item) => {
 export const posterPath = (id) => path.join(dir(id), 'poster.jpg');
 export const deleteItem = (id) => {
   fs.rmSync(dir(id), {recursive: true, force: true});
-  fs.rmSync(path.resolve('public/audio', safeId(id) + '.wav'), {force: true}); // la voz en off también
+  for (const ext of ['wav', 'mp3']) fs.rmSync(path.resolve('public/audio', safeId(id) + '.' + ext), {force: true}); // la voz en off también
 };
 
 async function renderAll(item) {
