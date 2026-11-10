@@ -6,7 +6,7 @@ import {renderVideo} from './lib/render.mjs';
 
 // Un bloque por escena. Puedes cambiar el texto; mantén 6 bloques.
 export const BLOCKS = [
-  '¿Harto de rumores de Fórmula 1 que luego no son verdad?',
+  '¿Harto de rumores de F1 que luego no son verdad?',
   'Esto es Contrastado F1: noticias, fichajes y resultados, explicados en menos de un minuto.',
   'Nuestra regla es simple: si no lo confirman al menos dos fuentes, no lo damos como noticia. Y si es un rumor, te lo avisamos.',
   'Además, ponemos cada noticia en contexto con datos reales. Por ejemplo: Verstappen ha subido al podio de Interlagos tres años seguidos, saliendo desde el fondo de la parrilla.',
