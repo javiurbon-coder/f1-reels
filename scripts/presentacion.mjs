@@ -14,7 +14,7 @@ export const BLOCKS = [
   'Y también te explicamos cómo funciona un Fórmula 1 por dentro, de forma sencilla.',
   'Síguenos para no perderte nada. Las fuentes, siempre en la descripción.',
 ];
-export const CAPTION = `Bienvenido a CONTRASTADO F1 🏁\n\nNoticias de Fórmula 1 con una regla: si no lo confirman al menos dos fuentes, no es noticia. Los rumores, siempre avisados. Y las fuentes, en la descripción.\n\nSíguenos para no perderte nada.\n\n#F1 #Formula1 #FormulaUno #F1España #NoticiasF1`;
+export const CAPTION = `Bienvenido a CONTRASTADO F1 🏁\n\nNoticias de Fórmula 1 con una regla: si no lo confirman al menos dos fuentes, no es noticia. Los rumores, siempre avisados. Y las fuentes, en la descripción.\n\nDato de Verstappen en Interlagos (2024-2026): Sky Sports (2024), Sports Illustrated (2025), Motorsport.com y PlanetF1 (2026).\n\nLa voz de este vídeo está generada con IA.\n\nSíguenos para no perderte nada.\n\n#F1 #Formula1 #FormulaUno #F1España #NoticiasF1`;
 
 export function plan(words, seconds) {
   let i = 0;
