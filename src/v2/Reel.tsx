@@ -4,7 +4,7 @@ import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Wipe} from '../kit';
 import {Dato, Fuentes, Mercado, Noticia, Portada, Resultado, Rumor, Tecnico} from './types';
-import {SectionCtx, type Kind} from './ui';
+import {EditCtx, SectionCtx, type Kind} from './ui';
 
 type Word = {t: string; start: number; end: number};
 type T0 = {from: number; to: number};
@@ -33,6 +33,10 @@ export type ReelProps = {
   /** Palabras del guion con sus tiempos (siempre; con o sin voz). */
   words: Word[];
   narration?: {file: string; seconds: number};
+  /** Etiquetas de la portada quitadas desde el editor (section, chip, date, intro, mascot, cta). */
+  hide?: string[];
+  /** Textos de la portada cambiados desde el editor (intro, cta). */
+  txt?: Record<string, string>;
 };
 
 export const reelDuration = (p: Partial<ReelProps>, fps = 30) => Math.max(60, Math.ceil((p.scenes?.[p.scenes.length - 1]?.to ?? 5) * fps));
@@ -84,6 +88,7 @@ export const Reel: React.FC<ReelProps> = (p) => {
   const {fps} = useVideoConfig();
   return (
     <SectionCtx.Provider value={p.section}>
+    <EditCtx.Provider value={{hide: p.hide ?? [], txt: p.txt ?? {}}}>
     <AbsoluteFill>
       {p.narration && <Audio src={staticFile(p.narration.file)} />}
       {p.scenes.map((s, i) => {
@@ -98,6 +103,7 @@ export const Reel: React.FC<ReelProps> = (p) => {
         );
       })}
     </AbsoluteFill>
+    </EditCtx.Provider>
     </SectionCtx.Provider>
   );
 };

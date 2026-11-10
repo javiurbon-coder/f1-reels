@@ -47,6 +47,18 @@ export function scriptFor(list, mode) {
   return [intro, ...body, 'Todas están confirmadas por varios medios, y ahora te los enseño.', 'Síguenos para más.'].join(' ');
 }
 
+/** Ajusta el guion a ~1 minuto (≤150 palabras): primero quita detalles de las últimas noticias; si aún se pasa, quita noticias (mínimo 2). */
+export function fitScript(list, mode, maxWords = 150) {
+  const L = list.map((x) => ({...x}));
+  const n = (l) => scriptFor(l, mode).split(/\s+/).length;
+  while (n(L) > maxWords) {
+    const k = [...L.keys()].reverse().find((i) => L[i].detail);
+    if (k !== undefined) { L[k].detail = ''; continue; }
+    if (L.length > 2) L.pop(); else break;
+  }
+  return {list: L, script: scriptFor(L, mode)};
+}
+
 if (process.argv[1]?.endsWith('summary-reel.mjs')) {
   const mode = arg('mode') === 'week' ? 'week' : 'day';
   const {configured, say} = await import('../bot/tg.mjs');
@@ -64,7 +76,9 @@ if (process.argv[1]?.endsWith('summary-reel.mjs')) {
     if (configured() && !process.env.NO_TG) await say(`📭 No hay suficientes noticias contrastadas para un resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (necesito 2 o más que no hayan tenido ya su reel).`);
     console.log('Sin material para el resumen.'); process.exit(0);
   }
-  const script = scriptFor(list, mode);
+  const fit = fitScript(list, mode);
+  list.splice(0, list.length, ...fit.list);
+  const script = fit.script;
   const noVoice = voiceEngines().length === 0;
   const qid = `resumen-${mode}-${new Date().toISOString().slice(0, 10)}`;
   fs.mkdirSync('public/audio', {recursive: true});

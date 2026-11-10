@@ -87,20 +87,26 @@
           {
             "icon": "flag",
             "title": "Vuelve el efecto suelo",
-            "sub": "",
+            "sub": "En 2022, sin faldillas",
             "kw": "volvió"
           },
           {
             "icon": "wrench",
-            "title": "Sin faldillas",
-            "sub": "",
-            "kw": "faldillas"
+            "title": "Canales Venturi",
+            "sub": "Uno a cada lado de la tabla",
+            "kw": "Venturi"
+          },
+          {
+            "icon": "trophy",
+            "title": "El suelo da más carga",
+            "sub": "Y el alerón delantero, menos",
+            "kw": "suelo"
           },
           {
             "icon": "stopwatch",
             "title": "Coches más cerca",
-            "sub": "Se siguen mejor",
-            "kw": "cerca"
+            "sub": "El aire sucio les afecta menos",
+            "kw": "sucio"
           }
         ]
       }

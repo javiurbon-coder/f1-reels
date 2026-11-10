@@ -276,7 +276,7 @@ function detail(i,d){
  const editable=can||appr;
  return '<div class="stage"><div class="vid">'+video+'</div></div><div class="info" data-id="'+i.id+'"><h2>'+esc(hl(i))+'</h2><div class="tags"><span>'+(LBL[i.status]||i.status)+'</span><span>'+(i.sources||[]).length+' fuente(s)</span><span class="dirty" id="dirty">● cambios sin guardar</span></div>'+warns+
   '<div class="acts">'+btn.join('')+'</div>'+
-  (editable?'<div id="sceneEd">'+sceneHtml()+'</div><div class="gl sc"><b>Vídeo</b>'+fld('Titular','headline',(S.ed&&S.ed.props.headline)||'')+fld('Palabra destacada','hl',(S.ed&&S.ed.props.hl)||'')+'</div>':'')+
+  (editable?'<div id="sceneEd">'+sceneHtml()+'</div><div class="gl sc"><b>Vídeo</b>'+fld('Titular','headline',(S.ed&&S.ed.props.headline)||'')+fld('Palabra destacada','hl',(S.ed&&S.ed.props.hl)||'')+'<div id="hideBox">'+hideHtml()+'</div></div>':'')+
   '<label style="color:#999;font-size:12px">Texto para Instagram</label><textarea rows="5" data-f="caption">'+esc(i.caption)+'</textarea>'+
   (srcs?'<details><summary>Fuentes ('+i.sources.length+')</summary>'+srcs+'</details>':'')+
   '<details><summary>Guion y notas</summary><textarea rows="8" readonly>'+esc(i.note||'')+'</textarea></details>'+
@@ -302,14 +302,19 @@ function stepF(n){const v=vidEl();if(!v)return;v.pause();seekTo((Math.round(v.cu
 function zoom(m){const e=S.ed,s=document.getElementById('tls');if(!e||!s)return;const fit=s.clientWidth/e.T;let z=(e.z||fit)*m;if(z<=fit*1.05)z=0;e.z=Math.min(z,900);drawTL();const v=vidEl(),n=document.getElementById('tls');if(n&&v&&e.z)n.scrollLeft=v.currentTime*e.z-n.clientWidth/2}
 function refreshScene(){const el=$('sceneEd');if(el)el.innerHTML=sceneHtml()}
 function markDirty(){if(S.ed){S.ed.dirty=true;if(S.pl)S.pl.setProps(S.ed.props)}const b=$('dirty');if(b)b.style.display='inline'}
-function setPath(o,path,v){const k=path.split('.');for(let n=0;n<k.length-1;n++)o=o[k[n]];o[k[k.length-1]]=v}
+function setPath(o,path,v){const k=path.split('.');for(let n=0;n<k.length-1;n++){if(o[k[n]]==null)o[k[n]]={};o=o[k[n]]}o[k[k.length-1]]=v}
+function editApply(props,path,val){
+ if(path.indexOf('words:')===0)return setWords(props,path,val);
+ if(path.indexOf('hide:')===0){const k=path.slice(5),h=props.hide||(props.hide=[]);if(h.indexOf(k)<0)h.push(k);return}
+ if(path.indexOf('del:')===0){const k=path.slice(4).split('.'),i=+k.pop();let o=props;k.forEach(x=>{o=o[x]});o.splice(i,1);return}
+ setPath(props,path,val)}
 let edJs=null;
 function loadEd(){if(!edJs)edJs=new Promise((ok,no)=>{const s=document.createElement('script');s.src='/editor.js?'+Date.now();s.onload=ok;s.onerror=()=>no(new Error('editor'));document.head.appendChild(s)});return edJs}
 function mountPl(){
  if(S.pl){try{S.pl.destroy()}catch(x){}S.pl=null}
  const el=$('pl');if(!el||!S.ed)return;const id=S.ed.id;
  loadEd().then(()=>{if(!$('pl')||!S.ed||S.ed.id!==id||$('pl')!==el)return;
-  S.pl=window.F1Editor.mount(el,{props:S.ed.props,onEdit:(path,val)=>{if(path.indexOf('words:')===0)setWords(S.ed.props,path,val);else setPath(S.ed.props,path,val);markDirty();drawTL();refreshScene()}})})
+  S.pl=window.F1Editor.mount(el,{props:S.ed.props,onEdit:(path,val)=>{editApply(S.ed.props,path,val);markDirty();drawTL();refreshScene();if(path.indexOf('hide:')===0||path.indexOf('del:')===0)hideBtn()}})})
  .catch(()=>{el.innerHTML='<div class="ph">No se pudo cargar el editor visual.<br>Ejecuta npm install y reabre el panel.</div>';edJs=null})}
 function setWords(props,path,text){
  const r=path.slice(6).split('-').map(Number),a=r[0],b=r[1],W=props.words,old=W.slice(a,b+1);
@@ -317,6 +322,8 @@ function setWords(props,path,text){
  const t0=old[0].start,t1=old[old.length-1].end,n=tk.length,d=(t1-t0)/n;
  const nw=tk.map((t,i)=>n===old.length?{t:t,start:old[i].start,end:old[i].end}:{t:t,start:+(t0+i*d).toFixed(3),end:+(t0+(i+1)*d).toFixed(3)});
  W.splice(a,old.length,...nw)}
+function hideHtml(){const h=S.ed&&S.ed.props.hide;return h&&h.length?'<button data-a="unhide">Mostrar etiquetas ocultas ('+h.length+')</button>':'<span class="hint">Pulsa una etiqueta del fotograma para editarla o quitarla.</span>'}
+function hideBtn(){const b=$('hideBox');if(b)b.innerHTML=hideHtml()}
 function setFs(d){let v=parseFloat(document.documentElement.style.fontSize)||20;v=Math.max(14,Math.min(34,v+d));document.documentElement.style.fontSize=v+'px';try{localStorage.setItem('fs',v)}catch(x){}}
 try{const f=localStorage.getItem('fs');if(f)document.documentElement.style.fontSize=f+'px'}catch(x){}
 function draw(){
@@ -344,6 +351,7 @@ document.addEventListener('click',async e=>{
  const card=b.closest('.info');if(!card)return;const id=card.dataset.id,a=b.dataset.a;
  const val=f=>card.querySelector('[data-f="'+f+'"]')&&card.querySelector('[data-f="'+f+'"]').value;
  if(a==='delete'){if(confirm('¿Borrar este vídeo? (se puede recuperar con «Recuperar» durante 6 días)')){await call('DELETE','/api/items/'+id);load(true)}return}
+ if(a==='unhide'){if(S.ed){S.ed.props.hide=[];markDirty();hideBtn()}return}
  if(a==='save'){const props=S.ed?S.ed.props:undefined;const was=S.ed&&S.ed.dirty;if(S.ed)S.ed.dirty=false;await call('POST','/api/items/'+id+'/save',{props:props,caption:val('caption')});if(was)alert('Guardado. Renderizando el vídeo nuevo (1-2 min)…');return load(true)}
  if(a==='studio'){b.disabled=true;b.textContent='Abriendo editor… (20-40 s)';const r=await call('POST','/api/items/'+id+'/studio');b.disabled=false;b.textContent='🎬 Editar vídeo';if(r.url)window.open(r.url,'_blank');return}
  if(a==='phone'){b.disabled=true;const r=await call('POST','/api/items/'+id+'/phone');b.disabled=false;if(r.sentToPhone)alert('Enviado al móvil ✓');return load(true)}

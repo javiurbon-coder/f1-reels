@@ -30,6 +30,8 @@ export function buildScenes(T, words, total) {
   scenes[0].to = scenes[1].from;
   for (let k = 1; k < scenes.length; k++) scenes[k].to = k + 1 < scenes.length ? scenes[k + 1].from : srcFrom;
   scenes.push({type: 'sources', from: srcFrom, to: total});
+  // Cada fila/paso debe verse al menos 3 s antes de que acabe su escena (si no, se adelanta).
+  scenes.forEach((s) => { for (const r of s.rows ?? s.parts ?? []) if (r.at !== undefined) r.at = +Math.max(0.3, Math.min(r.at, s.to - s.from - 3)).toFixed(2); });
   const problems = [];
   scenes.forEach((s, k) => { if (s.to - s.from < 1.8) problems.push(`escena ${k + 1} (${s.type}) muy corta: ${(s.to - s.from).toFixed(1)} s`); });
   return {scenes, problems};

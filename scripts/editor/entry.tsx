@@ -7,6 +7,8 @@ import '../../src/fonts';
 import {Reel, reelDuration, type ReelProps} from '../../src/v2/Reel';
 
 const FPS = 30;
+/** Si el texto es una fila de lista/paso técnico, devuelve la ruta de la fila entera (para poder borrarla). */
+const delOf = (path: string) => (path.match(/^scenes\.\d+\.(?:rows|parts)\.\d+/) ?? [undefined])[0];
 const norm = (s: string) => s.replace(/\s+/g, ' ').trim().toLowerCase();
 const SKIP = new Set(['type', 'icon', 'color', 'teamColor', 'domain', 'file', 'kind', 'from', 'to', 'at', 'grid', 'finish', 'n', 'me', 'official', 'tier', 'tag', 'maxPos', 'seconds']);
 
@@ -82,7 +84,7 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
   const box = React.useRef<HTMLDivElement>(null);
   const [hover, setHover] = React.useState<{x: number; y: number; w: number; h: number} | null>(null);
   const [draft, setDraft] = React.useState('');
-  const [edit, setEdit] = React.useState<{path: string; x: number; y: number; w: number; h: number; fs: number; multi: boolean} | null>(null);
+  const [edit, setEdit] = React.useState<{path: string; x: number; y: number; w: number; h: number; fs: number; multi: boolean; hide?: string; del?: string} | null>(null);
   const [msg, setMsg] = React.useState('');
   React.useEffect(() => { reg({setProps: (p) => setProps({...p}), ref}); }, []);
 
@@ -91,6 +93,14 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
     const els = document.elementsFromPoint(ev.clientX, ev.clientY).filter((e) => root.contains(e) && e !== root && !(e as HTMLElement).dataset.ov);
     const t = (ref.current?.getCurrentFrame() ?? 0) / FPS;
     const cands = candidates(props, t);
+    const TXT: Record<string, string> = {section: 'section', chip: 'chip', date: 'date', intro: 'txt.intro', cta: 'txt.cta'};
+    for (const el of els) {
+      const hk = el.closest('[data-hide]') as HTMLElement | null;
+      if (hk && root.contains(hk)) {
+        const key = hk.dataset.hide!, r = hk.getBoundingClientRect(), b = root.getBoundingClientRect();
+        return {c: {path: TXT[key] ?? '', text: (hk.textContent ?? '').trim()}, x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, fs: parseFloat(getComputedStyle(hk).fontSize) * (b.width / 1080), hide: key, del: undefined as string | undefined};
+      }
+    }
     for (const el of els) {
       // solo elementos que tengan texto propio
       if (![...el.childNodes].some((n) => n.nodeType === 3 && (n.textContent ?? '').trim())) {
@@ -103,14 +113,14 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
         for (let up = 0; e && e !== root && up < 7; up++, e = e.parentElement) if (norm(e.textContent ?? '') === norm(c.text)) { tgt = e; break; }
         const r = tgt.getBoundingClientRect(), b = root.getBoundingClientRect();
         const fs = parseFloat(getComputedStyle(tgt).fontSize) * (b.width / 1080);
-        return {c, x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, fs};
+        return {c, x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, fs, hide: undefined as string | undefined, del: delOf(c.path)};
       }
     }
     for (const el of els) {
       const w = wordPick(props, el, root);
       if (w) {
         const r = w.tgt.getBoundingClientRect(), b = root.getBoundingClientRect();
-        return {c: w.c, x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, fs: parseFloat(getComputedStyle(w.tgt).fontSize) * (b.width / 1080)};
+        return {c: w.c, x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, fs: parseFloat(getComputedStyle(w.tgt).fontSize) * (b.width / 1080), hide: undefined as string | undefined, del: undefined as string | undefined};
       }
     }
     return null;
@@ -118,7 +128,7 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
   const get = (path: string): string => path.startsWith('words:') ? (() => { const [a, b] = path.slice(6).split('-').map(Number); return (props.words ?? []).slice(a, b + 1).map((w) => w.t).join(' '); })() : path.split('.').reduce((o: any, k) => (o ? o[k] : undefined), props) ?? '';
 
   return (
-    <div ref={box} style={{position: 'relative', width: '100%', height: '100%'}}
+    <div ref={box} style={{position: 'relative', width: '100%', height: '100%', color: '#000', font: 'normal 400 16px/normal serif', letterSpacing: 'normal', textTransform: 'none'}}
       onMouseMove={(ev) => { if (edit) return; const h = hit(ev); setHover(h ? {x: h.x, y: h.y, w: h.w, h: h.h} : null); }}
       onMouseLeave={() => setHover(null)}
       onClick={(ev) => {
@@ -127,7 +137,7 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
         const h = hit(ev);
         if (!h) { setMsg('Ahí no hay texto que editar.'); setTimeout(() => setMsg(''), 2500); return; }
         setHover(null);
-        setDraft(h.c.text); setEdit({path: h.c.path, x: h.x, y: h.y, w: h.w, h: h.h, fs: h.fs, multi: h.c.text.length > 28});
+        setDraft(h.c.text); setEdit({path: h.c.path, x: h.x, y: h.y, w: h.w, h: h.h, fs: h.fs, multi: h.c.text.length > 28, hide: h.hide, del: h.del});
       }}>
       <Player ref={ref} component={Reel as any} inputProps={props as any} durationInFrames={reelDuration(props)} fps={FPS} compositionWidth={1080} compositionHeight={1920}
         style={{width: '100%', height: '100%'}} controls={false} clickToPlay={false} doubleClickToFullscreen={false} spaceKeyToPlayOrPause={false} acknowledgeRemotionLicense />
@@ -135,7 +145,7 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
       {edit && (
         <>
           <div data-ov="1" onClick={() => setEdit(null)} style={{position: 'absolute', inset: 0, background: '#0007'}} />
-          {React.createElement(edit.multi ? 'textarea' : 'input', {
+          {edit.path && React.createElement(edit.multi ? 'textarea' : 'input', {
             'data-ov': '1', autoFocus: true, value: draft,
             onChange: (e: any) => {
               const v: string = e.target.value; setDraft(v); onEdit(edit.path, v);
@@ -145,6 +155,10 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
             style: {position: 'absolute', left: Math.max(6, Math.min(edit.x - 8, (box.current?.clientWidth ?? 400) - Math.max(220, edit.w) - 14)), top: Math.max(6, edit.y - 6), width: Math.max(220, edit.w + 16), minHeight: edit.h + 12,
               fontSize: Math.max(16, Math.min(edit.fs, 34)), fontFamily: 'Archivo, system-ui, sans-serif', fontWeight: 800, padding: '6px 10px', border: '3px solid #ffd21f', borderRadius: 8, background: '#fff', color: '#111', outline: 'none', zIndex: 5, resize: 'none'},
           })}
+          <div data-ov="1" style={{position: 'absolute', left: 8, right: 8, top: Math.min(Math.max(edit.y + edit.h + (edit.path ? 56 : 14), 8), (box.current?.clientHeight ?? 600) - 50), display: 'flex', gap: 8, justifyContent: 'center', zIndex: 6}}>
+            {(edit.hide || edit.del) && <button data-ov="1" onClick={() => { onEdit(edit.hide ? 'hide:' + edit.hide : 'del:' + edit.del, '1'); setEdit(null); }} style={{font: '700 15px system-ui', padding: '8px 14px', borderRadius: 8, border: 0, background: '#ff4a3d', color: '#fff', cursor: 'pointer'}}>{edit.del ? '🗑 Quitar fila' : '🗑 Quitar'}</button>}
+            <button data-ov="1" onClick={() => setEdit(null)} style={{font: '700 15px system-ui', padding: '8px 14px', borderRadius: 8, border: 0, background: '#ffd21f', color: '#111', cursor: 'pointer'}}>Listo</button>
+          </div>
           <div data-ov="1" style={{position: 'absolute', left: 8, right: 8, bottom: 8, textAlign: 'center', color: '#fff', font: '600 14px system-ui', zIndex: 5}}>{edit.path.startsWith('words:') ? 'Subtítulo: cambia solo el texto, la voz no cambia · ' : ''}Enter o clic fuera = listo</div>
         </>
       )}
