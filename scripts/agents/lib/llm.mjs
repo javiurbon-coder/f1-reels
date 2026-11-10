@@ -51,7 +51,7 @@ Escribe la locución de un reel de 40-50 segundos (105-135 palabras; NUNCA menos
 Estructura, con FRASES CORTAS (máximo 22 palabras cada una, una idea por frase): 1) frase de arranque potente; 2) qué ha pasado, con los detalles del material; 3) contexto: usa los DATOS CALCULADOS si te los doy (copia sus cifras tal cual, con números, p. ej. "7º", "3"), nada más; 4) por qué importa, SOLO si el material lo dice; 5) quién lo cuenta (una frase: "Lo cuentan A, B y C."); 6) cierre breve.
 REGLAS ESTRICTAS:
 - Usa SOLO información que esté en el material y en los DATOS CALCULADOS que te doy. No añadas cifras, nombres, causas ni contexto que no aparezcan en él.
-- Si es OFICIAL di que lo confirma la fuente oficial; si no, di cuántos medios lo cuentan.
+- Si es OFICIAL di que lo confirma la fuente oficial, nombrándola; si no, di cuántos medios lo cuentan y NOMBRA esos medios (por ejemplo: «Lo cuentan dos medios: Motorsport.com y Formula1.com»).
 - No uses palabras en inglés salvo nombres propios. No digas "según mis datos". Sin emojis ni hashtags.
 - Si es RUMOR, di desde el principio que NO está confirmado y que solo lo cuentan esas fuentes; nunca lo presentes como hecho.
 - Devuelve únicamente el texto de la locución.`;
@@ -78,4 +78,11 @@ export function templateScript(c, extra = []) {
   const n = c.sources.length;
   const quien = c.level === 'OFICIAL' ? `Lo confirma ${c.sources[0].name}, fuente oficial.` : `Lo cuentan ${n} medios distintos: ${c.sources.map((s) => s.name).join(', ')}.`;
   return `${head}. ${detail} ${quien} Te dejamos las fuentes en la descripción.`.replace(/\s+/g, ' ');
+}
+
+/** Frase final con QUIÉN lo cuenta. Se añade siempre que el guion no nombre ninguna fuente (los modelos a veces se la saltan). */
+export function sourcesLine(c) {
+  const names = (list) => list.map((s) => s.name).join(', ');
+  if (c.level === 'RADAR') return `Por ahora solo lo cuenta: ${names([...c.sources, ...(c.alsoSay ?? [])])}. Si se confirma, te lo contamos.`;
+  return c.level === 'OFICIAL' ? `Lo confirma ${c.sources[0].name}, fuente oficial.` : `Lo cuentan ${c.sources.length} medios distintos: ${names(c.sources)}.`;
 }

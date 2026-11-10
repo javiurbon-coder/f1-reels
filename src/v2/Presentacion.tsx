@@ -11,23 +11,31 @@ export type PresProps = {cuts: number[]; total: number; words: Word[]; narration
 export const presDuration = (p: Partial<PresProps>, fps = 30) => Math.ceil((p.total ?? 36) * fps);
 const RB = '#3671c6';
 
+const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+
 const Block: React.FC<{k: number; p: PresProps}> = ({k, p}) => {
+  const {fps} = useVideoConfig();
   const {cap, on} = useCap(p.words, p.cuts[k]);
   const c = cap ?? '';
+  // cada fila aparece EXACTAMENTE cuando la voz dice su palabra clave (frames desde el inicio del bloque)
+  const at = (kw: string): number | undefined => {
+    const from = p.cuts[k], to = p.cuts[k + 1] ?? p.total;
+    const w = p.words.find((x) => x.start >= from - 0.05 && x.start < to && norm(x.t).startsWith(norm(kw)));
+    return w ? Math.max(6, Math.round((w.start - from) * fps)) : undefined;
+  };
   switch (k) {
     case 0: return <Portada kind="intro" headline="¿Harto de rumores de F1 que luego no son verdad?" hl="rumores" chip="Nuevo" date="PRESENTACIÓN" />;
     case 1: return <Noticia kind="menu" cap={c} on={on} title="Qué vas a ver" rows={[
-      {icon: 'flag', title: 'Noticias contrastadas', sub: 'Última hora, sin humo', d: 14}, {icon: 'doc', title: 'Fichajes y mercado', sub: 'Quién firma y hasta cuándo', d: 30},
-      {icon: 'trophy', title: 'Resultados de cada GP', sub: 'Podio y claves de la carrera', d: 46}, {icon: 'stopwatch', title: 'Menos de un minuto', sub: 'Directo al grano', d: 62}]} />;
+      {icon: 'flag', title: 'Noticias contrastadas', sub: 'Última hora, sin humo', d: at('noticias')}, {icon: 'doc', title: 'Fichajes y mercado', sub: 'Quién firma y hasta cuándo', d: at('fichajes')},
+      {icon: 'trophy', title: 'Resultados de cada GP', sub: 'Podio y claves de la carrera', d: at('resultados')}, {icon: 'stopwatch', title: 'Menos de un minuto', sub: 'Directo al grano', d: at('menos')}]} />;
     case 2: return <Noticia kind="reglas" cap={c} on={on} title="Nuestras reglas" rows={[
-      {icon: 'flag', title: 'Mínimo dos fuentes', sub: 'O una fuente oficial', d: 14}, {icon: 'eye', title: 'Rumor = te avisamos', sub: 'Nunca lo vendemos como hecho', d: 60},
-      {icon: 'chart', title: 'Cifras comprobadas', sub: 'Si no cuadra, no sale', d: 90}]} />;
+      {icon: 'flag', title: 'Mínimo dos fuentes', sub: 'O una fuente oficial', d: at('dos')}, {icon: 'doc', title: 'Si no, no es noticia', sub: 'No la damos como hecho', d: at('noticia')},
+      {icon: 'eye', title: 'Rumor = te avisamos', sub: 'Siempre bien señalado', d: at('rumor')}]} />;
     case 3: return <Noticia kind="menu" cap={c} on={on} title="Con contexto" rows={[
-      {icon: 'chart', title: 'Datos reales', sub: 'Cifras de fuentes oficiales', d: 14}, {icon: 'doc', title: 'Qué hay detrás', sub: 'Por qué importa la noticia', d: 30},
-      {icon: 'eye', title: 'Sin humo', sub: 'Solo lo comprobado', d: 46}]} />;
+      {icon: 'doc', title: 'Cada noticia, en contexto', sub: 'Qué hay detrás', d: at('contexto')}, {icon: 'chart', title: 'Datos reales', sub: 'Cifras de fuentes oficiales', d: at('datos')}]} />;
     case 4: return <Dato cap={c} on={on} value="3" label="años seguidos de podio en Interlagos" chartTitle="Verstappen en Interlagos" maxPos={22} rows={[
       {name: '2024', grid: 17, finish: 1, color: RB, tag: '1º'}, {name: '2025 · boxes', grid: 20, finish: 3, color: RB, tag: '3º'}, {name: '2026', grid: 21, finish: 2, color: RB, me: true, tag: '2º'}]} />;
-    case 5: return <Tecnico cap={c} on={on} title="El efecto suelo" parts={[
+    case 5: return <Tecnico cap={c} on={on} title="Un F1 por dentro" parts={[
       {n: 1, name: 'Alerón delantero', sub: 'Ordena el aire que llega al coche'}, {n: 2, name: 'Suelo', sub: 'Aire rápido debajo = baja presión'}, {n: 3, name: 'Alerón trasero', sub: 'Empuja el eje trasero hacia abajo'}]} />;
     default: return <Cierre cap={c} on={on} />;
   }

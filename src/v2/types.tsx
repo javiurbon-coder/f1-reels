@@ -84,7 +84,7 @@ export const Dato: React.FC<{cap: string; on?: string | number; value: string; l
           </div>
           <svg width={cw} height={rows.length * rh + 50} viewBox={`0 0 ${cw} ${rows.length * rh + 50}`} style={{display: 'block'}}>
             {rows.map((r, i) => {
-              const a = interpolate(frame, [24 + i * 7, 54 + i * 7], [0, 1], {...clamp, easing: (t) => 1 - Math.pow(1 - t, 3)});
+              const a = interpolate(frame, [34 + i * 12, 78 + i * 12], [0, 1], {...clamp, easing: (t) => 1 - Math.pow(1 - t, 3)});
               const cy = i * rh + rh / 2, gx = xOf(r.grid), fx = gx + (xOf(r.finish) - gx) * a, gain = r.grid - r.finish;
               const ns = fitOneLine(r.name, 225, 36, 22, T.display, '', false);
               return (

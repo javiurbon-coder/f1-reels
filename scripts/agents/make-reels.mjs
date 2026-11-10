@@ -2,7 +2,7 @@
 // Nunca publica. Uso: node scripts/agents/make-reels.mjs [--no-voice] [--template]
 import fs from 'node:fs';
 import {enqueue} from '../lib/queue.mjs';
-import {askLocal, ollamaAvailable, llmName, SYSTEM, TRANSLATE, templateScript} from './lib/llm.mjs';
+import {askLocal, ollamaAvailable, llmName, SYSTEM, TRANSLATE, templateScript, sourcesLine} from './lib/llm.mjs';
 import {checkScript, isSpanish} from './lib/verify.mjs';
 import {routeCluster, propsFor, topicsOf, loadTopics} from '../lib/classify.mjs';
 import {voiceEngines} from './lib/voice.mjs';
@@ -101,6 +101,10 @@ for (const c of clusters) {
     }
   }
   if (!script) { script = templateScript(c, [...material.slice(0, 3).map((m) => m.replace(/^[^:]+:\s*/, '')), ...facts.slice(0, 2).map((f) => f.line)]); notes.push('Guion de plantilla (sin IA).'); }
+
+  // el reel SIEMPRE nombra quién lo cuenta (si el guion no lo hace, se añade la frase)
+  const named = [...c.sources, ...(c.alsoSay ?? [])].map((s) => s.name);
+  if (!named.some((n) => script.toLowerCase().includes(n.toLowerCase()))) script = `${script.replace(/\s+$/, '')} ${sourcesLine(c)}`;
 
   // --- agentes locutor + director + control de calidad (diseño v2: una sola composición "Reel") ---
   const base = propsFor(route, c, fmtDate);
