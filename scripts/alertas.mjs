@@ -36,6 +36,7 @@ for (const c of clusters) {
 }
 for (const [id, e] of Object.entries(state.log)) if (Date.now() - new Date(e.t) > 8 * 86400e3) delete state.log[id];
 save(state);
+if (settings.alerts?.enabled === false) { console.log('Avisos al móvil desactivados (settings.alerts.enabled=false): solo se guarda el registro de noticias.'); process.exit(0); }
 
 const madrid = (d = new Date()) => new Intl.DateTimeFormat('es-ES', {timeZone: 'Europe/Madrid', hour: 'numeric', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit'}).formatToParts(d)
   .reduce((o, p) => (p.type !== 'literal' ? {...o, [p.type]: p.value} : o), {});

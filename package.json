@@ -24,7 +24,8 @@
     "notify": "node scripts/notify-telegram.mjs",
     "notify:setup": "node scripts/notify-telegram.mjs setup",
     "test:bot": "node scripts/bot/test-handle.mjs",
-    "presentacion": "node scripts/presentacion.mjs"
+    "presentacion": "node scripts/presentacion.mjs",
+    "hoy": "node scripts/hoy.mjs"
   },
   "keywords": [],
   "author": "",

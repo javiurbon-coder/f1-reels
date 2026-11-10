@@ -49,6 +49,7 @@
   },
   "priorityTopics": [],
   "alerts": {
+    "enabled": false,
     "fromHour": 8,
     "toHour": 23,
     "maxPerDay": 6,
