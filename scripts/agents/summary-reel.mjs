@@ -72,13 +72,15 @@ if (process.argv[1]?.endsWith('summary-reel.mjs')) {
   const total = +(seconds + 0.8).toFixed(2);
   const scenes = buildSummary({script, list}, mode, words, total);
   const srcs = [...new Map(list.flatMap((it) => it.sources).map((s) => [s.name, s])).values()].slice(0, 4);
-  const props = cleanDeep({kind: 'noticia', headline: mode === 'week' ? 'Resumen de la semana en la F1' : 'Resumen del día en la F1', hl: 'Resumen', chip: `${list.length} noticias`,
+  const props = cleanDeep({kind: 'noticia', headline: mode === 'week' ? 'Resumen de la semana en la F1' : 'Resumen del día en la F1', hl: 'Resumen', section: mode === 'week' ? 'Resumen semanal' : 'Resumen del día', chip: `${list.length} noticias`,
     date: new Date().toLocaleDateString('es-ES', {day: '2-digit', month: 'short'}).toUpperCase(), sources: srcs.map(({name, domain, official}) => ({name, domain, official: !!official})), scenes, words,
     ...(v ? {narration: {file: v.file, seconds: +v.seconds.toFixed(2)}} : {})});
   const settings = JSON.parse(fs.readFileSync('config/settings.json', 'utf8'));
-  const caption = `${props.headline}\n\n${list.map((it, k) => `${k + 1}. ${strip(it.headline)}\n   ${it.sources.map((s) => `${s.name}: ${s.url}`).join('\n   ')}`).join('\n\n')}\n\n${settings.hashtags} #ResumenF1`.trim();
+  const nm = [...new Set(list.flatMap((it) => it.sources.map((x) => x.name)))].slice(0, 6);
+  const caption = `${props.headline}\n\n${list.map((it, k) => `${k + 1}. ${strip(it.headline)} (${it.sources.map((x) => x.name).slice(0, 3).join(', ')})`).join('\n')}\n\nFuentes: ${nm.length > 1 ? `${nm.slice(0, -1).join(', ')} y ${nm.at(-1)}` : nm[0]}.\n\nLa voz de este vídeo está generada con IA.\n\nSíguenos para no perderte nada.\n\n${settings.hashtags} #ResumenF1`.trim();
+  const links = list.map((it, k) => `${k + 1}. ${it.sources.map((x) => `${x.name}: ${x.url}`).join(' | ')}`).join('\n');
   const {enqueue} = await import('../lib/queue.mjs');
-  await enqueue({id: qid, composition: 'Reel', series: 'resumen', props, caption, sources: srcs, note: `GUION: ${script}\nVoz: ${v?.engine ?? 'sin voz'} · ${total.toFixed(0)} s · ${list.length} noticias`});
+  await enqueue({id: qid, composition: 'Reel', series: 'resumen', props, caption, sources: srcs, note: `GUION: ${script}\nEnlaces (para comprobar):\n${links}\nVoz: ${v?.engine ?? 'sin voz'} · ${total.toFixed(0)} s · ${list.length} noticias`});
   const s2 = load(); s2.summarized = [...new Set([...(s2.summarized ?? []), ...list.map((x) => x.id)])].slice(-300); save(s2);
   console.log(`✓ resumen en cola con ${list.length} noticias`);
 }

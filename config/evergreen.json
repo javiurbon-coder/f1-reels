@@ -1,473 +1,473 @@
 [
- {
-  "id": "efecto-suelo",
-  "pillar": "tecnica",
-  "headline": "El efecto suelo: así se pega un F1 al asfalto",
-  "hl": "suelo",
-  "chip": "Técnica",
-  "date": "EXPLICADO",
-  "hashtags": "#TecnicaF1 #EfectoSuelo",
-  "script": "¿Cómo se pega un Fórmula 1 al asfalto? Con el efecto suelo. El aire que pasa por debajo del coche va más rápido y baja la presión, y esa succión lo empuja contra la pista. Lotus lo estrenó a finales de los setenta y se prohibió a principios de los ochenta. Volvió en 2022, con túneles bajo el suelo del coche. Así, más carga viene del suelo y menos de los alerones, y los coches pueden seguirse más de cerca. Esto lo cuentan Formula1.com, Racer y Autosport. Síguenos para más.",
-  "sources": [
-   {
-    "name": "Formula1.com",
-    "domain": "formula1.com",
-    "url": "https://www.formula1.com/en/latest/article/tech-tuesday-why-new-floors-should-help-enhance-f1s-wheel-to-wheel-action-in.6WEBVH3iEhZhBvgKxTYSij",
-    "official": true
-   },
-   {
-    "name": "Racer",
-    "domain": "racer.com",
-    "url": "https://racer.com/racerpedia/technical-explainers/what-is-ground-effect",
-    "official": false
-   },
-   {
-    "name": "Autosport",
-    "domain": "autosport.com",
-    "url": "https://www.autosport.com/f1/news/unpacking-the-technical-changes-behind-f1-2022s-rules-shakeup/7472432/",
-    "official": false
-   }
-  ],
-  "body": [
-   {
-    "type": "tecnico",
-    "kw": "aire",
-    "title": "El efecto suelo",
-    "parts": [
-     {
-      "n": 1,
-      "name": "Aire más rápido",
-      "sub": "Por debajo del coche",
-      "kw": "aire"
-     },
-     {
-      "n": 2,
-      "name": "Baja la presión",
-      "sub": "Bajo el suelo",
-      "kw": "presión"
-     },
-     {
-      "n": 3,
-      "name": "Succión",
-      "sub": "El coche se pega a la pista",
-      "kw": "succión"
-     }
+  {
+    "id": "efecto-suelo",
+    "pillar": "tecnica",
+    "headline": "El efecto suelo: así se pega un F1 al asfalto",
+    "hl": "suelo",
+    "chip": "Técnica",
+    "date": "EXPLICADO",
+    "hashtags": "#TecnicaF1 #EfectoSuelo",
+    "script": "¿Cómo se pega un Fórmula 1 al asfalto? Con el efecto suelo. Bajo el coche hay túneles que estrechan el aire, y ese aire va más rápido. El aire rápido tiene menos presión, y la presión de arriba empuja el coche contra la pista. Esa carga no viene de los alerones, y además crea menos resistencia. Lotus lo hizo famoso a finales de los setenta, con faldillas laterales que sellaban el suelo. Mario Andretti ganó el Mundial de 1978 con el Lotus 79. Pero perder ese sellado a gran velocidad era peligroso, y desde 1983 se obligó a usar suelos planos. En 2022 volvió, sin faldillas, y con una idea: que los coches puedan seguirse más de cerca. Esto lo cuentan Formula1.com, Racer y Autosport. Síguenos para más.",
+    "sources": [
+      {
+        "name": "Formula1.com",
+        "domain": "formula1.com",
+        "url": "https://www.formula1.com/en/latest/article/tech-tuesday-why-new-floors-should-help-enhance-f1s-wheel-to-wheel-action-in.6WEBVH3iEhZhBvgKxTYSij",
+        "official": true
+      },
+      {
+        "name": "Racer",
+        "domain": "racer.com",
+        "url": "https://racer.com/racerpedia/technical-explainers/what-is-ground-effect",
+        "official": false
+      },
+      {
+        "name": "Autosport",
+        "domain": "autosport.com",
+        "url": "https://www.autosport.com/f1/news/unpacking-the-technical-changes-behind-f1-2022s-rules-shakeup/7472432/",
+        "official": false
+      }
+    ],
+    "body": [
+      {
+        "type": "tecnico",
+        "kw": "Bajo",
+        "title": "El efecto suelo",
+        "parts": [
+          {
+            "n": 1,
+            "name": "Túneles",
+            "sub": "Estrechan el aire",
+            "kw": "túneles"
+          },
+          {
+            "n": 2,
+            "name": "Menos presión",
+            "sub": "El aire rápido",
+            "kw": "presión"
+          },
+          {
+            "n": 3,
+            "name": "Empuje",
+            "sub": "El coche se pega a la pista",
+            "kw": "empuja"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "Lotus",
+        "title": "Su historia",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Lotus lo hace famoso",
+            "sub": "Finales de los setenta",
+            "kw": "Lotus"
+          },
+          {
+            "icon": "trophy",
+            "title": "Andretti, campeón",
+            "sub": "1978, con el Lotus 79",
+            "kw": "Andretti"
+          },
+          {
+            "icon": "wrench",
+            "title": "Suelos planos",
+            "sub": "Obligatorios desde 1983",
+            "kw": "obligó"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "volvió",
+        "title": "Desde 2022",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Vuelve el efecto suelo",
+            "sub": "",
+            "kw": "volvió"
+          },
+          {
+            "icon": "wrench",
+            "title": "Sin faldillas",
+            "sub": "",
+            "kw": "faldillas"
+          },
+          {
+            "icon": "stopwatch",
+            "title": "Coches más cerca",
+            "sub": "Se siguen mejor",
+            "kw": "cerca"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "type": "list",
-    "kw": "Lotus",
-    "title": "Su historia",
-    "rows": [
-     {
-      "icon": "flag",
-      "title": "Lotus lo estrena",
-      "sub": "A finales de los setenta",
-      "kw": "Lotus"
-     },
-     {
-      "icon": "wrench",
-      "title": "Se prohíbe",
-      "sub": "A principios de los ochenta",
-      "kw": "prohibió"
-     },
-     {
-      "icon": "trophy",
-      "title": "Vuelve en 2022",
-      "sub": "Túneles bajo el suelo",
-      "kw": "Volvió"
-     }
+  },
+  {
+    "id": "porpoising",
+    "pillar": "tecnica",
+    "headline": "Porpoising: por qué los F1 rebotan",
+    "hl": "Porpoising",
+    "chip": "Técnica",
+    "date": "EXPLICADO",
+    "hashtags": "#TecnicaF1 #Porpoising",
+    "script": "¿Por qué los Fórmula 1 de 2022 rebotaban en las rectas? Se llama porpoising. El suelo se acerca demasiado a la pista, el aire que va por debajo se bloquea y el coche pierde carga de golpe. Entonces el coche sube, el aire vuelve a entrar y el suelo se pega otra vez al asfalto. Y el ciclo se repite una y otra vez, muy rápido. Subir la altura del coche lo reduce, pero también quita carga aerodinámica. Esto lo cuentan Motorsport Magazine, Autosport y Crash.net. Síguenos para más.",
+    "sources": [
+      {
+        "name": "Motorsport Magazine",
+        "domain": "motorsportmagazine.com",
+        "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/f1s-biggest-problem-in-2022-what-is-porpoising",
+        "official": false
+      },
+      {
+        "name": "Autosport",
+        "domain": "autosport.com",
+        "url": "https://www.autosport.com/f1/news/the-mechanics-behind-porpoising-in-f1-and-how-to-fix-it/8693581/",
+        "official": false
+      },
+      {
+        "name": "Crash.net",
+        "domain": "crash.net",
+        "url": "https://crash.net/f1/news/1009897/1/porpoising-f1-what-it-explaining-bouncing-car-phenomenon",
+        "official": false
+      }
+    ],
+    "body": [
+      {
+        "type": "list",
+        "kw": "suelo",
+        "title": "El ciclo del rebote",
+        "rows": [
+          {
+            "icon": "wrench",
+            "title": "El suelo se acerca",
+            "sub": "Demasiado a la pista",
+            "kw": "suelo"
+          },
+          {
+            "icon": "flag",
+            "title": "El aire se bloquea",
+            "sub": "Y se pierde la carga",
+            "kw": "bloquea"
+          },
+          {
+            "icon": "chart",
+            "title": "El coche sube",
+            "sub": "Y el aire vuelve a entrar",
+            "kw": "sube"
+          },
+          {
+            "icon": "stopwatch",
+            "title": "Se repite sin parar",
+            "sub": "Muy rápido",
+            "kw": "repite"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "Subir",
+        "title": "¿Cómo se frena?",
+        "rows": [
+          {
+            "icon": "wrench",
+            "title": "Subir la altura del coche",
+            "sub": "Reduce el rebote",
+            "kw": "Subir"
+          },
+          {
+            "icon": "chart",
+            "title": "Pero se pierde carga",
+            "sub": "Aerodinámica",
+            "kw": "quita"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "type": "list",
-    "kw": "Así",
-    "title": "El resultado",
-    "rows": [
-     {
-      "icon": "chart",
-      "title": "Más carga del suelo",
-      "sub": "",
-      "kw": "carga"
-     },
-     {
-      "icon": "doc",
-      "title": "Menos de los alerones",
-      "sub": "",
-      "kw": "alerones"
-     },
-     {
-      "icon": "stopwatch",
-      "title": "Coches más cerca",
-      "sub": "Se siguen mejor",
-      "kw": "seguirse"
-     }
+  },
+  {
+    "id": "colores-neumaticos",
+    "pillar": "tecnica",
+    "headline": "Los colores de los neumáticos de F1",
+    "hl": "colores",
+    "chip": "Técnica",
+    "date": "EXPLICADO",
+    "hashtags": "#TecnicaF1 #Pirelli",
+    "script": "¿Qué significan los colores de los neumáticos de F1? Pirelli fabrica varios compuestos numerados, del más duro al más blando. En cada Gran Premio elige tres, y les pone un color. El más blando lleva rojo, el intermedio amarillo y el más duro blanco. Por eso un mismo compuesto puede ser el blando en una carrera y el duro en otra. Esto lo cuentan Autosport, RaceFans y Motorsport Week. Síguenos para más.",
+    "sources": [
+      {
+        "name": "Autosport",
+        "domain": "autosport.com",
+        "url": "https://www.autosport.com/f1/news/f1-tyres-what-are-the-compoundsand-what-do-they-mean/10344284/",
+        "official": false
+      },
+      {
+        "name": "RaceFans",
+        "domain": "racefans.net",
+        "url": "https://www.racefans.net/?p=387937",
+        "official": false
+      },
+      {
+        "name": "Motorsport Week",
+        "domain": "motorsportweek.com",
+        "url": "https://motorsportweek.com/2019/02/05/21424",
+        "official": false
+      }
+    ],
+    "body": [
+      {
+        "type": "list",
+        "kw": "Pirelli",
+        "title": "Los neumáticos",
+        "rows": [
+          {
+            "icon": "wrench",
+            "title": "Compuestos numerados",
+            "sub": "Del más duro al más blando",
+            "kw": "compuestos"
+          },
+          {
+            "icon": "flag",
+            "title": "Elige tres por GP",
+            "sub": "Y les pone un color",
+            "kw": "tres"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "rojo",
+        "title": "Un color por compuesto",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Rojo",
+            "sub": "El más blando",
+            "kw": "rojo"
+          },
+          {
+            "icon": "doc",
+            "title": "Amarillo",
+            "sub": "El intermedio",
+            "kw": "amarillo"
+          },
+          {
+            "icon": "trophy",
+            "title": "Blanco",
+            "sub": "El más duro",
+            "kw": "blanco"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "Por",
+        "title": "Ojo",
+        "rows": [
+          {
+            "icon": "chart",
+            "title": "Mismo compuesto",
+            "sub": "Blando un día, duro otro",
+            "kw": "compuesto"
+          }
+        ]
+      }
     ]
-   }
-  ]
- },
- {
-  "id": "porpoising",
-  "pillar": "tecnica",
-  "headline": "Porpoising: por qué los F1 rebotan",
-  "hl": "Porpoising",
-  "chip": "Técnica",
-  "date": "EXPLICADO",
-  "hashtags": "#TecnicaF1 #Porpoising",
-  "script": "¿Por qué los Fórmula 1 de 2022 rebotaban en las rectas? Se llama porpoising. El suelo se acerca demasiado a la pista, el aire que va por debajo se bloquea y el coche pierde carga de golpe. Entonces el coche sube, el aire vuelve a entrar y el suelo se pega otra vez al asfalto. Y el ciclo se repite una y otra vez, muy rápido. Subir la altura del coche lo reduce, pero también quita carga aerodinámica. Esto lo cuentan Motorsport Magazine, Autosport y Crash.net. Síguenos para más.",
-  "sources": [
-   {
-    "name": "Motorsport Magazine",
-    "domain": "motorsportmagazine.com",
-    "url": "https://www.motorsportmagazine.com/articles/single-seaters/f1/f1s-biggest-problem-in-2022-what-is-porpoising",
-    "official": false
-   },
-   {
-    "name": "Autosport",
-    "domain": "autosport.com",
-    "url": "https://www.autosport.com/f1/news/the-mechanics-behind-porpoising-in-f1-and-how-to-fix-it/8693581/",
-    "official": false
-   },
-   {
-    "name": "Crash.net",
-    "domain": "crash.net",
-    "url": "https://crash.net/f1/news/1009897/1/porpoising-f1-what-it-explaining-bouncing-car-phenomenon",
-    "official": false
-   }
-  ],
-  "body": [
-   {
-    "type": "list",
-    "kw": "suelo",
-    "title": "El ciclo del rebote",
-    "rows": [
-     {
-      "icon": "wrench",
-      "title": "El suelo se acerca",
-      "sub": "Demasiado a la pista",
-      "kw": "suelo"
-     },
-     {
-      "icon": "flag",
-      "title": "El aire se bloquea",
-      "sub": "Y se pierde la carga",
-      "kw": "bloquea"
-     },
-     {
-      "icon": "chart",
-      "title": "El coche sube",
-      "sub": "Y el aire vuelve a entrar",
-      "kw": "sube"
-     },
-     {
-      "icon": "stopwatch",
-      "title": "Se repite sin parar",
-      "sub": "Muy rápido",
-      "kw": "repite"
-     }
+  },
+  {
+    "id": "farina-1950",
+    "pillar": "dato",
+    "headline": "El primer ganador de la historia de la F1",
+    "hl": "primer",
+    "chip": "Historia",
+    "date": "1950",
+    "hashtags": "#HistoriaF1 #F1",
+    "script": "¿Quién ganó la primera carrera del Mundial de F1? Fue Giuseppe Farina, el 13 de mayo de 1950 en Silverstone. Corría con un Alfa Romeo, y Alfa Romeo ocupó además todo el podio. Esa misma temporada, Farina ganó también en Monza y se proclamó el primer campeón del mundo. Tenía 43 años. Esto lo cuentan Formula1.com, Autosport y Motorsport.com. Síguenos para más.",
+    "sources": [
+      {
+        "name": "Formula1.com",
+        "domain": "formula1.com",
+        "url": "https://www.formula1.com/en/latest/features/2016/5/f1-first-race-1950-silverstone.html",
+        "official": true
+      },
+      {
+        "name": "Autosport",
+        "domain": "autosport.com",
+        "url": "https://www.autosport.com/f1/news/when-silverstone-hosted-the-start-of-something-big/10722151/",
+        "official": false
+      },
+      {
+        "name": "Motorsport.com",
+        "domain": "motorsport.com",
+        "url": "https://au.motorsport.com/f1/news/first-f1-race-silverstone-1950/4791622/",
+        "official": false
+      }
+    ],
+    "body": [
+      {
+        "type": "dato",
+        "kw": "Fue",
+        "value": "1950",
+        "label": "la primera carrera del Mundial de F1",
+        "rows": []
+      },
+      {
+        "type": "list",
+        "kw": "Corría",
+        "title": "Aquella carrera",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Con un Alfa Romeo",
+            "sub": "Silverstone",
+            "kw": "Corría"
+          },
+          {
+            "icon": "trophy",
+            "title": "Podio todo Alfa",
+            "sub": "Farina, Fagioli y Parnell",
+            "kw": "ocupó"
+          },
+          {
+            "icon": "trophy",
+            "title": "Primer campeón",
+            "sub": "Ganó también en Monza",
+            "kw": "campeón"
+          },
+          {
+            "icon": "stopwatch",
+            "title": "Tenía 43 años",
+            "sub": "",
+            "kw": "Tenía"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "type": "list",
-    "kw": "Subir",
-    "title": "¿Cómo se frena?",
-    "rows": [
-     {
-      "icon": "wrench",
-      "title": "Subir la altura del coche",
-      "sub": "Reduce el rebote",
-      "kw": "Subir"
-     },
-     {
-      "icon": "chart",
-      "title": "Pero se pierde carga",
-      "sub": "Aerodinámica",
-      "kw": "quita"
-     }
+  },
+  {
+    "id": "alonso-hungria-2003",
+    "pillar": "dato",
+    "headline": "Hungría 2003: el primer triunfo de Alonso",
+    "hl": "Alonso",
+    "chip": "Historia",
+    "date": "2003",
+    "hashtags": "#HistoriaF1 #Alonso",
+    "script": "¿Cuándo ganó Alonso su primer Gran Premio? Fue en Hungría, el 24 de agosto de 2003, saliendo desde la pole. Con 22 años se convirtió en el piloto más joven en ganar un Gran Premio hasta entonces, y en el primer español en lograrlo. Fue además la primera victoria de Renault como equipo en veinte años. Esto lo cuentan Motorsport Magazine, Alpine y GrandPrix.com. Síguenos para más.",
+    "sources": [
+      {
+        "name": "Motorsport Magazine",
+        "domain": "motorsportmagazine.com",
+        "url": "https://motorsportmagazine.com/articles/single-seaters/f1/hungary-2003-the-debut-race-win-that-changed-alonsos-life",
+        "official": false
+      },
+      {
+        "name": "Alpine F1",
+        "domain": "alpinef1.com",
+        "url": "https://www.alpinef1.com/news/a-look-back-on-past-triumphs-in-hungary",
+        "official": false
+      },
+      {
+        "name": "GrandPrix.com",
+        "domain": "grandprix.com",
+        "url": "https://www.grandprix.com/races/hungarian-gp-2003-race-notes-alonso-youngest-grand-prix-winner-updated.html",
+        "official": false
+      }
+    ],
+    "body": [
+      {
+        "type": "list",
+        "kw": "Fue",
+        "title": "Su primera victoria",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Hungría, 24 agosto 2003",
+            "sub": "Saliendo desde la pole",
+            "kw": "Hungría"
+          }
+        ]
+      },
+      {
+        "type": "dato",
+        "kw": "22",
+        "value": "22",
+        "label": "años: el más joven en ganar un GP hasta entonces",
+        "rows": []
+      },
+      {
+        "type": "list",
+        "kw": "primer",
+        "title": "Más récords",
+        "rows": [
+          {
+            "icon": "trophy",
+            "title": "Primer español ganador",
+            "sub": "En un Gran Premio",
+            "kw": "primer"
+          },
+          {
+            "icon": "doc",
+            "title": "Renault vuelve a ganar",
+            "sub": "Primera victoria en 20 años",
+            "kw": "Renault"
+          }
+        ]
+      }
     ]
-   }
-  ]
- },
- {
-  "id": "colores-neumaticos",
-  "pillar": "tecnica",
-  "headline": "Los colores de los neumáticos de F1",
-  "hl": "colores",
-  "chip": "Técnica",
-  "date": "EXPLICADO",
-  "hashtags": "#TecnicaF1 #Pirelli",
-  "script": "¿Qué significan los colores de los neumáticos de F1? Pirelli fabrica varios compuestos numerados, del más duro al más blando. En cada Gran Premio elige tres, y les pone un color. El más blando lleva rojo, el intermedio amarillo y el más duro blanco. Por eso un mismo compuesto puede ser el blando en una carrera y el duro en otra. Esto lo cuentan Autosport, RaceFans y Motorsport Week. Síguenos para más.",
-  "sources": [
-   {
-    "name": "Autosport",
-    "domain": "autosport.com",
-    "url": "https://www.autosport.com/f1/news/f1-tyres-what-are-the-compoundsand-what-do-they-mean/10344284/",
-    "official": false
-   },
-   {
-    "name": "RaceFans",
-    "domain": "racefans.net",
-    "url": "https://www.racefans.net/?p=387937",
-    "official": false
-   },
-   {
-    "name": "Motorsport Week",
-    "domain": "motorsportweek.com",
-    "url": "https://motorsportweek.com/2019/02/05/21424",
-    "official": false
-   }
-  ],
-  "body": [
-   {
-    "type": "list",
-    "kw": "Pirelli",
-    "title": "Los neumáticos",
-    "rows": [
-     {
-      "icon": "wrench",
-      "title": "Compuestos numerados",
-      "sub": "Del más duro al más blando",
-      "kw": "compuestos"
-     },
-     {
-      "icon": "flag",
-      "title": "Elige tres por GP",
-      "sub": "Y les pone un color",
-      "kw": "tres"
-     }
+  },
+  {
+    "id": "senna-monaco",
+    "pillar": "dato",
+    "headline": "Senna, el rey de Mónaco",
+    "hl": "Senna",
+    "chip": "Historia",
+    "date": "MÓNACO",
+    "hashtags": "#HistoriaF1 #Senna #Monaco",
+    "script": "¿Quién ha ganado más veces el Gran Premio de Mónaco? Ayrton Senna, al que llamaban el rey de Mónaco. Ganó allí seis veces, en 1987 con Lotus y entre 1989 y 1993 con McLaren, un récord que sigue sin batirse. Cinco de esas victorias fueron seguidas, de 1989 a 1993. Esto lo cuentan Motorsport Magazine, Speedsport y F1 Oversteer. Síguenos para más.",
+    "sources": [
+      {
+        "name": "Motorsport Magazine",
+        "domain": "motorsportmagazine.com",
+        "url": "https://motorsportmagazine.com/articles/single-seaters/f1/sennas-final-monaco-gp-winning-mclaren-be-auctioned",
+        "official": false
+      },
+      {
+        "name": "Speedsport",
+        "domain": "speedsport.com",
+        "url": "https://speedsport.com/other-series/racing-history/senna-the-monaco-master",
+        "official": false
+      },
+      {
+        "name": "F1 Oversteer",
+        "domain": "f1oversteer.com",
+        "url": "https://www.f1oversteer.com/formula-1-calendar/monaco-grand-prix/",
+        "official": false
+      }
+    ],
+    "body": [
+      {
+        "type": "dato",
+        "kw": "seis",
+        "value": "6",
+        "label": "victorias en Mónaco: récord de Senna",
+        "rows": []
+      },
+      {
+        "type": "list",
+        "kw": "Cinco",
+        "title": "Su racha",
+        "rows": [
+          {
+            "icon": "trophy",
+            "title": "Cinco seguidas",
+            "sub": "De 1989 a 1993",
+            "kw": "Cinco"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "type": "list",
-    "kw": "rojo",
-    "title": "Un color por compuesto",
-    "rows": [
-     {
-      "icon": "flag",
-      "title": "Rojo",
-      "sub": "El más blando",
-      "kw": "rojo"
-     },
-     {
-      "icon": "doc",
-      "title": "Amarillo",
-      "sub": "El intermedio",
-      "kw": "amarillo"
-     },
-     {
-      "icon": "trophy",
-      "title": "Blanco",
-      "sub": "El más duro",
-      "kw": "blanco"
-     }
-    ]
-   },
-   {
-    "type": "list",
-    "kw": "Por",
-    "title": "Ojo",
-    "rows": [
-     {
-      "icon": "chart",
-      "title": "Mismo compuesto",
-      "sub": "Blando un día, duro otro",
-      "kw": "compuesto"
-     }
-    ]
-   }
-  ]
- },
- {
-  "id": "farina-1950",
-  "pillar": "dato",
-  "headline": "El primer ganador de la historia de la F1",
-  "hl": "primer",
-  "chip": "Historia",
-  "date": "1950",
-  "hashtags": "#HistoriaF1 #F1",
-  "script": "¿Quién ganó la primera carrera del Mundial de F1? Fue Giuseppe Farina, el 13 de mayo de 1950 en Silverstone. Corría con un Alfa Romeo, y Alfa Romeo ocupó además todo el podio. Esa misma temporada, Farina ganó también en Monza y se proclamó el primer campeón del mundo. Tenía 43 años. Esto lo cuentan Formula1.com, Autosport y Motorsport.com. Síguenos para más.",
-  "sources": [
-   {
-    "name": "Formula1.com",
-    "domain": "formula1.com",
-    "url": "https://www.formula1.com/en/latest/features/2016/5/f1-first-race-1950-silverstone.html",
-    "official": true
-   },
-   {
-    "name": "Autosport",
-    "domain": "autosport.com",
-    "url": "https://www.autosport.com/f1/news/when-silverstone-hosted-the-start-of-something-big/10722151/",
-    "official": false
-   },
-   {
-    "name": "Motorsport.com",
-    "domain": "motorsport.com",
-    "url": "https://au.motorsport.com/f1/news/first-f1-race-silverstone-1950/4791622/",
-    "official": false
-   }
-  ],
-  "body": [
-   {
-    "type": "dato",
-    "kw": "Fue",
-    "value": "1950",
-    "label": "la primera carrera del Mundial de F1",
-    "rows": []
-   },
-   {
-    "type": "list",
-    "kw": "Corría",
-    "title": "Aquella carrera",
-    "rows": [
-     {
-      "icon": "flag",
-      "title": "Con un Alfa Romeo",
-      "sub": "Silverstone",
-      "kw": "Corría"
-     },
-     {
-      "icon": "trophy",
-      "title": "Podio todo Alfa",
-      "sub": "Farina, Fagioli y Parnell",
-      "kw": "ocupó"
-     },
-     {
-      "icon": "trophy",
-      "title": "Primer campeón",
-      "sub": "Ganó también en Monza",
-      "kw": "campeón"
-     },
-     {
-      "icon": "stopwatch",
-      "title": "Tenía 43 años",
-      "sub": "",
-      "kw": "Tenía"
-     }
-    ]
-   }
-  ]
- },
- {
-  "id": "alonso-hungria-2003",
-  "pillar": "dato",
-  "headline": "Hungría 2003: el primer triunfo de Alonso",
-  "hl": "Alonso",
-  "chip": "Historia",
-  "date": "2003",
-  "hashtags": "#HistoriaF1 #Alonso",
-  "script": "¿Cuándo ganó Alonso su primer Gran Premio? Fue en Hungría, el 24 de agosto de 2003, saliendo desde la pole. Con 22 años se convirtió en el piloto más joven en ganar un Gran Premio hasta entonces, y en el primer español en lograrlo. Fue además la primera victoria de Renault como equipo en veinte años. Esto lo cuentan Motorsport Magazine, Alpine y GrandPrix.com. Síguenos para más.",
-  "sources": [
-   {
-    "name": "Motorsport Magazine",
-    "domain": "motorsportmagazine.com",
-    "url": "https://motorsportmagazine.com/articles/single-seaters/f1/hungary-2003-the-debut-race-win-that-changed-alonsos-life",
-    "official": false
-   },
-   {
-    "name": "Alpine F1",
-    "domain": "alpinef1.com",
-    "url": "https://www.alpinef1.com/news/a-look-back-on-past-triumphs-in-hungary",
-    "official": false
-   },
-   {
-    "name": "GrandPrix.com",
-    "domain": "grandprix.com",
-    "url": "https://www.grandprix.com/races/hungarian-gp-2003-race-notes-alonso-youngest-grand-prix-winner-updated.html",
-    "official": false
-   }
-  ],
-  "body": [
-   {
-    "type": "list",
-    "kw": "Fue",
-    "title": "Su primera victoria",
-    "rows": [
-     {
-      "icon": "flag",
-      "title": "Hungría, 24 agosto 2003",
-      "sub": "Saliendo desde la pole",
-      "kw": "Hungría"
-     }
-    ]
-   },
-   {
-    "type": "dato",
-    "kw": "22",
-    "value": "22",
-    "label": "años: el más joven en ganar un GP hasta entonces",
-    "rows": []
-   },
-   {
-    "type": "list",
-    "kw": "primer",
-    "title": "Más récords",
-    "rows": [
-     {
-      "icon": "trophy",
-      "title": "Primer español ganador",
-      "sub": "En un Gran Premio",
-      "kw": "primer"
-     },
-     {
-      "icon": "doc",
-      "title": "Renault vuelve a ganar",
-      "sub": "Primera victoria en 20 años",
-      "kw": "Renault"
-     }
-    ]
-   }
-  ]
- },
- {
-  "id": "senna-monaco",
-  "pillar": "dato",
-  "headline": "Senna, el rey de Mónaco",
-  "hl": "Senna",
-  "chip": "Historia",
-  "date": "MÓNACO",
-  "hashtags": "#HistoriaF1 #Senna #Monaco",
-  "script": "¿Quién ha ganado más veces el Gran Premio de Mónaco? Ayrton Senna, al que llamaban el rey de Mónaco. Ganó allí seis veces, en 1987 con Lotus y entre 1989 y 1993 con McLaren, un récord que sigue sin batirse. Cinco de esas victorias fueron seguidas, de 1989 a 1993. Esto lo cuentan Motorsport Magazine, Speedsport y F1 Oversteer. Síguenos para más.",
-  "sources": [
-   {
-    "name": "Motorsport Magazine",
-    "domain": "motorsportmagazine.com",
-    "url": "https://motorsportmagazine.com/articles/single-seaters/f1/sennas-final-monaco-gp-winning-mclaren-be-auctioned",
-    "official": false
-   },
-   {
-    "name": "Speedsport",
-    "domain": "speedsport.com",
-    "url": "https://speedsport.com/other-series/racing-history/senna-the-monaco-master",
-    "official": false
-   },
-   {
-    "name": "F1 Oversteer",
-    "domain": "f1oversteer.com",
-    "url": "https://www.f1oversteer.com/formula-1-calendar/monaco-grand-prix/",
-    "official": false
-   }
-  ],
-  "body": [
-   {
-    "type": "dato",
-    "kw": "seis",
-    "value": "6",
-    "label": "victorias en Mónaco: récord de Senna",
-    "rows": []
-   },
-   {
-    "type": "list",
-    "kw": "Cinco",
-    "title": "Su racha",
-    "rows": [
-     {
-      "icon": "trophy",
-      "title": "Cinco seguidas",
-      "sub": "De 1989 a 1993",
-      "kw": "Cinco"
-     }
-    ]
-   }
-  ]
- }
+  }
 ]

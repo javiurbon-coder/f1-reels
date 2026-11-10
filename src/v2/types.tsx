@@ -4,15 +4,22 @@ import {AbsoluteFill, interpolate, useCurrentFrame, Sequence} from 'remotion';
 import {Mascot, useBob, useIn} from '../kit';
 import {theme as T} from '../theme';
 import {fitBox, fitOneLine} from '../fit';
-import {Bg, Brand, Clipboard, Frame, Helmet, IconTile, INK, KINDS, Pop, Row, Sign, W, ZONE, box, rowHeight} from './ui';
+import {Bg, Brand, Clipboard, Frame, Helmet, IconTile, INK, KINDS, Pop, Row, SectionCtx, Sign, W, ZONE, box, rowHeight} from './ui';
 
 const X = T.safeX;
 const clamp = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
 
 /* ============ 0 · PORTADA (primer segundo: el gancho) ============ */
+/** Frase que dice el muñeco al abrir cada sección (bocadillo de la portada). */
+const INTRO: Record<string, string> = {
+  'ÚLTIMA HORA': '¡Última hora! Esto acaba de salir', 'RUMOR': 'Ojo, esto es un rumor', 'FICHAJES': 'Se mueve el mercado', 'RESULTADO': 'Así acabó la carrera',
+  'TÉCNICA': 'Hoy toca técnica', 'HISTORIA': 'Viaje al pasado', 'RESUMEN DEL DÍA': 'Lo que ha pasado hoy', 'RESUMEN SEMANAL': 'Lo que ha pasado esta semana',
+  'EL DATO': 'Un dato que no sabías', 'RESULTADO ': 'Así acabó la carrera', 'MERCADO': 'Se mueve el mercado', 'CÓMO FUNCIONA': 'Hoy toca técnica',
+};
 type PortadaProps = {kind?: keyof typeof KINDS; headline: string; hl?: string; chip: string; date: string};
 const PortadaBase: React.FC<PortadaProps> = ({kind = 'noticia', headline, hl, chip, date}) => {
-  const f = React.useMemo(() => fitBox(headline, W, 700, {max: 150, min: 76, lh: 1.12}), [headline]);
+  const f = React.useMemo(() => fitBox(headline, W, 620, {max: 150, min: 76, lh: 1.12}), [headline]);
+  const section = (React.useContext(SectionCtx) ?? KINDS[kind].tag).toUpperCase();
   const bob = useBob(10, 0.09);
   const m = useIn(18, {damping: 9, stiffness: 120, mass: 0.8});
   const frame = useCurrentFrame();
@@ -20,11 +27,15 @@ const PortadaBase: React.FC<PortadaProps> = ({kind = 'noticia', headline, hl, ch
     <AbsoluteFill>
       <Bg kind={kind} />
       <Brand kind={kind} />
-      <div style={{position: 'absolute', top: 250, left: X, display: 'flex', gap: 18, alignItems: 'center'}}>
+      {/* SECCIÓN: lo primero que se ve (Técnica, Última hora, Rumor, Resumen del día…) */}
+      <div style={{position: 'absolute', top: 212, left: X, transform: 'rotate(-2deg)'}}>
+        <Pop d={0} from="scale"><div style={{...box(INK, 20, 8), color: KINDS[kind].accent === '#111111' ? '#ffd21f' : '#fff', fontFamily: T.display, fontSize: section.length > 14 ? 60 : 76, lineHeight: 1, padding: '12px 30px', boxShadow: `9px 9px 0 #fff`, letterSpacing: 1}}>{section}</div></Pop>
+      </div>
+      <div style={{position: 'absolute', top: 352, left: X, display: 'flex', gap: 18, alignItems: 'center'}}>
         <Pop d={4} from="scale"><div style={{...box('#fff', 18, 8), fontFamily: T.display, fontSize: 36, padding: '8px 22px', transform: 'rotate(-3deg)'}}>{chip}</div></Pop>
         <Pop d={8}><div style={{fontFamily: T.body, fontWeight: 800, fontSize: 34, letterSpacing: 2, color: INK}}>{date}</div></Pop>
       </div>
-      <div style={{position: 'absolute', top: 370, left: X, width: W, isolation: 'isolate'}}>
+      <div style={{position: 'absolute', top: 450, left: X, width: W, isolation: 'isolate'}}>
         {f.lines.map((line, i) => {
           const p = interpolate(frame, [8 + i * 5, 20 + i * 5], [0, 1], clamp);
           return (
@@ -38,6 +49,14 @@ const PortadaBase: React.FC<PortadaProps> = ({kind = 'noticia', headline, hl, ch
             </div>
           );
         })}
+      </div>
+      <div style={{position: 'absolute', left: X, top: 1105, width: 520, transform: 'rotate(-2deg)'}}>
+        <Pop d={14} from="scale">
+          <div style={{...box('#fff', 34, 9), position: 'relative', fontFamily: T.display, fontSize: 50, lineHeight: 1.1, color: INK, padding: '22px 30px'}}>
+            {INTRO[section] ?? 'Atento a esto'}
+            <div style={{position: 'absolute', right: -27, top: 70, width: 40, height: 40, background: '#fff', borderRight: `7px solid ${INK}`, borderTop: `7px solid ${INK}`, transform: 'rotate(45deg)'}} />
+          </div>
+        </Pop>
       </div>
       <div style={{position: 'absolute', right: 40, top: 1120, transform: `translateY(${bob}px) rotate(${interpolate(m, [0, 1], [24, -8])}deg) scale(${m})`}}><Mascot size={420} mood="wow" /></div>
       <div style={{position: 'absolute', left: X, top: 1330, transform: 'rotate(-4deg)'}}>

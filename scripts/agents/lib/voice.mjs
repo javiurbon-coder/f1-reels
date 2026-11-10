@@ -9,7 +9,7 @@ import fs from 'node:fs';
 const PIPER = process.env.PIPER_BIN || 'piper';
 const VOICE = process.env.PIPER_VOICE || 'voices/es_ES-davefx-medium.onnx';
 const EDGE_VOICE = process.env.EDGE_VOICE || 'es-ES-AlvaroNeural';
-const EDGE_RATE = process.env.EDGE_RATE || '+4%';
+const EDGE_RATE = process.env.EDGE_RATE || '-2%';
 
 export const piperAvailable = () => spawnSync(PIPER, ['--help'], {stdio: 'ignore'}).status === 0 && fs.existsSync(VOICE);
 const edgeCmd = () => {
@@ -78,7 +78,7 @@ async function eleven(text, out) {
   const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}/with-timestamps?output_format=mp3_44100_128`, {
     method: 'POST',
     headers: {'xi-api-key': process.env.ELEVENLABS_API_KEY, 'content-type': 'application/json'},
-    body: JSON.stringify({text, model_id: process.env.ELEVENLABS_MODEL || 'eleven_multilingual_v2'}),
+    body: JSON.stringify({text, model_id: process.env.ELEVENLABS_MODEL || 'eleven_multilingual_v2', voice_settings: {stability: 0.5, similarity_boost: 0.75, speed: +(process.env.ELEVENLABS_SPEED || 0.93)}}),
     signal: AbortSignal.timeout(120000),
   });
   if (!r.ok) throw new Error(`ElevenLabs ${r.status}: ${(await r.text()).slice(0, 160)}`);

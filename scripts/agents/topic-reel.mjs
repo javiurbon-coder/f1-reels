@@ -47,10 +47,13 @@ if (process.argv[1]?.endsWith('topic-reel.mjs')) {
   const words = v?.words ?? wordTimings(T.script, seconds);
   const total = +(seconds + 0.8).toFixed(2);
   const {scenes, problems} = buildScenes(T, words, total);
-  const props = cleanDeep({kind: T.pillar === 'tecnica' ? 'tecnico' : 'dato', headline: T.headline, hl: T.hl, chip: T.chip, date: T.date,
+  const props = cleanDeep({kind: T.pillar === 'tecnica' ? 'tecnico' : 'dato', headline: T.headline, hl: T.hl, section: T.pillar === 'tecnica' ? 'Técnica' : 'Historia', chip: T.chip, date: T.date,
     sources: T.sources.map(({name, domain, official}) => ({name, domain, official: !!official})), scenes, words, ...(v ? {narration: {file: v.file, seconds: +v.seconds.toFixed(2)}} : {})});
-  const caption = `${T.headline}\n\nFuentes:\n${T.sources.map((s) => `• ${s.name}: ${s.url}`).join('\n')}\n\n${settings.hashtags} ${T.hashtags}`.trim();
-  const note = [`GUION: ${T.script}`, `Voz: ${v?.engine ?? 'sin voz'} · ${total.toFixed(0)} s · ${scenes.length} escenas`, ...problems.map((p) => 'Control de calidad: ' + p)].join('\n');
+  const names = T.sources.map((x) => x.name), listed = names.length > 1 ? `${names.slice(0, -1).join(', ')} y ${names.at(-1)}` : names[0];
+  // cuerpo = guion sin las dos últimas frases (fuentes y «Síguenos»), que van aparte
+  const body = T.script.split(/(?<=[.!?])\s+/).filter((x) => !/^Esto lo cuentan|^Síguenos/i.test(x)).join(' ');
+  const caption = `${T.headline}\n\n${body}\n\nFuentes: ${listed}.\n\nLa voz de este vídeo está generada con IA.\n\nSíguenos para más.\n\n${settings.hashtags} ${T.hashtags}`.trim();
+  const note = [`GUION: ${T.script}`, `Enlaces de las fuentes (para comprobar): ${T.sources.map((x) => `${x.name}: ${x.url}`).join(' | ')}`, `Voz: ${v?.engine ?? 'sin voz'} · ${total.toFixed(0)} s · ${scenes.length} escenas`, ...problems.map((p) => 'Control de calidad: ' + p)].join('\n');
   const {enqueue} = await import('../lib/queue.mjs'); // solo aquí: necesita Remotion
   await enqueue({id: qid, composition: 'Reel', series: T.pillar === 'tecnica' ? 'tecnica' : 'datos', props, caption, sources: T.sources, note});
   console.log(`✓ en cola [${T.pillar}]: ${T.headline}`);

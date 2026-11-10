@@ -116,6 +116,7 @@ for (const c of clusters) {
   const prod = await produce({id: c.id, script, facts, noVoice, ctx});
   const hlWord = (c.headline.split(' ').find((w, i) => /^\p{Lu}/u.test(w) && w.length > 3 && (i > 0 || c.topics.length)) ?? '').replace(/[^\p{L}\d]/gu, '');
   const props = cleanDeep({kind: route.series === 'noticias' ? 'noticia' : route.series, headline: c.headline, hl: hlWord, date: base.date,
+    section: ({rumor: 'Rumor', mercado: 'Fichajes', resultado: 'Resultado', noticias: 'Última hora'})[route.series] ?? undefined,
     chip: route.series === 'rumor' ? 'Rumor' : c.level === 'OFICIAL' ? 'Oficial' : `${base.sources.length} fuentes`,
     sources: base.sources.slice(0, 4), scenes: prod.scenes, words: prod.words, ...(prod.narration ? {narration: prod.narration} : {})});
   route.composition = 'Reel';
@@ -123,9 +124,12 @@ for (const c of clusters) {
   notes.push(`Voz: ${prod.engine} · ${prod.total.toFixed(0)} s · ${prod.scenes.length} escenas (${prod.dataScenes} con datos)`);
 
   const tags = c.topics.map((t) => loadTopics()[t].hashtags).join(' ');
-  const caption = (route.series === 'rumor' ? `⚠️ RUMOR NO CONFIRMADO: ${c.headline}\n\nLo cuentan:\n` : `${c.headline}\n\nContrastado por ${c.count} ${c.count === 1 ? 'fuente' : 'fuentes'}:\n`) +
-    [...c.sources, ...(route.series === 'rumor' ? c.alsoSay : [])].map((s) => `• ${s.name}: ${s.url}`).join('\n') +
-    (route.series !== 'rumor' && c.alsoSay.length ? `\n\nTambién lo comentan: ${c.alsoSay.map((s) => s.name).join(', ')}` : '') + `\n\n${settings.hashtags} ${tags}`.trimEnd();
+  const all = [...c.sources, ...(route.series === 'rumor' ? c.alsoSay : [])];
+  const nm = all.map((s) => s.name), listed = nm.length > 1 ? `${nm.slice(0, -1).join(', ')} y ${nm.at(-1)}` : nm[0] ?? '';
+  const caption = (route.series === 'rumor' ? `⚠️ RUMOR NO CONFIRMADO: ${c.headline}\n\n${script}\n\nLo cuentan: ${listed}.` : `${c.headline}\n\n${script}\n\nContrastado por ${c.count} ${c.count === 1 ? 'fuente' : 'fuentes'}: ${listed}.`) +
+    (route.series !== 'rumor' && c.alsoSay.length ? `\nTambién lo comentan: ${c.alsoSay.map((s) => s.name).join(', ')}.` : '') +
+    `\n\nLa voz de este vídeo está generada con IA.\n\n${settings.hashtags} ${tags}`.trimEnd();
+  notes.push('Enlaces de las fuentes (para comprobar): ' + all.map((s) => `${s.name}: ${s.url}`).join(' | '));
   jobs.push({c, route, props, caption, script, notes});
   made++; if (route.series === 'rumor') rumors++;
 }

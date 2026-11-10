@@ -28,6 +28,8 @@ export const KINDS = {
   cta: {a: '#ffd21f', b: '#ffe36e', accent: '#ff3b1d', tag: 'Síguenos'},
 } as const;
 export type Kind = keyof typeof KINDS;
+/** Nombre de la sección del reel (Técnica, Última hora, Resumen del día…). Si no se indica, se usa la etiqueta del tipo. */
+export const SectionCtx = React.createContext<string | undefined>(undefined);
 
 /* ---------- fondo: franjas diagonales en movimiento ---------- */
 export const Bg: React.FC<{kind: Kind}> = ({kind}) => {
@@ -49,11 +51,12 @@ export const Bg: React.FC<{kind: Kind}> = ({kind}) => {
 export const Brand: React.FC<{kind: Kind}> = ({kind}) => {
   const p = useIn(0);
   const dark = kind === 'tecnico';
+  const section = React.useContext(SectionCtx) ?? KINDS[kind].tag;
   return (
     <div style={{position: 'absolute', top: 96, left: T.safeX, width: W, height: 94, display: 'flex', alignItems: 'center', gap: 14, opacity: p, transform: `translateY(${interpolate(p, [0, 1], [-30, 0])}px)`}}>
       <Mascot size={88} />
       <div style={{fontFamily: T.display, fontSize: 34, color: dark ? T.white : INK, lineHeight: 1, flex: 1}}>{T.brand}</div>
-      <div style={{fontFamily: T.body, fontWeight: 800, fontSize: 28, letterSpacing: 1.5, textTransform: 'uppercase', background: INK, color: T.white, borderRadius: 999, padding: '10px 24px', border: dark ? `3px solid ${T.white}` : 'none'}}>{KINDS[kind].tag}</div>
+      <div style={{fontFamily: T.body, fontWeight: 800, fontSize: 28, letterSpacing: 1.5, textTransform: 'uppercase', background: INK, color: T.white, borderRadius: 999, padding: '10px 24px', border: dark ? `3px solid ${T.white}` : 'none'}}>{section}</div>
     </div>
   );
 };

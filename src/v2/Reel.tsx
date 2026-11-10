@@ -4,7 +4,7 @@ import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Wipe} from '../kit';
 import {Dato, Fuentes, Mercado, Noticia, Portada, Resultado, Rumor, Tecnico} from './types';
-import type {Kind} from './ui';
+import {SectionCtx, type Kind} from './ui';
 
 type Word = {t: string; start: number; end: number};
 type T0 = {from: number; to: number};
@@ -25,6 +25,8 @@ export type ReelProps = {
   headline: string;
   hl?: string;
   chip: string;
+  /** Sección que se ve en grande al empezar (Técnica, Última hora, Rumor, Resumen del día…). */
+  section?: string;
   date: string;
   sources: {name: string; domain: string; official?: boolean}[];
   scenes: V2Scene[];
@@ -81,6 +83,7 @@ const SceneV2: React.FC<{s: V2Scene; p: ReelProps}> = ({s, p}) => {
 export const Reel: React.FC<ReelProps> = (p) => {
   const {fps} = useVideoConfig();
   return (
+    <SectionCtx.Provider value={p.section}>
     <AbsoluteFill>
       {p.narration && <Audio src={staticFile(p.narration.file)} />}
       {p.scenes.map((s, i) => {
@@ -95,5 +98,6 @@ export const Reel: React.FC<ReelProps> = (p) => {
         );
       })}
     </AbsoluteFill>
+    </SectionCtx.Provider>
   );
 };
