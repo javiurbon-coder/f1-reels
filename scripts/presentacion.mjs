@@ -9,7 +9,7 @@ export const BLOCKS = [
   '¿Harto de rumores de Fórmula 1 que luego no son verdad?',
   'Esto es Contrastado F1: noticias, fichajes y resultados, explicados en menos de un minuto.',
   'Nuestra regla es simple: si no lo confirman al menos dos fuentes, no lo damos como noticia. Y si es un rumor, te lo avisamos.',
-  'Además, ponemos cada noticia en contexto con datos reales. Por ejemplo: Verstappen ha remontado en Brasil tres años seguidos.',
+  'Además, ponemos cada noticia en contexto con datos reales. Por ejemplo: Verstappen ha subido al podio de Interlagos tres años seguidos, saliendo desde el fondo de la parrilla.',
   'Y también te explicamos cómo funciona un Fórmula 1 por dentro, de forma sencilla.',
   'Síguenos para no perderte nada. Las fuentes, siempre en la descripción.',
 ];
