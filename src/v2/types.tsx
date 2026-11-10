@@ -1,6 +1,6 @@
 // SISTEMA DE DISEÑO v2 — una escena-objeto por cada tipo de reel.
 import React from 'react';
-import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame, Sequence} from 'remotion';
 import {Mascot, useBob, useIn} from '../kit';
 import {theme as T} from '../theme';
 import {fitBox, fitOneLine} from '../fit';
@@ -10,7 +10,8 @@ const X = T.safeX;
 const clamp = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
 
 /* ============ 0 · PORTADA (primer segundo: el gancho) ============ */
-export const Portada: React.FC<{kind?: keyof typeof KINDS; headline: string; hl?: string; chip: string; date: string}> = ({kind = 'noticia', headline, hl, chip, date}) => {
+type PortadaProps = {kind?: keyof typeof KINDS; headline: string; hl?: string; chip: string; date: string};
+const PortadaBase: React.FC<PortadaProps> = ({kind = 'noticia', headline, hl, chip, date}) => {
   const f = React.useMemo(() => fitBox(headline, W, 700, {max: 150, min: 76, lh: 1.12}), [headline]);
   const bob = useBob(10, 0.09);
   const m = useIn(18, {damping: 9, stiffness: 120, mass: 0.8});
@@ -46,6 +47,11 @@ export const Portada: React.FC<{kind?: keyof typeof KINDS; headline: string; hl?
     </AbsoluteFill>
   );
 };
+
+/** PORTADA: el fotograma 0 ya es la portada completa (título, chip, mascota y botón visibles).
+ *  Instagram usa el primer fotograma como portada por defecto, así que no puede arrancar en blanco.
+ *  Se adelanta la animación 40 fotogramas (Sequence con `from` negativo): lo que antes «entraba» ya está colocado en el 0. */
+export const Portada: React.FC<PortadaProps> = (p) => <Sequence from={-40} layout="none"><PortadaBase {...p} /></Sequence>;
 
 /* ============ 1 · NOTICIA VERIFICADA: portapapeles "Lo que sabemos" ============ */
 export const Noticia: React.FC<{cap: string; on?: string | number; title?: string; kind?: keyof typeof KINDS; rows: {icon: string; title: string; sub?: string; d?: number}[]}> = ({cap, on, title = 'Lo que sabemos', rows, kind = 'noticia'}) => (
