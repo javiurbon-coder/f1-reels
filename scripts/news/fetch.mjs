@@ -69,9 +69,15 @@ if (process.argv[1].endsWith('fetch.mjs')) {
   }
   // pistas añadidas a mano (tuits, directos, etc.): data/news/manual.json
   if (!local && fs.existsSync('data/news/manual.json')) all.push(...JSON.parse(fs.readFileSync('data/news/manual.json', 'utf8')));
+  // pistas enviadas desde Telegram («noticia: …» o enlace de un tuit): viven en data/state/bot.json
+  if (!local && fs.existsSync('data/state/bot.json')) {
+    const leads = (JSON.parse(fs.readFileSync('data/state/bot.json', 'utf8')).leads ?? []).filter((l) => Date.now() - new Date(l.published) < 3 * 86400e3);
+    if (leads.length) console.log(`✓ ${leads.length} pista(s) manual(es) desde Telegram`);
+    all.push(...leads.map((l) => ({...l, published: new Date().toISOString()})));
+  }
   // Fuera lo que no es noticia: directos, encuestas, podcasts, vídeos, "valora la carrera"...
   const NOISE = /^(as it happened|live[:\s]|watch[:\s]|listen[:\s]|video[:\s]|podcast|quiz|poll|rate the race|f1 nation|en directo|directo[:\s])|\b(rate the race|as it happened|live updates|live blog|podcast|vota|encuesta)\b/i;
-  const f1 = all.filter((x) => isF1(x.title) && !NOISE.test(x.title));
+  const f1 = all.filter((x) => x.manual || (isF1(x.title) && !NOISE.test(x.title))); // tus pistas entran siempre
   fs.mkdirSync('data/news', {recursive: true});
   fs.writeFileSync('data/news/raw.json', JSON.stringify(f1, null, 2));
   console.log(`OK → data/news/raw.json (${f1.length} titulares de F1 de ${all.length})`);

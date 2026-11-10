@@ -17,6 +17,15 @@ for (const u of updates) {
     for (const t of r.reply) await say(t);
   } catch (e) { console.error(e.message); }
 }
+for (const l of state.leads ?? []) if (l.needsText) {
+  try {
+    const j = await (await fetch(`https://publish.twitter.com/oembed?omit_script=1&url=${encodeURIComponent(l.link)}`, {signal: AbortSignal.timeout(10000)})).json();
+    l.title = (j.html ?? '').replace(/<a[^>]*>pic\.twitter[^<]*<\/a>/g, '').replace(/<[^>]+>/g, ' ').replace(/&mdash;.*$/s, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
+  } catch {}
+  delete l.needsText;
+  if (!l.title) { l.title = ''; await say('No pude leer ese tuit. Escribe «noticia: …» con el texto y lo apunto.'); }
+}
+state.leads = (state.leads ?? []).filter((l) => l.title);
 save(state);
 const work = state.more > 0 || (state.picks?.length ?? 0) > 0 || Object.values(state.items).some((i) => i.status === 'edit');
 console.log(`${updates.length} novedad(es). Trabajo pesado: ${work}`);

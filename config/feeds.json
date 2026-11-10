@@ -55,5 +55,96 @@
   "url": "https://the-race.com/category/formula-1/feed/",
   "lang": "en",
   "tier": "medio"
+ },
+ {
+  "name": "Marca",
+  "url": "https://e00-marca.uecdn.es/rss/motor/formula1.xml",
+  "lang": "es",
+  "tier": "medio"
+ },
+ {
+  "name": "Mundo Deportivo",
+  "url": "https://www.mundodeportivo.com/rss/formula1",
+  "lang": "es",
+  "tier": "medio"
+ },
+ {
+  "name": "Sport",
+  "url": "https://www.sport.es/es/rss/formula1/rss.xml",
+  "lang": "es",
+  "tier": "medio"
+ },
+ {
+  "name": "F1 Oversteer",
+  "url": "https://f1oversteer.com/feed/",
+  "lang": "es",
+  "tier": "medio"
+ },
+ {
+  "name": "BBC Sport",
+  "url": "https://feeds.bbci.co.uk/sport/formula1/rss.xml",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "Sky Sports F1",
+  "url": "https://www.skysports.com/rss/12433",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "The Guardian",
+  "url": "https://www.theguardian.com/sport/formulaone/rss",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "ESPN",
+  "url": "https://www.espn.com/espn/rss/f1/news",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "Crash.net",
+  "url": "https://www.crash.net/rss/f1",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "GPFans",
+  "url": "https://www.gpfans.com/en/rss.xml",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "WTF1",
+  "url": "https://wtf1.com/feed/",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "F1i",
+  "url": "https://f1i.com/feed/",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "RacingNews365",
+  "url": "https://racingnews365.com/feed/news.xml",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "Motorsport Week",
+  "url": "https://www.motorsportweek.com/feed/",
+  "lang": "en",
+  "tier": "medio"
+ },
+ {
+  "name": "FIA (comunicados)",
+  "url": "https://www.fia.com/rss/press-release",
+  "lang": "en",
+  "official": true,
+  "tier": "oficial"
  }
 ]

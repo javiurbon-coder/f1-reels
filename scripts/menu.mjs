@@ -18,9 +18,11 @@ const now = Date.now();
 for (const [id, t] of Object.entries(state.offered)) if (now - new Date(t) > 3 * 86400e3) { delete state.offered[id]; delete state.menuClusters[id]; }
 
 const fresh = clusters.filter((c) => !seen.has(c.id) && !state.offered[c.id] && !state.made.includes(c.id));
-const confirmed = fresh.filter((c) => c.level !== 'RADAR').slice(0, 4);
+const isLead = (c) => [...c.sources, ...c.alsoSay].some((s) => s.manual);
+const leads = fresh.filter(isLead).slice(0, 2);
+const confirmed = fresh.filter((c) => !isLead(c)).filter((c) => c.level !== 'RADAR').slice(0, 4);
 const rumors = fresh.filter((c) => c.level === 'RADAR').slice(0, 1);
-const options = [...confirmed, ...rumors].slice(0, 5);
+const options = [...leads, ...confirmed, ...rumors].filter((c, i, a) => a.indexOf(c) === i).slice(0, 5);
 
 if (!options.length) {
   await call('sendMessage', {chat_id: CHAT, text: '📭 Hoy no hay noticias nuevas que merezcan reel. Si quieres, pulsa 🔁 más tarde.', reply_markup: {inline_keyboard: [[{text: '🔁 Buscar otra vez', callback_data: 'more'}]]}});
@@ -30,8 +32,8 @@ if (!options.length) {
 const NUM = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣'];
 const label = (c) => {
   const kind = routeCluster(c).series;
-  if (c.level === 'RADAR') return '⚠️ RUMOR sin confirmar';
-  const tag = kind === 'mercado' ? 'MERCADO · ' : '';
+  if (c.level === 'RADAR') return isLead(c) ? '📌 TU PISTA · rumor sin confirmar' : '⚠️ RUMOR sin confirmar';
+  const tag = (isLead(c) ? '📌 TU PISTA · ' : '') + (kind === 'mercado' ? 'MERCADO · ' : '');
   return c.level === 'OFICIAL' ? `🏛 ${tag}Fuente oficial` : `🔎 ${tag}${c.count} fuentes`;
 };
 const lines = options.map((c, i) => `${NUM[i]} ${label(c)}\n${cleanText(c.headline)}${c.headlineLang === 'en' ? ' (EN)' : ''}`);
