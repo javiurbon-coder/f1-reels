@@ -2267,7 +2267,11 @@
       ]
     }
   },
-  "hoy": true,
+  "hoy": false,
   "menuV": 1,
-  "leads": []
+  "leads": [],
+  "picks": [],
+  "topicPicks": [],
+  "sumPicks": [],
+  "hoyDate": "2026-11-10"
 }
