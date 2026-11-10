@@ -1,5 +1,5 @@
 {
-  "offset": 738537945,
+  "offset": 738537946,
   "more": 0,
   "items": {
     "n-MjN2RENhRFhPWg": {
@@ -3682,7 +3682,9 @@
   "menuV": 1,
   "leads": [],
   "picks": [],
-  "topicPicks": [],
+  "topicPicks": [
+    "efecto-suelo"
+  ],
   "sumPicks": [],
   "hoyDate": "2026-11-10",
   "topicsMade": [
