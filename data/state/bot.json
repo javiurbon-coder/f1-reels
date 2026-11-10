@@ -940,7 +940,12 @@
     "n-bHR5LW5vdGlvbg": "2026-11-10T14:43:59.634Z",
     "n-N0LWRlY2lzaW9u": "2026-11-10T14:43:59.634Z",
     "n-lScUd4MHh1RkhL": "2026-11-10T14:43:59.634Z",
-    "n-1jYWxlbmRhcnMv": "2026-11-10T14:43:59.634Z"
+    "n-1jYWxlbmRhcnMv": "2026-11-10T14:43:59.634Z",
+    "n-Vyc2hpcC5odG1s": "2026-11-10T14:54:08.936Z",
+    "n-c2UtZmFpbHVyZQ": "2026-11-10T14:54:08.936Z",
+    "n-WRpYS1yZWFjdHM": "2026-11-10T14:54:08.936Z",
+    "n-cC1jb21lYmFjaw": "2026-11-10T14:54:08.936Z",
+    "n-bm91bmNlbWVudA": "2026-11-10T14:54:08.936Z"
   },
   "menuClusters": {
     "n-9jb250ZW50PXVr": {
@@ -1082,6 +1087,337 @@
           "published": "2026-11-10T14:22:02.000Z",
           "tier": "medio",
           "official": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-Vyc2hpcC5odG1s": {
+      "id": "n-Vyc2hpcC5odG1s",
+      "level": "ALTA",
+      "count": 9,
+      "headline": "Piastri splits from manager Webber",
+      "headlineLang": "en",
+      "latest": "2026-11-09T22:01:00.000Z",
+      "sources": [
+        {
+          "summary": "Oscar Piastri has split from F1 manager Mark Webber.",
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110032/1/oscar-piastri-confirms-split-f1-career-manager-mark-webber",
+          "title": "Oscar Piastri confirms split with F1 career manager Mark Webber",
+          "lang": "en",
+          "published": "2026-11-09T08:35:59.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Oscar Piastri and Mark Webber have mutually agreed to terminate their management agreement, the pair have announced. Webber and his wife Ann – who ran Mark’s career herself back in the day – became Piastri’s managers in 2019, the year the youngster narrowly beat Victor Martins to the Formula Renault Eurocup title and a spot on Renault’s F1 academy. Piastri’s rise was meteoric ... Keep reading",
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/oscar-piastri-wont-have-mark-webber-as-his-manager-anymore/10873253/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "title": "Oscar Piastri splits from Mark Webber management",
+          "lang": "en",
+          "published": "2026-11-09T08:39:26.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Oscar Piastri has split ways with long-time manager Mark Webber.",
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/breaking-oscar-piastri-terminates-management-agreement-with-mark-webber",
+          "title": "Oscar Piastri ends management agreement with Mark Webber",
+          "lang": "en",
+          "published": "2026-11-09T08:42:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Oscar Piastri and Mark Webber have mutually agreed to terminate their management agreement, the pair have announced. Webber and his wife Ann – who ran Mark’s career herself back in the day – became Piastri’s managers in 2019, the year the youngster narrowly beat Victor Martins to the Formula Renault Eurocup title and a spot on Renault’s F1 academy. Piastri’s rise was meteoric ... Keep reading",
+          "name": "Autosport",
+          "domain": "autosport.com",
+          "url": "https://www.autosport.com/f1/news/oscar-piastri-splits-from-mark-webber-management/10873258/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+          "title": "Piastri and Webber terminate management agreement",
+          "lang": "en",
+          "published": "2026-11-09T08:43:40.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Oscar Piastri has split from the management team headed by ex-F1 driver Mark Webber and Ann Neal",
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/oscar-piastri-mark-webber-f1-management-split/",
+          "title": "Piastri splits with Webber's F1 management team",
+          "lang": "en",
+          "published": "2026-11-09T08:45:05.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "McLaren driver Oscar Piastri has confirmed he is no longer being represented by Mark Webber's management team.",
+          "name": "RaceFans",
+          "domain": "racefans.net",
+          "url": "https://www.racefans.net/2026/11/09/piastri-splits-from-webbers-management-team/",
+          "title": "Piastri splits from Webber’s management team | Formula 1",
+          "lang": "en",
+          "published": "2026-11-09T09:01:06.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Oscar Piastri has split from his management team, led by former Red Bull driver and nine-time Formula 1 winner Mark Webber and his partner Ann Webber.",
+          "name": "Sky Sports F1",
+          "domain": "skysports.com",
+          "url": "https://www.skysports.com/f1/news/12433/13610108/oscar-piastri-mclaren-driver-splits-from-mark-webber-management-after-sao-paulo-grand-prix-in-brazil",
+          "title": "Piastri splits from manager Webber",
+          "lang": "en",
+          "published": "2026-11-09T11:00:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Oscar Piastri and Mark Webber have brought their management partnership to an end, with the Australian driver and... The post Piastri and Webber agree to end management partnership appeared first on F1i.com .",
+          "name": "F1i",
+          "domain": "f1i.com",
+          "url": "https://f1i.com/news/577800-piastri-and-webber-agree-to-end-management-partnership.html",
+          "title": "Piastri and Webber agree to end management partnership",
+          "lang": "en",
+          "published": "2026-11-09T13:17:58.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Your latest F1 news recap is go, go, go!",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/lewis-hamilton-ferrari-dispute-fia-double-punishment-f1-2026-brazilian-grand-prix",
+          "title": "Lewis Hamilton final stance; FIA double punishment; Piastri Webber split – roundup",
+          "lang": "en",
+          "published": "2026-11-09T22:01:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-c2UtZmFpbHVyZQ": {
+      "id": "n-c2UtZmFpbHVyZQ",
+      "level": "ALTA",
+      "count": 6,
+      "headline": "Charles Leclerc is more 'loved' within Ferrari as Lewis Hamilton has created a 'deep rift'",
+      "headlineLang": "es",
+      "latest": "2026-11-10T11:00:00.000Z",
+      "sources": [
+        {
+          "summary": "Lewis Hamilton's early struggles in Brazil have been explained by Ferrari.",
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110039/1/ferrari-reveals-reason-lewis-hamilton-struggles-after-stunning-start",
+          "title": "Ferrari reveals reason for Lewis Hamilton Brazil GP struggles after stunning start",
+          "lang": "en",
+          "published": "2026-11-09T11:57:53.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Lewis Hamilton has told fans he is \"devastated\" by the outcome of his Brazilian Grand Prix, which began with an impressive charge from the back of the grid and finished with a spin in the closing laps. The Ferrari driver shared his thoughts on Instagram on Monday after finishing ninth at Interlagos on Sunday. Hamilton had to start from 20th on the grid after an engine penalty, but climbed ... Keep reading",
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/lewis-hamilton-sends-message-to-ferrari-fans-after-devastating-brazil-gp/10873360/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "title": "Lewis Hamilton sends message to Ferrari fans after 'devastating' Brazil GP",
+          "lang": "en",
+          "published": "2026-11-09T13:38:32.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Lewis Hamilton was \"devastated\" after the Brazilian GP with Ferrari to launch an SF-26 investigation.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/lewis-hamilton-ferrari-sf-26-investigation-f1-2026-brazilian-grand-prix",
+          "title": "Lewis Hamilton ‘devastated’ as Ferrari to launch SF-26 investigation",
+          "lang": "en",
+          "published": "2026-11-09T16:23:18.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "McLaren could potentially be an exit route for Lewis Hamilton if he becomes frustrated with the situation at Ferrari according to a prominent F1 insider.",
+          "name": "GPFans",
+          "domain": "gpfans.com",
+          "url": "https://www.gpfans.com/en/f1-news/1092658/lewis-hamilton-to-mclaren-f1-insider-peter-windsor-ferrari-escape-route/",
+          "title": "Lewis Hamilton back to McLaren? F1 insider tips Ferrari escape route",
+          "lang": "en",
+          "published": "2026-11-09T19:58:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Lewis Hamilton had a rocket start, but his race went backwards from there in Sao Paulo.",
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/lewis-hamilton-explains-massive-ferrari-issue-after-surprise-failure",
+          "title": "Lewis Hamilton explains 'massive' Ferrari issue after surprise failure",
+          "lang": "en",
+          "published": "2026-11-10T07:10:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "There is an intense rivalry building between Ferrari drivers Charles Leclerc and Lewis Hamilton both on and off the track. When they are in the ...",
+          "name": "F1 Oversteer",
+          "domain": "f1oversteer.com",
+          "url": "https://www.f1oversteer.com/news/charles-leclerc-is-more-loved-within-ferrari-as-lewis-hamilton-has-created-a-deep-rift/",
+          "title": "Charles Leclerc is more 'loved' within Ferrari as Lewis Hamilton has created a 'deep rift'",
+          "lang": "es",
+          "published": "2026-11-10T11:00:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-WRpYS1yZWFjdHM": {
+      "id": "n-WRpYS1yZWFjdHM",
+      "level": "ALTA",
+      "count": 4,
+      "headline": "Lawson closing in on F1 2027 stay with Racing Bulls",
+      "headlineLang": "en",
+      "latest": "2026-11-09T18:55:56.000Z",
+      "sources": [
+        {
+          "summary": "Liam Lawson is closing in on a 2027 F1 race deal with Racing Bulls following his standout performance over the Brazilian GP weekend",
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/liam-lawson-closing-on-f1-2027-racing-bulls-stay/",
+          "title": "Lawson closing in on F1 2027 stay with Racing Bulls",
+          "lang": "en",
+          "published": "2026-11-09T07:24:26.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Racing Bulls is reportedly close to announcing its F1 2027 driver plans.",
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110034/1/racing-bulls-closing-f1-2027-driver-decision-after-liam-lawson-statement",
+          "title": "Racing Bulls closing on F1 2027 driver decision after Liam Lawson statement",
+          "lang": "en",
+          "published": "2026-11-09T09:34:59.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Find out how media from around the world reacted to the 2026 F1 São Paulo Grand Prix, held at the legendary Interlagos.",
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/liam-lawson-hypocrisy-warning-to-racing-bulls-as-max-verstappen-shows-true-colours---international-media-reacts",
+          "title": "Liam Lawson 'hypocrisy' warning to Racing Bulls as Max Verstappen shows 'true colours' - International Media reacts",
+          "lang": "en",
+          "published": "2026-11-09T18:05:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Lawson was second in the early stages.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/red-bull-liam-lawson-racing-bulls-stall-contract-decision",
+          "title": "Red Bull hail Liam Lawson performance as Racing Bulls stall on contract decision",
+          "lang": "en",
+          "published": "2026-11-09T18:55:56.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-cC1jb21lYmFjaw": {
+      "id": "n-cC1jb21lYmFjaw",
+      "level": "ALTA",
+      "count": 3,
+      "headline": "How Verstappen outperformed Red Bull’s simulations in Brazil",
+      "headlineLang": "en",
+      "latest": "2026-11-10T14:54:07.231Z",
+      "sources": [
+        {
+          "summary": "For the third year in a row, Verstappen produced an impressive comeback drive in the Formula 1 Sao Paulo Grand Prix. While the Dutchman won from 17th on the grid in 2024 and climbed from the pitlane to third place last year, this time he charged from 21st to second. According to Verstappen, his start on the uphill grid did not go to plan, although he took the blame himself after holding the ... Keep reading",
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/how-max-verstappen-beat-red-bulls-own-simulation-tools-with-p2-in-brazil/10873308/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "title": "How Max Verstappen beat Red Bull's own simulation tools with P2 in Brazil",
+          "lang": "en",
+          "published": "2026-11-09T11:33:44.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Red Bull's team principal admitted that even the team's expectations were exceeded by Max Verstappen's recovery drive in Brazil",
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110053/1/red-bull-boss-admits-max-verstappen-beating-sim-after-brazil-gp-comeback",
+          "title": "Red Bull boss admits Max Verstappen is ‘beating the sim’ after Brazil GP comeback",
+          "lang": "en",
+          "published": "2026-11-10T09:50:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Laurent Mekies has praised Max Verstappen for his sublime recovery from P21 to P2 at the Sao Paulo Grand Prix.",
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/mekies-explains-how-verstappen-outperformed-red-bulls-own-simulations-in-brazil.1ps87tyvjdEf23vDCaDXOZ",
+          "title": "How Verstappen outperformed Red Bull’s simulations in Brazil",
+          "lang": "en",
+          "published": "2026-11-10T14:54:07.231Z",
+          "tier": "oficial",
+          "official": true,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-bm91bmNlbWVudA": {
+      "id": "n-bm91bmNlbWVudA",
+      "level": "RADAR",
+      "count": 1,
+      "headline": "F1 confirms 2026 season finale with new update",
+      "headlineLang": "en",
+      "latest": "2026-11-10T14:44:17.000Z",
+      "sources": [
+        {
+          "summary": "2026 F1 plans are locked in.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/f1-confirms-2026-season-finale-with-new-announcement",
+          "title": "F1 confirms 2026 season finale with new update",
+          "lang": "en",
+          "published": "2026-11-10T14:44:17.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
         }
       ],
       "alsoSay": []
