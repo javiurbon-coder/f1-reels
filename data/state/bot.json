@@ -933,6 +933,585 @@
       "fileId": "BAACAgQAAxkDAAMcavMo7fO7jN37-fBNeQyoEfP2YN4AAp0eAAKE1JlTu5iMky2N-W09BA",
       "status": "sent",
       "sentAt": "2026-11-10T14:23:42.320Z"
+    },
+    "t-efecto-suelo": {
+      "id": "t-efecto-suelo",
+      "composition": "Reel",
+      "props": {
+        "kind": "tecnico",
+        "headline": "El efecto suelo: así se pega un F1 al asfalto",
+        "hl": "suelo",
+        "chip": "Técnica",
+        "date": "EXPLICADO",
+        "sources": [
+          {
+            "name": "Formula1.com",
+            "domain": "formula1.com",
+            "official": true
+          },
+          {
+            "name": "Racer",
+            "domain": "racer.com",
+            "official": false
+          },
+          {
+            "name": "Autosport",
+            "domain": "autosport.com",
+            "official": false
+          }
+        ],
+        "scenes": [
+          {
+            "type": "hook",
+            "from": 0,
+            "to": 3.33
+          },
+          {
+            "type": "tecnico",
+            "from": 3.33,
+            "to": 8.86,
+            "title": "El efecto suelo",
+            "parts": [
+              {
+                "n": 1,
+                "name": "Aire más rápido",
+                "sub": "Por debajo del coche",
+                "at": 0.3
+              },
+              {
+                "n": 2,
+                "name": "Baja la presión",
+                "sub": "Bajo el suelo",
+                "at": 2.82
+              },
+              {
+                "n": 3,
+                "name": "Succión",
+                "sub": "El coche se pega a la pista",
+                "at": 3.73
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "from": 8.86,
+            "to": 16.93,
+            "title": "Su historia",
+            "rows": [
+              {
+                "icon": "flag",
+                "title": "Lotus lo estrena",
+                "sub": "A finales de los setenta",
+                "at": 0.3
+              },
+              {
+                "icon": "wrench",
+                "title": "Se prohíbe",
+                "sub": "A principios de los ochenta",
+                "at": 2.53
+              },
+              {
+                "icon": "trophy",
+                "title": "Vuelve en 2022",
+                "sub": "Túneles bajo el suelo",
+                "at": 4.56
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "from": 16.93,
+            "to": 22.76,
+            "title": "El resultado",
+            "rows": [
+              {
+                "icon": "chart",
+                "title": "Más carga del suelo",
+                "at": 0.95
+              },
+              {
+                "icon": "doc",
+                "title": "Menos de los alerones",
+                "at": 2.73
+              },
+              {
+                "icon": "stopwatch",
+                "title": "Coches más cerca",
+                "sub": "Se siguen mejor",
+                "at": 4.34
+              }
+            ]
+          },
+          {
+            "type": "sources",
+            "from": 22.76,
+            "to": 28.73
+          }
+        ],
+        "words": [
+          {
+            "t": "Cómo",
+            "start": 0,
+            "end": 0.255
+          },
+          {
+            "t": "se",
+            "start": 0.302,
+            "end": 0.395
+          },
+          {
+            "t": "pega",
+            "start": 0.441,
+            "end": 0.662
+          },
+          {
+            "t": "un",
+            "start": 0.731,
+            "end": 0.789
+          },
+          {
+            "t": "Fórmula",
+            "start": 0.848,
+            "end": 1.207
+          },
+          {
+            "t": "1",
+            "start": 1.265,
+            "end": 1.335
+          },
+          {
+            "t": "al",
+            "start": 1.428,
+            "end": 1.486
+          },
+          {
+            "t": "asfalto?",
+            "start": 1.533,
+            "end": 2.055
+          },
+          {
+            "t": "Con",
+            "start": 2.125,
+            "end": 2.299
+          },
+          {
+            "t": "el",
+            "start": 2.357,
+            "end": 2.415
+          },
+          {
+            "t": "efecto",
+            "start": 2.45,
+            "end": 2.775
+          },
+          {
+            "t": "suelo.",
+            "start": 2.821,
+            "end": 3.228
+          },
+          {
+            "t": "El",
+            "start": 3.286,
+            "end": 3.448
+          },
+          {
+            "t": "aire",
+            "start": 3.483,
+            "end": 3.669
+          },
+          {
+            "t": "que",
+            "start": 3.715,
+            "end": 3.785
+          },
+          {
+            "t": "pasa",
+            "start": 3.843,
+            "end": 4.063
+          },
+          {
+            "t": "por",
+            "start": 4.11,
+            "end": 4.226
+          },
+          {
+            "t": "debajo",
+            "start": 4.284,
+            "end": 4.586
+          },
+          {
+            "t": "del",
+            "start": 4.632,
+            "end": 4.748
+          },
+          {
+            "t": "coche",
+            "start": 4.807,
+            "end": 5.062
+          },
+          {
+            "t": "va",
+            "start": 5.108,
+            "end": 5.19
+          },
+          {
+            "t": "más",
+            "start": 5.236,
+            "end": 5.329
+          },
+          {
+            "t": "rápido",
+            "start": 5.399,
+            "end": 5.735
+          },
+          {
+            "t": "y",
+            "start": 5.77,
+            "end": 5.805
+          },
+          {
+            "t": "baja",
+            "start": 5.851,
+            "end": 6.072
+          },
+          {
+            "t": "la",
+            "start": 6.107,
+            "end": 6.165
+          },
+          {
+            "t": "presión,",
+            "start": 6.2,
+            "end": 6.676
+          },
+          {
+            "t": "y",
+            "start": 6.745,
+            "end": 6.827
+          },
+          {
+            "t": "esa",
+            "start": 6.908,
+            "end": 7.059
+          },
+          {
+            "t": "succión",
+            "start": 7.105,
+            "end": 7.465
+          },
+          {
+            "t": "lo",
+            "start": 7.512,
+            "end": 7.581
+          },
+          {
+            "t": "empuja",
+            "start": 7.628,
+            "end": 8.022
+          },
+          {
+            "t": "contra",
+            "start": 8.081,
+            "end": 8.336
+          },
+          {
+            "t": "la",
+            "start": 8.371,
+            "end": 8.429
+          },
+          {
+            "t": "pista.",
+            "start": 8.475,
+            "end": 8.916
+          },
+          {
+            "t": "Lotus",
+            "start": 9.009,
+            "end": 9.334
+          },
+          {
+            "t": "lo",
+            "start": 9.392,
+            "end": 9.474
+          },
+          {
+            "t": "estrenó",
+            "start": 9.497,
+            "end": 9.834
+          },
+          {
+            "t": "a",
+            "start": 9.88,
+            "end": 9.903
+          },
+          {
+            "t": "finales",
+            "start": 9.938,
+            "end": 10.31
+          },
+          {
+            "t": "de",
+            "start": 10.344,
+            "end": 10.391
+          },
+          {
+            "t": "los",
+            "start": 10.437,
+            "end": 10.553
+          },
+          {
+            "t": "setenta",
+            "start": 10.577,
+            "end": 11.029
+          },
+          {
+            "t": "y",
+            "start": 11.146,
+            "end": 11.215
+          },
+          {
+            "t": "se",
+            "start": 11.297,
+            "end": 11.389
+          },
+          {
+            "t": "prohibió",
+            "start": 11.436,
+            "end": 11.842
+          },
+          {
+            "t": "a",
+            "start": 11.9,
+            "end": 11.935
+          },
+          {
+            "t": "principios",
+            "start": 11.97,
+            "end": 12.515
+          },
+          {
+            "t": "de",
+            "start": 12.55,
+            "end": 12.597
+          },
+          {
+            "t": "los",
+            "start": 12.631,
+            "end": 12.736
+          },
+          {
+            "t": "ochenta.",
+            "start": 12.794,
+            "end": 13.316
+          },
+          {
+            "t": "Volvió",
+            "start": 13.467,
+            "end": 13.874
+          },
+          {
+            "t": "en",
+            "start": 13.92,
+            "end": 13.99
+          },
+          {
+            "t": "2022,",
+            "start": 14.071,
+            "end": 14.919
+          },
+          {
+            "t": "con",
+            "start": 15.012,
+            "end": 15.186
+          },
+          {
+            "t": "túneles",
+            "start": 15.244,
+            "end": 15.604
+          },
+          {
+            "t": "bajo",
+            "start": 15.65,
+            "end": 15.871
+          },
+          {
+            "t": "el",
+            "start": 15.894,
+            "end": 15.94
+          },
+          {
+            "t": "suelo",
+            "start": 15.998,
+            "end": 16.219
+          },
+          {
+            "t": "del",
+            "start": 16.265,
+            "end": 16.37
+          },
+          {
+            "t": "coche.",
+            "start": 16.428,
+            "end": 16.904
+          },
+          {
+            "t": "Así,",
+            "start": 17.078,
+            "end": 17.542
+          },
+          {
+            "t": "más",
+            "start": 17.659,
+            "end": 17.868
+          },
+          {
+            "t": "carga",
+            "start": 17.926,
+            "end": 18.193
+          },
+          {
+            "t": "viene",
+            "start": 18.227,
+            "end": 18.436
+          },
+          {
+            "t": "del",
+            "start": 18.471,
+            "end": 18.587
+          },
+          {
+            "t": "suelo",
+            "start": 18.645,
+            "end": 18.936
+          },
+          {
+            "t": "y",
+            "start": 19.017,
+            "end": 19.087
+          },
+          {
+            "t": "menos",
+            "start": 19.168,
+            "end": 19.412
+          },
+          {
+            "t": "de",
+            "start": 19.447,
+            "end": 19.493
+          },
+          {
+            "t": "los",
+            "start": 19.539,
+            "end": 19.656
+          },
+          {
+            "t": "alerones,",
+            "start": 19.714,
+            "end": 20.224
+          },
+          {
+            "t": "y",
+            "start": 20.294,
+            "end": 20.364
+          },
+          {
+            "t": "los",
+            "start": 20.445,
+            "end": 20.573
+          },
+          {
+            "t": "coches",
+            "start": 20.642,
+            "end": 20.944
+          },
+          {
+            "t": "pueden",
+            "start": 21.002,
+            "end": 21.269
+          },
+          {
+            "t": "seguirse",
+            "start": 21.316,
+            "end": 21.734
+          },
+          {
+            "t": "más",
+            "start": 21.815,
+            "end": 21.978
+          },
+          {
+            "t": "de",
+            "start": 22.024,
+            "end": 22.094
+          },
+          {
+            "t": "cerca.",
+            "start": 22.128,
+            "end": 22.639
+          },
+          {
+            "t": "Esto",
+            "start": 22.813,
+            "end": 23.104
+          },
+          {
+            "t": "lo",
+            "start": 23.15,
+            "end": 23.22
+          },
+          {
+            "t": "cuentan",
+            "start": 23.255,
+            "end": 23.626
+          },
+          {
+            "t": "Formula1.com,",
+            "start": 23.707,
+            "end": 24.868
+          },
+          {
+            "t": "Racer",
+            "start": 25.043,
+            "end": 25.402
+          },
+          {
+            "t": "y",
+            "start": 25.519,
+            "end": 25.577
+          },
+          {
+            "t": "Autosport.",
+            "start": 25.658,
+            "end": 26.308
+          },
+          {
+            "t": "Síguenos",
+            "start": 26.459,
+            "end": 26.865
+          },
+          {
+            "t": "para",
+            "start": 26.912,
+            "end": 27.063
+          },
+          {
+            "t": "más.",
+            "start": 27.098,
+            "end": 27.632
+          }
+        ],
+        "narration": {
+          "file": "audio/t-efecto-suelo.mp3",
+          "seconds": 27.93
+        }
+      },
+      "caption": "El efecto suelo: así se pega un F1 al asfalto\n\nFuentes:\n• Formula1.com: https://www.formula1.com/en/latest/article/tech-tuesday-why-new-floors-should-help-enhance-f1s-wheel-to-wheel-action-in.6WEBVH3iEhZhBvgKxTYSij\n• Racer: https://racer.com/racerpedia/technical-explainers/what-is-ground-effect\n• Autosport: https://www.autosport.com/f1/news/unpacking-the-technical-changes-behind-f1-2022s-rules-shakeup/7472432/\n\n#F1 #Formula1 #FormulaUno #GranPremio #TecnicaF1 #EfectoSuelo",
+      "script": "¿Cómo se pega un Fórmula 1 al asfalto? Con el efecto suelo. El aire que pasa por debajo del coche va más rápido y baja la presión, y esa succión lo empuja contra la pista. Lotus lo estrenó a finales de los setenta y se prohibió a principios de los ochenta. Volvió en 2022, con túneles bajo el suelo del coche. Así, más carga viene del suelo y menos de los alerones, y los coches pueden seguirse más de cerca. Esto lo cuentan Formula1.com, Racer y Autosport. Síguenos para más.",
+      "series": "tecnica",
+      "msgId": 54,
+      "fileId": "BAACAgQAAxkDAAM2avNiNTFjuU_lf8sBfLv8vIi5UMcAAjUfAAKE1JlT9YQRcUnio4w9BA",
+      "status": "sent",
+      "sentAt": "2026-11-10T18:28:05.943Z"
     }
   },
   "offered": {
@@ -2271,9 +2850,10 @@
   "menuV": 1,
   "leads": [],
   "picks": [],
-  "topicPicks": [
-    "efecto-suelo"
-  ],
+  "topicPicks": [],
   "sumPicks": [],
-  "hoyDate": "2026-11-10"
+  "hoyDate": "2026-11-10",
+  "topicsMade": [
+    "efecto-suelo"
+  ]
 }
