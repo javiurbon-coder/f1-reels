@@ -38,8 +38,8 @@ save(state);
 // Reels elegidos en el menú del día: se hace SOLO el que pulsaste (guion → voz → render → Telegram).
 import {spawnSync} from 'node:child_process';
 const st = load();
-const picks = st.picks ?? [];
-st.picks = [];
+const picks = st.picks ?? [], topicPicks = st.topicPicks ?? [], sumPicks = st.sumPicks ?? [], hoy = !!st.hoy;
+st.picks = []; st.topicPicks = []; st.sumPicks = []; st.hoy = false;
 save(st);
 for (const id of picks) {
   const c = st.menuClusters?.[id];
@@ -52,3 +52,15 @@ for (const id of picks) {
   if (ok) { (s2.made ??= []).push(id); delete s2.menuClusters?.[id]; save(s2); }
   else await say(`✗ No pude hacer el reel de: ${c.headline}`);
 }
+
+// Temas (técnica / historia) y resúmenes elegidos en «Hoy toca»; y «hoy toca» pedido a mano.
+const runNode = (args) => spawnSync('node', args, {stdio: 'inherit', env: process.env}).status === 0;
+for (const tid of topicPicks) {
+  const ok = runNode(['scripts/agents/topic-reel.mjs', `--topic=${tid}`]) && runNode(['scripts/notify-telegram.mjs']);
+  if (ok) { const s3 = load(); s3.topicsMade = [...new Set([...(s3.topicsMade ?? []), tid])]; save(s3); }
+  else await say(`✗ No pude hacer el reel del tema ${tid}.`);
+}
+for (const mode of sumPicks) {
+  if (!(runNode(['scripts/agents/summary-reel.mjs', `--mode=${mode}`]) && runNode(['scripts/notify-telegram.mjs']))) await say(`✗ No pude hacer el resumen (${mode}).`);
+}
+if (hoy) runNode(['scripts/hoytoca.mjs', '--force']);

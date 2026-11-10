@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 const PEOPLE = () => { try { return JSON.parse(fs.readFileSync('config/people.json', 'utf8')); } catch { return []; } };
 const URL_RE = /https?:\/\/\S+/i;
+const TOPICS = () => { try { return JSON.parse(fs.readFileSync('config/evergreen.json', 'utf8')); } catch { return []; } };
 
 /** «noticia: …» / «pista: …» / un enlace de X o un tuit reenviado → pista (rumor hasta que otros medios la confirmen). */
 export function parseLead(text, people = PEOPLE()) {
@@ -33,6 +34,17 @@ export function handleUpdate(state, u, chat) {
       if (!known) { out.answer = 'Esa opción ya caducó'; out.reply.push('⏳ Esa noticia ya no está disponible. Pide otro menú con 🔁.'); }
       else if (state.picks.includes(id) || state.made?.includes(id)) { out.answer = 'Ya la tienes en marcha'; }
       else { state.picks.push(id); out.answer = 'Elegida'; out.reply.push(`🎬 Preparando: ${known.headline}\n(unos minutos)`); }
+    } else if (act === 'topic') {
+      const t = TOPICS().find((x) => x.id === id);
+      state.topicPicks ??= [];
+      if (!t) { out.answer = 'Ese tema ya no existe'; }
+      else if (state.topicPicks.includes(id)) { out.answer = 'Ya la tienes en marcha'; }
+      else { state.topicPicks.push(id); out.answer = 'Elegido'; out.reply.push(`🎬 Preparando: ${t.headline}\n(unos minutos)`); }
+    } else if (act === 'sum') {
+      const mode = id === 'week' ? 'week' : 'day';
+      state.sumPicks ??= [];
+      if (state.sumPicks.includes(mode)) { out.answer = 'Ya está en marcha'; }
+      else { state.sumPicks.push(mode); out.answer = 'Preparando el resumen'; out.reply.push(`📰 Preparando el resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (unos minutos).`); }
     } else if (act === 'skip') { out.answer = 'Vale'; out.clear = cb.message.message_id; out.reply.push('🙈 Vale, la dejo.'); }
     else if (act === 'more') { state.more++; out.answer = 'Preparando otro menú…'; out.reply.push('🔁 Preparando otro menú (unos minutos).'); }
     else if (it && act === 'ok') { it.status = 'approved'; out.answer = 'Aprobado'; out.clear = cb.message.message_id;
@@ -55,8 +67,13 @@ export function handleUpdate(state, u, chat) {
       target.edit = {...(target.edit ?? {}), [kind]: mt[2].trim()};
       target.status = 'edit';
       out.reply.push(`✏️ Anotado. Rehago el vídeo con ${kind === 'headline' ? 'el nuevo titular' : 'el nuevo guion'} (unos minutos).`);
-    } else if (/^\s*(otra|más|mas)\b/i.test(m.text)) { state.more++; out.reply.push('🔁 Preparando otro menú.'); }
-    else out.reply.push('Para corregir: responde a un vídeo con  «titular: …»  o  «guion: …».  Para sugerir una noticia: «noticia: @quien texto» o pega el enlace del tuit.  Para otro menú pulsa 🔁 o escribe «otra».');
+    } else if (/^\s*resumen\b/i.test(m.text)) {
+      const mode = /seman/i.test(m.text) ? 'week' : 'day';
+      state.sumPicks ??= []; if (!state.sumPicks.includes(mode)) state.sumPicks.push(mode);
+      out.reply.push(`📰 Preparando el resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (unos minutos).`);
+    } else if (/^\s*(hoy toca|temas?|qu[eé] subo)\b/i.test(m.text)) { state.hoy = true; out.reply.push('🎯 Te preparo las opciones de hoy (unos minutos).'); }
+    else if (/^\s*(otra|más|mas)\b/i.test(m.text)) { state.more++; out.reply.push('🔁 Preparando otro menú.'); }
+    else out.reply.push('Para corregir: responde a un vídeo con  «titular: …»  o  «guion: …».  Para sugerir una noticia: «noticia: @quien texto» o pega el enlace del tuit.  Para otro menú pulsa 🔁 o escribe «otra». «resumen» (o «resumen semana») junta las noticias; «hoy toca» te dice qué subir.');
   }
   return out;
 }

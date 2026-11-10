@@ -29,3 +29,19 @@ assert.equal(parseLead('hola qué tal', ppl), null);
 st.menuClusters = {}; r = handleUpdate(st, {message: {text: 'noticia: Alonso renueva con Aston', chat: {id: 7}}}, 7);
 assert.equal(st.leads.length, 1); assert.ok(st.more >= 1);
 console.log('✓ bot: botones, correcciones y seguridad (solo tu chat)');
+
+// --- temas, resúmenes y «hoy toca» ---
+st.topicPicks = []; st.sumPicks = [];
+r = handleUpdate(st, {callback_query: {id: 'x', data: 'topic:porpoising', message: {message_id: 9, chat: {id: 7}}}}, 7);
+assert.deepEqual(st.topicPicks, ['porpoising']); assert.match(r.reply[0], /Porpoising/);
+r = handleUpdate(st, {callback_query: {id: 'x', data: 'topic:porpoising', message: {message_id: 9, chat: {id: 7}}}}, 7);
+assert.equal(st.topicPicks.length, 1);
+r = handleUpdate(st, {callback_query: {id: 'x', data: 'topic:nope', message: {message_id: 9, chat: {id: 7}}}}, 7);
+assert.equal(st.topicPicks.length, 1);
+r = handleUpdate(st, {callback_query: {id: 'x', data: 'sum:day', message: {message_id: 9, chat: {id: 7}}}}, 7);
+assert.deepEqual(st.sumPicks, ['day']);
+r = handleUpdate(st, {message: {text: 'resumen semana', chat: {id: 7}}}, 7);
+assert.deepEqual(st.sumPicks, ['day', 'week']);
+r = handleUpdate(st, {message: {text: 'hoy toca', chat: {id: 7}}}, 7);
+assert.equal(st.hoy, true);
+console.log('temas/resumen OK');

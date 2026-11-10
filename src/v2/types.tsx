@@ -268,7 +268,7 @@ export const Rumor: React.FC<{cap: string; on?: string | number; who: string; n:
 };
 
 /* ============ 6 · CÓMO FUNCIONA: plano técnico con flujo de aire animado ============ */
-export const Tecnico: React.FC<{cap: string; on?: string | number; title: string; parts: {n: number; name: string; sub: string}[]}> = ({cap, on, title, parts}) => {
+export const Tecnico: React.FC<{cap: string; on?: string | number; title: string; parts: {n: number; name: string; sub: string; d?: number}[]}> = ({cap, on, title, parts}) => {
   const frame = useCurrentFrame();
   const p = useIn(6, {damping: 15, stiffness: 90, mass: 1});
   const C = '#4de1ff';
@@ -318,7 +318,7 @@ export const Tecnico: React.FC<{cap: string; on?: string | number; title: string
         const ns = fitOneLine(pt.name, W - 170, 40, 26, T.display, '', false);
         const ss = fitOneLine(pt.sub, W - 170, 29, 20, T.body, 600, false);
         return (
-          <Pop key={i} d={26 + i * 12} from="left" style={{position: 'absolute', top: ZONE.obj + 664 + i * 120, left: X, width: W}}>
+          <Pop key={i} d={pt.d ?? 26 + i * 12} from="left" style={{position: 'absolute', top: ZONE.obj + 664 + i * 120, left: X, width: W}}>
             <div style={{height: 104, borderRadius: 22, background: '#fff', border: `6px solid ${INK}`, boxShadow: `8px 8px 0 ${INK}`, display: 'flex', alignItems: 'center', gap: 20, padding: '0 20px'}}>
               <div style={{width: 68, height: 68, flex: 'none', borderRadius: 34, background: '#ffd21f', border: `5px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: T.display, fontSize: 36}}>{pt.n}</div>
               <div style={{minWidth: 0}}>

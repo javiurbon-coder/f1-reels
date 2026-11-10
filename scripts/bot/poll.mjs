@@ -27,6 +27,6 @@ for (const l of state.leads ?? []) if (l.needsText) {
 }
 state.leads = (state.leads ?? []).filter((l) => l.title);
 save(state);
-const work = state.more > 0 || (state.picks?.length ?? 0) > 0 || Object.values(state.items).some((i) => i.status === 'edit');
+const work = state.more > 0 || (state.picks?.length ?? 0) > 0 || (state.topicPicks?.length ?? 0) > 0 || (state.sumPicks?.length ?? 0) > 0 || !!state.hoy || Object.values(state.items).some((i) => i.status === 'edit');
 console.log(`${updates.length} novedad(es). Trabajo pesado: ${work}`);
 out('work', String(work));

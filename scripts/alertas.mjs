@@ -16,6 +16,15 @@ const seen = new Set(fs.existsSync('data/news/seen.json') ? JSON.parse(fs.readFi
 const state = load();
 state.alerted ??= {}; state.offered ??= {}; state.menuClusters ??= {}; state.made ??= [];
 
+// Registro de noticias contrastadas de los últimos 8 días (lo usan los resúmenes del día y de la semana).
+state.log ??= {};
+for (const c of clusters) {
+  if (c.level === 'RADAR') continue;
+  state.log[c.id] = {headline: c.headline, level: c.level, t: c.latest, sources: c.sources.map((s) => ({name: s.name, domain: s.domain, url: s.url ?? s.link, official: !!s.official}))};
+}
+for (const [id, e] of Object.entries(state.log)) if (Date.now() - new Date(e.t) > 8 * 86400e3) delete state.log[id];
+save(state);
+
 const madrid = (d = new Date()) => new Intl.DateTimeFormat('es-ES', {timeZone: 'Europe/Madrid', hour: 'numeric', hour12: false, year: 'numeric', month: '2-digit', day: '2-digit'}).formatToParts(d)
   .reduce((o, p) => (p.type !== 'literal' ? {...o, [p.type]: p.value} : o), {});
 const nowM = madrid();

@@ -3,7 +3,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Wipe} from '../kit';
-import {Dato, Fuentes, Mercado, Noticia, Portada, Resultado, Rumor} from './types';
+import {Dato, Fuentes, Mercado, Noticia, Portada, Resultado, Rumor, Tecnico} from './types';
 import type {Kind} from './ui';
 
 type Word = {t: string; start: number; end: number};
@@ -16,6 +16,7 @@ export type V2Scene = T0 &
     | {type: 'dato'; value: string; label: string; chartTitle?: string; maxPos?: number; rows: {name: string; grid: number; finish: number; color: string; me?: boolean; tag?: string}[]}
     | {type: 'mercado'; kindLabel: string; driver: string; team: string; teamColor: string; until: string}
     | {type: 'rumor'; who: string; n: number}
+    | {type: 'tecnico'; title: string; parts: {n: number; name: string; sub: string; at?: number}[]}
     | {type: 'resultado'; gp: string; fastest?: string; podium: {name: string; team: string; color: string; gap: string}[]}
   );
 
@@ -70,6 +71,7 @@ const SceneV2: React.FC<{s: V2Scene; p: ReelProps}> = ({s, p}) => {
     case 'list': return <Noticia cap={c} on={on} title={s.title} rows={s.rows.map((r) => ({...r, d: r.at !== undefined ? Math.max(8, Math.round(r.at * fps)) : undefined}))} />;
     case 'dato': return <Dato cap={c} on={on} value={s.value} label={s.label} chartTitle={s.chartTitle} maxPos={s.maxPos} rows={s.rows} />;
     case 'mercado': return <Mercado cap={c} on={on} kindLabel={s.kindLabel} driver={s.driver} team={s.team} teamColor={s.teamColor} until={s.until} />;
+    case 'tecnico': return <Tecnico cap={c} on={on} title={s.title} parts={s.parts.map((x) => ({...x, d: Math.max(8, Math.round((x.at ?? 0.8) * fps))}))} />;
     case 'rumor': return <Rumor cap={c} on={on} who={s.who} n={s.n} />;
     case 'resultado': return <Resultado cap={c} on={on} gp={s.gp} podium={s.podium} fastest={s.fastest} />;
     default: return <Fuentes cap={c} on={on} sources={p.sources} />;
