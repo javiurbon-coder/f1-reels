@@ -27,25 +27,35 @@ const sentToday = Object.values(state.alerted).filter((a) => { const m = madrid(
 let budget = Math.min(A.maxPerRun, A.maxPerDay - sentToday);
 if (budget <= 0) { console.log('Límite de avisos de hoy alcanzado.'); process.exit(0); }
 
-const alertedTok = Object.values(state.alerted).map((a) => tokens(a.headline));
+const alertedList = Object.values(state.alerted).map((a) => ({tok: tokens(a.headline), t: a.t, names: new Set(a.names ?? [])}));
+// ¿Es la misma historia ya avisada? Si vuelve a salir con medios NUEVOS (p. ej. la BBC matiza lo que dijo otro) y han pasado 2 h,
+// se avisa de nuevo como ACTUALIZACIÓN, porque una noticia puede cambiar en el día.
+const namesOf = (c) => [...c.sources, ...c.alsoSay].map((s) => s.name);
+const kindOf = (c) => {
+  const prev = alertedList.filter((a) => similar(tokens(c.headline), a.tok, settings.similarity));
+  if (!prev.length) return 'new';
+  const known = new Set(prev.flatMap((a) => [...a.names]));
+  const old = Math.min(...prev.map((a) => Date.now() - new Date(a.t)));
+  return namesOf(c).some((n) => !known.has(n)) && old > 2 * 3600e3 ? 'update' : 'dup';
+};
 const isLead = (c) => [...c.sources, ...c.alsoSay].some((s) => s.manual);
 const fresh = clusters
   .filter((c) => c.level !== 'RADAR' && !seen.has(c.id) && !state.alerted[c.id] && !state.offered[c.id] && !state.made.includes(c.id))
   .filter((c) => Date.now() - new Date(c.latest) < A.freshHours * 3600e3)
-  .filter((c) => !alertedTok.some((t) => similar(tokens(c.headline), t, settings.similarity))); // misma noticia con otro titular: no repetir
+  .map((c) => ({c, kind: kindOf(c)})).filter((x) => x.kind !== 'dup');
 
 const label = (c) => {
   const mercado = routeCluster(c).series === 'mercado' ? ' · MERCADO' : '';
   return (c.level === 'OFICIAL' ? '🏛 Fuente oficial' : `🔎 ${c.count} fuentes`) + mercado;
 };
 let n = 0;
-for (const c of fresh) {
+for (const {c, kind} of fresh) {
   if (n >= budget) break;
   const names = c.sources.map((s) => s.name).join(', ');
   await call('sendMessage', {chat_id: CHAT, disable_web_page_preview: true,
-    text: `🚨 NOTICIA NUEVA\n${label(c)}${isLead(c) ? ' · 📌 tu pista' : ''}\n\n${cleanText(c.headline)}${c.headlineLang === 'en' ? ' (EN)' : ''}\n\nFuentes: ${names}`,
+    text: `${kind === 'update' ? '🔄 ACTUALIZACIÓN (la historia ha cambiado)' : '🚨 NOTICIA NUEVA'}\n${label(c)}${isLead(c) ? ' · 📌 tu pista' : ''}\n\n${cleanText(c.headline)}${c.headlineLang === 'en' ? ' (EN)' : ''}\n\nFuentes: ${names}`,
     reply_markup: {inline_keyboard: [[{text: '🎬 Hacer reel', callback_data: `pick:${c.id}`}, {text: '🙈 Ignorar', callback_data: 'skip'}]]}});
-  state.alerted[c.id] = {t: new Date().toISOString(), headline: c.headline};
+  state.alerted[c.id] = {t: new Date().toISOString(), headline: c.headline, names: namesOf(c)};
   state.offered[c.id] = new Date().toISOString(); state.menuClusters[c.id] = c; // pick:… la encuentra aquí
   n++;
 }
