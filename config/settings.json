@@ -59,6 +59,10 @@
   "drafts": {
     "maxPerDay": 3,
     "maxPerRun": 1,
-    "keepDays": 6
+    "keepDays": 6,
+    "topicFromHour": 10,
+    "topicRepeatDays": 7,
+    "summaryFromHour": 19,
+    "autoRepeatDays": 45
   }
 }

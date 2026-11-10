@@ -61,7 +61,7 @@ if (process.argv[1]?.endsWith('summary-reel.mjs')) {
   const list = [];
   for (const e of pickItems(state, mode)) { const h = await toEs(cleanText(e.headline)); if (!h) continue; const d = e.detail ? await toEs(cleanText(e.detail)) : null; list.push({...e, headline: h, detail: d ?? ''}); }
   if (list.length < 2) {
-    if (configured()) await say(`📭 No hay suficientes noticias contrastadas para un resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (necesito 2 o más que no hayan tenido ya su reel).`);
+    if (configured() && !process.env.NO_TG) await say(`📭 No hay suficientes noticias contrastadas para un resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (necesito 2 o más que no hayan tenido ya su reel).`);
     console.log('Sin material para el resumen.'); process.exit(0);
   }
   const script = scriptFor(list, mode);

@@ -12,6 +12,7 @@ jobs:
     timeout-minutes: 50
     env:
       GH_TOKEN: ${{ github.token }}
+      NO_TG: '1'   # modo borrador: nada de mensajes al móvil
       PIPER_BIN: ${{ github.workspace }}/tools/piper/piper
       PIPER_VOICE: voices/es_ES-davefx-medium.onnx
       OLLAMA_MODEL: qwen2.5:7b
@@ -36,17 +37,25 @@ jobs:
       - name: Guardar estado
         run: node scripts/bot/push-state.mjs "estado borradores" data/state/bot.json
       # Lo pesado (Chrome, voces, IA) solo si hay algo que montar: así las ejecuciones sin noticias duran ~1 minuto
-      - if: steps.pick.outputs.ids != ''
+      - if: (steps.pick.outputs.ids != '' || steps.pick.outputs.topic != '' || steps.pick.outputs.summary != '')
         uses: ./.github/actions/setup-tools
-      - if: steps.pick.outputs.ids != ''
+      - if: (steps.pick.outputs.ids != '' || steps.pick.outputs.topic != '' || steps.pick.outputs.summary != '')
         name: Montar vídeos
         run: |
           for id in $(echo "${{ steps.pick.outputs.ids }}" | tr ',' ' '); do
-            node scripts/agents/make-reels.mjs --id="$id"
+            node scripts/agents/make-reels.mjs --id="$id" || true
           done
-      - if: steps.pick.outputs.ids != ''
+          T="${{ steps.pick.outputs.topic }}"
+          case "$T" in
+            ev:*) node scripts/agents/topic-reel.mjs --topic="${T#ev:}" --suffix="$(date +%m%d)" || true ;;
+            au:*) node scripts/agents/gen-tema.mjs --seed="${T#au:}" --suffix="$(date +%m%d)" || true ;;
+          esac
+          if [ -n "${{ steps.pick.outputs.summary }}" ]; then
+            node scripts/agents/summary-reel.mjs --mode=day || true
+          fi
+      - if: (steps.pick.outputs.ids != '' || steps.pick.outputs.topic != '' || steps.pick.outputs.summary != '')
         name: Subir borradores
         run: node scripts/borradores.mjs --upload
-      - if: steps.pick.outputs.ids != ''
+      - if: (steps.pick.outputs.ids != '' || steps.pick.outputs.topic != '' || steps.pick.outputs.summary != '')
         name: Guardar estado (noticias vistas)
         run: node scripts/bot/push-state.mjs "estado" data/news/seen.json data/state/bot.json

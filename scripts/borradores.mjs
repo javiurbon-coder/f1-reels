@@ -9,7 +9,7 @@ import {listItems, videoPath, posterPath} from './lib/queue.mjs';
 
 const TAG = 'borradores';
 const settings = JSON.parse(fs.readFileSync('config/settings.json', 'utf8'));
-const D = {maxPerDay: 3, maxPerRun: 1, keepDays: 6, ...settings.drafts};
+const D = {maxPerDay: 3, maxPerRun: 1, keepDays: 6, topicFromHour: 10, topicRepeatDays: 7, autoRepeatDays: 45, summaryFromHour: 19, ...settings.drafts};
 const state = load(); state.drafted ??= {};
 const out = (k, v) => process.env.GITHUB_OUTPUT && fs.appendFileSync(process.env.GITHUB_OUTPUT, `${k}=${v}\n`);
 const gh = (...a) => spawnSync('gh', a, {encoding: 'utf8'});
@@ -28,9 +28,26 @@ if (process.argv.includes('--pick')) {
     .slice(0, left).map((c) => c.id);
   for (const id of ids) state.drafted[id] = new Date().toISOString();
   for (const [id, t] of Object.entries(state.drafted)) if (Date.now() - new Date(t) > 10 * 86400e3) delete state.drafted[id];
+  // 1 tema (técnica / historia) al día, a partir de las 10h: el que lleve más tiempo sin prepararse (y no antes de 7 días)
+  const hour = +new Intl.DateTimeFormat('es-ES', {timeZone: 'Europe/Madrid', hour: 'numeric', hour12: false}).format(new Date()) % 24;
+  state.draftedTopics ??= {};
+  let topic = '';
+  if (hour >= D.topicFromHour && !Object.values(state.draftedTopics).some((t) => day(t) === today)) {
+    const ev = JSON.parse(fs.readFileSync('config/evergreen.json', 'utf8')).map((t) => ({key: 'ev:' + t.id, pillar: t.pillar === 'tecnica' ? 'tecnica' : 'historia', days: D.topicRepeatDays}));
+    const au = JSON.parse(fs.readFileSync('config/temas-auto.json', 'utf8')).map((t) => ({key: 'au:' + t.id, pillar: t.pillar, days: D.autoRepeatDays}));
+    const cand = [...ev, ...au].map((t) => ({...t, at: state.draftedTopics[t.key] ?? state.draftedTopics[t.key.slice(3)] ?? 0}))
+      .filter((t) => !t.at || Date.now() - new Date(t.at) > t.days * 86400e3)
+      .sort((x, y) => new Date(x.at || 0) - new Date(y.at || 0));
+    // se alterna técnica / historia cuando se puede
+    const pick = cand.find((t) => t.pillar !== state.lastPillar) ?? cand[0];
+    if (pick) { topic = pick.key; state.draftedTopics[pick.key] = new Date().toISOString(); state.lastPillar = pick.pillar; }
+  }
+  // resumen del día: 1 al día, a partir de las 19h (si hay menos de 2 noticias, el propio script no hace nada)
+  let summary = '';
+  if (hour >= D.summaryFromHour && state.draftedSummary !== today) { summary = 'day'; state.draftedSummary = today; }
   save(state);
-  console.log(`Borradores hoy: ${done}/${D.maxPerDay} · a montar ahora: ${ids.length ? ids.join(', ') : 'ninguno'}`);
-  out('ids', ids.join(','));
+  console.log(`Borradores hoy: ${done}/${D.maxPerDay} · noticias: ${ids.join(', ') || 'ninguna'} · tema: ${topic || 'ninguno'} · resumen: ${summary || 'no'}`);
+  out('ids', ids.join(',')); out('topic', topic); out('summary', summary);
   process.exit(0);
 }
 

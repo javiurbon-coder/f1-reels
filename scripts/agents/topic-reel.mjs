@@ -42,7 +42,7 @@ if (process.argv[1]?.endsWith('topic-reel.mjs')) {
   const settings = JSON.parse(fs.readFileSync('config/settings.json', 'utf8'));
   const noVoice = process.argv.includes('--no-voice') || voiceEngines().length === 0;
   fs.mkdirSync('public/audio', {recursive: true});
-  const qid = `t-${T.id}`.slice(0, 60);
+  const qid = `t-${T.id}${arg('suffix') ? '-' + arg('suffix') : ''}`.slice(0, 60);
   const v = noVoice ? null : await speakAny(T.script, qid);
   const seconds = v?.seconds ?? +(T.script.split(/\s+/).filter(Boolean).length / 2.6).toFixed(2);
   const words = v?.words ?? wordTimings(T.script, seconds);

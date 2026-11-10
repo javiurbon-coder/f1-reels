@@ -147,10 +147,12 @@ button{font:inherit;font-weight:800;border:3px solid #111;border-radius:10px;pad
 button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #111}button:disabled{opacity:.45;cursor:not-allowed}
 .ok{background:#7be07b}.go{background:#ffd21f}.bad{background:#ff8a7a}
 .src a{color:#1d4ed8;word-break:break-all;font-size:13px}.note{background:#fff3b0;border:2px dashed #111;border-radius:8px;padding:6px 10px;font-size:13px}
+#plan{margin:18px 22px 0;background:#fff;border:4px solid #111;border-radius:18px;box-shadow:6px 6px 0 #111;padding:12px 16px}#plan:empty{display:none}#plan h2{margin:0 0 8px;font-size:17px}#plan .r{display:flex;gap:10px;align-items:baseline;padding:4px 0;border-top:2px dashed #ddd}#plan .t{font-weight:800;min-width:92px}#plan .w{color:#b42318;font-size:13px;font-weight:700}
 .empty{grid-column:1/-1;text-align:center;padding:60px;font-weight:700}
 </style>
 <header><h1>CONTRASTADO F1 · REVISIÓN</h1><div id="series"></div><div id="status"></div><span class="sp"></span><span id="disk"></span>
 <button id="sync" title="Baja los borradores que el robot ha montado en GitHub">⬇ Traer borradores</button> <button id="clean" title="Aplica las reglas de retención">Limpiar espacio</button></header>
+<section id="plan"></section>
 <main id="list"></main>
 <script>
 const H={'Content-Type':'application/json','x-review':'1'};
@@ -159,8 +161,22 @@ const LBL={pending:'Pendiente',approved:'Aprobado',published:'Publicado',rejecte
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function call(m,u,b){const r=await fetch(u,{method:m,headers:H,body:b?JSON.stringify(b):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)alert(j.error||'Error');return j}
 async function load(){S.data=await (await fetch('/api/state')).json();draw()}
+function plan(items){
+ const recent=items.filter(i=>['pending','approved'].includes(i.status)&&Date.now()-new Date(i.createdAt)<40*3600e3);
+ const warn=i=>/Control de calidad|REVISA/.test(i.note||'')?'⚠ revisa antes de publicar':'';
+ const hl=i=>(i.props&&i.props.headline)||i.id;
+ const pick=(f,by)=>recent.filter(f).sort(by)[0];
+ const news=pick(i=>['noticias','mercado','resultado'].includes(i.series),(a,b)=>(b.sources||[]).length-(a.sources||[]).length);
+ const tema=pick(i=>['tecnica','datos'].includes(i.series),(a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+ const res=pick(i=>i.series==='resumen',(a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+ const rows=[['13:30','Tema (técnica o historia)',tema],['18:30','Noticia del día',news],['21:00','Resumen del día',res]];
+ const ok=rows.filter(r=>r[2]);
+ if(!ok.length)return'';
+ return '<h2>📅 Para hoy te recomiendo publicar</h2>'+rows.map(r=>'<div class="r"><span class="t">'+r[0]+'</span><span>'+r[1]+': '+(r[2]?'<b>'+esc(hl(r[2]))+'</b> <span class="w">'+warn(r[2])+'</span>':'<i>aún no hay borrador</i>')+'</span></div>').join('');
+}
 function draw(){
  const d=S.data;
+ document.getElementById('plan').innerHTML=plan(d.items);
  document.getElementById('disk').textContent='Ocupa '+(d.bytes/1e6).toFixed(1)+' MB';
  const mk=(arr,key,cur)=>arr.map(([v,l])=>'<button class="chip '+(cur===v?'on':'')+'" data-k="'+key+'" data-v="'+v+'">'+esc(l)+'</button>').join(' ');
  document.getElementById('series').innerHTML=mk([['all','Todas'],...d.series.map(s=>[s.id,s.name])],'fs',S.fs);
