@@ -950,7 +950,9 @@
     "n-mljcy1pc3N1ZXM": "2026-11-10T15:01:48.202Z",
     "n-S1ydWxlZC1vdXQ": "2026-11-10T15:01:48.202Z",
     "n-ZC10by1jaGlsbA": "2026-11-10T15:01:48.202Z",
-    "n-y1hZGRyZXNzZWQ": "2026-11-10T15:01:48.202Z"
+    "n-y1hZGRyZXNzZWQ": "2026-11-10T15:01:48.202Z",
+    "n-W1wYWlnbj1yc3M": "2026-11-10T18:05:06.910Z",
+    "n-dHVyZS1oYWFzLw": "2026-11-10T18:05:07.340Z"
   },
   "menuClusters": {
     "n-9jb250ZW50PXVr": {
@@ -1613,7 +1615,656 @@
         }
       ],
       "alsoSay": []
+    },
+    "n-W1wYWlnbj1yc3M": {
+      "id": "n-W1wYWlnbj1yc3M",
+      "level": "ALTA",
+      "count": 4,
+      "headline": "Formula 1 to finish season in Middle East",
+      "headlineLang": "en",
+      "latest": "2026-11-10T17:18:35.000Z",
+      "sources": [
+        {
+          "summary": "Formula 1 chiefs are proceeding with plans to hold the final two rounds of 2026 in the Middle East after a deadline to move one of the season-ending races to Italy passed.",
+          "name": "Sky Sports F1",
+          "domain": "skysports.com",
+          "url": "https://www.skysports.com/f1/news/12433/13610302/formula-1-proceeding-with-plans-to-finish-2026-season-in-middle-east-as-deadline-to-hold-race-at-imola-passes",
+          "title": "F1 planning to finish season in Middle East as Imola deadline passes",
+          "lang": "en",
+          "published": "2026-11-10T14:00:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "The 2026 Formula 1 season will conclude with the Qatar and Abu Dhabi grands prix as planned, with Italy's Imola circuit stood down as back-up for the races.",
+          "name": "BBC Sport",
+          "domain": "bbc.co.uk",
+          "url": "https://www.bbc.co.uk/sport/formula1/articles/c53989e97lxwo?at_medium=RSS&at_campaign=rss",
+          "title": "Formula 1 to finish season in Middle East",
+          "lang": "en",
+          "published": "2026-11-10T15:04:46.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Formula 1 has committed to holding the final two rounds of the 2026 world championship in the Middle East or not at all.",
+          "name": "RaceFans",
+          "domain": "racefans.net",
+          "url": "https://www.racefans.net/2026/11/10/f1-scraps-back-up-plan-to-race-at-imola-if-middle-east-gps-are-cancelled-reports/",
+          "title": "F1 scraps back-up plan to race at Imola if Middle East GPs are cancelled – reports | Formula 1",
+          "lang": "en",
+          "published": "2026-11-10T15:58:22.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Imola stood down as back-up plan to finish the year Qatar and Abu Dhabi races set to go ahead as planned Imola has been stood down as a back-up plan for the Formula One season finale as the sport pushes ahead with its scheduled Middle East races. The Italian venue, 20 miles from Bologna, was lined up to replace Abu Dhabi as the final race amid concern over the ongoing conflict in the region. Continue reading...",
+          "name": "The Guardian",
+          "domain": "theguardian.com",
+          "url": "https://www.theguardian.com/sport/2026/nov/10/f1-season-finale-middle-east-conflict-formula-one-abu-dhabi-imola-qatar",
+          "title": "F1 presses ahead with plan to hold season finale in Middle East despite safety concerns",
+          "lang": "en",
+          "published": "2026-11-10T17:18:35.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-dHVyZS1oYWFzLw": {
+      "id": "n-dHVyZS1oYWFzLw",
+      "level": "ALTA",
+      "count": 3,
+      "headline": "Esteban Ocon issues message to fans after Haas F1 axe",
+      "headlineLang": "en",
+      "latest": "2026-11-10T16:45:00.000Z",
+      "sources": [
+        {
+          "summary": "Ocon speaks out...",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/esteban-ocon-delivers-heartfelt-message-after-haas-axing",
+          "title": "Esteban Ocon delivers heartfelt message after Haas axing",
+          "lang": "en",
+          "published": "2026-11-10T13:02:20.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Esteban Ocon has taken to social media to reach out to fans after his shocking and controversial axe from the Haas Formula 1 team. The post Esteban Ocon issues message to fans after Haas F1 axe appeared first on Motorsport Week .",
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/10/esteban-ocon-social-media-message/",
+          "title": "Esteban Ocon issues message to fans after Haas F1 axe",
+          "lang": "en",
+          "published": "2026-11-10T16:00:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Axed F1 star Esteban Ocon has spoken out for the first time since it was confirmed that he would not be returning to Haas this season.",
+          "name": "GPFans",
+          "domain": "gpfans.com",
+          "url": "https://www.gpfans.com/en/f1-news/1092766/esteban-ocon-emotional-statement-brutal-decision-f1-future-haas/",
+          "title": "Esteban Ocon issues emotional statement after big decision on F1 future",
+          "lang": "en",
+          "published": "2026-11-10T16:45:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
     }
   },
-  "made": []
+  "made": [],
+  "alerted": {
+    "n-W1wYWlnbj1yc3M": {
+      "t": "2026-11-10T18:05:06.910Z",
+      "headline": "Formula 1 to finish season in Middle East",
+      "names": [
+        "Sky Sports F1",
+        "BBC Sport",
+        "RaceFans",
+        "The Guardian"
+      ]
+    },
+    "n-dHVyZS1oYWFzLw": {
+      "t": "2026-11-10T18:05:07.340Z",
+      "headline": "Esteban Ocon issues message to fans after Haas F1 axe",
+      "names": [
+        "PlanetF1",
+        "Motorsport Week",
+        "GPFans"
+      ]
+    }
+  },
+  "log": {
+    "n-Vyc2hpcC5odG1s": {
+      "headline": "Piastri splits from manager Webber",
+      "level": "ALTA",
+      "t": "2026-11-09T22:01:00.000Z",
+      "sources": [
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110032/1/oscar-piastri-confirms-split-f1-career-manager-mark-webber",
+          "official": false
+        },
+        {
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/oscar-piastri-wont-have-mark-webber-as-his-manager-anymore/10873253/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "official": false
+        },
+        {
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/breaking-oscar-piastri-terminates-management-agreement-with-mark-webber",
+          "official": false
+        },
+        {
+          "name": "Autosport",
+          "domain": "autosport.com",
+          "url": "https://www.autosport.com/f1/news/oscar-piastri-splits-from-mark-webber-management/10873258/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+          "official": false
+        },
+        {
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/oscar-piastri-mark-webber-f1-management-split/",
+          "official": false
+        },
+        {
+          "name": "RaceFans",
+          "domain": "racefans.net",
+          "url": "https://www.racefans.net/2026/11/09/piastri-splits-from-webbers-management-team/",
+          "official": false
+        },
+        {
+          "name": "Sky Sports F1",
+          "domain": "skysports.com",
+          "url": "https://www.skysports.com/f1/news/12433/13610108/oscar-piastri-mclaren-driver-splits-from-mark-webber-management-after-sao-paulo-grand-prix-in-brazil",
+          "official": false
+        },
+        {
+          "name": "F1i",
+          "domain": "f1i.com",
+          "url": "https://f1i.com/news/577800-piastri-and-webber-agree-to-end-management-partnership.html",
+          "official": false
+        },
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/lewis-hamilton-ferrari-dispute-fia-double-punishment-f1-2026-brazilian-grand-prix",
+          "official": false
+        }
+      ]
+    },
+    "n-c2UtZmFpbHVyZQ": {
+      "headline": "Charles Leclerc is more 'loved' within Ferrari as Lewis Hamilton has created a 'deep rift'",
+      "level": "ALTA",
+      "t": "2026-11-10T15:16:00.000Z",
+      "sources": [
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110039/1/ferrari-reveals-reason-lewis-hamilton-struggles-after-stunning-start",
+          "official": false
+        },
+        {
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/lewis-hamilton-sends-message-to-ferrari-fans-after-devastating-brazil-gp/10873360/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "official": false
+        },
+        {
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/lewis-hamilton-explains-massive-ferrari-issue-after-surprise-failure",
+          "official": false
+        },
+        {
+          "name": "F1 Oversteer",
+          "domain": "f1oversteer.com",
+          "url": "https://www.f1oversteer.com/news/charles-leclerc-is-more-loved-within-ferrari-as-lewis-hamilton-has-created-a-deep-rift/",
+          "official": false
+        },
+        {
+          "name": "GPFans",
+          "domain": "gpfans.com",
+          "url": "https://www.gpfans.com/en/f1-news/1092723/f1-news-today-lewis-hamilton-brazilian-gp-john-elkann/",
+          "official": false
+        },
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/ferrari-lifts-lid-on-lewis-hamilton-decision-after-65-place-penalty",
+          "official": false
+        }
+      ]
+    },
+    "n-VsbC12aWN0b3J5": {
+      "headline": "Red Bull have been ‘breaking’ Max Verstappen’s F1 car with bizarre pit stop problem",
+      "level": "ALTA",
+      "t": "2026-11-10T15:31:24.000Z",
+      "sources": [
+        {
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/daniel-ricciardo-reveals-max-verstappen-message-after-historic-red-bull-victory",
+          "official": false
+        },
+        {
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/did-red-bull-car-problems-cost-verstappen-brazilian-gp-victory/",
+          "official": false
+        },
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/red-bull-rejects-max-verstappen-brazilian-gp-grid-penalty-notion",
+          "official": false
+        },
+        {
+          "name": "F1 Oversteer",
+          "domain": "f1oversteer.com",
+          "url": "https://www.f1oversteer.com/news/red-bull-have-been-breaking-max-verstappens-f1-car-with-bizarre-pit-stop-problem/",
+          "official": false
+        },
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110066/1/daniel-ricciardo-hails-max-verstappen-one-best-ever",
+          "official": false
+        }
+      ]
+    },
+    "n-9jb250ZW50PXVr": {
+      "headline": "FIA reveals findings of final F1 ADUO window",
+      "level": "ALTA",
+      "t": "2026-11-10T14:32:48.000Z",
+      "sources": [
+        {
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/fia-reveals-latest-aduo-results-in-final-review-of-2026-f1-season/10873562/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "official": false
+        },
+        {
+          "name": "Autosport",
+          "domain": "autosport.com",
+          "url": "https://www.autosport.com/f1/news/fia-reveals-aduo-results-in-final-review-of-2026-f1-season/10873566/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+          "official": false
+        },
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110058/1/fia-announces-results-final-2026-f1-aduo-engine-review",
+          "official": false
+        },
+        {
+          "name": "GPFans",
+          "domain": "gpfans.com",
+          "url": "https://www.gpfans.com/en/f1-news/1092762/f1-fia-aduo-review-rankings-upgrade-final-2026/",
+          "official": false
+        },
+        {
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/10/fia-f1-aduo-finding/",
+          "official": false
+        }
+      ]
+    },
+    "n-W1wYWlnbj1yc3M": {
+      "headline": "Formula 1 to finish season in Middle East",
+      "level": "ALTA",
+      "t": "2026-11-10T17:18:35.000Z",
+      "sources": [
+        {
+          "name": "Sky Sports F1",
+          "domain": "skysports.com",
+          "url": "https://www.skysports.com/f1/news/12433/13610302/formula-1-proceeding-with-plans-to-finish-2026-season-in-middle-east-as-deadline-to-hold-race-at-imola-passes",
+          "official": false
+        },
+        {
+          "name": "BBC Sport",
+          "domain": "bbc.co.uk",
+          "url": "https://www.bbc.co.uk/sport/formula1/articles/c53989e97lxwo?at_medium=RSS&at_campaign=rss",
+          "official": false
+        },
+        {
+          "name": "RaceFans",
+          "domain": "racefans.net",
+          "url": "https://www.racefans.net/2026/11/10/f1-scraps-back-up-plan-to-race-at-imola-if-middle-east-gps-are-cancelled-reports/",
+          "official": false
+        },
+        {
+          "name": "The Guardian",
+          "domain": "theguardian.com",
+          "url": "https://www.theguardian.com/sport/2026/nov/10/f1-season-finale-middle-east-conflict-formula-one-abu-dhabi-imola-qatar",
+          "official": false
+        }
+      ]
+    },
+    "n-WRpYS1yZWFjdHM": {
+      "headline": "Lawson closing in on F1 2027 stay with Racing Bulls",
+      "level": "ALTA",
+      "t": "2026-11-09T18:55:56.000Z",
+      "sources": [
+        {
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/liam-lawson-closing-on-f1-2027-racing-bulls-stay/",
+          "official": false
+        },
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110034/1/racing-bulls-closing-f1-2027-driver-decision-after-liam-lawson-statement",
+          "official": false
+        },
+        {
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/liam-lawson-hypocrisy-warning-to-racing-bulls-as-max-verstappen-shows-true-colours---international-media-reacts",
+          "official": false
+        },
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/red-bull-liam-lawson-racing-bulls-stall-contract-decision",
+          "official": false
+        }
+      ]
+    },
+    "n-dHVyZS1oYWFzLw": {
+      "headline": "Esteban Ocon issues message to fans after Haas F1 axe",
+      "level": "ALTA",
+      "t": "2026-11-10T16:45:00.000Z",
+      "sources": [
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/esteban-ocon-delivers-heartfelt-message-after-haas-axing",
+          "official": false
+        },
+        {
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/10/esteban-ocon-social-media-message/",
+          "official": false
+        },
+        {
+          "name": "GPFans",
+          "domain": "gpfans.com",
+          "url": "https://www.gpfans.com/en/f1-news/1092766/esteban-ocon-emotional-statement-brutal-decision-f1-future-haas/",
+          "official": false
+        }
+      ]
+    },
+    "n-S1ydWxlZC1vdXQ": {
+      "headline": "F1 delivers update on Qatar and Abu Dhabi GPs as Imola ruled out",
+      "level": "ALTA",
+      "t": "2026-11-10T15:14:00.000Z",
+      "sources": [
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/qatar-abu-dhabi-grand-prix-f1-2026-calendar-decision",
+          "official": false
+        },
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110062/1/f1-delivers-update-qatar-and-abu-dhabi-gps-imola-ruled-out",
+          "official": false
+        },
+        {
+          "name": "GPFans",
+          "domain": "gpfans.com",
+          "url": "https://www.gpfans.com/en/f1-news/1092771/f1-fia-president-confirms-qatar-abu-dhabi-race-decision-conflict-middle-east/",
+          "official": false
+        }
+      ]
+    },
+    "n-C1wcml4Lmh0bWw": {
+      "headline": "F1i Driver Ratings for the 2026 São Paulo Grand Prix",
+      "level": "ALTA",
+      "t": "2026-11-10T15:00:00.000Z",
+      "sources": [
+        {
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/2026-f1-sao-paulo-grand-prix-brazil-driver-ratings",
+          "official": false
+        },
+        {
+          "name": "F1i",
+          "domain": "f1i.com",
+          "url": "https://f1i.com/magazine/577802-f1i-driver-ratings-for-the-2026-sao-paulo-grand-prix.html",
+          "official": false
+        },
+        {
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/10/f1-sao-paulo-gp-driver-ratings/",
+          "official": false
+        }
+      ]
+    },
+    "n-FZSb2ZLY1BnRjg": {
+      "headline": "Why McLaren went the opposite way to Mercedes' front wing",
+      "level": "MEDIA",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/features/mclarens-first-glimpse-f1-2027-deep-dive-new-front-wing",
+          "official": false
+        },
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/why-mclaren-went-the-opposite-way-to-mercedes-on-their-front-wing.6adMZ9ne0eiXVRofKcPgF8",
+          "official": true
+        }
+      ]
+    },
+    "n-WYxLXNhY2tpbmc": {
+      "headline": "New Christian Horner details emerge from Red Bull F1 sacking",
+      "level": "MEDIA",
+      "t": "2026-11-10T17:00:00.000Z",
+      "sources": [
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110048/1/new-christian-horner-details-emerge-red-bull-f1-sacking",
+          "official": false
+        },
+        {
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/10/christian-horner-red-bull-f1-dismissal-new-details/",
+          "official": false
+        }
+      ]
+    },
+    "n-2NvbnRlbnQ9dWs": {
+      "headline": "F1 2026 calendar update: Imola GP off the table, no plan B if war escalates",
+      "level": "MEDIA",
+      "t": "2026-11-10T14:52:26.000Z",
+      "sources": [
+        {
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/f1-2026-calendar-update-imola-gp-off-the-table-no-plan-b-if-war-escalates/10873637/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "official": false
+        },
+        {
+          "name": "Autosport",
+          "domain": "autosport.com",
+          "url": "https://www.autosport.com/f1/news/f1-2026-calendar-update-imola-off-the-table-no-plan-b-if-iran-war-escalates/10873643/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+          "official": false
+        }
+      ]
+    },
+    "n-cC1jb21lYmFjaw": {
+      "headline": "How Max Verstappen beat Red Bull's own simulation tools with P2 in Brazil",
+      "level": "MEDIA",
+      "t": "2026-11-10T09:50:00.000Z",
+      "sources": [
+        {
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/how-max-verstappen-beat-red-bulls-own-simulation-tools-with-p2-in-brazil/10873308/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "official": false
+        },
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110053/1/red-bull-boss-admits-max-verstappen-beating-sim-after-brazil-gp-comeback",
+          "official": false
+        }
+      ]
+    },
+    "n-ZC10by1jaGlsbA": {
+      "headline": "‘Chill’ – George Russell accused of FIA press conference ‘walk out’",
+      "level": "MEDIA",
+      "t": "2026-11-10T07:02:02.000Z",
+      "sources": [
+        {
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/george-russell-walked-out-of-fia-press-conference-i-thought-you-need-to-chill",
+          "official": false
+        },
+        {
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/george-russell-fia-press-conference-f1-2026-brazilian-grand-prix",
+          "official": false
+        }
+      ]
+    },
+    "n-5uZXItYmF0dGxl": {
+      "headline": "George Russell has lost 90 points to Max Verstappen in F1 2026 runner-up battle",
+      "level": "MEDIA",
+      "t": "2026-11-09T16:47:55.000Z",
+      "sources": [
+        {
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/mercedes-considers-push-for-george-russell-to-be-f1-2026-runner-up/10873310/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "official": false
+        },
+        {
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110051/1/mercedes-considers-plan-help-george-russell-beat-max-verstappen-f1-runner-battle",
+          "official": false
+        }
+      ]
+    },
+    "n-ZWtJdzFXdXZXZA": {
+      "headline": "PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins",
+      "level": "OFICIAL",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/why-norris-sao-paulo-victory-was-one-of-his-best-ever-wins.3hyiRlbfztlQekIw1WuvWd",
+          "official": true
+        }
+      ]
+    },
+    "n-SThwQWZnNUswTw": {
+      "headline": "F1 ACADEMY announces 2027 calendar",
+      "level": "OFICIAL",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/f1-academy-unveils-calendar-for-2027-season.1mYuyMEiCaWyI8pAfg5K0O",
+          "official": true
+        }
+      ]
+    },
+    "n-bXRKNTBSc0NZSA": {
+      "headline": "Camara experiences every condition in ‘tricky’ Haas debut",
+      "level": "OFICIAL",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/camara-experiences-every-condition-going-in-tricky-haas-debut.40TC0zRX2AaMmtJ50RsCYH",
+          "official": true
+        }
+      ]
+    },
+    "n-lScUd4MHh1RkhL": {
+      "headline": "Alonso credits ‘phenomenal’ car after strong drive in Brazil",
+      "level": "OFICIAL",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/alonso-credits-phenomenal-car-after-strong-showing-in-sao-paulo.7d9xmDFQhJ3IRqGx0xuFHK",
+          "official": true
+        }
+      ]
+    },
+    "n-NDZmwwQ0dzcHdz": {
+      "headline": "P10 in Sao Paulo GP 'the maximum possible' – Hulkenberg",
+      "level": "OFICIAL",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/the-maximum-possible-hulkenberg-on-audis-fight-for-points-in-sao-paulo-grand-prix.1KO1iL7LzQm3Cfl0CGspws",
+          "official": true
+        }
+      ]
+    },
+    "n-tZV0dEa05ZdlV0": {
+      "headline": "5 betting lessons learnt after Norris wins in Brazil",
+      "level": "OFICIAL",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/5-key-betting-lessons-learnt-after-lando-norris-wins-the-sao-paulo-grand-prix-in-brazil.5yqAHXsmHN6KYWGDkNYvUt",
+          "official": true
+        }
+      ]
+    },
+    "n-NHZ2bFZFeWR3NQ": {
+      "headline": "The best images from Mercedes' title celebrations",
+      "level": "OFICIAL",
+      "t": "2026-11-10T18:05:05.467Z",
+      "sources": [
+        {
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/gallery-the-best-images-from-mercedes-title-celebrations-2026.1GRUyTDIodPm4vvlVEydw5",
+          "official": true
+        }
+      ]
+    }
+  }
 }
