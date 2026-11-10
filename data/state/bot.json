@@ -945,7 +945,12 @@
     "n-c2UtZmFpbHVyZQ": "2026-11-10T14:54:08.936Z",
     "n-WRpYS1yZWFjdHM": "2026-11-10T14:54:08.936Z",
     "n-cC1jb21lYmFjaw": "2026-11-10T14:54:08.936Z",
-    "n-bm91bmNlbWVudA": "2026-11-10T14:54:08.936Z"
+    "n-bm91bmNlbWVudA": "2026-11-10T14:54:08.936Z",
+    "n-VsbC12aWN0b3J5": "2026-11-10T15:01:48.202Z",
+    "n-mljcy1pc3N1ZXM": "2026-11-10T15:01:48.202Z",
+    "n-S1ydWxlZC1vdXQ": "2026-11-10T15:01:48.202Z",
+    "n-ZC10by1jaGlsbA": "2026-11-10T15:01:48.202Z",
+    "n-y1hZGRyZXNzZWQ": "2026-11-10T15:01:48.202Z"
   },
   "menuClusters": {
     "n-9jb250ZW50PXVr": {
@@ -1415,6 +1420,193 @@
           "title": "F1 confirms 2026 season finale with new update",
           "lang": "en",
           "published": "2026-11-10T14:44:17.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-VsbC12aWN0b3J5": {
+      "id": "n-VsbC12aWN0b3J5",
+      "level": "ALTA",
+      "count": 3,
+      "headline": "Did Red Bull car problems cost Verstappen Brazilian GP victory?",
+      "headlineLang": "en",
+      "latest": "2026-11-10T10:15:09.000Z",
+      "sources": [
+        {
+          "summary": "Daniel Ricciardo has been in contact with Max Verstappen - but what did the former F1 driver have to say to the four-time champion?",
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/daniel-ricciardo-reveals-max-verstappen-message-after-historic-red-bull-victory",
+          "title": "Daniel Ricciardo reveals Max Verstappen message after historic Red Bull victory",
+          "lang": "en",
+          "published": "2026-11-09T19:00:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Should Max Verstappen's 21st to second Brazilian GP charge actually have ended with victory?",
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/did-red-bull-car-problems-cost-verstappen-brazilian-gp-victory/",
+          "title": "Did Red Bull car problems cost Verstappen Brazilian GP victory?",
+          "lang": "en",
+          "published": "2026-11-09T19:01:33.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Max Verstappen charged from 21st on the grid to second place in Brazil after an engine penalty.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/red-bull-rejects-max-verstappen-brazilian-gp-grid-penalty-notion",
+          "title": "Red Bull rejects notion over Max Verstappen Brazilian GP grid penalty",
+          "lang": "en",
+          "published": "2026-11-10T10:15:09.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-mljcy1pc3N1ZXM": {
+      "id": "n-mljcy1pc3N1ZXM",
+      "level": "ALTA",
+      "count": 3,
+      "headline": "Lando Norris airs McLaren warning despite commanding Brazil win",
+      "headlineLang": "en",
+      "latest": "2026-11-10T08:37:21.000Z",
+      "sources": [
+        {
+          "summary": "Lando Norris was cautious about McLaren's apparent step up in performance after his victory in the Sao Paulo Grand Prix, saying there is \"still work to do\" for the Woking-based squad. The post Lando Norris issues McLaren warning after ‘one of my best’ F1 wins appeared first on Motorsport Week .",
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/09/lando-norris-mclaren-warning/",
+          "title": "Lando Norris issues McLaren warning after ‘one of my best’ F1 wins",
+          "lang": "en",
+          "published": "2026-11-09T12:00:49.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "It wasn't Lando Norris' finest moment after a superb victory in São Paulo.",
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/mclaren-react-to-lando-norris-champagne-and-pyrotechnics-issues",
+          "title": "McLaren react to Lando Norris champagne and 'pyrotechnics' issues",
+          "lang": "en",
+          "published": "2026-11-09T17:10:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "McLaren appeared to take a sizeable step forward with upgrades in Brazil, but Lando Norris is not getting ahead of himself just yet.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/lando-norris-airs-mclaren-warning-despite-brazil-win",
+          "title": "Lando Norris airs McLaren warning despite commanding Brazil win",
+          "lang": "en",
+          "published": "2026-11-10T08:37:21.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-S1ydWxlZC1vdXQ": {
+      "id": "n-S1ydWxlZC1vdXQ",
+      "level": "MEDIA",
+      "count": 2,
+      "headline": "F1 delivers update on Qatar and Abu Dhabi GPs as Imola ruled out",
+      "headlineLang": "en",
+      "latest": "2026-11-10T14:55:00.000Z",
+      "sources": [
+        {
+          "summary": "A final decision is expected imminently.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/qatar-abu-dhabi-grand-prix-f1-2026-calendar-decision",
+          "title": "Final Qatar, Abu Dhabi GP decision imminent in fresh F1 2026 update",
+          "lang": "en",
+          "published": "2026-11-10T11:23:06.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Formula 1 has reiterated its commitment to racing in Qatar and Abu Dhabi despite previously considering an alternative venue",
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110062/1/f1-delivers-update-qatar-and-abu-dhabi-gps-imola-ruled-out",
+          "title": "F1 delivers update on Qatar and Abu Dhabi GPs as Imola ruled out",
+          "lang": "en",
+          "published": "2026-11-10T14:55:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-ZC10by1jaGlsbA": {
+      "id": "n-ZC10by1jaGlsbA",
+      "level": "MEDIA",
+      "count": 2,
+      "headline": "‘Chill’ – George Russell accused of FIA press conference ‘walk out’",
+      "headlineLang": "en",
+      "latest": "2026-11-10T07:02:02.000Z",
+      "sources": [
+        {
+          "summary": "Interesting insight into a clearly struggling George Russell of late.",
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/george-russell-walked-out-of-fia-press-conference-i-thought-you-need-to-chill",
+          "title": "George Russell walked out of FIA press conference: 'I thought, you need to chill'",
+          "lang": "en",
+          "published": "2026-11-09T15:55:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "\"He actually walked out of the press conference...\"",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/george-russell-fia-press-conference-f1-2026-brazilian-grand-prix",
+          "title": "‘Chill’ – George Russell accused of FIA press conference ‘walk out’",
+          "lang": "en",
+          "published": "2026-11-10T07:02:02.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-y1hZGRyZXNzZWQ": {
+      "id": "n-y1hZGRyZXNzZWQ",
+      "level": "RADAR",
+      "count": 1,
+      "headline": "F1 confirm final Imola decision as Middle East crisis addressed",
+      "headlineLang": "en",
+      "latest": "2026-11-10T14:32:00.000Z",
+      "sources": [
+        {
+          "summary": "The long wait is over and now we finally have our answer - F1 is heading to the troubled Middle East for the final two grands prix.",
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/f1-confirm-final-imola-decision-as-middle-east-crisis-addressed",
+          "title": "F1 confirm final Imola decision as Middle East crisis addressed",
+          "lang": "en",
+          "published": "2026-11-10T14:32:00.000Z",
           "tier": "medio",
           "official": false,
           "manual": false
