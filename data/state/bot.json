@@ -2252,7 +2252,9 @@
     "n-ZC10by1jaGlsbA": "2026-11-10T15:01:48.202Z",
     "n-y1hZGRyZXNzZWQ": "2026-11-10T15:01:48.202Z",
     "n-W1wYWlnbj1yc3M": "2026-11-10T18:05:06.910Z",
-    "n-dHVyZS1oYWFzLw": "2026-11-10T18:05:07.340Z"
+    "n-dHVyZS1oYWFzLw": "2026-11-10T18:05:07.340Z",
+    "n-WYxLXNhY2tpbmc": "2026-11-10T19:11:01.460Z",
+    "n-ZWtJdzFXdXZXZA": "2026-11-10T19:11:01.844Z"
   },
   "menuClusters": {
     "n-9jb250ZW50PXVr": {
@@ -3021,6 +3023,64 @@
         }
       ],
       "alsoSay": []
+    },
+    "n-WYxLXNhY2tpbmc": {
+      "id": "n-WYxLXNhY2tpbmc",
+      "level": "MEDIA",
+      "count": 2,
+      "headline": "New Christian Horner details emerge from Red Bull F1 sacking",
+      "headlineLang": "en",
+      "latest": "2026-11-10T17:00:00.000Z",
+      "sources": [
+        {
+          "summary": "Christian Horner sheds new light on his Red Bull F1 sacking.",
+          "name": "Crash.net",
+          "domain": "crash.net",
+          "url": "https://www.crash.net/f1/news/1110048/1/new-christian-horner-details-emerge-red-bull-f1-sacking",
+          "title": "New Christian Horner details emerge from Red Bull F1 sacking",
+          "lang": "en",
+          "published": "2026-11-09T15:22:19.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        },
+        {
+          "summary": "Christian Horner has recently narrated how he was sacked as the Team Principal and CEO of the Red Bull F1 team. The post Christian Horner sheds new light on shock Red Bull F1 dismissal appeared first on Motorsport Week .",
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/10/christian-horner-red-bull-f1-dismissal-new-details/",
+          "title": "Christian Horner sheds new light on shock Red Bull F1 dismissal",
+          "lang": "en",
+          "published": "2026-11-10T17:00:00.000Z",
+          "tier": "medio",
+          "official": false,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-ZWtJdzFXdXZXZA": {
+      "id": "n-ZWtJdzFXdXZXZA",
+      "level": "OFICIAL",
+      "count": 1,
+      "headline": "PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins",
+      "headlineLang": "en",
+      "latest": "2026-11-10T19:10:59.961Z",
+      "sources": [
+        {
+          "summary": "Races like the Sao Paulo Grand Prix show everybody why Lando Norris is a World Champion, writes former Renault F1 driver Jolyon Palmer.",
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/why-norris-sao-paulo-victory-was-one-of-his-best-ever-wins.3hyiRlbfztlQekIw1WuvWd",
+          "title": "PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins",
+          "lang": "en",
+          "published": "2026-11-10T19:10:59.961Z",
+          "tier": "oficial",
+          "official": true,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
     }
   },
   "made": [],
@@ -3043,6 +3103,21 @@
         "Motorsport Week",
         "GPFans"
       ]
+    },
+    "n-WYxLXNhY2tpbmc": {
+      "t": "2026-11-10T19:11:01.460Z",
+      "headline": "New Christian Horner details emerge from Red Bull F1 sacking",
+      "names": [
+        "Crash.net",
+        "Motorsport Week"
+      ]
+    },
+    "n-ZWtJdzFXdXZXZA": {
+      "t": "2026-11-10T19:11:01.844Z",
+      "headline": "PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins",
+      "names": [
+        "Formula1.com"
+      ]
     }
   },
   "log": {
@@ -3050,6 +3125,7 @@
       "headline": "Piastri splits from manager Webber",
       "level": "ALTA",
       "t": "2026-11-09T22:01:00.000Z",
+      "detail": "Oscar Piastri and Mark Webber have mutually agreed to terminate their management agreement, the pair have announced.",
       "sources": [
         {
           "name": "Crash.net",
@@ -3111,6 +3187,7 @@
       "headline": "Charles Leclerc is more 'loved' within Ferrari as Lewis Hamilton has created a 'deep rift'",
       "level": "ALTA",
       "t": "2026-11-10T15:16:00.000Z",
+      "detail": "Lewis Hamilton was left seeking answers once again after admitting he was \"devastated\" by the way Sunday's Brazilian Grand Prix ended for him and Ferrari.",
       "sources": [
         {
           "name": "Crash.net",
@@ -3154,6 +3231,7 @@
       "headline": "Red Bull have been ‘breaking’ Max Verstappen’s F1 car with bizarre pit stop problem",
       "level": "ALTA",
       "t": "2026-11-10T15:31:24.000Z",
+      "detail": "Daniel Ricciardo believes Max Verstappen has cemented his place among Formula 1's all-time greats following his continued success with Red Bull",
       "sources": [
         {
           "name": "RacingNews365",
@@ -3191,6 +3269,7 @@
       "headline": "FIA reveals findings of final F1 ADUO window",
       "level": "ALTA",
       "t": "2026-11-10T14:32:48.000Z",
+      "detail": "The FIA has revealed its findings of the final Additional Development and Upgrade Opportunities [ADUO] window of this year's Formula 1 season.",
       "sources": [
         {
           "name": "Motorsport.com",
@@ -3228,6 +3307,7 @@
       "headline": "Formula 1 to finish season in Middle East",
       "level": "ALTA",
       "t": "2026-11-10T17:18:35.000Z",
+      "detail": "Formula 1 chiefs are proceeding with plans to hold the final two rounds of 2026 in the Middle East after a deadline to move one of the season-ending races to Italy passed.",
       "sources": [
         {
           "name": "Sky Sports F1",
@@ -3258,7 +3338,8 @@
     "n-WRpYS1yZWFjdHM": {
       "headline": "Lawson closing in on F1 2027 stay with Racing Bulls",
       "level": "ALTA",
-      "t": "2026-11-09T18:55:56.000Z",
+      "t": "2026-11-09T18:05:00.000Z",
+      "detail": "Liam Lawson is closing in on a 2027 F1 race deal with Racing Bulls following his standout performance over the Brazilian GP weekend",
       "sources": [
         {
           "name": "The Race",
@@ -3277,12 +3358,6 @@
           "domain": "racingnews365.com",
           "url": "https://racingnews365.com/liam-lawson-hypocrisy-warning-to-racing-bulls-as-max-verstappen-shows-true-colours---international-media-reacts",
           "official": false
-        },
-        {
-          "name": "PlanetF1",
-          "domain": "planetf1.com",
-          "url": "https://www.planetf1.com/news/red-bull-liam-lawson-racing-bulls-stall-contract-decision",
-          "official": false
         }
       ]
     },
@@ -3290,6 +3365,7 @@
       "headline": "Esteban Ocon issues message to fans after Haas F1 axe",
       "level": "ALTA",
       "t": "2026-11-10T16:45:00.000Z",
+      "detail": "Esteban Ocon has taken to social media to reach out to fans after his shocking and controversial axe from the Haas Formula 1 team.",
       "sources": [
         {
           "name": "PlanetF1",
@@ -3315,6 +3391,7 @@
       "headline": "F1 delivers update on Qatar and Abu Dhabi GPs as Imola ruled out",
       "level": "ALTA",
       "t": "2026-11-10T15:14:00.000Z",
+      "detail": "F1 has made the final step toward hosting the final two races of its 2026 season in Qatar and Abu Dhabi as previously planned.",
       "sources": [
         {
           "name": "PlanetF1",
@@ -3340,6 +3417,7 @@
       "headline": "F1i Driver Ratings for the 2026 São Paulo Grand Prix",
       "level": "ALTA",
       "t": "2026-11-10T15:00:00.000Z",
+      "detail": "Lando Norris triumphed in treacherous conditions at Interlagos. Here's how the drivers fared at the F1 Sao Paulo GP.",
       "sources": [
         {
           "name": "RacingNews365",
@@ -3364,7 +3442,8 @@
     "n-FZSb2ZLY1BnRjg": {
       "headline": "Why McLaren went the opposite way to Mercedes' front wing",
       "level": "MEDIA",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "Mark Hughes and Giorgio Piola investigate the front wing switch that helped McLaren's Lando Norris win the Sao Paulo Grand Prix.",
       "sources": [
         {
           "name": "PlanetF1",
@@ -3384,6 +3463,7 @@
       "headline": "New Christian Horner details emerge from Red Bull F1 sacking",
       "level": "MEDIA",
       "t": "2026-11-10T17:00:00.000Z",
+      "detail": "Christian Horner has recently narrated how he was sacked as the Team Principal and CEO of the Red Bull F1 team.",
       "sources": [
         {
           "name": "Crash.net",
@@ -3403,6 +3483,7 @@
       "headline": "F1 2026 calendar update: Imola GP off the table, no plan B if war escalates",
       "level": "MEDIA",
       "t": "2026-11-10T14:52:26.000Z",
+      "detail": "The Qatar and Abu Dhabi grands prix which will conclude Formula 1’s 2026 season are set to proceed as planned, provided there is no dramatic escalation of the Iran war.",
       "sources": [
         {
           "name": "Motorsport.com",
@@ -3422,6 +3503,7 @@
       "headline": "How Max Verstappen beat Red Bull's own simulation tools with P2 in Brazil",
       "level": "MEDIA",
       "t": "2026-11-10T09:50:00.000Z",
+      "detail": "For the third year in a row, Verstappen produced an impressive comeback drive in the Formula 1 Sao Paulo Grand Prix.",
       "sources": [
         {
           "name": "Motorsport.com",
@@ -3441,6 +3523,7 @@
       "headline": "‘Chill’ – George Russell accused of FIA press conference ‘walk out’",
       "level": "MEDIA",
       "t": "2026-11-10T07:02:02.000Z",
+      "detail": "Interesting insight into a clearly struggling George Russell of late.",
       "sources": [
         {
           "name": "RacingNews365",
@@ -3460,6 +3543,7 @@
       "headline": "George Russell has lost 90 points to Max Verstappen in F1 2026 runner-up battle",
       "level": "MEDIA",
       "t": "2026-11-09T16:47:55.000Z",
+      "detail": "Mercedes is considering giving George Russell “all the force” to secure a 1-2 in the drivers’ championship after a nightmare run of form.",
       "sources": [
         {
           "name": "Motorsport.com",
@@ -3478,7 +3562,8 @@
     "n-ZWtJdzFXdXZXZA": {
       "headline": "PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins",
       "level": "OFICIAL",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "Races like the Sao Paulo Grand Prix show everybody why Lando Norris is a World Champion, writes former Renault F1 driver Jolyon Palmer.",
       "sources": [
         {
           "name": "Formula1.com",
@@ -3491,7 +3576,8 @@
     "n-SThwQWZnNUswTw": {
       "headline": "F1 ACADEMY announces 2027 calendar",
       "level": "OFICIAL",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "F1 ACADEMY has revealed its calendar for the 2027 campaign, with the all-female series’ fifth season featuring seven rounds.",
       "sources": [
         {
           "name": "Formula1.com",
@@ -3504,7 +3590,8 @@
     "n-bXRKNTBSc0NZSA": {
       "headline": "Camara experiences every condition in ‘tricky’ Haas debut",
       "level": "OFICIAL",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "While Rafael Camara saw the chequered flag in a “tricky” debut race for Haas, the Brazilian faced the tough task of navigating his first Grand Prix and in changeable conditions.",
       "sources": [
         {
           "name": "Formula1.com",
@@ -3517,7 +3604,8 @@
     "n-lScUd4MHh1RkhL": {
       "headline": "Alonso credits ‘phenomenal’ car after strong drive in Brazil",
       "level": "OFICIAL",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "After a difficult time of it in Mexico City, Aston Martin bounced back strongly in Brazil as Fernando Alonso finished 12th at Interlagos, just missing out on a rare chance to score points.",
       "sources": [
         {
           "name": "Formula1.com",
@@ -3530,7 +3618,8 @@
     "n-NDZmwwQ0dzcHdz": {
       "headline": "P10 in Sao Paulo GP 'the maximum possible' – Hulkenberg",
       "level": "OFICIAL",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "Nico Hulkenberg believes that P10 and the final point on offer was \"the maximum possible\" in the Sao Paulo Grand Prix, the Audi driver having recovered from a 10-second penalty.",
       "sources": [
         {
           "name": "Formula1.com",
@@ -3543,7 +3632,8 @@
     "n-tZV0dEa05ZdlV0": {
       "headline": "5 betting lessons learnt after Norris wins in Brazil",
       "level": "OFICIAL",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "The battle for race wins remains wide open heading into the season-closing triple header.",
       "sources": [
         {
           "name": "Formula1.com",
@@ -3556,13 +3646,34 @@
     "n-NHZ2bFZFeWR3NQ": {
       "headline": "The best images from Mercedes' title celebrations",
       "level": "OFICIAL",
-      "t": "2026-11-10T18:05:05.467Z",
+      "t": "2026-11-10T19:10:59.961Z",
+      "detail": "Mercedes sealed the Teams' Championship in Sao Paulo on Sunday after a double points finish from George Russell and Kimi Antonelli.",
       "sources": [
         {
           "name": "Formula1.com",
           "domain": "formula1.com",
           "url": "https://www.formula1.com/en/latest/article/gallery-the-best-images-from-mercedes-title-celebrations-2026.1GRUyTDIodPm4vvlVEydw5",
           "official": true
+        }
+      ]
+    },
+    "n-y1hZGRyZXNzZWQ": {
+      "headline": "F1 makes crucial decision on Middle East races",
+      "level": "MEDIA",
+      "t": "2026-11-10T18:30:14.000Z",
+      "detail": "Formula 1 will hold its final two races of the 2026 season in the Middle East as planned, with Imola no longer an option to host the finale.",
+      "sources": [
+        {
+          "name": "RacingNews365",
+          "domain": "racingnews365.com",
+          "url": "https://racingnews365.com/f1-confirm-final-imola-decision-as-middle-east-crisis-addressed",
+          "official": false
+        },
+        {
+          "name": "Motorsport Week",
+          "domain": "motorsportweek.com",
+          "url": "https://www.motorsportweek.com/2026/11/10/f1-makes-crucial-decision-on-middle-east-races/",
+          "official": false
         }
       ]
     }
