@@ -59,3 +59,10 @@ Previsualizar plantillas: `npx remotion studio src/index.ts`.
 | Animación + montaje | Remotion (audio + subtítulos por palabra, duración = audio) | 0 |
 
 Flags: `--template` (sin LLM), `--no-voice`. Test: `npm run test:agents`. El guion generado aparece en la nota de cada elemento del panel.
+
+
+## Flujo actual (borradores en la nube)
+- **GitHub (sin que tengas el PC encendido):** `borradores.yml` lo lanza cron-job.org cada pocas horas. Guarda el registro de noticias y, si hay una buena, monta el vídeo (máx. 3 al día, `settings.drafts`) y lo sube a la release «borradores». No manda nada al móvil.
+- **Tu PC:** `npm run review` baja los borradores solos (o con «⬇ Traer borradores»), los ves, editas texto/datos, apruebas y eliges: «📱 Al móvil» (Telegram) o «Publicar» (API de Meta, si hay credenciales).
+- **Comando `npm run hoy`:** monta un vídeo a mano (noticia, tema o resumen) y abre el panel.
+- Lo retirado está en `_to_delete/` (ignorado por git): alertas.yml, daily.yml, hoytoca.yml, daily.bat.

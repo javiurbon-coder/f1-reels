@@ -6,6 +6,8 @@ import {deleteItem, getItem, listItems, posterPath, rerender, saveItem, videoPat
 import {clean, queueBytes} from './lib/clean.mjs';
 import {loadSeries} from './lib/series.mjs';
 import {hasCredentials, publishReel} from './lib/instagram.mjs';
+import {syncDrafts} from './lib/sync.mjs';
+import {configured as tgOn, sendVideo, say} from './bot/tg.mjs';
 
 const PORT = Number(process.env.PORT || 4173);
 const json = (res, code, body) => {
@@ -48,7 +50,7 @@ const server = http.createServer(async (req, res) => {
       return res.end(PAGE);
     }
     if (req.method === 'GET' && p === '/api/state') {
-      return json(res, 200, {items: listItems(), series: loadSeries(), bytes: queueBytes(), canPublish: hasCredentials()});
+      return json(res, 200, {items: listItems(), series: loadSeries(), bytes: queueBytes(), canPublish: hasCredentials(), canPhone: tgOn()});
     }
     let m;
     if (req.method === 'GET' && (m = p.match(/^\/media\/([\w-]+)\/video\.mp4$/))) return sendFile(req, res, videoPath(m[1]), 'video/mp4');
@@ -58,6 +60,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method !== 'GET' && req.headers['x-review'] !== '1') return json(res, 403, {error: 'cabecera requerida'});
 
     if (req.method === 'POST' && p === '/api/clean') return json(res, 200, clean());
+    if (req.method === 'POST' && p === '/api/sync') return json(res, 200, await syncDrafts().catch((e) => ({added: [], error: String(e.message ?? e)})));
 
     if ((m = p.match(/^\/api\/items\/([\w-]+)(?:\/(\w+))?$/))) {
       const [, id, action] = m;
@@ -85,6 +88,14 @@ const server = http.createServer(async (req, res) => {
         if (action === 'approve' && item.status === 'pending') return json(res, 200, saveItem({...item, status: 'approved'}));
         if (action === 'unapprove' && item.status === 'approved') return json(res, 200, saveItem({...item, status: 'pending'}));
         if (action === 'reject' && ['pending', 'approved', 'error'].includes(item.status)) return json(res, 200, saveItem({...item, status: 'rejected'}));
+        if (action === 'phone') {
+          if (!tgOn()) return json(res, 400, {error: 'Telegram no está configurado en este PC. Ejecuta una vez: node scripts/notify-telegram.mjs setup <TOKEN_DEL_BOT>'});
+          if (!['pending', 'approved'].includes(item.status)) return json(res, 409, {error: 'solo se envían vídeos pendientes o aprobados'});
+          const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          await sendVideo(videoPath(id), `${(item.series ?? '').toUpperCase()} · ${item.props?.headline ?? id}`, id);
+          await say(`📋 Toca el texto para copiarlo:\n\n<code>${esc(item.caption)}</code>`, {parse_mode: 'HTML'});
+          return json(res, 200, saveItem({...item, sentToPhone: new Date().toISOString()}));
+        }
         if (action === 'publish') {
           if (item.status !== 'approved') return json(res, 409, {error: 'primero hay que aprobarlo'});
           if (body.confirm !== true) return json(res, 400, {error: 'falta confirmación'});
@@ -109,6 +120,7 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+syncDrafts().then((r) => console.log(r.error ? `Borradores: ${r.error}` : `Borradores nuevos: ${r.added.length}`)).catch(() => {}); // trae lo del robot al arrancar
 const c = clean(); // limpieza al arrancar
 console.log(`Limpieza: ${c.removed} borrados, ${c.videosDeleted} vídeos antiguos eliminados.`);
 server.listen(PORT, '127.0.0.1', () => console.log(`Panel de revisión: http://localhost:${PORT}  (Ctrl+C para cerrar)`));
@@ -138,7 +150,7 @@ button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #111}button:disa
 .empty{grid-column:1/-1;text-align:center;padding:60px;font-weight:700}
 </style>
 <header><h1>CONTRASTADO F1 · REVISIÓN</h1><div id="series"></div><div id="status"></div><span class="sp"></span><span id="disk"></span>
-<button id="clean" title="Aplica las reglas de retención">Limpiar espacio</button></header>
+<button id="sync" title="Baja los borradores que el robot ha montado en GitHub">⬇ Traer borradores</button> <button id="clean" title="Aplica las reglas de retención">Limpiar espacio</button></header>
 <main id="list"></main>
 <script>
 const H={'Content-Type':'application/json','x-review':'1'};
@@ -169,7 +181,7 @@ function draw(){
    '<details><summary>Datos del vídeo (editar y re-renderizar)</summary><textarea rows="8" data-f="props">'+esc(JSON.stringify(i.props,null,2))+'</textarea></details>'+
    '<label><b>Pie de foto</b></label><textarea rows="6" data-f="caption">'+esc(i.caption)+'</textarea>'+
    '<div class="row">'+
-    (can||appr?'<button data-a="save">Guardar</button>':'')+
+    (can||appr?'<button data-a="save">Guardar</button><button data-a="phone" '+(d.canPhone?'':'title="Telegram sin configurar en este PC"')+'>📱 Al móvil'+(i.sentToPhone?' ✓':'')+'</button>':'')+
     (can?'<button class="ok" data-a="approve">✓ Aprobar</button>':'')+
     (appr?'<button data-a="unapprove">Quitar aprobación</button><button class="go" data-a="publish" '+(d.canPublish?'':'disabled title="Faltan credenciales de Instagram"')+'>Publicar en Instagram</button>':'')+
     (can||appr||i.status==='error'?'<button class="bad" data-a="reject">Rechazar</button>':'')+
@@ -179,6 +191,7 @@ function draw(){
 document.addEventListener('click',async e=>{
  const b=e.target.closest('button');if(!b)return;
  if(b.dataset.k){S[b.dataset.k]=b.dataset.v;return draw()}
+ if(b.id==='sync'){b.disabled=true;b.textContent='Buscando…';const r=await call('POST','/api/sync');b.disabled=false;b.textContent='⬇ Traer borradores';alert(r.error?('No se pudo: '+r.error):(r.added.length?r.added.length+' borrador(es) nuevo(s)':'No hay borradores nuevos'));return load()}
  if(b.id==='clean'){const r=await call('POST','/api/clean');alert((r.freedBytes/1e6).toFixed(1)+' MB liberados');return load()}
  const card=b.closest('.card');if(!card)return;const id=card.dataset.id,a=b.dataset.a;
  const val=f=>card.querySelector('[data-f="'+f+'"]')?.value;
@@ -187,6 +200,7 @@ document.addEventListener('click',async e=>{
   await call('POST','/api/items/'+id+'/save',{props,caption:val('caption')});return load()}
  if(a==='publish'){if(!confirm('Se publicará AHORA en Instagram con el pie de foto mostrado. ¿Seguro?'))return;
   b.disabled=true;b.textContent='Publicando…';const r=await call('POST','/api/items/'+id+'/publish',{confirm:true});if(r.status==='published')alert('Publicado ✓');return load()}
+ if(a==='phone'){b.disabled=true;const r=await call('POST','/api/items/'+id+'/phone');b.disabled=false;if(r.sentToPhone)alert('Enviado al móvil ✓');return load()}
  if(a==='approve'){await call('POST','/api/items/'+id+'/save',{caption:val('caption')})}
  await call('POST','/api/items/'+id+'/'+a);load()
 });

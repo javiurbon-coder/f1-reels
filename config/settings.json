@@ -55,5 +55,10 @@
     "maxPerDay": 6,
     "maxPerRun": 2,
     "freshHours": 4
+  },
+  "drafts": {
+    "maxPerDay": 3,
+    "maxPerRun": 1,
+    "keepDays": 6
   }
 }
