@@ -102,9 +102,10 @@ for (const c of clusters) {
   }
   if (!script) { script = templateScript(c, [...material.slice(0, 3).map((m) => m.replace(/^[^:]+:\s*/, '')), ...facts.slice(0, 2).map((f) => f.line)]); notes.push('Guion de plantilla (sin IA).'); }
 
-  // el reel SIEMPRE nombra quién lo cuenta (si el guion no lo hace, se añade la frase)
+  // Rumores: se nombra quién los cuenta. Resto: solo se dice cuántos medios lo confirman (los nombres salen en pantalla al final)
   const named = [...c.sources, ...(c.alsoSay ?? [])].map((s) => s.name);
-  if (!named.some((n) => script.toLowerCase().includes(n.toLowerCase()))) script = `${script.replace(/\s+$/, '')} ${sourcesLine(c)}`;
+  const ok = c.level === 'RADAR' ? named.some((n) => script.toLowerCase().includes(n.toLowerCase())) : /(medios|fuente)/i.test(script);
+  if (!ok) script = `${script.replace(/\s+$/, '')} ${sourcesLine(c)}`;
 
   // --- agentes locutor + director + control de calidad (diseño v2: una sola composición "Reel") ---
   const base = propsFor(route, c, fmtDate);

@@ -49,7 +49,7 @@ const score = (fact, text) => {
  * @returns {{scenes:any[], total:number}}
  */
 export function direct({script, words, seconds, facts = []}) {
-  const total = +(seconds + 0.8).toFixed(2);
+  const total = +Math.max(60, seconds + 0.8).toFixed(2); // todos los vídeos: un minuto
   const sents = timeSentences(script, words);
   const hookEnd = Math.min(7, Math.max(3.2, sents[0]?.end ?? 3.5));
   // Las fuentes empiezan en la frase de "quién lo cuenta" (entre las 2 últimas) y duran al menos 5 s.

@@ -1,6 +1,7 @@
 // REEL RESUMEN (del día o de la semana): junta 2-4 noticias YA contrastadas (oficial o 2+ fuentes) en un solo vídeo.
-// Cada noticia dice quién la cuenta y sale en pantalla cuando la voz la nombra. Sin rumores. No repite las que ya tuvieron reel.
+// Cada noticia se cuenta con su detalle (sin nombrar los medios); los medios salen en pantalla al final. Sin rumores. No repite las que ya tuvieron reel.
 //   Uso: node scripts/agents/summary-reel.mjs --mode=day|week
+const TARGET_S = 60; // todos los vídeos duran un minuto
 import fs from 'node:fs';
 import {speakAny, wordTimings, voiceEngines} from './lib/voice.mjs';
 import {timeSentences, rowFrom, iconFor} from './lib/director.mjs';
@@ -41,8 +42,9 @@ export function buildSummary(items, mode, words, total) {
 
 export function scriptFor(list, mode) {
   const intro = mode === 'week' ? 'Resumen de la semana en la F1: lo más importante.' : 'Resumen de la F1: esto es lo que ha pasado hoy.';
-  const body = list.map((it, k) => `${ORD[k]} noticia: ${strip(it.headline)}. ${it.level === 'OFICIAL' ? `La confirma ${it.sources[0].name}, fuente oficial.` : `La cuentan ${join(it.sources.map((s) => s.name))}.`}`);
-  return [intro, ...body, 'Todas están contrastadas con fuentes. Síguenos para más.'].join(' ');
+  // se cuenta la noticia (titular + detalle del propio medio); los nombres de los medios NO se dicen: salen en pantalla al final
+  const body = list.map((it, k) => `${ORD[k]} noticia: ${strip(it.headline)}.${it.detail ? ` ${strip(it.detail)}.` : ''}`);
+  return [intro, ...body, 'Todas están confirmadas por varios medios, y ahora te los enseño.', 'Síguenos para más.'].join(' ');
 }
 
 if (process.argv[1]?.endsWith('summary-reel.mjs')) {
@@ -57,7 +59,7 @@ if (process.argv[1]?.endsWith('summary-reel.mjs')) {
     try { const t = (await askLocal(TRANSLATE, text, {temperature: 0})).replace(/^["“]|["”]$/g, '').trim(); return isSpanish(t) && digits(t) === digits(text) ? t : null; } catch { return null; }
   };
   const list = [];
-  for (const e of pickItems(state, mode)) { const h = await toEs(cleanText(e.headline)); if (h) list.push({...e, headline: h}); }
+  for (const e of pickItems(state, mode)) { const h = await toEs(cleanText(e.headline)); if (!h) continue; const d = e.detail ? await toEs(cleanText(e.detail)) : null; list.push({...e, headline: h, detail: d ?? ''}); }
   if (list.length < 2) {
     if (configured()) await say(`📭 No hay suficientes noticias contrastadas para un resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (necesito 2 o más que no hayan tenido ya su reel).`);
     console.log('Sin material para el resumen.'); process.exit(0);
@@ -69,7 +71,7 @@ if (process.argv[1]?.endsWith('summary-reel.mjs')) {
   const v = noVoice ? null : await speakAny(script, qid);
   const seconds = v?.seconds ?? +(script.split(/\s+/).length / 2.6).toFixed(2);
   const words = v?.words ?? wordTimings(script, seconds);
-  const total = +(seconds + 0.8).toFixed(2);
+  const total = +Math.max(TARGET_S, seconds + 0.8).toFixed(2);
   const scenes = buildSummary({script, list}, mode, words, total);
   const srcs = [...new Map(list.flatMap((it) => it.sources).map((s) => [s.name, s])).values()].slice(0, 4);
   const props = cleanDeep({kind: 'noticia', headline: mode === 'week' ? 'Resumen de la semana en la F1' : 'Resumen del día en la F1', hl: 'Resumen', section: mode === 'week' ? 'Resumen semanal' : 'Resumen del día', chip: `${list.length} noticias`,

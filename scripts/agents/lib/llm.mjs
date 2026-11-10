@@ -47,11 +47,11 @@ export async function askLocal(system, user, {temperature = 0.2} = {}) {
 export const TRANSLATE = 'Traduce al español de España este texto sobre Fórmula 1. Mantén nombres propios, cifras y fechas exactamente. No añadas nada. Devuelve solo la traducción, sin comillas ni explicaciones.';
 
 export const SYSTEM = `Eres el guionista de una cuenta de noticias de Fórmula 1 en español de España.
-Escribe la locución de un reel de 40-50 segundos (105-135 palabras; NUNCA menos de 90 palabras: el vídeo debe durar más de 30 segundos), tono directo, claro y cercano, SIEMPRE EN ESPAÑOL.
+Escribe la locución de un reel de UN MINUTO (150-165 palabras; NUNCA menos de 140 palabras ni más de 170: el vídeo debe durar un minuto exacto). Usa TODO el material disponible para profundizar, sin inventar nada, tono directo, claro y cercano, SIEMPRE EN ESPAÑOL.
 Estructura, con FRASES CORTAS (máximo 22 palabras cada una, una idea por frase): 1) frase de arranque potente; 2) qué ha pasado, con los detalles del material; 3) contexto: usa los DATOS CALCULADOS si te los doy (copia sus cifras tal cual, con números, p. ej. "7º", "3"), nada más; 4) por qué importa, SOLO si el material lo dice; 5) quién lo cuenta (una frase: "Lo cuentan A, B y C."); 6) cierre breve.
 REGLAS ESTRICTAS:
 - Usa SOLO información que esté en el material y en los DATOS CALCULADOS que te doy. No añadas cifras, nombres, causas ni contexto que no aparezcan en él.
-- Si es OFICIAL di que lo confirma la fuente oficial, nombrándola; si no, di cuántos medios lo cuentan y NOMBRA esos medios (por ejemplo: «Lo cuentan dos medios: Motorsport.com y Formula1.com»).
+- Cuenta la noticia en sí, con todo el detalle del material: qué ha pasado, cómo y qué implica. NO enumeres nombres de medios: salen en pantalla al final. Solo en la última frase di si lo confirma la fuente oficial o cuántos medios lo cuentan (por ejemplo: «Lo confirman tres medios»).
 - No uses palabras en inglés salvo nombres propios. No digas "según mis datos". Sin emojis ni hashtags.
 - Si es RUMOR, di desde el principio que NO está confirmado y que solo lo cuentan esas fuentes; nunca lo presentes como hecho.
 - Devuelve únicamente el texto de la locución.`;
@@ -76,13 +76,13 @@ export function templateScript(c, extra = []) {
     return `Ojo, esto es un rumor y no está confirmado. ${head}. ${detail} Por ahora solo lo cuenta: ${who}. Si se confirma, te lo contamos.`.replace(/\s+/g, ' ');
   }
   const n = c.sources.length;
-  const quien = c.level === 'OFICIAL' ? `Lo confirma ${c.sources[0].name}, fuente oficial.` : `Lo cuentan ${n} medios distintos: ${c.sources.map((s) => s.name).join(', ')}.`;
-  return `${head}. ${detail} ${quien} Te dejamos las fuentes en la descripción.`.replace(/\s+/g, ' ');
+  const quien = c.level === 'OFICIAL' ? 'Lo confirma la fuente oficial.' : `Lo confirman ${n} medios distintos.`;
+  return `${head}. ${detail} ${quien}`.replace(/\s+/g, ' ');
 }
 
 /** Frase final con QUIÉN lo cuenta. Se añade siempre que el guion no nombre ninguna fuente (los modelos a veces se la saltan). */
 export function sourcesLine(c) {
   const names = (list) => list.map((s) => s.name).join(', ');
   if (c.level === 'RADAR') return `Por ahora solo lo cuenta: ${names([...c.sources, ...(c.alsoSay ?? [])])}. Si se confirma, te lo contamos.`;
-  return c.level === 'OFICIAL' ? `Lo confirma ${c.sources[0].name}, fuente oficial.` : `Lo cuentan ${c.sources.length} medios distintos: ${names(c.sources)}.`;
+  return c.level === 'OFICIAL' ? 'Lo confirma la fuente oficial.' : `Lo confirman ${c.sources.length} medios distintos.`;
 }

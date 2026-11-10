@@ -7,7 +7,7 @@
     "chip": "Técnica",
     "date": "EXPLICADO",
     "hashtags": "#TecnicaF1 #EfectoSuelo",
-    "script": "¿Cómo se pega un Fórmula 1 al asfalto? Con el efecto suelo. Bajo el coche hay túneles que estrechan el aire, y ese aire va más rápido. El aire rápido tiene menos presión, y la presión de arriba empuja el coche contra la pista. Esa carga no viene de los alerones, y además crea menos resistencia. Lotus lo hizo famoso a finales de los setenta, con faldillas laterales que sellaban el suelo. Mario Andretti ganó el Mundial de 1978 con el Lotus 79. Pero perder ese sellado a gran velocidad era peligroso, y desde 1983 se obligó a usar suelos planos. En 2022 volvió, sin faldillas, y con una idea: que los coches puedan seguirse más de cerca. Esto lo cuentan Formula1.com, Racer y Autosport. Síguenos para más.",
+    "script": "¿Cómo se pega un Fórmula 1 al asfalto? Con el efecto suelo. Bajo el coche hay túneles que estrechan el aire, y ese aire va más rápido. El aire rápido tiene menos presión, y la presión de arriba empuja el coche contra la pista. Esa carga no viene de los alerones, y además crea menos resistencia. Lotus lo hizo famoso a finales de los setenta, con faldillas laterales que sellaban el suelo. Mario Andretti ganó el Mundial de 1978 con el Lotus 79. Pero perder ese sellado a gran velocidad era peligroso, y desde 1983 se obligó a usar suelos planos. En 2022 volvió, sin faldillas, con dos canales con forma de Venturi, uno a cada lado de la tabla central. Así, el suelo da una parte mucho mayor de la carga, y el alerón delantero da menos. Y como el aire sucio afecta menos al suelo que a los alerones, los coches pueden seguirse más de cerca. Todo esto está confirmado por tres fuentes, que te enseño ahora. Síguenos para más.",
     "sources": [
       {
         "name": "Formula1.com",
@@ -114,7 +114,7 @@
     "chip": "Técnica",
     "date": "EXPLICADO",
     "hashtags": "#TecnicaF1 #Porpoising",
-    "script": "¿Por qué los Fórmula 1 de 2022 rebotaban en las rectas? Se llama porpoising. El suelo se acerca demasiado a la pista, el aire que va por debajo se bloquea y el coche pierde carga de golpe. Entonces el coche sube, el aire vuelve a entrar y el suelo se pega otra vez al asfalto. Y el ciclo se repite una y otra vez, muy rápido. Subir la altura del coche lo reduce, pero también quita carga aerodinámica. Esto lo cuentan Motorsport Magazine, Autosport y Crash.net. Síguenos para más.",
+    "script": "¿Por qué los Fórmula 1 de 2022 rebotaban en las rectas? Se llama porpoising. El suelo genera tanta succión que acerca el coche a la pista. Cuando queda demasiado cerca, el aire de debajo se bloquea y el coche salta hacia arriba. Entonces el suelo se separa del asfalto, el aire vuelve y tira del coche hacia abajo otra vez. Y el ciclo se repite. Los equipos se llevaron una sorpresa, porque sus simulaciones no lo habían mostrado. Los pilotos lo sufrieron: Hamilton acabó con dolor de espalda en Azerbaiyán, y Russell habló de dolor en el pecho y en el cuello en Imola. La solución más sencilla es subir la altura del coche, pero se pierde carga. Y en el Gran Premio de Bélgica, la FIA publicó una directiva técnica para combatirlo. Todo esto está confirmado por tres fuentes, que te enseño ahora. Síguenos para más.",
     "sources": [
       {
         "name": "Motorsport Magazine",
@@ -143,46 +143,71 @@
         "rows": [
           {
             "icon": "wrench",
-            "title": "El suelo se acerca",
-            "sub": "Demasiado a la pista",
-            "kw": "suelo"
+            "title": "El suelo succiona",
+            "sub": "Acerca el coche a la pista",
+            "kw": "succión"
           },
           {
             "icon": "flag",
             "title": "El aire se bloquea",
-            "sub": "Y se pierde la carga",
+            "sub": "Y el coche salta",
             "kw": "bloquea"
           },
           {
             "icon": "chart",
-            "title": "El coche sube",
-            "sub": "Y el aire vuelve a entrar",
-            "kw": "sube"
+            "title": "El aire vuelve",
+            "sub": "Y tira del coche hacia abajo",
+            "kw": "vuelve"
           },
           {
             "icon": "stopwatch",
-            "title": "Se repite sin parar",
-            "sub": "Muy rápido",
+            "title": "Se repite",
+            "sub": "Una y otra vez",
             "kw": "repite"
           }
         ]
       },
       {
         "type": "list",
-        "kw": "Subir",
+        "kw": "sorpresa",
+        "title": "Lo que pasó en 2022",
+        "rows": [
+          {
+            "icon": "doc",
+            "title": "Equipos sorprendidos",
+            "sub": "Las simulaciones no lo mostraron",
+            "kw": "sorpresa"
+          },
+          {
+            "icon": "trophy",
+            "title": "Hamilton: espalda",
+            "sub": "Azerbaiyán",
+            "kw": "Hamilton"
+          },
+          {
+            "icon": "trophy",
+            "title": "Russell: pecho y cuello",
+            "sub": "Imola",
+            "kw": "Russell"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "solución",
         "title": "¿Cómo se frena?",
         "rows": [
           {
             "icon": "wrench",
-            "title": "Subir la altura del coche",
-            "sub": "Reduce el rebote",
-            "kw": "Subir"
+            "title": "Subir la altura",
+            "sub": "Pero se pierde carga",
+            "kw": "subir"
           },
           {
-            "icon": "chart",
-            "title": "Pero se pierde carga",
-            "sub": "Aerodinámica",
-            "kw": "quita"
+            "icon": "flag",
+            "title": "Directiva técnica de la FIA",
+            "sub": "Gran Premio de Bélgica",
+            "kw": "directiva"
           }
         ]
       }
@@ -196,7 +221,7 @@
     "chip": "Técnica",
     "date": "EXPLICADO",
     "hashtags": "#TecnicaF1 #Pirelli",
-    "script": "¿Qué significan los colores de los neumáticos de F1? Pirelli fabrica varios compuestos numerados, del más duro al más blando. En cada Gran Premio elige tres, y les pone un color. El más blando lleva rojo, el intermedio amarillo y el más duro blanco. Por eso un mismo compuesto puede ser el blando en una carrera y el duro en otra. Esto lo cuentan Autosport, RaceFans y Motorsport Week. Síguenos para más.",
+    "script": "¿Qué significan los colores de los neumáticos de F1? Pirelli es el único proveedor desde 2011. Fabrica varios compuestos, del más duro al más blando, y para cada Gran Premio elige tres. A esos tres les pone un color: el más blando lleva rojo, el intermedio amarillo y el más duro blanco. Por eso un mismo compuesto puede ser el blando en una carrera y el duro en otra. Los blandos son los más rápidos, pero se gastan antes. Los duros dan menos agarre, pero aguantan más. Y el intermedio es el punto medio. Los circuitos calientes y abrasivos piden compuestos duros, y los lisos y lentos, blandos. Cada piloto recibe trece juegos en un fin de semana normal. En una carrera en seco tiene que usar al menos dos compuestos distintos, así que hace como mínimo una parada. Con pista mojada, el intermedio es verde y el de lluvia es azul. Todo esto está confirmado por tres fuentes, que te enseño ahora. Síguenos para más.",
     "sources": [
       {
         "name": "Autosport",
@@ -225,9 +250,9 @@
         "rows": [
           {
             "icon": "wrench",
-            "title": "Compuestos numerados",
-            "sub": "Del más duro al más blando",
-            "kw": "compuestos"
+            "title": "Único proveedor",
+            "sub": "Desde 2011",
+            "kw": "proveedor"
           },
           {
             "icon": "flag",
@@ -264,14 +289,83 @@
       },
       {
         "type": "list",
-        "kw": "Por",
-        "title": "Ojo",
+        "kw": "rápidos",
+        "title": "Rápido o duradero",
+        "rows": [
+          {
+            "icon": "stopwatch",
+            "title": "Blando",
+            "sub": "El más rápido, se gasta antes",
+            "kw": "rápidos"
+          },
+          {
+            "icon": "wrench",
+            "title": "Duro",
+            "sub": "Menos agarre, aguanta más",
+            "kw": "duros"
+          },
+          {
+            "icon": "chart",
+            "title": "Intermedio",
+            "sub": "El punto medio",
+            "kw": "punto"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "circuitos",
+        "title": "Según el circuito",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Calientes y abrasivos",
+            "sub": "Compuestos duros",
+            "kw": "calientes"
+          },
+          {
+            "icon": "doc",
+            "title": "Lisos y lentos",
+            "sub": "Compuestos blandos",
+            "kw": "lisos"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "trece",
+        "title": "En carrera",
         "rows": [
           {
             "icon": "chart",
-            "title": "Mismo compuesto",
-            "sub": "Blando un día, duro otro",
-            "kw": "compuesto"
+            "title": "Trece juegos",
+            "sub": "Por fin de semana",
+            "kw": "trece"
+          },
+          {
+            "icon": "stopwatch",
+            "title": "Dos compuestos distintos",
+            "sub": "Como mínimo, una parada",
+            "kw": "dos"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "mojada",
+        "title": "Con lluvia",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Intermedio",
+            "sub": "Verde",
+            "kw": "verde"
+          },
+          {
+            "icon": "doc",
+            "title": "Lluvia",
+            "sub": "Azul",
+            "kw": "azul"
           }
         ]
       }
@@ -285,7 +379,7 @@
     "chip": "Historia",
     "date": "1950",
     "hashtags": "#HistoriaF1 #F1",
-    "script": "¿Quién ganó la primera carrera del Mundial de F1? Fue Giuseppe Farina, el 13 de mayo de 1950 en Silverstone. Corría con un Alfa Romeo, y Alfa Romeo ocupó además todo el podio. Esa misma temporada, Farina ganó también en Monza y se proclamó el primer campeón del mundo. Tenía 43 años. Esto lo cuentan Formula1.com, Autosport y Motorsport.com. Síguenos para más.",
+    "script": "¿Quién ganó la primera carrera del Mundial de F1? Fue Giuseppe Farina, el 13 de mayo de 1950 en Silverstone. Era el Gran Premio de Europa, y el de Gran Bretaña a la vez. Hubo hasta ciento veinte mil espectadores, como mucho, y el rey Jorge Sexto con la familia real. Es la única vez que un monarca reinante vio una carrera británica. Salieron veintiún pilotos. Farina partió desde la pole con un Alfa Romeo, y ganó por dos segundos y seis décimas a Fagioli. Con Parnell completaron el podio, todo de Alfa Romeo. Fangio abandonó por una tubería de aceite rota. Los coches eran el Alfa Romeo 158, de litro y medio con compresor, y con trece años de antigüedad. Esa misma temporada, Farina ganó también en Monza y se proclamó el primer campeón del mundo. Tenía 43 años. Todo esto está confirmado por tres fuentes, que te enseño ahora. Síguenos para más.",
     "sources": [
       {
         "name": "Formula1.com",
@@ -316,26 +410,95 @@
       },
       {
         "type": "list",
-        "kw": "Corría",
-        "title": "Aquella carrera",
+        "kw": "Europa",
+        "title": "Aquella tarde",
         "rows": [
           {
             "icon": "flag",
-            "title": "Con un Alfa Romeo",
-            "sub": "Silverstone",
-            "kw": "Corría"
+            "title": "Gran Premio de Europa",
+            "sub": "Y de Gran Bretaña",
+            "kw": "Europa"
+          },
+          {
+            "icon": "doc",
+            "title": "Hasta 120.000 personas",
+            "sub": "Como mucho",
+            "kw": "espectadores"
+          },
+          {
+            "icon": "trophy",
+            "title": "Con el rey Jorge VI",
+            "sub": "Y la familia real",
+            "kw": "rey"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "Salieron",
+        "title": "La carrera",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Farina, desde la pole",
+            "sub": "Con un Alfa Romeo",
+            "kw": "pole"
+          },
+          {
+            "icon": "trophy",
+            "title": "Gana por 2,6 segundos",
+            "sub": "A Fagioli",
+            "kw": "ganó"
           },
           {
             "icon": "trophy",
             "title": "Podio todo Alfa",
             "sub": "Farina, Fagioli y Parnell",
-            "kw": "ocupó"
+            "kw": "Parnell"
+          },
+          {
+            "icon": "wrench",
+            "title": "Fangio abandona",
+            "sub": "Tubería de aceite rota",
+            "kw": "Fangio"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "coches",
+        "title": "Los coches",
+        "rows": [
+          {
+            "icon": "wrench",
+            "title": "Alfa Romeo 158",
+            "sub": "Litro y medio con compresor",
+            "kw": "Romeo"
+          },
+          {
+            "icon": "stopwatch",
+            "title": "Trece años de antigüedad",
+            "sub": "",
+            "kw": "trece"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "Esa",
+        "title": "Primer campeón",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Gana también en Monza",
+            "sub": "",
+            "kw": "Monza"
           },
           {
             "icon": "trophy",
-            "title": "Primer campeón",
-            "sub": "Ganó también en Monza",
-            "kw": "campeón"
+            "title": "Primer campeón del mundo",
+            "sub": "",
+            "kw": "primer"
           },
           {
             "icon": "stopwatch",
@@ -355,7 +518,7 @@
     "chip": "Historia",
     "date": "2003",
     "hashtags": "#HistoriaF1 #Alonso",
-    "script": "¿Cuándo ganó Alonso su primer Gran Premio? Fue en Hungría, el 24 de agosto de 2003, saliendo desde la pole. Con 22 años se convirtió en el piloto más joven en ganar un Gran Premio hasta entonces, y en el primer español en lograrlo. Fue además la primera victoria de Renault como equipo en veinte años. Esto lo cuentan Motorsport Magazine, Alpine y GrandPrix.com. Síguenos para más.",
+    "script": "¿Cuándo ganó Alonso su primer Gran Premio? Fue en Hungría, el 24 de agosto de 2003, y salió desde la pole. Se puso primero en la primera curva, y en la vuelta cuatro ya sacaba diez segundos. Perdió el liderato un momento en su primera parada, a favor de Räikkönen, pero lo recuperó. Hizo tres paradas en total, y ganó por dieciséis segundos y siete décimas a Räikkönen. Montoya completó el podio. Los Williams tuvieron una carrera complicada: Ralf Schumacher se salió en la curva dos, y Montoya se salió ya al final. Con 22 años, en su salida número 30, Alonso se convirtió en el ganador más joven hasta entonces. Batió el récord de Bruce McLaren por 78 días. Y fue el primer español en ganar un Gran Premio. Fue la primera victoria de Renault como equipo en veinte años. Todo esto está confirmado por tres fuentes, que te enseño ahora. Síguenos para más.",
     "sources": [
       {
         "name": "Motorsport Magazine",
@@ -379,14 +542,57 @@
     "body": [
       {
         "type": "list",
-        "kw": "Fue",
+        "kw": "Hungría",
         "title": "Su primera victoria",
         "rows": [
           {
             "icon": "flag",
             "title": "Hungría, 24 agosto 2003",
-            "sub": "Saliendo desde la pole",
+            "sub": "",
             "kw": "Hungría"
+          },
+          {
+            "icon": "trophy",
+            "title": "Sale desde la pole",
+            "sub": "",
+            "kw": "pole"
+          },
+          {
+            "icon": "stopwatch",
+            "title": "Diez segundos de ventaja",
+            "sub": "En la vuelta 4",
+            "kw": "diez"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "Perdió",
+        "title": "La carrera",
+        "rows": [
+          {
+            "icon": "wrench",
+            "title": "Tres paradas",
+            "sub": "",
+            "kw": "tres"
+          },
+          {
+            "icon": "trophy",
+            "title": "Gana por 16,7 segundos",
+            "sub": "A Räikkönen",
+            "kw": "dieciséis"
+          },
+          {
+            "icon": "doc",
+            "title": "Montoya, tercero",
+            "sub": "",
+            "kw": "Montoya"
+          },
+          {
+            "icon": "chart",
+            "title": "Los Williams se complican",
+            "sub": "Ralf y Montoya se salen",
+            "kw": "Williams"
           }
         ]
       },
@@ -399,18 +605,24 @@
       },
       {
         "type": "list",
-        "kw": "primer",
+        "kw": "Batió",
         "title": "Más récords",
         "rows": [
           {
             "icon": "trophy",
+            "title": "Récord de Bruce McLaren",
+            "sub": "Superado por 78 días",
+            "kw": "récord"
+          },
+          {
+            "icon": "flag",
             "title": "Primer español ganador",
-            "sub": "En un Gran Premio",
-            "kw": "primer"
+            "sub": "",
+            "kw": "español"
           },
           {
             "icon": "doc",
-            "title": "Renault vuelve a ganar",
+            "title": "Renault gana",
             "sub": "Primera victoria en 20 años",
             "kw": "Renault"
           }
@@ -426,7 +638,7 @@
     "chip": "Historia",
     "date": "MÓNACO",
     "hashtags": "#HistoriaF1 #Senna #Monaco",
-    "script": "¿Quién ha ganado más veces el Gran Premio de Mónaco? Ayrton Senna, al que llamaban el rey de Mónaco. Ganó allí seis veces, en 1987 con Lotus y entre 1989 y 1993 con McLaren, un récord que sigue sin batirse. Cinco de esas victorias fueron seguidas, de 1989 a 1993. Esto lo cuentan Motorsport Magazine, Speedsport y F1 Oversteer. Síguenos para más.",
+    "script": "¿Quién ha ganado más veces el Gran Premio de Mónaco? Ayrton Senna, al que llamaban el rey de Mónaco. Ganó allí seis veces, un récord. La primera fue en 1987, con Lotus, y después encadenó cinco seguidas, de 1989 a 1993, con McLaren. Michael Schumacher llegó a cinco, igual que Graham Hill, y Alain Prost a cuatro. Pero su relación con Mónaco empezó antes. En 1984, con un Toleman, era un novato: salió decimotercero y adelantó a Niki Lauda para ser segundo en la vuelta diecinueve. Se acercaba a Prost, el líder, cuando la lluvia fuerte obligó a parar la carrera en la vuelta treinta y dos. El resultado volvió a la vuelta anterior, y ganó Prost. Y en la clasificación de 1988, Senna iba unos dos segundos por delante de todos, incluido su compañero. Dijo que conducía en otra dimensión, y volvió a boxes sin querer salir más. Todo esto está confirmado por tres fuentes, que te enseño ahora. Síguenos para más.",
     "sources": [
       {
         "name": "Motorsport Magazine",
@@ -457,14 +669,95 @@
       },
       {
         "type": "list",
-        "kw": "Cinco",
+        "kw": "primera",
         "title": "Su racha",
         "rows": [
           {
+            "icon": "flag",
+            "title": "La primera: 1987",
+            "sub": "Con Lotus",
+            "kw": "primera"
+          },
+          {
             "icon": "trophy",
             "title": "Cinco seguidas",
-            "sub": "De 1989 a 1993",
-            "kw": "Cinco"
+            "sub": "De 1989 a 1993, con McLaren",
+            "kw": "cinco"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "Schumacher",
+        "title": "Otros ganadores",
+        "rows": [
+          {
+            "icon": "trophy",
+            "title": "Schumacher: 5",
+            "sub": "",
+            "kw": "Schumacher"
+          },
+          {
+            "icon": "trophy",
+            "title": "Graham Hill: 5",
+            "sub": "",
+            "kw": "Hill"
+          },
+          {
+            "icon": "doc",
+            "title": "Alain Prost: 4",
+            "sub": "",
+            "kw": "Prost"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "1984",
+        "title": "Mónaco 1984",
+        "rows": [
+          {
+            "icon": "flag",
+            "title": "Novato con Toleman",
+            "sub": "Sale decimotercero",
+            "kw": "novato"
+          },
+          {
+            "icon": "trophy",
+            "title": "Adelanta a Lauda",
+            "sub": "Segundo en la vuelta 19",
+            "kw": "adelantó"
+          },
+          {
+            "icon": "wrench",
+            "title": "Carrera parada por lluvia",
+            "sub": "Vuelta 32: gana Prost",
+            "kw": "lluvia"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "kw": "clasificación",
+        "title": "Clasificación de 1988",
+        "rows": [
+          {
+            "icon": "stopwatch",
+            "title": "Dos segundos más rápido",
+            "sub": "Que todos, incluido su compañero",
+            "kw": "dos"
+          },
+          {
+            "icon": "flag",
+            "title": "Otra dimensión",
+            "sub": "",
+            "kw": "dimensión"
+          },
+          {
+            "icon": "doc",
+            "title": "Vuelve a boxes",
+            "sub": "Sin querer salir más",
+            "kw": "boxes"
           }
         ]
       }

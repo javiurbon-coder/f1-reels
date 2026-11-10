@@ -18,9 +18,21 @@ state.alerted ??= {}; state.offered ??= {}; state.menuClusters ??= {}; state.mad
 
 // Registro de noticias contrastadas de los últimos 8 días (lo usan los resúmenes del día y de la semana).
 state.log ??= {};
+/** 1-2 frases del texto del propio medio (oficial primero) para que el resumen cuente la noticia y no solo el titular. */
+const detailOf = (c) => {
+  const cand = [...c.sources].sort((a, b) => (b.official ? 1 : 0) - (a.official ? 1 : 0) || (b.summary ?? '').length - (a.summary ?? '').length);
+  for (const s of cand) {
+    const t = (s.summary ?? '').replace(/\s+/g, ' ').trim();
+    if (t.length < 60) continue;
+    const parts = t.split(/(?<=[.!?])\s+/); let out = '';
+    for (const p of parts) { if ((out + ' ' + p).trim().length > 190) break; out = (out + ' ' + p).trim(); }
+    if (out.length >= 50 && !/[…]|\.\.\.$/.test(out) && !out.toLowerCase().startsWith(c.headline.toLowerCase().slice(0, 30))) return out;
+  }
+  return '';
+};
 for (const c of clusters) {
   if (c.level === 'RADAR') continue;
-  state.log[c.id] = {headline: c.headline, level: c.level, t: c.latest, sources: c.sources.map((s) => ({name: s.name, domain: s.domain, url: s.url ?? s.link, official: !!s.official}))};
+  state.log[c.id] = {headline: c.headline, level: c.level, t: c.latest, detail: detailOf(c), sources: c.sources.map((s) => ({name: s.name, domain: s.domain, url: s.url ?? s.link, official: !!s.official}))};
 }
 for (const [id, e] of Object.entries(state.log)) if (Date.now() - new Date(e.t) > 8 * 86400e3) delete state.log[id];
 save(state);
