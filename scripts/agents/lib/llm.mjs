@@ -52,6 +52,7 @@ Estructura, con FRASES CORTAS (máximo 22 palabras cada una, una idea por frase)
 REGLAS ESTRICTAS:
 - Usa SOLO información que esté en el material y en los DATOS CALCULADOS que te doy. No añadas cifras, nombres, causas ni contexto que no aparezcan en él.
 - Cuenta la noticia en sí, con todo el detalle del material: qué ha pasado, cómo y qué implica. NO enumeres nombres de medios: salen en pantalla al final. Solo en la última frase di si lo confirma la fuente oficial o cuántos medios lo cuentan (por ejemplo: «Lo confirman tres medios»).
+- No escribas direcciones web (como Formula1.com).
 - No uses palabras en inglés salvo nombres propios. No digas "según mis datos". Sin emojis ni hashtags.
 - Si es RUMOR, di desde el principio que NO está confirmado y que solo lo cuentan esas fuentes; nunca lo presentes como hecho.
 - Devuelve únicamente el texto de la locución.`;

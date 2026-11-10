@@ -63,6 +63,7 @@
     "topicFromHour": 10,
     "topicRepeatDays": 7,
     "summaryFromHour": 19,
-    "autoRepeatDays": 45
+    "autoRepeatDays": 45,
+    "minMaterialChars": 450
   }
 }

@@ -9,7 +9,7 @@ import {listItems, videoPath, posterPath} from './lib/queue.mjs';
 
 const TAG = 'borradores';
 const settings = JSON.parse(fs.readFileSync('config/settings.json', 'utf8'));
-const D = {maxPerDay: 3, maxPerRun: 1, keepDays: 6, topicFromHour: 10, topicRepeatDays: 7, autoRepeatDays: 45, summaryFromHour: 19, ...settings.drafts};
+const D = {maxPerDay: 3, maxPerRun: 1, keepDays: 6, topicFromHour: 10, topicRepeatDays: 7, minMaterialChars: 450, autoRepeatDays: 45, summaryFromHour: 19, ...settings.drafts};
 const state = load(); state.drafted ??= {};
 const out = (k, v) => process.env.GITHUB_OUTPUT && fs.appendFileSync(process.env.GITHUB_OUTPUT, `${k}=${v}\n`);
 const gh = (...a) => spawnSync('gh', a, {encoding: 'utf8'});
@@ -24,6 +24,7 @@ if (process.argv.includes('--pick')) {
   const ids = left <= 0 ? [] : clusters
     .filter((c) => c.level !== 'RADAR' && !seen.has(c.id) && !state.drafted[c.id] && !(state.made ?? []).includes(c.id))
     .filter((c) => Date.now() - new Date(c.latest) < 24 * 3600e3)
+    .filter((c) => [...c.sources, ...(c.alsoSay ?? [])].reduce((n, x) => n + (x.summary?.length ?? 0), 0) >= D.minMaterialChars) // sin texto suficiente no hay vídeo de un minuto: esa noticia queda para el resumen
     .sort((a, b) => ((b.level === 'OFICIAL') - (a.level === 'OFICIAL')) || b.count - a.count)
     .slice(0, left).map((c) => c.id);
   for (const id of ids) state.drafted[id] = new Date().toISOString();

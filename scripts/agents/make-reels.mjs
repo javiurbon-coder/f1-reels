@@ -27,6 +27,9 @@ const noVoice = args.has('--no-voice') || voiceEngines().length === 0;
 console.log(`Guionista: ${useLLM ? llmName() : 'plantilla (sin IA)'} · Locutor: ${noVoice ? 'sin voz' : voiceEngines().join(' > ')} · Datos: Jolpica`);
 fs.mkdirSync('public/audio', {recursive: true});
 
+const nz = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+// si el guion ya empieza con el titular, no se repite al principio del pie de foto
+const nlead = (h, sc) => (nz(sc).startsWith(nz(h).slice(0, 25)) ? '' : `${h}\n\n`);
 const priority = settings.priorityTopics ?? [];
 for (const c of clusters) {
   c.headline = cleanText(c.headline);
@@ -116,7 +119,8 @@ for (const c of clusters) {
     : route.series === 'rumor' ? {rumor: {who: base.sources.map((x) => x.name).slice(0, 3).join(' · '), n: base.sources.length}} : {};
   const prod = await produce({id: c.id, script, facts, noVoice, ctx});
   const hlWord = (c.headline.split(' ').find((w, i) => /^\p{Lu}/u.test(w) && w.length > 3 && (i > 0 || c.topics.length)) ?? '').replace(/[^\p{L}\d]/gu, '');
-  const props = cleanDeep({kind: route.series === 'noticias' ? 'noticia' : route.series, headline: c.headline, hl: hlWord, date: base.date,
+  const shortHl = (h) => (h.length <= 90 ? h : h.slice(0, 90).replace(/\s+\S*$/, '').replace(/[,;:¿¡\s]+$/, '') + '…');
+  const props = cleanDeep({kind: route.series === 'noticias' ? 'noticia' : route.series, headline: shortHl(c.headline), hl: hlWord, date: base.date,
     section: ({rumor: 'Rumor', mercado: 'Fichajes', resultado: 'Resultado', noticias: 'Última hora'})[route.series] ?? undefined,
     chip: route.series === 'rumor' ? 'Rumor' : c.level === 'OFICIAL' ? 'Oficial' : `${base.sources.length} fuentes`,
     sources: base.sources.slice(0, 4), scenes: prod.scenes, words: prod.words, ...(prod.narration ? {narration: prod.narration} : {})});
@@ -127,7 +131,7 @@ for (const c of clusters) {
   const tags = c.topics.map((t) => loadTopics()[t].hashtags).join(' ');
   const all = [...c.sources, ...(route.series === 'rumor' ? c.alsoSay : [])];
   const nm = all.map((s) => s.name), listed = nm.length > 1 ? `${nm.slice(0, -1).join(', ')} y ${nm.at(-1)}` : nm[0] ?? '';
-  const caption = (route.series === 'rumor' ? `⚠️ RUMOR NO CONFIRMADO: ${c.headline}\n\n${script}\n\nLo cuentan: ${listed}.` : `${c.headline}\n\n${script}\n\nContrastado por ${c.count} ${c.count === 1 ? 'fuente' : 'fuentes'}: ${listed}.`) +
+  const caption = (route.series === 'rumor' ? `⚠️ RUMOR NO CONFIRMADO: ${nlead(c.headline, script)}${script}\n\nLo cuentan: ${listed}.` : `${nlead(c.headline, script)}${script}\n\nContrastado por ${c.count} ${c.count === 1 ? 'fuente' : 'fuentes'}: ${listed}.`) +
     (route.series !== 'rumor' && c.alsoSay.length ? `\nTambién lo comentan: ${c.alsoSay.map((s) => s.name).join(', ')}.` : '') +
     `\n\nLa voz de este vídeo está generada con IA.\n\n${settings.hashtags} ${tags}`.trimEnd();
   notes.push('Enlaces de las fuentes (para comprobar): ' + all.map((s) => `${s.name}: ${s.url}`).join(' | '));

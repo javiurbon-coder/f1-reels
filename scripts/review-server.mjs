@@ -120,7 +120,8 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-syncDrafts().then((r) => console.log(r.error ? `Borradores: ${r.error}` : `Borradores nuevos: ${r.added.length}`)).catch(() => {}); // trae lo del robot al arrancar
+const autoSync = () => syncDrafts().then((r) => console.log(r.error ? `Borradores: ${r.error}` : `Borradores nuevos: ${r.added.length}`)).catch(() => {});
+autoSync(); setInterval(autoSync, 5 * 60e3); // trae lo del robot al arrancar y cada 5 minutos: no hay que pulsar nada
 const c = clean(); // limpieza al arrancar
 console.log(`Limpieza: ${c.removed} borrados, ${c.videosDeleted} vídeos antiguos eliminados.`);
 server.listen(PORT, '127.0.0.1', () => console.log(`Panel de revisión: http://localhost:${PORT}  (Ctrl+C para cerrar)`));
@@ -160,7 +161,11 @@ const S={fs:'all',fst:'open',data:null};
 const LBL={pending:'Pendiente',approved:'Aprobado',published:'Publicado',rejected:'Rechazado',error:'Error',rendering:'Renderizando…'};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function call(m,u,b){const r=await fetch(u,{method:m,headers:H,body:b?JSON.stringify(b):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)alert(j.error||'Error');return j}
-async function load(){S.data=await (await fetch('/api/state')).json();draw()}
+async function load(force){
+ const next=await (await fetch('/api/state')).json();
+ const sig=JSON.stringify([next.items.map(i=>[i.id,i.status,i.updatedAt]),next.canPublish,next.canPhone]);
+ if(!force&&sig===S.sig)return; // nada ha cambiado: no se toca la pantalla (así los vídeos no se reinician)
+ S.sig=sig;S.data=next;draw()}
 function plan(items){
  const recent=items.filter(i=>['pending','approved'].includes(i.status)&&Date.now()-new Date(i.createdAt)<40*3600e3);
  const warn=i=>/Control de calidad|REVISA/.test(i.note||'')?'⚠ revisa antes de publicar':'';
@@ -207,18 +212,18 @@ function draw(){
 document.addEventListener('click',async e=>{
  const b=e.target.closest('button');if(!b)return;
  if(b.dataset.k){S[b.dataset.k]=b.dataset.v;return draw()}
- if(b.id==='sync'){b.disabled=true;b.textContent='Buscando…';const r=await call('POST','/api/sync');b.disabled=false;b.textContent='⬇ Traer borradores';alert(r.error?('No se pudo: '+r.error):(r.added.length?r.added.length+' borrador(es) nuevo(s)':'No hay borradores nuevos'));return load()}
- if(b.id==='clean'){const r=await call('POST','/api/clean');alert((r.freedBytes/1e6).toFixed(1)+' MB liberados');return load()}
+ if(b.id==='sync'){b.disabled=true;b.textContent='Buscando…';const r=await call('POST','/api/sync');b.disabled=false;b.textContent='⬇ Traer borradores';alert(r.error?('No se pudo: '+r.error):(r.added.length?r.added.length+' borrador(es) nuevo(s)':'No hay borradores nuevos'));return load(true)}
+ if(b.id==='clean'){const r=await call('POST','/api/clean');alert((r.freedBytes/1e6).toFixed(1)+' MB liberados');return load(true)}
  const card=b.closest('.card');if(!card)return;const id=card.dataset.id,a=b.dataset.a;
  const val=f=>card.querySelector('[data-f="'+f+'"]')?.value;
- if(a==='delete'){if(confirm('¿Borrar este elemento y su vídeo? No se puede deshacer.')){await call('DELETE','/api/items/'+id);load()}return}
+ if(a==='delete'){if(confirm('¿Borrar este elemento y su vídeo? No se puede deshacer.')){await call('DELETE','/api/items/'+id);load(true)}return}
  if(a==='save'){let props;try{props=JSON.parse(val('props'))}catch{return alert('El JSON de datos no es válido')}
-  await call('POST','/api/items/'+id+'/save',{props,caption:val('caption')});return load()}
+  await call('POST','/api/items/'+id+'/save',{props,caption:val('caption')});return load(true)}
  if(a==='publish'){if(!confirm('Se publicará AHORA en Instagram con el pie de foto mostrado. ¿Seguro?'))return;
-  b.disabled=true;b.textContent='Publicando…';const r=await call('POST','/api/items/'+id+'/publish',{confirm:true});if(r.status==='published')alert('Publicado ✓');return load()}
- if(a==='phone'){b.disabled=true;const r=await call('POST','/api/items/'+id+'/phone');b.disabled=false;if(r.sentToPhone)alert('Enviado al móvil ✓');return load()}
+  b.disabled=true;b.textContent='Publicando…';const r=await call('POST','/api/items/'+id+'/publish',{confirm:true});if(r.status==='published')alert('Publicado ✓');return load(true)}
+ if(a==='phone'){b.disabled=true;const r=await call('POST','/api/items/'+id+'/phone');b.disabled=false;if(r.sentToPhone)alert('Enviado al móvil ✓');return load(true)}
  if(a==='approve'){await call('POST','/api/items/'+id+'/save',{caption:val('caption')})}
- await call('POST','/api/items/'+id+'/'+a);load()
+ await call('POST','/api/items/'+id+'/'+a);load(true)
 });
-load();setInterval(()=>{if(!document.activeElement||document.activeElement.tagName!=='TEXTAREA')load()},4000);
+load();setInterval(()=>{const playing=[...document.querySelectorAll('video')].some(v=>!v.paused&&!v.ended);if(playing)return;if(!document.activeElement||document.activeElement.tagName!=='TEXTAREA')load()},4000);
 </script></html>`;

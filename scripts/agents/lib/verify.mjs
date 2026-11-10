@@ -6,15 +6,17 @@ const STOP = new Set('el la los las un una de del al y o en que se por con para 
 export function checkScript(script, sourceTitles, {minWords = 15, maxWords = 75} = {}) {
   const corpus = norm(sourceTitles.join(' \n '));
   const problems = [];
-  for (const n of script.match(/\d+(?:[.,]\d+)?/g) ?? []) {
+  const clean = script.replace(/\S+\.(?:com|es|org|net|uk)\b\S*/gi, ' '); // las direcciones web no cuentan como cifras ni nombres
+  for (const n of clean.match(/\d+(?:[.,]\d+)?/g) ?? []) {
     if (!corpus.includes(n.replace(',', '.')) && !corpus.includes(n)) problems.push(`cifra "${n}" no aparece en las fuentes`);
   }
   // palabras con mayúscula que no abren frase = nombres propios
-  const sentences = script.split(/(?<=[.!?¡¿])\s+/);
+  const sentences = clean.split(/(?<=[.!?¡¿])\s+/);
   for (const s of sentences) {
     const words = s.replace(/[¡¿]/g, '').split(/\s+/).filter(Boolean);
     words.forEach((w, i) => {
       const bare = w.replace(/[^\p{L}\d-]/gu, '');
+      if (/[\p{L}\d]\.[a-z]{2,}/iu.test(w)) return; // direcciones web (Formula1.com): no son nombres propios
       if (i === 0 || bare.length < 3 || !/^\p{Lu}/u.test(bare) || /^[\p{Lu}\d]+$/u.test(bare) && bare.length < 3) return;
       if (STOP.has(norm(bare))) return;
       if (!corpus.includes(norm(bare))) problems.push(`nombre "${bare}" no aparece en las fuentes`);
