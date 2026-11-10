@@ -28,10 +28,10 @@ export function wavSeconds(file) {
 }
 
 /** Duración de un audio: ffprobe si existe; si no, estimación por tamaño (mp3 de Edge ≈ 48 kbps). */
-export function audioSeconds(file) {
+export function audioSeconds(file, bps = 48000) {
   const r = spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', file], {encoding: 'utf8'});
   const d = parseFloat(r.stdout);
-  return Number.isFinite(d) && d > 0 ? d : fs.statSync(file).size * 8 / 48000;
+  return Number.isFinite(d) && d > 0 ? d : fs.statSync(file).size * 8 / bps;
 }
 
 export function speak(text, out) { // Piper (síncrono, se conserva por compatibilidad)
@@ -84,7 +84,9 @@ async function eleven(text, out) {
   if (!r.ok) throw new Error(`ElevenLabs ${r.status}: ${(await r.text()).slice(0, 160)}`);
   const j = await r.json();
   fs.writeFileSync(out, Buffer.from(j.audio_base64, 'base64'));
-  const seconds = audioSeconds(out);
+  // Duración exacta: el final del último carácter alineado. (Sin ffprobe, estimar por tamaño con 128 kbps, no 48.)
+  const ends = j.alignment?.character_end_times_seconds;
+  const seconds = ends?.length ? Math.max(...ends) + 0.3 : audioSeconds(out, 128000);
   return {seconds, words: j.alignment ? wordsFromAlignment(text, j.alignment) : null};
 }
 
