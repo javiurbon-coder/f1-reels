@@ -262,7 +262,7 @@ function detail(i,d){
  const can=i.status==='pending',appr=i.status==='approved';const live=(can||appr)&&(i.composition||'Reel')==='Reel';
  const video=live?'<div id="pl" class="pl"></div>':i.status==='rendering'?'<div class="ph">Renderizando…<br>(1-2 min)</div>':(hasVideo?'<video controls preload="metadata" poster="/media/'+i.id+'/poster.jpg" src="/media/'+i.id+'/video.mp4"></video>':'<div class="ph">Sin vídeo</div>');
  
- const warns=(i.note||'').split('\\n').filter(l=>/Control de calidad|REVISA|Guion de plantilla/.test(l)).slice(0,4).map(l=>'<div class="warn">⚠ '+esc(l.slice(0,170))+'</div>').join('');
+ const warns=(i.note||'').split('\\n').filter(l=>/Control de calidad|REVISA|Guion de plantilla|AVISO/.test(l)).slice(0,4).map(l=>'<div class="warn">⚠ '+esc(l.slice(0,170))+'</div>').join('');
  const srcs=(i.sources||[]).map(s=>'<div class="src">✓ <b>'+esc(s.name)+'</b> · <a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.title||s.url)+'</a></div>').join('');
  const btn=[];
  if(can)btn.push('<button class="ok" data-a="approve">✓ Aprobar</button>');
@@ -309,8 +309,14 @@ function mountPl(){
  if(S.pl){try{S.pl.destroy()}catch(x){}S.pl=null}
  const el=$('pl');if(!el||!S.ed)return;const id=S.ed.id;
  loadEd().then(()=>{if(!$('pl')||!S.ed||S.ed.id!==id||$('pl')!==el)return;
-  S.pl=window.F1Editor.mount(el,{props:S.ed.props,onEdit:(path,val)=>{setPath(S.ed.props,path,val);markDirty();drawTL();refreshScene()}})})
+  S.pl=window.F1Editor.mount(el,{props:S.ed.props,onEdit:(path,val)=>{if(path.indexOf('words:')===0)setWords(S.ed.props,path,val);else setPath(S.ed.props,path,val);markDirty();drawTL();refreshScene()}})})
  .catch(()=>{el.innerHTML='<div class="ph">No se pudo cargar el editor visual.<br>Ejecuta npm install y reabre el panel.</div>';edJs=null})}
+function setWords(props,path,text){
+ const r=path.slice(6).split('-').map(Number),a=r[0],b=r[1],W=props.words,old=W.slice(a,b+1);
+ const tk=text.trim().split(/\\s+/).filter(Boolean);if(!old.length||!tk.length)return;
+ const t0=old[0].start,t1=old[old.length-1].end,n=tk.length,d=(t1-t0)/n;
+ const nw=tk.map((t,i)=>n===old.length?{t:t,start:old[i].start,end:old[i].end}:{t:t,start:+(t0+i*d).toFixed(3),end:+(t0+(i+1)*d).toFixed(3)});
+ W.splice(a,old.length,...nw)}
 function setFs(d){let v=parseFloat(document.documentElement.style.fontSize)||20;v=Math.max(14,Math.min(34,v+d));document.documentElement.style.fontSize=v+'px';try{localStorage.setItem('fs',v)}catch(x){}}
 try{const f=localStorage.getItem('fs');if(f)document.documentElement.style.fontSize=f+'px'}catch(x){}
 function draw(){

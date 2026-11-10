@@ -3,7 +3,7 @@
 //   Uso: node scripts/agents/topic-reel.mjs --topic=efecto-suelo [--no-voice]
 const TARGET_S = 60; // todos los vídeos duran un minuto
 import fs from 'node:fs';
-import {speakAny, wordTimings, voiceEngines} from './lib/voice.mjs';
+import {speakAny, wordTimings, voiceEngines, voiceNote} from './lib/voice.mjs';
 import {timeSentences} from './lib/director.mjs';
 import {cleanDeep} from '../lib/text.mjs';
 
@@ -54,7 +54,7 @@ if (process.argv[1]?.endsWith('topic-reel.mjs')) {
   // cuerpo = guion sin las dos últimas frases (fuentes y «Síguenos»), que van aparte
   const body = T.script.split(/(?<=[.!?])\s+/).filter((x) => !/^Todo esto está confirmado|^Síguenos/i.test(x)).join(' ');
   const caption = `${T.headline}\n\n${body}\n\nFuentes: ${listed}.\n\nLa voz de este vídeo está generada con IA.\n\nSíguenos para más.\n\n${settings.hashtags} ${T.hashtags}`.trim();
-  const note = [`GUION: ${T.script}`, `Enlaces de las fuentes (para comprobar): ${T.sources.map((x) => `${x.name}: ${x.url}`).join(' | ')}`, `Voz: ${v?.engine ?? 'sin voz'} · ${total.toFixed(0)} s · ${scenes.length} escenas`, ...problems.map((p) => 'Control de calidad: ' + p)].join('\n');
+  const note = [`GUION: ${T.script}`, `Enlaces de las fuentes (para comprobar): ${T.sources.map((x) => `${x.name}: ${x.url}`).join(' | ')}`, `${voiceNote(v?.engine)} · ${total.toFixed(0)} s · ${scenes.length} escenas`, ...problems.map((p) => 'Control de calidad: ' + p)].join('\n');
   const {enqueue} = await import('../lib/queue.mjs'); // solo aquí: necesita Remotion
   await enqueue({id: qid, composition: 'Reel', series: T.pillar === 'tecnica' ? 'tecnica' : 'datos', props, caption, sources: T.sources, note});
   console.log(`✓ en cola [${T.pillar}]: ${T.headline}`);

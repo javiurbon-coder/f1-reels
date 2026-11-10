@@ -45,6 +45,25 @@ function pick(cands: Cand[], el: Element | null, root: Element): Cand | null {
   return null;
 }
 
+/** Subtítulo: busca el tramo de palabras del guion cuyo texto coincide con el elemento (el más grande posible). */
+function wordPick(p: ReelProps, el: Element, root: Element): {c: Cand; tgt: Element} | null {
+  const W = p.words ?? [];
+  let best: {c: Cand; tgt: Element} | null = null;
+  let e: Element | null = el;
+  for (let up = 0; e && e !== root && up < 7; up++, e = e.parentElement) {
+    const tx = norm(e.textContent ?? '');
+    if (!tx) continue;
+    for (let a = 0; a < W.length; a++) {
+      let j = '';
+      for (let b = a; b < W.length && j.length <= tx.length; b++) {
+        j = (j ? j + ' ' : '') + norm(W[b].t);
+        if (j === tx) { best = {c: {path: 'words:' + a + '-' + b, text: W.slice(a, b + 1).map((w) => w.t).join(' ')}, tgt: e}; break; }
+      }
+    }
+  }
+  return best;
+}
+
 type Ctl = {
   setProps(p: ReelProps): void;
   currentTime: number;
@@ -62,6 +81,7 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
   const ref = React.useRef<PlayerRef>(null);
   const box = React.useRef<HTMLDivElement>(null);
   const [hover, setHover] = React.useState<{x: number; y: number; w: number; h: number} | null>(null);
+  const [draft, setDraft] = React.useState('');
   const [edit, setEdit] = React.useState<{path: string; x: number; y: number; w: number; h: number; fs: number; multi: boolean} | null>(null);
   const [msg, setMsg] = React.useState('');
   React.useEffect(() => { reg({setProps: (p) => setProps({...p}), ref}); }, []);
@@ -86,9 +106,16 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
         return {c, x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, fs};
       }
     }
+    for (const el of els) {
+      const w = wordPick(props, el, root);
+      if (w) {
+        const r = w.tgt.getBoundingClientRect(), b = root.getBoundingClientRect();
+        return {c: w.c, x: r.left - b.left, y: r.top - b.top, w: r.width, h: r.height, fs: parseFloat(getComputedStyle(w.tgt).fontSize) * (b.width / 1080)};
+      }
+    }
     return null;
   };
-  const get = (path: string): string => path.split('.').reduce((o: any, k) => (o ? o[k] : undefined), props) ?? '';
+  const get = (path: string): string => path.startsWith('words:') ? (() => { const [a, b] = path.slice(6).split('-').map(Number); return (props.words ?? []).slice(a, b + 1).map((w) => w.t).join(' '); })() : path.split('.').reduce((o: any, k) => (o ? o[k] : undefined), props) ?? '';
 
   return (
     <div ref={box} style={{position: 'relative', width: '100%', height: '100%'}}
@@ -98,9 +125,9 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
         if (edit) return;
         ref.current?.pause();
         const h = hit(ev);
-        if (!h) { setMsg('Ese texto no es editable aquí (los subtítulos salen del guion).'); setTimeout(() => setMsg(''), 2500); return; }
+        if (!h) { setMsg('Ahí no hay texto que editar.'); setTimeout(() => setMsg(''), 2500); return; }
         setHover(null);
-        setEdit({path: h.c.path, x: h.x, y: h.y, w: h.w, h: h.h, fs: h.fs, multi: h.c.text.length > 28});
+        setDraft(h.c.text); setEdit({path: h.c.path, x: h.x, y: h.y, w: h.w, h: h.h, fs: h.fs, multi: h.c.text.length > 28});
       }}>
       <Player ref={ref} component={Reel as any} inputProps={props as any} durationInFrames={reelDuration(props)} fps={FPS} compositionWidth={1080} compositionHeight={1920}
         style={{width: '100%', height: '100%'}} controls={false} clickToPlay={false} doubleClickToFullscreen={false} spaceKeyToPlayOrPause={false} acknowledgeRemotionLicense />
@@ -109,13 +136,16 @@ const App: React.FC<{init: ReelProps; onEdit: Opts['onEdit']; reg: (c: {setProps
         <>
           <div data-ov="1" onClick={() => setEdit(null)} style={{position: 'absolute', inset: 0, background: '#0007'}} />
           {React.createElement(edit.multi ? 'textarea' : 'input', {
-            'data-ov': '1', autoFocus: true, value: get(edit.path),
-            onChange: (e: any) => onEdit(edit.path, e.target.value),
+            'data-ov': '1', autoFocus: true, value: draft,
+            onChange: (e: any) => {
+              const v: string = e.target.value; setDraft(v); onEdit(edit.path, v);
+              if (edit.path.startsWith('words:')) { const a = Number(edit.path.slice(6).split('-')[0]); const k = Math.max(1, v.trim().split(/\s+/).filter(Boolean).length); setEdit({...edit, path: 'words:' + a + '-' + (a + k - 1)}); }
+            },
             onKeyDown: (e: any) => { if (e.key === 'Escape' || (e.key === 'Enter' && !e.shiftKey)) { e.preventDefault(); setEdit(null); } },
             style: {position: 'absolute', left: Math.max(6, Math.min(edit.x - 8, (box.current?.clientWidth ?? 400) - Math.max(220, edit.w) - 14)), top: Math.max(6, edit.y - 6), width: Math.max(220, edit.w + 16), minHeight: edit.h + 12,
               fontSize: Math.max(16, Math.min(edit.fs, 34)), fontFamily: 'Archivo, system-ui, sans-serif', fontWeight: 800, padding: '6px 10px', border: '3px solid #ffd21f', borderRadius: 8, background: '#fff', color: '#111', outline: 'none', zIndex: 5, resize: 'none'},
           })}
-          <div data-ov="1" style={{position: 'absolute', left: 8, right: 8, bottom: 8, textAlign: 'center', color: '#fff', font: '600 14px system-ui', zIndex: 5}}>Escribe · Enter o clic fuera = listo</div>
+          <div data-ov="1" style={{position: 'absolute', left: 8, right: 8, bottom: 8, textAlign: 'center', color: '#fff', font: '600 14px system-ui', zIndex: 5}}>{edit.path.startsWith('words:') ? 'Subtítulo: cambia solo el texto, la voz no cambia · ' : ''}Enter o clic fuera = listo</div>
         </>
       )}
       {msg && <div data-ov="1" style={{position: 'absolute', left: 8, right: 8, bottom: 8, textAlign: 'center', background: '#000c', color: '#fff', padding: '8px', borderRadius: 8, font: '600 14px system-ui'}}>{msg}</div>}

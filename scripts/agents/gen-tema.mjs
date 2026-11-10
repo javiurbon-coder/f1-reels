@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import {askLocal, ollamaAvailable, llmName} from './lib/llm.mjs';
 import {produce} from './lib/produce.mjs';
+import {voiceNote} from './lib/voice.mjs';
 
 const arg = (k) => process.argv.find((a) => a.startsWith(`--${k}=`))?.slice(k.length + 3);
 const seed = JSON.parse(fs.readFileSync('config/temas-auto.json', 'utf8')).find((s) => s.id === arg('seed'));
@@ -55,7 +56,7 @@ const section = seed.pillar === 'tecnica' ? 'Técnica' : 'Historia';
 const sources = [{name: 'Wikipedia', domain: 'es.wikipedia.org', official: false}];
 const props = {kind: 'dato', headline: seed.headline, hl: seed.hl, section, chip: section, date: 'EXPLICADO', sources, scenes: prod.scenes, words: prod.words, ...(prod.narration ? {narration: prod.narration} : {})};
 const caption = `${seed.headline}\n\n${body}\n\nFuente: Wikipedia.\n\nLa voz de este vídeo está generada con IA.\n\nSíguenos para más.\n\n${settings.hashtags} ${seed.hashtags}`.trim();
-const note = [`GUION: ${script}`, `Enlace de la fuente (para comprobar): Wikipedia: ${url}`, 'Tema generado por IA local a partir de un solo artículo: REVISA los datos antes de publicar.', `Voz: ${prod.engine} · ${prod.total.toFixed(0)} s · ${prod.scenes.length} escenas`, ...prod.problems.map((p) => 'Control de calidad: ' + p)].join('\n');
+const note = [`GUION: ${script}`, `Enlace de la fuente (para comprobar): Wikipedia: ${url}`, 'Tema generado por IA local a partir de un solo artículo: REVISA los datos antes de publicar.', `${voiceNote(prod.engine)} · ${prod.total.toFixed(0)} s · ${prod.scenes.length} escenas`, ...prod.problems.map((p) => 'Control de calidad: ' + p)].join('\n');
 const {enqueue} = await import('../lib/queue.mjs');
 await enqueue({id: qid, composition: 'Reel', series: seed.pillar === 'tecnica' ? 'tecnica' : 'datos', props, caption, sources: [{name: 'Wikipedia', url, title: hit.title}], note});
 console.log(`✓ en cola [${seed.pillar}]: ${seed.headline}`);

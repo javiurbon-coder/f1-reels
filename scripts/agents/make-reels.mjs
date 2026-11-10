@@ -5,7 +5,7 @@ import {enqueue} from '../lib/queue.mjs';
 import {askLocal, ollamaAvailable, llmName, SYSTEM, TRANSLATE, templateScript, sourcesLine} from './lib/llm.mjs';
 import {checkScript, isSpanish} from './lib/verify.mjs';
 import {routeCluster, propsFor, topicsOf, loadTopics} from '../lib/classify.mjs';
-import {voiceEngines} from './lib/voice.mjs';
+import {voiceEngines, voiceNote} from './lib/voice.mjs';
 import {produce} from './lib/produce.mjs';
 import {analyze} from './lib/insights.mjs';
 import {cleanText, cleanDeep} from '../lib/text.mjs';
@@ -126,7 +126,7 @@ for (const c of clusters) {
     sources: base.sources.slice(0, 4), scenes: prod.scenes, words: prod.words, ...(prod.narration ? {narration: prod.narration} : {})});
   route.composition = 'Reel';
   if (prod.problems.length) notes.push('Control de calidad: ' + prod.problems.join('; '));
-  notes.push(`Voz: ${prod.engine} · ${prod.total.toFixed(0)} s · ${prod.scenes.length} escenas (${prod.dataScenes} con datos)`);
+  notes.push(`${voiceNote(prod.engine)} · ${prod.total.toFixed(0)} s · ${prod.scenes.length} escenas (${prod.dataScenes} con datos)`);
 
   const tags = c.topics.map((t) => loadTopics()[t].hashtags).join(' ');
   const all = [...c.sources, ...(route.series === 'rumor' ? c.alsoSay : [])];

@@ -90,15 +90,44 @@ async function eleven(text, out) {
   return {seconds, words: j.alignment ? wordsFromAlignment(text, j.alignment) : null};
 }
 
+/** Tiempos por palabra a partir de los subtítulos de edge-tts (frase a frase, exactos); dentro de cada frase se reparte por longitud. */
+export function wordsFromSubs(text, subs) {
+  const words = text.split(/\s+/).filter(Boolean);
+  const toS = (h, m, s, ms) => +h * 3600 + +m * 60 + +s + +ms.padEnd(3, '0').slice(0, 3) / 1000;
+  const cues = [];
+  const re = /(\d+):(\d+):(\d+)[.,](\d+)\s*-->\s*(\d+):(\d+):(\d+)[.,](\d+)[^\n]*\n([\s\S]*?)(?=\n\s*\n|\s*$)/g;
+  let m;
+  while ((m = re.exec(subs))) cues.push({a: toS(m[1], m[2], m[3], m[4]), b: toS(m[5], m[6], m[7], m[8]), n: m[9].split(/\s+/).filter(Boolean).length});
+  if (!cues.length || cues.reduce((x, c) => x + c.n, 0) !== words.length) return null;
+  const weight = (w) => w.length + (/[.,;:!?]$/.test(w) ? 3 : 0);
+  const out = [];
+  let i = 0;
+  for (const c of cues) {
+    const ws = words.slice(i, i + c.n);
+    i += c.n;
+    const tot = ws.reduce((x, w) => x + weight(w), 0) || 1;
+    let t = c.a;
+    for (const w of ws) {
+      const d = ((c.b - c.a) * weight(w)) / tot;
+      out.push({t: w.replace(/[¡¿]/g, ''), start: +t.toFixed(3), end: +(t + d).toFixed(3)});
+      t += d;
+    }
+  }
+  return out;
+}
+
 function edge(text, out) {
   const cmd = edgeCmd();
   if (!cmd) throw new Error('edge-tts no instalado');
-  const tmp = out + '.txt';
+  const tmp = out + '.txt', srt = out + '.srt';
   fs.writeFileSync(tmp, text);
-  const r = spawnSync(cmd[0], [...cmd.slice(1), '--voice', EDGE_VOICE, `--rate=${EDGE_RATE}`, '--file', tmp, '--write-media', out], {encoding: 'utf8', timeout: 120000});
+  const r = spawnSync(cmd[0], [...cmd.slice(1), '--voice', EDGE_VOICE, `--rate=${EDGE_RATE}`, '--file', tmp, '--write-media', out, '--write-subtitles', srt], {encoding: 'utf8', timeout: 120000});
   fs.rmSync(tmp, {force: true});
   if (r.status !== 0 || !fs.existsSync(out)) throw new Error('edge-tts falló: ' + (r.stderr || '').slice(0, 160));
-  return {seconds: audioSeconds(out), words: null};
+  let words = null;
+  try { words = wordsFromSubs(text, fs.readFileSync(srt, 'utf8')); } catch { /* sin subtítulos: se reparte por longitud */ }
+  fs.rmSync(srt, {force: true});
+  return {seconds: audioSeconds(out), words};
 }
 
 export const voiceEngines = () => {
@@ -113,6 +142,8 @@ export const voiceEngines = () => {
 
 /** Motivos por los que algún motor falló en esta ejecución (para avisarte por Telegram). */
 export const voiceErrors = [];
+/** Texto para la nota del borrador: motor usado y, si hubo que usar uno de reserva, por qué falló el bueno. */
+export const voiceNote = (engine) => `Voz: ${engine ?? 'sin voz'}` + (voiceErrors.length ? ` · AVISO voz de reserva (${voiceErrors.join('; ').slice(0, 220)})` : '');
 
 /** Genera la voz de `text`. Devuelve {file (relativo a public/), seconds, words, engine} o null si no hay ningún motor. */
 export async function speakAny(text, id) {
