@@ -74,6 +74,13 @@ export function handleUpdate(state, u, chat) {
       const mode = /seman/i.test(m.text) ? 'week' : 'day';
       state.sumPicks ??= []; if (!state.sumPicks.includes(mode)) state.sumPicks.push(mode);
       out.reply.push(`📰 Preparando el resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (unos minutos).`);
+    } else if (/^\s*(?:tema|repetir|rehacer)\s*:?\s+\S/i.test(m.text)) {
+      // «tema efecto suelo» / «repetir porpoising»: rehace un tema aunque ya lo hayas hecho
+      const nz = (x) => x.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+      const q = nz(m.text.replace(/^\s*(?:tema|repetir|rehacer)\s*:?\s+/i, ''));
+      const t = q && TOPICS().find((x) => nz(x.id).includes(q) || nz(x.headline).includes(q));
+      if (!t) out.reply.push('No encuentro ese tema. Prueba con «tema efecto suelo», «tema porpoising», «tema neumáticos», «tema Farina», «tema Alonso» o «tema Senna».');
+      else { (state.topicPicks ??= []).includes(t.id) || state.topicPicks.push(t.id); out.reply.push(`🎬 Preparando: ${t.headline}\n(unos minutos)`); }
     } else if (/^\s*(hoy( toca)?|temas?|qu[eé] subo)\b/i.test(m.text)) { state.hoy = true; out.reply.push('🎯 Te preparo las opciones de hoy (unos minutos).'); }
     else if (/^\s*(otra|más|mas)\b/i.test(m.text)) { state.more++; out.reply.push('🔁 Preparando otro menú.'); }
     else if (/^\s*(ayuda|start|men[uú]|botones)\b/i.test(m.text)) { out.keyboard = true; out.reply.push('Aquí tienes los botones abajo 👇. 🎯 Hoy toca: qué subir hoy. 📰 Resumen del día / 🗓 de la semana: un vídeo con varias noticias. 🔁 Otra noticia: más opciones.'); }

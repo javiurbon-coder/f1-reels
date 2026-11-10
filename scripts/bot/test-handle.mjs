@@ -61,3 +61,14 @@ console.log('temas/resumen OK');
   assert.equal(mk('/start').r.keyboard, true);
   console.log('teclado/comandos OK');
 }
+
+// --- repetir un tema a mano ---
+{
+  const go = (t) => { const st = {offset: 0, more: 0, items: {}}; const r = handleUpdate(st, {message: {text: t, chat: {id: 7}}}, 7); return {st, r}; };
+  assert.deepEqual(go('tema efecto suelo').st.topicPicks, ['efecto-suelo']);
+  assert.deepEqual(go('Repetir porpoising').st.topicPicks, ['porpoising']);
+  assert.deepEqual(go('tema neumáticos').st.topicPicks, ['colores-neumaticos']);
+  assert.equal(go('tema nada raro').st.topicPicks, undefined);
+  assert.equal(go('temas').st.hoy, true);
+  console.log('repetir tema OK');
+}
