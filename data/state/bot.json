@@ -1,5 +1,5 @@
 {
-  "offset": 738537938,
+  "offset": 738537940,
   "more": 0,
   "items": {
     "n-MjN2RENhRFhPWg": {
@@ -2266,5 +2266,12 @@
         }
       ]
     }
-  }
+  },
+  "hoy": false,
+  "menuV": 1,
+  "leads": [],
+  "picks": [],
+  "topicPicks": [],
+  "sumPicks": [],
+  "hoyDate": "2026-11-10"
 }
