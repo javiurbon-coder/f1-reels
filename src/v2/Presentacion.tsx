@@ -1,4 +1,4 @@
-// REEL DE PRESENTACIÓN de la cuenta. Seis bloques; `cuts` = segundo en que empieza cada uno (lo calcula scripts/presentacion.mjs con la voz).
+// REEL DE PRESENTACIÓN de la cuenta. Siete bloques (el dato de Verstappen entra justo cuando la voz dice su nombre); `cuts` = segundo en que empieza cada uno (lo calcula scripts/presentacion.mjs con la voz).
 // El único dato que aparece (Verstappen en Interlagos 2024-2026) está contrastado: Formula1.com, Sky Sports, beIN.
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile, useVideoConfig} from 'remotion';
@@ -22,9 +22,12 @@ const Block: React.FC<{k: number; p: PresProps}> = ({k, p}) => {
     case 2: return <Noticia kind="reglas" cap={c} on={on} title="Nuestras reglas" rows={[
       {icon: 'flag', title: 'Mínimo dos fuentes', sub: 'O una fuente oficial', d: 14}, {icon: 'eye', title: 'Rumor = te avisamos', sub: 'Nunca lo vendemos como hecho', d: 60},
       {icon: 'chart', title: 'Cifras comprobadas', sub: 'Si no cuadra, no sale', d: 90}]} />;
-    case 3: return <Dato cap={c} on={on} value="3" label="años seguidos de podio en Interlagos" chartTitle="Verstappen en Interlagos" maxPos={22} rows={[
+    case 3: return <Noticia kind="menu" cap={c} on={on} title="Con contexto" rows={[
+      {icon: 'chart', title: 'Datos reales', sub: 'Cifras de fuentes oficiales', d: 14}, {icon: 'doc', title: 'Qué hay detrás', sub: 'Por qué importa la noticia', d: 30},
+      {icon: 'eye', title: 'Sin humo', sub: 'Solo lo comprobado', d: 46}]} />;
+    case 4: return <Dato cap={c} on={on} value="3" label="años seguidos de podio en Interlagos" chartTitle="Verstappen en Interlagos" maxPos={22} rows={[
       {name: '2024', grid: 17, finish: 1, color: RB, tag: '1º'}, {name: '2025 · boxes', grid: 20, finish: 3, color: RB, tag: '3º'}, {name: '2026', grid: 21, finish: 2, color: RB, me: true, tag: '2º'}]} />;
-    case 4: return <Tecnico cap={c} on={on} title="El efecto suelo" parts={[
+    case 5: return <Tecnico cap={c} on={on} title="El efecto suelo" parts={[
       {n: 1, name: 'Alerón delantero', sub: 'Ordena el aire que llega al coche'}, {n: 2, name: 'Suelo', sub: 'Aire rápido debajo = baja presión'}, {n: 3, name: 'Alerón trasero', sub: 'Empuja el eje trasero hacia abajo'}]} />;
     default: return <Cierre cap={c} on={on} />;
   }

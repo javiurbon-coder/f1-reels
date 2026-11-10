@@ -4,12 +4,13 @@ import fs from 'node:fs';
 import {speakAny, wordTimings, voiceErrors} from './agents/lib/voice.mjs';
 import {renderVideo} from './lib/render.mjs';
 
-// Un bloque por escena. Puedes cambiar el texto; mantén 6 bloques.
+// Un bloque por escena (7). Cada pantalla entra justo cuando la voz empieza su bloque, así que lo que se ve coincide con lo que se oye.
 export const BLOCKS = [
   '¿Harto de rumores de F1 que luego no son verdad?',
   'Esto es Contrastado F1: noticias, fichajes y resultados, explicados en menos de un minuto.',
   'Nuestra regla es simple: si no lo confirman al menos dos fuentes, no lo damos como noticia. Y si es un rumor, te lo avisamos.',
-  'Además, ponemos cada noticia en contexto con datos reales. Por ejemplo: Verstappen ha subido al podio de Interlagos tres años seguidos, saliendo desde el fondo de la parrilla.',
+  'Además, ponemos cada noticia en contexto con datos reales. Por ejemplo:',
+  'Verstappen ha subido al podio de Interlagos tres años seguidos, saliendo desde la parte de atrás de la parrilla.',
   'Y también te explicamos cómo funciona un Fórmula 1 por dentro, de forma sencilla.',
   'Síguenos para no perderte nada. Las fuentes, siempre en la descripción.',
 ];
