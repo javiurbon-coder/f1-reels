@@ -14,7 +14,7 @@ export async function call(method, body, form) {
 export const say = (text, extra = {}) => call('sendMessage', {chat_id: CHAT, text: text.slice(0, 4000), disable_web_page_preview: true, ...extra});
 export const KEYBOARD = (id) => ({inline_keyboard: [
   [{text: '✅ Me gusta', callback_data: `ok:${id}`}, {text: '🗑 Descartar', callback_data: `drop:${id}`}],
-  [{text: '🔁 Otra noticia', callback_data: 'more'}],
+  [{text: '🔁 Otro menú', callback_data: 'more'}],
 ]});
 export async function sendVideo(file, caption, id) {
   const f = new FormData();

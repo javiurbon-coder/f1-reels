@@ -23,14 +23,16 @@ const pending = listItems().filter((i) => i.status === 'pending' && !i.notified 
 if (!pending.length) { console.log('Nada nuevo que avisar.'); process.exit(0); }
 
 const state = load();
-await say(`📰 ${pending.length} reel(s) de F1 para revisar.\n• ✅ si te gusta (guárdalo y publícalo)\n• Para corregir: responde al vídeo con  «titular: …»  o  «guion: …»\n• 🔁 para pedir otra noticia`);
+await say(`📰 ${pending.length} reel(s) de F1 para revisar.\n• ✅ si te gusta (guárdalo y publícalo)\n• Para corregir: responde al vídeo con  «titular: …»  o  «guion: …»\n• 🔁 para pedir otro menú de noticias`);
 for (const it of pending) {
   try {
     const {msgId, fileId} = await sendVideo(videoPath(it.id), `${(it.series ?? '').toUpperCase()} · ${it.props?.headline ?? it.id}`, it.id);
     const script = (it.note ?? '').split('\n').find((l) => l.startsWith('GUION: '))?.slice(7) ?? '';
     state.items[it.id] = {id: it.id, composition: it.composition, props: it.props, caption: it.caption, script, series: it.series, msgId, fileId, status: 'sent', sentAt: new Date().toISOString()};
     const warn = (it.note ?? '').split('\n').filter((l) => l && !l.startsWith('GUION')).join('\n');
-    await say(`${it.caption}${warn ? '\n\n⚠️ Notas:\n' + warn : ''}`);
+    // La descripción va en bloque <code>: un toque encima y se copia entera para pegarla en Instagram.
+    const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    await say(`📋 Toca el texto para copiarlo:\n\n<code>${esc(it.caption)}</code>${warn ? '\n\n⚠️ Notas:\n' + esc(warn) : ''}`, {parse_mode: 'HTML'});
     saveItem({...it, notified: true});
     save(state);
     console.log('✓ enviado', it.id);

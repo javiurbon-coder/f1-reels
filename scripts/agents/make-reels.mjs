@@ -8,10 +8,12 @@ import {routeCluster, propsFor, topicsOf, loadTopics} from '../lib/classify.mjs'
 import {voiceEngines} from './lib/voice.mjs';
 import {produce} from './lib/produce.mjs';
 import {analyze} from './lib/insights.mjs';
+import {cleanText, cleanDeep} from '../lib/text.mjs';
 
 const args = new Set(process.argv.slice(2));
 // --tema=alonso,ferrari  → solo noticias de esos pilotos/equipos (por defecto: general)
 const temaArg = process.argv.find((a) => a.startsWith('--tema='))?.slice(7);
+const idArg = process.argv.find((a) => a.startsWith('--id='))?.slice(5); // reel elegido en el menú
 const only = temaArg ? temaArg.split(',').map((t) => t.trim().toLowerCase()) : null;
 const settings = JSON.parse(fs.readFileSync('config/settings.json', 'utf8'));
 const clusters = JSON.parse(fs.readFileSync('data/news/clusters.json', 'utf8'));
@@ -26,7 +28,11 @@ console.log(`Guionista: ${useLLM ? llmName() : 'plantilla (sin IA)'} · Locutor:
 fs.mkdirSync('public/audio', {recursive: true});
 
 const priority = settings.priorityTopics ?? [];
-for (const c of clusters) c.topics = topicsOf(c);
+for (const c of clusters) {
+  c.headline = cleanText(c.headline);
+  for (const s of [...c.sources, ...c.alsoSay]) { s.title = cleanText(s.title); if (s.summary) s.summary = cleanText(s.summary); }
+  c.topics = topicsOf(c);
+}
 if (only) console.log(`Tema(s): ${only.join(', ')}`);
 // los temas prioritarios (settings.priorityTopics) van primero; el resto conserva su orden
 clusters.sort((a, b) => priority.some((t) => b.topics.includes(t)) - priority.some((t) => a.topics.includes(t)));
@@ -35,11 +41,12 @@ const TEAM_COLOR = {ferrari: '#e8002d', mclaren: '#ff8000', redbull: '#3671c6', 
 const jobs = [];
 let made = 0, rumors = 0;
 for (const c of clusters) {
+  if (idArg && c.id !== idArg) continue;
   if (only && !c.topics.some((t) => only.includes(t))) continue;
   if (made >= (+process.env.MAX_PER_RUN || settings.maxPerRun)) break;
-  if (seen.has(c.id)) continue;
+  if (!idArg && seen.has(c.id)) continue;
   const route = routeCluster(c);
-  if (route.series === 'rumor' && (!settings.rumors?.enabled || rumors >= (settings.rumors?.maxPerRun ?? 1))) continue;
+  if (!idArg && route.series === 'rumor' && (!settings.rumors?.enabled || rumors >= (settings.rumors?.maxPerRun ?? 1))) continue;
   const pool = [...c.sources, ...c.alsoSay].slice(0, 5);
   const digits = (t) => (t.match(/\d+(?:[.,]\d+)?/g) ?? []).join('|');
   let notes = [];
@@ -104,9 +111,9 @@ for (const c of clusters) {
     : route.series === 'rumor' ? {rumor: {who: base.sources.map((x) => x.name).slice(0, 3).join(' · '), n: base.sources.length}} : {};
   const prod = await produce({id: c.id, script, facts, noVoice, ctx});
   const hlWord = (c.headline.split(' ').find((w, i) => /^\p{Lu}/u.test(w) && w.length > 3 && (i > 0 || c.topics.length)) ?? '').replace(/[^\p{L}\d]/gu, '');
-  const props = {kind: route.series === 'noticias' ? 'noticia' : route.series, headline: c.headline, hl: hlWord, date: base.date,
+  const props = cleanDeep({kind: route.series === 'noticias' ? 'noticia' : route.series, headline: c.headline, hl: hlWord, date: base.date,
     chip: route.series === 'rumor' ? 'Rumor' : c.level === 'OFICIAL' ? 'Oficial' : `${base.sources.length} fuentes`,
-    sources: base.sources.slice(0, 4), scenes: prod.scenes, words: prod.words, ...(prod.narration ? {narration: prod.narration} : {})};
+    sources: base.sources.slice(0, 4), scenes: prod.scenes, words: prod.words, ...(prod.narration ? {narration: prod.narration} : {})});
   route.composition = 'Reel';
   if (prod.problems.length) notes.push('Control de calidad: ' + prod.problems.join('; '));
   notes.push(`Voz: ${prod.engine} · ${prod.total.toFixed(0)} s · ${prod.scenes.length} escenas (${prod.dataScenes} con datos)`);

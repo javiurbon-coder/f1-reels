@@ -34,3 +34,21 @@ for (const it of Object.values(state.items).filter((i) => i.status === 'edit')) 
   }
 }
 save(state);
+
+// Reels elegidos en el menú del día: se hace SOLO el que pulsaste (guion → voz → render → Telegram).
+import {spawnSync} from 'node:child_process';
+const st = load();
+const picks = st.picks ?? [];
+st.picks = [];
+save(st);
+for (const id of picks) {
+  const c = st.menuClusters?.[id];
+  if (!c) { await say(`✗ No encuentro la noticia ${id} (caducó). Pide otro menú con 🔁.`); continue; }
+  fs.mkdirSync('data/news', {recursive: true});
+  fs.writeFileSync('data/news/clusters.json', JSON.stringify([c], null, 2));
+  const run = (args) => spawnSync('node', args, {stdio: 'inherit', env: {...process.env, MAX_PER_RUN: '1'}}).status;
+  const ok = run(['scripts/agents/make-reels.mjs', `--id=${id}`]) === 0 && run(['scripts/notify-telegram.mjs']) === 0;
+  const s2 = load();
+  if (ok) { (s2.made ??= []).push(id); delete s2.menuClusters?.[id]; save(s2); }
+  else await say(`✗ No pude hacer el reel de: ${c.headline}`);
+}
