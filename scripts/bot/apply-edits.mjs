@@ -44,6 +44,7 @@ save(st);
 for (const id of picks) {
   const c = st.menuClusters?.[id];
   if (!c) { await say(`✗ No encuentro la noticia ${id} (caducó). Pide otro menú con 🔁.`); continue; }
+  await say(`🎞 Montando el vídeo: ${c.headline}`);
   fs.mkdirSync('data/news', {recursive: true});
   fs.writeFileSync('data/news/clusters.json', JSON.stringify([c], null, 2));
   const run = (args) => spawnSync('node', args, {stdio: 'inherit', env: {...process.env, MAX_PER_RUN: '1'}}).status;
@@ -56,11 +57,13 @@ for (const id of picks) {
 // Temas (técnica / historia) y resúmenes elegidos en «Hoy toca»; y «hoy toca» pedido a mano.
 const runNode = (args) => spawnSync('node', args, {stdio: 'inherit', env: process.env}).status === 0;
 for (const tid of topicPicks) {
+  await say(`🎞 Montando el vídeo del tema: ${tid}`);
   const ok = runNode(['scripts/agents/topic-reel.mjs', `--topic=${tid}`]) && runNode(['scripts/notify-telegram.mjs']);
   if (ok) { const s3 = load(); s3.topicsMade = [...new Set([...(s3.topicsMade ?? []), tid])]; save(s3); }
   else await say(`✗ No pude hacer el reel del tema ${tid}.`);
 }
 for (const mode of sumPicks) {
+  await say(`🎞 Montando el resumen ${mode === 'week' ? 'de la semana' : 'de hoy'}…`);
   if (!(runNode(['scripts/agents/summary-reel.mjs', `--mode=${mode}`]) && runNode(['scripts/notify-telegram.mjs']))) await say(`✗ No pude hacer el resumen (${mode}).`);
 }
 if (hoy) runNode(['scripts/hoytoca.mjs', '--force']);

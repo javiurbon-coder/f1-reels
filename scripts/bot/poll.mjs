@@ -1,6 +1,6 @@
 // Lee lo que has pulsado/escrito en Telegram, actualiza el estado y avisa si hay trabajo pesado (rehacer vídeos).
 import fs from 'node:fs';
-import {call, say, configured, CHAT} from './tg.mjs';
+import {call, say, configured, CHAT, installMenu, MENU_KEYBOARD} from './tg.mjs';
 import {load, save} from './state.mjs';
 import {handleUpdate} from './handle.mjs';
 
@@ -14,9 +14,10 @@ for (const u of updates) {
   try {
     if (u.callback_query) await call('answerCallbackQuery', {callback_query_id: u.callback_query.id, text: r.answer ?? ''});
     if (r.clear) await call('editMessageReplyMarkup', {chat_id: CHAT, message_id: r.clear, reply_markup: {inline_keyboard: []}});
-    for (const t of r.reply) await say(t);
+    for (const [i, t] of r.reply.entries()) await say(t, r.keyboard && i === 0 ? {reply_markup: MENU_KEYBOARD} : {});
   } catch (e) { console.error(e.message); }
 }
+if (state.menuV !== 1) { try { await installMenu(); state.menuV = 1; } catch (e) { console.error('menú:', e.message); } }
 for (const l of state.leads ?? []) if (l.needsText) {
   try {
     const j = await (await fetch(`https://publish.twitter.com/oembed?omit_script=1&url=${encodeURIComponent(l.link)}`, {signal: AbortSignal.timeout(10000)})).json();

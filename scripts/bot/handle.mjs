@@ -23,7 +23,7 @@ export function parseLead(text, people = PEOPLE()) {
 
 // Lógica pura: convierte una actualización de Telegram en cambios de estado (testeable sin red).
 export function handleUpdate(state, u, chat) {
-  const out = {reply: [], answer: null, clear: null};
+  const out = {reply: [], answer: null, clear: null, keyboard: false};
   const cb = u.callback_query;
   if (cb && String(cb.message?.chat?.id) === String(chat)) {
     const [act, id] = cb.data.split(':');
@@ -54,6 +54,9 @@ export function handleUpdate(state, u, chat) {
   }
   const m = u.message;
   if (m?.text && String(m.chat?.id) === String(chat)) {
+    // los botones del teclado fijo llevan emoji delante y los comandos «/», se quitan para reconocerlos igual que si los escribieras
+    const raw = m.text;
+    m.text = raw.replace(/^[\s\p{Extended_Pictographic}\uFE0F\u200D/]+/u, '');
     const lead = !m.reply_to_message ? parseLead(m.text) : null;
     if (lead) {
       (state.leads ??= []).push(lead); state.more++;
@@ -67,12 +70,13 @@ export function handleUpdate(state, u, chat) {
       target.edit = {...(target.edit ?? {}), [kind]: mt[2].trim()};
       target.status = 'edit';
       out.reply.push(`✏️ Anotado. Rehago el vídeo con ${kind === 'headline' ? 'el nuevo titular' : 'el nuevo guion'} (unos minutos).`);
-    } else if (/^\s*resumen\b/i.test(m.text)) {
+    } else if (/^\s*(resumen|semana)\b/i.test(m.text)) {
       const mode = /seman/i.test(m.text) ? 'week' : 'day';
       state.sumPicks ??= []; if (!state.sumPicks.includes(mode)) state.sumPicks.push(mode);
       out.reply.push(`📰 Preparando el resumen ${mode === 'week' ? 'de la semana' : 'de hoy'} (unos minutos).`);
-    } else if (/^\s*(hoy toca|temas?|qu[eé] subo)\b/i.test(m.text)) { state.hoy = true; out.reply.push('🎯 Te preparo las opciones de hoy (unos minutos).'); }
+    } else if (/^\s*(hoy( toca)?|temas?|qu[eé] subo)\b/i.test(m.text)) { state.hoy = true; out.reply.push('🎯 Te preparo las opciones de hoy (unos minutos).'); }
     else if (/^\s*(otra|más|mas)\b/i.test(m.text)) { state.more++; out.reply.push('🔁 Preparando otro menú.'); }
+    else if (/^\s*(ayuda|start|men[uú]|botones)\b/i.test(m.text)) { out.keyboard = true; out.reply.push('Aquí tienes los botones abajo 👇. 🎯 Hoy toca: qué subir hoy. 📰 Resumen del día / 🗓 de la semana: un vídeo con varias noticias. 🔁 Otra noticia: más opciones.'); }
     else out.reply.push('Para corregir: responde a un vídeo con  «titular: …»  o  «guion: …».  Para sugerir una noticia: «noticia: @quien texto» o pega el enlace del tuit.  Para otro menú pulsa 🔁 o escribe «otra». «resumen» (o «resumen semana») junta las noticias; «hoy toca» te dice qué subir.');
   }
   return out;

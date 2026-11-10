@@ -25,3 +25,19 @@ export async function sendVideo(file, caption, id) {
   const m = await call('sendVideo', null, f);
   return {msgId: m.message_id, fileId: m.video?.file_id};
 }
+
+// Teclado fijo (siempre visible abajo) y menú de comandos «/».
+export const MENU_KEYBOARD = {keyboard: [
+  [{text: '🎯 Hoy toca'}, {text: '📰 Resumen del día'}],
+  [{text: '🗓 Resumen semana'}, {text: '🔁 Otra noticia'}],
+], resize_keyboard: true, is_persistent: true};
+export async function installMenu() {
+  await call('setMyCommands', {commands: [
+    {command: 'hoy', description: '🎯 Qué subir hoy'},
+    {command: 'resumen', description: '📰 Resumen del día'},
+    {command: 'semana', description: '🗓 Resumen de la semana'},
+    {command: 'otra', description: '🔁 Otra noticia'},
+    {command: 'ayuda', description: '❓ Ayuda'},
+  ]});
+  await say('Menú listo 👇 Tienes los botones abajo, junto al teclado.', {reply_markup: MENU_KEYBOARD});
+}

@@ -45,3 +45,19 @@ assert.deepEqual(st.sumPicks, ['day', 'week']);
 r = handleUpdate(st, {message: {text: 'hoy toca', chat: {id: 7}}}, 7);
 assert.equal(st.hoy, true);
 console.log('temas/resumen OK');
+
+// --- teclado fijo y comandos ---
+{
+  const mk = (t) => { const st = {offset: 0, more: 0, items: {}}; const r = handleUpdate(st, {message: {text: t, chat: {id: 7}}}, 7); return {st, r}; };
+  assert.equal(mk('🎯 Hoy toca').st.hoy, true);
+  assert.equal(mk('/hoy').st.hoy, true);
+  assert.deepEqual(mk('📰 Resumen del día').st.sumPicks, ['day']);
+  assert.deepEqual(mk('🗓 Resumen semana').st.sumPicks, ['week']);
+  assert.deepEqual(mk('/semana').st.sumPicks, ['week']);
+  assert.deepEqual(mk('/resumen').st.sumPicks, ['day']);
+  assert.equal(mk('🔁 Otra noticia').st.more, 1);
+  assert.equal(mk('/otra').st.more, 1);
+  assert.equal(mk('/ayuda').r.keyboard, true);
+  assert.equal(mk('/start').r.keyboard, true);
+  console.log('teclado/comandos OK');
+}
