@@ -934,5 +934,158 @@
       "status": "sent",
       "sentAt": "2026-11-10T14:23:42.320Z"
     }
-  }
+  },
+  "offered": {
+    "n-9jb250ZW50PXVr": "2026-11-10T14:43:59.634Z",
+    "n-bHR5LW5vdGlvbg": "2026-11-10T14:43:59.634Z",
+    "n-N0LWRlY2lzaW9u": "2026-11-10T14:43:59.634Z",
+    "n-lScUd4MHh1RkhL": "2026-11-10T14:43:59.634Z",
+    "n-1jYWxlbmRhcnMv": "2026-11-10T14:43:59.634Z"
+  },
+  "menuClusters": {
+    "n-9jb250ZW50PXVr": {
+      "id": "n-9jb250ZW50PXVr",
+      "level": "MEDIA",
+      "count": 2,
+      "headline": "FIA reveals ADUO results in final review of 2026 F1 season",
+      "headlineLang": "en",
+      "latest": "2026-11-10T11:45:39.000Z",
+      "sources": [
+        {
+          "summary": "The FIA has announced its final Additional Development and Upgrade Opportunities (ADUO) results for the 2026 Formula 1 season, with no changes granted for any of the power unit manufacturers. From this season, the FIA installed a mechanism in the F1 regulations which allowed power unit manufacturers the ability to make updates, if they fell behind the leading engine, in the form of tokens ... Keep reading",
+          "name": "Motorsport.com",
+          "domain": "motorsport.com",
+          "url": "https://www.motorsport.com/f1/news/fia-reveals-latest-aduo-results-in-final-review-of-2026-f1-season/10873562/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=www",
+          "title": "FIA reveals latest ADUO results in final review of 2026 F1 season",
+          "lang": "en",
+          "published": "2026-11-10T11:42:46.000Z",
+          "tier": "medio",
+          "official": false
+        },
+        {
+          "summary": "The FIA has announced its final Additional Development and Upgrade Opportunities (ADUO) results for the 2026 Formula 1 season, with no changes granted for any of the power unit manufacturers. From this season, the FIA installed a mechanism in the F1 regulations which allowed power unit manufacturers the ability to make updates, if they fell behind the leading engine, in the form of tokens ... Keep reading",
+          "name": "Autosport",
+          "domain": "autosport.com",
+          "url": "https://www.autosport.com/f1/news/fia-reveals-aduo-results-in-final-review-of-2026-f1-season/10873566/?utm_source=RSS&utm_medium=referral&utm_campaign=RSS-F1&utm_term=News&utm_content=uk",
+          "title": "FIA reveals ADUO results in final review of 2026 F1 season",
+          "lang": "en",
+          "published": "2026-11-10T11:45:39.000Z",
+          "tier": "medio",
+          "official": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-bHR5LW5vdGlvbg": {
+      "id": "n-bHR5LW5vdGlvbg",
+      "level": "MEDIA",
+      "count": 2,
+      "headline": "Did Red Bull car problems cost Verstappen Brazilian GP victory?",
+      "headlineLang": "en",
+      "latest": "2026-11-10T10:15:09.000Z",
+      "sources": [
+        {
+          "summary": "Should Max Verstappen's 21st to second Brazilian GP charge actually have ended with victory?",
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/did-red-bull-car-problems-cost-verstappen-brazilian-gp-victory/",
+          "title": "Did Red Bull car problems cost Verstappen Brazilian GP victory?",
+          "lang": "en",
+          "published": "2026-11-09T19:01:33.000Z",
+          "tier": "medio",
+          "official": false
+        },
+        {
+          "summary": "Max Verstappen charged from 21st on the grid to second place in Brazil after an engine penalty.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/red-bull-rejects-max-verstappen-brazilian-gp-grid-penalty-notion",
+          "title": "Red Bull rejects notion over Max Verstappen Brazilian GP grid penalty",
+          "lang": "en",
+          "published": "2026-11-10T10:15:09.000Z",
+          "tier": "medio",
+          "official": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-N0LWRlY2lzaW9u": {
+      "id": "n-N0LWRlY2lzaW9u",
+      "level": "MEDIA",
+      "count": 2,
+      "headline": "Lawson closing in on F1 2027 stay with Racing Bulls",
+      "headlineLang": "en",
+      "latest": "2026-11-09T18:55:56.000Z",
+      "sources": [
+        {
+          "summary": "Liam Lawson is closing in on a 2027 F1 race deal with Racing Bulls following his standout performance over the Brazilian GP weekend",
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/liam-lawson-closing-on-f1-2027-racing-bulls-stay/",
+          "title": "Lawson closing in on F1 2027 stay with Racing Bulls",
+          "lang": "en",
+          "published": "2026-11-09T07:24:26.000Z",
+          "tier": "medio",
+          "official": false
+        },
+        {
+          "summary": "Lawson was second in the early stages.",
+          "name": "PlanetF1",
+          "domain": "planetf1.com",
+          "url": "https://www.planetf1.com/news/red-bull-liam-lawson-racing-bulls-stall-contract-decision",
+          "title": "Red Bull hail Liam Lawson performance as Racing Bulls stall on contract decision",
+          "lang": "en",
+          "published": "2026-11-09T18:55:56.000Z",
+          "tier": "medio",
+          "official": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-lScUd4MHh1RkhL": {
+      "id": "n-lScUd4MHh1RkhL",
+      "level": "OFICIAL",
+      "count": 1,
+      "headline": "Alonso credits ‘phenomenal’ car after strong drive in Brazil",
+      "headlineLang": "en",
+      "latest": "2026-11-10T14:43:58.179Z",
+      "sources": [
+        {
+          "summary": "After a difficult time of it in Mexico City, Aston Martin bounced back strongly in Brazil as Fernando Alonso finished 12th at Interlagos, just missing out on a rare chance to score points.",
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/alonso-credits-phenomenal-car-after-strong-showing-in-sao-paulo.7d9xmDFQhJ3IRqGx0xuFHK",
+          "title": "Alonso credits ‘phenomenal’ car after strong drive in Brazil",
+          "lang": "en",
+          "published": "2026-11-10T14:43:58.179Z",
+          "tier": "oficial",
+          "official": true
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-1jYWxlbmRhcnMv": {
+      "id": "n-1jYWxlbmRhcnMv",
+      "level": "RADAR",
+      "count": 1,
+      "headline": "F1 stands Imola down - what it means for 2026 and '27 calendars",
+      "headlineLang": "en",
+      "latest": "2026-11-10T14:22:02.000Z",
+      "sources": [
+        {
+          "summary": "Imola has been formally stood down as a fall-back option for Formula 1's 2026 season finale",
+          "name": "The Race",
+          "domain": "the-race.com",
+          "url": "https://www.the-race.com/formula-1/f1-stands-imola-down-what-it-means-for-2026-and-27-calendars/",
+          "title": "F1 stands Imola down - what it means for 2026 and '27 calendars",
+          "lang": "en",
+          "published": "2026-11-10T14:22:02.000Z",
+          "tier": "medio",
+          "official": false
+        }
+      ],
+      "alsoSay": []
+    }
+  },
+  "made": []
 }
