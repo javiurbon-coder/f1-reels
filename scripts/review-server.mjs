@@ -2,11 +2,13 @@
 // Uso: npm run review   → http://localhost:4173
 import http from 'node:http';
 import fs from 'node:fs';
+import path from 'node:path';
+import {spawn} from 'node:child_process';
 import {deleteItem, getItem, listItems, posterPath, rerender, saveItem, videoPath} from './lib/queue.mjs';
 import {clean, queueBytes} from './lib/clean.mjs';
 import {loadSeries} from './lib/series.mjs';
 import {hasCredentials, publishReel} from './lib/instagram.mjs';
-import {syncDrafts} from './lib/sync.mjs';
+import {syncDrafts, restoreDrafts} from './lib/sync.mjs';
 import {configured as tgOn, sendVideo, say} from './bot/tg.mjs';
 
 const PORT = Number(process.env.PORT || 4173);
@@ -37,6 +39,8 @@ function sendFile(req, res, file, type) {
 }
 
 const busy = new Set();
+let studio = null; // Remotion Studio (el editor de fotogramas), uno a la vez
+process.on('exit', () => studio?.kill());
 
 const server = http.createServer(async (req, res) => {
   try {
@@ -46,7 +50,7 @@ const server = http.createServer(async (req, res) => {
     const p = url.pathname;
 
     if (req.method === 'GET' && p === '/') {
-      res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+      res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store'});
       return res.end(PAGE);
     }
     if (req.method === 'GET' && p === '/api/state') {
@@ -60,6 +64,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method !== 'GET' && req.headers['x-review'] !== '1') return json(res, 403, {error: 'cabecera requerida'});
 
     if (req.method === 'POST' && p === '/api/clean') return json(res, 200, clean());
+    if (req.method === 'POST' && p === '/api/restore') return json(res, 200, await restoreDrafts().catch((e) => ({added: [], error: String(e.message ?? e)})));
     if (req.method === 'POST' && p === '/api/sync') return json(res, 200, await syncDrafts().catch((e) => ({added: [], error: String(e.message ?? e)})));
 
     if ((m = p.match(/^\/api\/items\/([\w-]+)(?:\/(\w+))?$/))) {
@@ -88,6 +93,13 @@ const server = http.createServer(async (req, res) => {
         if (action === 'approve' && item.status === 'pending') return json(res, 200, saveItem({...item, status: 'approved'}));
         if (action === 'unapprove' && item.status === 'approved') return json(res, 200, saveItem({...item, status: 'pending'}));
         if (action === 'reject' && ['pending', 'approved', 'error'].includes(item.status)) return json(res, 200, saveItem({...item, status: 'rejected'}));
+        if (action === 'studio') {
+          const file = path.resolve('queue', id, 'studio-props.json');
+          fs.writeFileSync(file, JSON.stringify(item.props, null, 2));
+          studio?.kill();
+          studio = spawn('npx', ['remotion', 'studio', 'src/index.ts', `--props=${file}`, '--port=3010', '--no-open'], {shell: true, stdio: 'ignore'});
+          return json(res, 200, {url: `http://localhost:3010/${item.composition ?? 'Reel'}`});
+        }
         if (action === 'phone') {
           if (!tgOn()) return json(res, 400, {error: 'Telegram no está configurado en este PC. Ejecuta una vez: node scripts/notify-telegram.mjs setup <TOKEN_DEL_BOT>'});
           if (!['pending', 'approved'].includes(item.status)) return json(res, 409, {error: 'solo se envían vídeos pendientes o aprobados'});
@@ -151,8 +163,8 @@ button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #111}button:disa
 #plan{margin:18px 22px 0;background:#fff;border:4px solid #111;border-radius:18px;box-shadow:6px 6px 0 #111;padding:12px 16px}#plan:empty{display:none}#plan h2{margin:0 0 8px;font-size:17px}#plan .r{display:flex;gap:10px;align-items:baseline;padding:4px 0;border-top:2px dashed #ddd}#plan .t{font-weight:800;min-width:92px}#plan .w{color:#b42318;font-size:13px;font-weight:700}
 .empty{grid-column:1/-1;text-align:center;padding:60px;font-weight:700}
 </style>
-<header><h1>CONTRASTADO F1 · REVISIÓN</h1><div id="series"></div><div id="status"></div><span class="sp"></span><span id="disk"></span>
-<button id="sync" title="Baja los borradores que el robot ha montado en GitHub">⬇ Traer borradores</button> <button id="clean" title="Aplica las reglas de retención">Limpiar espacio</button></header>
+<header><h1>CONTRASTADO F1 · REVISIÓN <small style="font-size:11px;opacity:.6">panel v3</small></h1><div id="series"></div><div id="status"></div><span class="sp"></span><span id="disk"></span>
+<button id="restore" title="Vuelve a bajar los borradores que borraste (siguen 6 días en GitHub)">↩ Recuperar borrados</button> <button id="sync" title="Baja los borradores que el robot ha montado en GitHub">⬇ Traer borradores</button> <button id="clean" title="Aplica las reglas de retención">Limpiar espacio</button></header>
 <section id="plan"></section>
 <main id="list"></main>
 <script>
@@ -202,7 +214,7 @@ function draw(){
    '<details><summary>Datos del vídeo (editar y re-renderizar)</summary><textarea rows="8" data-f="props">'+esc(JSON.stringify(i.props,null,2))+'</textarea></details>'+
    '<label><b>Pie de foto</b></label><textarea rows="6" data-f="caption">'+esc(i.caption)+'</textarea>'+
    '<div class="row">'+
-    (can||appr?'<button data-a="save">Guardar</button><button data-a="phone" '+(d.canPhone?'':'title="Telegram sin configurar en este PC"')+'>📱 Al móvil'+(i.sentToPhone?' ✓':'')+'</button>':'')+
+    (can||appr?'<button class="go" data-a="studio">🎬 Editar vídeo</button><a href="/media/'+i.id+'/video.mp4" download="'+i.id+'.mp4"><button type="button">⬇ MP4</button></a><button data-a="save">Guardar</button><button data-a="phone" '+(d.canPhone?'':'title="Telegram sin configurar en este PC"')+'>📱 Al móvil'+(i.sentToPhone?' ✓':'')+'</button>':'')+
     (can?'<button class="ok" data-a="approve">✓ Aprobar</button>':'')+
     (appr?'<button data-a="unapprove">Quitar aprobación</button><button class="go" data-a="publish" '+(d.canPublish?'':'disabled title="Faltan credenciales de Instagram"')+'>Publicar en Instagram</button>':'')+
     (can||appr||i.status==='error'?'<button class="bad" data-a="reject">Rechazar</button>':'')+
@@ -212,6 +224,7 @@ function draw(){
 document.addEventListener('click',async e=>{
  const b=e.target.closest('button');if(!b)return;
  if(b.dataset.k){S[b.dataset.k]=b.dataset.v;return draw()}
+ if(b.id==='restore'){b.disabled=true;b.textContent='Recuperando…';const r=await call('POST','/api/restore');b.disabled=false;b.textContent='↩ Recuperar borrados';alert(r.error?('No se pudo: '+r.error):(r.added.length?r.added.length+' borrador(es) recuperado(s)':'No hay nada que recuperar (ya están todos, o pasaron más de 6 días)'));return load(true)}
  if(b.id==='sync'){b.disabled=true;b.textContent='Buscando…';const r=await call('POST','/api/sync');b.disabled=false;b.textContent='⬇ Traer borradores';alert(r.error?('No se pudo: '+r.error):(r.added.length?r.added.length+' borrador(es) nuevo(s)':'No hay borradores nuevos'));return load(true)}
  if(b.id==='clean'){const r=await call('POST','/api/clean');alert((r.freedBytes/1e6).toFixed(1)+' MB liberados');return load(true)}
  const card=b.closest('.card');if(!card)return;const id=card.dataset.id,a=b.dataset.a;
@@ -221,9 +234,10 @@ document.addEventListener('click',async e=>{
   await call('POST','/api/items/'+id+'/save',{props,caption:val('caption')});return load(true)}
  if(a==='publish'){if(!confirm('Se publicará AHORA en Instagram con el pie de foto mostrado. ¿Seguro?'))return;
   b.disabled=true;b.textContent='Publicando…';const r=await call('POST','/api/items/'+id+'/publish',{confirm:true});if(r.status==='published')alert('Publicado ✓');return load(true)}
+ if(a==='studio'){b.disabled=true;b.textContent='Abriendo editor…';const r=await call('POST','/api/items/'+id+'/studio');setTimeout(()=>{b.disabled=false;b.textContent='🎬 Editar vídeo';if(r.url)window.open(r.url,'_blank')},9000);return}
  if(a==='phone'){b.disabled=true;const r=await call('POST','/api/items/'+id+'/phone');b.disabled=false;if(r.sentToPhone)alert('Enviado al móvil ✓');return load(true)}
  if(a==='approve'){await call('POST','/api/items/'+id+'/save',{caption:val('caption')})}
  await call('POST','/api/items/'+id+'/'+a);load(true)
 });
-load();setInterval(()=>{const playing=[...document.querySelectorAll('video')].some(v=>!v.paused&&!v.ended);if(playing)return;if(!document.activeElement||document.activeElement.tagName!=='TEXTAREA')load()},4000);
+load();setInterval(()=>{const playing=[...document.querySelectorAll('video')].some(v=>!v.paused&&!v.ended);if(playing)return;if(!document.activeElement||document.activeElement.tagName!=='TEXTAREA')load()},30000);
 </script></html>`;

@@ -38,3 +38,10 @@ export async function syncDrafts() {
   fs.writeFileSync(KNOWN, JSON.stringify(seen.slice(-500)));
   return {added};
 }
+
+/** Recupera los borradores que borraste en el panel: olvida la lista de «ya traídos» y vuelve a bajar lo que siga en GitHub (unos 6 días). */
+export async function restoreDrafts() {
+  fs.mkdirSync(path.dirname(KNOWN), {recursive: true});
+  fs.writeFileSync(KNOWN, '[]');
+  return syncDrafts();
+}
