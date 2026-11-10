@@ -57,6 +57,7 @@
     "freshHours": 4
   },
   "drafts": {
+    "enabled": false,
     "maxPerDay": 3,
     "maxPerRun": 1,
     "keepDays": 6,

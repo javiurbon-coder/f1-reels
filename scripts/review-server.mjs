@@ -156,7 +156,8 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-const autoSync = () => syncDrafts().then((r) => console.log(r.error ? `Borradores: ${r.error}` : `Borradores nuevos: ${r.added.length}`)).catch(() => {});
+const paused = () => { try { return JSON.parse(fs.readFileSync(path.join(HERE, '..', 'config', 'settings.json'), 'utf8')).drafts?.enabled === false; } catch { return false; } };
+const autoSync = () => paused() ? Promise.resolve() : syncDrafts().then((r) => console.log(r.error ? `Borradores: ${r.error}` : `Borradores nuevos: ${r.added.length}`)).catch(() => {});
 autoSync(); setInterval(autoSync, 5 * 60e3); // trae lo del robot al arrancar y cada 5 minutos: no hay que pulsar nada
 const c = clean(); // limpieza al arrancar
 console.log(`Limpieza: ${c.removed} borrados, ${c.videosDeleted} vídeos antiguos eliminados.`);

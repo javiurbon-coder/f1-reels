@@ -15,6 +15,7 @@ const out = (k, v) => process.env.GITHUB_OUTPUT && fs.appendFileSync(process.env
 const gh = (...a) => spawnSync('gh', a, {encoding: 'utf8'});
 
 if (process.argv.includes('--pick')) {
+  if (D.enabled === false) { console.log('Borradores en pausa (config/settings.json → drafts.enabled): no se prepara nada.'); process.exit(0); }
   const clusters = JSON.parse(fs.readFileSync('data/news/clusters.json', 'utf8'));
   const seen = new Set(fs.existsSync('data/news/seen.json') ? JSON.parse(fs.readFileSync('data/news/seen.json', 'utf8')) : []);
   const day = (d) => new Date(d).toLocaleDateString('sv-SE', {timeZone: 'Europe/Madrid'});
