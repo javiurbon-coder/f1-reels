@@ -2665,7 +2665,9 @@
     "n-W1wYWlnbj1yc3M": "2026-11-10T18:05:06.910Z",
     "n-dHVyZS1oYWFzLw": "2026-11-10T18:05:07.340Z",
     "n-WYxLXNhY2tpbmc": "2026-11-10T19:11:01.460Z",
-    "n-ZWtJdzFXdXZXZA": "2026-11-10T19:11:01.844Z"
+    "n-ZWtJdzFXdXZXZA": "2026-11-10T19:11:01.844Z",
+    "n-SThwQWZnNUswTw": "2026-11-10T20:19:52.934Z",
+    "n-bXRKNTBSc0NZSA": "2026-11-10T20:19:53.366Z"
   },
   "menuClusters": {
     "n-9jb250ZW50PXVr": {
@@ -3492,6 +3494,52 @@
         }
       ],
       "alsoSay": []
+    },
+    "n-SThwQWZnNUswTw": {
+      "id": "n-SThwQWZnNUswTw",
+      "level": "OFICIAL",
+      "count": 1,
+      "headline": "F1 ACADEMY announces 2027 calendar",
+      "headlineLang": "en",
+      "latest": "2026-11-10T20:19:51.435Z",
+      "sources": [
+        {
+          "summary": "F1 ACADEMY has revealed its calendar for the 2027 campaign, with the all-female series’ fifth season featuring seven rounds.",
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/f1-academy-unveils-calendar-for-2027-season.1mYuyMEiCaWyI8pAfg5K0O",
+          "title": "F1 ACADEMY announces 2027 calendar",
+          "lang": "en",
+          "published": "2026-11-10T20:19:51.435Z",
+          "tier": "oficial",
+          "official": true,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
+    },
+    "n-bXRKNTBSc0NZSA": {
+      "id": "n-bXRKNTBSc0NZSA",
+      "level": "OFICIAL",
+      "count": 1,
+      "headline": "Camara experiences every condition in ‘tricky’ Haas debut",
+      "headlineLang": "en",
+      "latest": "2026-11-10T20:19:51.435Z",
+      "sources": [
+        {
+          "summary": "While Rafael Camara saw the chequered flag in a “tricky” debut race for Haas, the Brazilian faced the tough task of navigating his first Grand Prix and in changeable conditions.",
+          "name": "Formula1.com",
+          "domain": "formula1.com",
+          "url": "https://www.formula1.com/en/latest/article/camara-experiences-every-condition-going-in-tricky-haas-debut.40TC0zRX2AaMmtJ50RsCYH",
+          "title": "Camara experiences every condition in ‘tricky’ Haas debut",
+          "lang": "en",
+          "published": "2026-11-10T20:19:51.435Z",
+          "tier": "oficial",
+          "official": true,
+          "manual": false
+        }
+      ],
+      "alsoSay": []
     }
   },
   "made": [],
@@ -3526,6 +3574,20 @@
     "n-ZWtJdzFXdXZXZA": {
       "t": "2026-11-10T19:11:01.844Z",
       "headline": "PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins",
+      "names": [
+        "Formula1.com"
+      ]
+    },
+    "n-SThwQWZnNUswTw": {
+      "t": "2026-11-10T20:19:52.934Z",
+      "headline": "F1 ACADEMY announces 2027 calendar",
+      "names": [
+        "Formula1.com"
+      ]
+    },
+    "n-bXRKNTBSc0NZSA": {
+      "t": "2026-11-10T20:19:53.366Z",
+      "headline": "Camara experiences every condition in ‘tricky’ Haas debut",
       "names": [
         "Formula1.com"
       ]
@@ -3595,9 +3657,9 @@
       ]
     },
     "n-c2UtZmFpbHVyZQ": {
-      "headline": "Charles Leclerc is more 'loved' within Ferrari as Lewis Hamilton has created a 'deep rift'",
+      "headline": "Why Ferrari and Lewis Hamilton are the biggest winners from F1's latest engine ruling",
       "level": "ALTA",
-      "t": "2026-11-10T15:16:00.000Z",
+      "t": "2026-11-10T17:02:00.000Z",
       "detail": "Lewis Hamilton was left seeking answers once again after admitting he was \"devastated\" by the way Sunday's Brazilian Grand Prix ended for him and Ferrari.",
       "sources": [
         {
@@ -3619,12 +3681,6 @@
           "official": false
         },
         {
-          "name": "F1 Oversteer",
-          "domain": "f1oversteer.com",
-          "url": "https://www.f1oversteer.com/news/charles-leclerc-is-more-loved-within-ferrari-as-lewis-hamilton-has-created-a-deep-rift/",
-          "official": false
-        },
-        {
           "name": "GPFans",
           "domain": "gpfans.com",
           "url": "https://www.gpfans.com/en/f1-news/1092723/f1-news-today-lewis-hamilton-brazilian-gp-john-elkann/",
@@ -3634,6 +3690,18 @@
           "name": "PlanetF1",
           "domain": "planetf1.com",
           "url": "https://www.planetf1.com/news/ferrari-lifts-lid-on-lewis-hamilton-decision-after-65-place-penalty",
+          "official": false
+        },
+        {
+          "name": "F1 Oversteer",
+          "domain": "f1oversteer.com",
+          "url": "https://www.f1oversteer.com/features/why-ferrari-and-lewis-hamilton-are-the-biggest-winners-from-f1s-latest-engine-ruling/",
+          "official": false
+        },
+        {
+          "name": "Sky Sports F1",
+          "domain": "skysports.com",
+          "url": "https://www.skysports.com/watch/video/13610724/the-f1-show-should-ferrari-build-around-lewis-hamilton",
           "official": false
         }
       ]
@@ -3747,17 +3815,11 @@
       ]
     },
     "n-WRpYS1yZWFjdHM": {
-      "headline": "Lawson closing in on F1 2027 stay with Racing Bulls",
-      "level": "ALTA",
+      "headline": "Racing Bulls closing on F1 2027 driver decision after Liam Lawson statement",
+      "level": "MEDIA",
       "t": "2026-11-09T18:05:00.000Z",
-      "detail": "Liam Lawson is closing in on a 2027 F1 race deal with Racing Bulls following his standout performance over the Brazilian GP weekend",
+      "detail": "Find out how media from around the world reacted to the 2026 F1 São Paulo Grand Prix, held at the legendary Interlagos.",
       "sources": [
-        {
-          "name": "The Race",
-          "domain": "the-race.com",
-          "url": "https://www.the-race.com/formula-1/liam-lawson-closing-on-f1-2027-racing-bulls-stay/",
-          "official": false
-        },
         {
           "name": "Crash.net",
           "domain": "crash.net",
@@ -3853,7 +3915,7 @@
     "n-FZSb2ZLY1BnRjg": {
       "headline": "Why McLaren went the opposite way to Mercedes' front wing",
       "level": "MEDIA",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "Mark Hughes and Giorgio Piola investigate the front wing switch that helped McLaren's Lando Norris win the Sao Paulo Grand Prix.",
       "sources": [
         {
@@ -3973,7 +4035,7 @@
     "n-ZWtJdzFXdXZXZA": {
       "headline": "PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins",
       "level": "OFICIAL",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "Races like the Sao Paulo Grand Prix show everybody why Lando Norris is a World Champion, writes former Renault F1 driver Jolyon Palmer.",
       "sources": [
         {
@@ -3987,7 +4049,7 @@
     "n-SThwQWZnNUswTw": {
       "headline": "F1 ACADEMY announces 2027 calendar",
       "level": "OFICIAL",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "F1 ACADEMY has revealed its calendar for the 2027 campaign, with the all-female series’ fifth season featuring seven rounds.",
       "sources": [
         {
@@ -4001,7 +4063,7 @@
     "n-bXRKNTBSc0NZSA": {
       "headline": "Camara experiences every condition in ‘tricky’ Haas debut",
       "level": "OFICIAL",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "While Rafael Camara saw the chequered flag in a “tricky” debut race for Haas, the Brazilian faced the tough task of navigating his first Grand Prix and in changeable conditions.",
       "sources": [
         {
@@ -4015,7 +4077,7 @@
     "n-lScUd4MHh1RkhL": {
       "headline": "Alonso credits ‘phenomenal’ car after strong drive in Brazil",
       "level": "OFICIAL",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "After a difficult time of it in Mexico City, Aston Martin bounced back strongly in Brazil as Fernando Alonso finished 12th at Interlagos, just missing out on a rare chance to score points.",
       "sources": [
         {
@@ -4029,7 +4091,7 @@
     "n-NDZmwwQ0dzcHdz": {
       "headline": "P10 in Sao Paulo GP 'the maximum possible' – Hulkenberg",
       "level": "OFICIAL",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "Nico Hulkenberg believes that P10 and the final point on offer was \"the maximum possible\" in the Sao Paulo Grand Prix, the Audi driver having recovered from a 10-second penalty.",
       "sources": [
         {
@@ -4043,7 +4105,7 @@
     "n-tZV0dEa05ZdlV0": {
       "headline": "5 betting lessons learnt after Norris wins in Brazil",
       "level": "OFICIAL",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "The battle for race wins remains wide open heading into the season-closing triple header.",
       "sources": [
         {
@@ -4057,7 +4119,7 @@
     "n-NHZ2bFZFeWR3NQ": {
       "headline": "The best images from Mercedes' title celebrations",
       "level": "OFICIAL",
-      "t": "2026-11-10T19:10:59.961Z",
+      "t": "2026-11-10T20:19:51.435Z",
       "detail": "Mercedes sealed the Teams' Championship in Sao Paulo on Sunday after a double points finish from George Russell and Kimi Antonelli.",
       "sources": [
         {
