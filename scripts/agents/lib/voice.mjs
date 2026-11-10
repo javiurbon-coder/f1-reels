@@ -109,6 +109,9 @@ export const voiceEngines = () => {
   return all;
 };
 
+/** Motivos por los que algún motor falló en esta ejecución (para avisarte por Telegram). */
+export const voiceErrors = [];
+
 /** Genera la voz de `text`. Devuelve {file (relativo a public/), seconds, words, engine} o null si no hay ningún motor. */
 export async function speakAny(text, id) {
   fs.mkdirSync('public/audio', {recursive: true});
@@ -121,7 +124,7 @@ export async function speakAny(text, id) {
       else if (engine === 'edge') r = edge(text, out);
       else r = {seconds: speak(text, out), words: null};
       return {file: `audio/${id}.${ext}`, seconds: r.seconds, words: r.words ?? wordTimings(text, r.seconds), engine};
-    } catch (e) { console.log(`  · voz ${engine} falló (${e.message}); pruebo la siguiente`); }
+    } catch (e) { voiceErrors.push(`${engine}: ${e.message}`); console.log(`  · voz ${engine} falló (${e.message}); pruebo la siguiente`); }
   }
   return null;
 }

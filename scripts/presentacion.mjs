@@ -1,7 +1,7 @@
 // Genera el REEL DE PRESENTACIÓN de la cuenta (voz + vídeo) y, si Telegram está configurado, te lo envía.
 // Uso: npm run presentacion   (en la nube: Actions → "Reel de presentación" → Run workflow)
 import fs from 'node:fs';
-import {speakAny, wordTimings} from './agents/lib/voice.mjs';
+import {speakAny, wordTimings, voiceErrors} from './agents/lib/voice.mjs';
 import {renderVideo} from './lib/render.mjs';
 
 // Un bloque por escena. Puedes cambiar el texto; mantén 6 bloques.
@@ -30,5 +30,5 @@ if (process.argv[1].endsWith('presentacion.mjs')) {
   await renderVideo({id: 'Presentacion', props, out: 'out/presentacion.mp4'});
   console.log(`OK → out/presentacion.mp4 (${props.total.toFixed(0)} s, voz: ${v?.engine ?? 'sin voz'})`);
   const {configured, sendVideo, say} = await import('./bot/tg.mjs');
-  if (configured()) { await sendVideo('out/presentacion.mp4', '🎬 REEL DE PRESENTACIÓN'); await say(CAPTION); }
+  if (configured()) { await sendVideo('out/presentacion.mp4', `🎬 REEL DE PRESENTACIÓN\n🎙 Voz: ${v?.engine ?? 'sin voz'}${voiceErrors.length ? '\n⚠️ ' + voiceErrors.join('\n⚠️ ') : ''}`); await say(CAPTION); }
 }
