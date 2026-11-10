@@ -17,10 +17,10 @@ const names = (c) => c.sources.map((s) => s.name);
 const join = (a) => (a.length <= 1 ? a[0] ?? '' : `${a.slice(0, -1).join(', ')} y ${a[a.length - 1]}`);
 const strip = (t) => t.replace(/[.!?…\s]+$/, '');
 
-/** Elige hasta 4 noticias contrastadas de la ventana (24 h o 7 días) que aún no tuvieron reel ni resumen. Pura: no toca la red. */
+/** Elige hasta 4 noticias contrastadas de la ventana (24 h o 7 días) que aún no tuvieron reel propio (pueden repetirse en otro resumen). Pura: no toca la red. */
 export function pickItems(state, mode, now = Date.now()) {
   const win = (mode === 'week' ? 7 : 1) * 86400e3;
-  const used = new Set([...(state.made ?? []), ...(state.summarized ?? [])]);
+  const used = new Set(state.made ?? []); // un resumen NO gasta las noticias: el del día coge siempre las mejores de la ventana
   return Object.entries(state.log ?? {})
     .map(([id, e]) => ({id, ...e}))
     .filter((e) => e.level !== 'RADAR' && !used.has(e.id) && now - new Date(e.t) < win && e.sources?.length)
